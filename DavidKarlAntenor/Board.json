@@ -1,0 +1,248 @@
+[
+  {
+    "position": 0,
+    "type": "Start",
+    "description": "Starting position",    
+  },
+  {
+    "position": 1,
+    "type": "Land",
+    "description": "Leblon",
+    "price": 8888,
+    "buildHouseCost": 50,
+    "buildHotelCost": 50,
+    "rentCost": [6, 30, 90, 270, 400, 500]
+  },
+  {
+    "position": 2,
+    "type": "LuckSetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 3,
+    "type": "Land",
+    "description": "Av. Presidente Vargas",
+    "price": 8888,
+    "buildHouseCost": 50,
+    "buildHotelCost": 50,
+    "rentCost": [2, 10, 30, 90, 160, 250]
+    
+  },
+  {
+    "position": 4,
+    "type": "Land",
+    "description": "Av. Nossa S. de Copacabana",
+    
+  },
+  {
+    "position": 5,
+    "type": "Company",
+    "description": "Train",
+    
+  },
+  {
+    "position": 6,
+    "type": "Land",
+    "description": "Av. Brig. Faria Lima",
+    
+  },
+  {
+    "position": 7,
+    "type": "Company",
+    "description": "Bus",
+    
+  },
+  {
+    "position": 8,
+    "type": "Land",
+    "description": "Av. Rebouças",
+    
+  },
+  {
+    "position": 9,
+    "type": "Land",
+    "description": "Av. 9 Julho",
+    
+  },
+  {
+    "position": 10,
+    "type": "Prision",
+    "description": "Prision",
+    
+  },
+  {
+    "position": 11,
+    "type": "Land",
+    "description": "Av. Europa",
+    
+  },
+  {
+    "position": 12,
+    "type": "LuckSetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 13,
+    "type": "Land",
+    "description": "Rua Augusta",
+    
+  },
+  {
+    "position": 14,
+    "type": "Land",
+    "description": "Av. Pacaembu",
+    
+  },
+  {
+    "position": 15,
+    "type": "Company",
+    "description": "Taxi",
+    
+  },
+  {
+    "position": 16,
+    "type": "LuckSetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 17,
+    "type": "Land",
+    "description": "Interlagos",
+    
+  },
+  {
+    "position": 18,
+    "type": "Money",
+    "description": "$$(win money)",
+    
+  },
+  {
+    "position": 19,
+    "type": "Land",
+    "description": "Morumbi",
+    
+  },
+  {
+    "position": 20,
+    "type": "FreeStop",
+    "description": "(P)",
+    
+  },
+  {
+    "position": 21,
+    "type": "Land",
+    "description": "Flamengo",
+    
+  },
+  {
+    "position": 22,
+    "type": "LuckSetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 23,
+    "type": "Land",
+    "description": "Botafogo",
+    
+  },
+  {
+    "position": 24,
+    "type": "Money",
+    "description": "$$(Lose money)",
+    
+  },
+  {
+    "position": 25,
+    "type": "Company",
+    "description": "ship",
+    
+  },
+  {
+    "position": 26,
+    "type": "Land",
+    "description": "Av. Brasil",
+    
+  },
+  {
+    "position": 27,
+    "type": "LuckSetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 28,
+    "type": "Land",
+    "description": "Av. Paulista",
+    
+  },
+  {
+    "position": 29,
+    "type": "Land",
+    "description": "Jardim Europa",
+    
+  },
+  {
+    "position": 30,
+    "type": "GoToPrision",
+    "description": "Red Arrow",
+    
+  },
+  {
+    "position": 31,
+    "type": "Land",
+    "description": "Copacabana",
+    
+  },
+  {
+    "position": 32,
+    "type": "Company",
+    "description": "Airline",
+    
+  },
+  {
+    "position": 33,
+    "type": "Land",
+    "description": "Av. Vieira Souto",
+    
+  },
+  {
+    "position": 34,
+    "type": "Land",
+    "description": "Av. Atlântica",
+    
+  },
+  {
+    "position": 35,
+    "type": "Company",
+    "description": "Helicopter",
+    
+  },
+  {
+    "position": 36,
+    "type": "Land",
+    "description": "Ipanema",
+    
+  },
+  {
+    "position": 37,
+    "type": "Lucksetback",
+    "description": "?",
+    
+  },
+  {
+    "position": 38,
+    "type": "Land",
+    "description": "Jardim Paulista",
+    
+  },
+  {
+    "position": 39,
+    "type": "Land",
+    "description": "Brooklin",
+    
+  }
+]
