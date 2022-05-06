@@ -6,6 +6,7 @@ public class ValueCard extends ACard {
     public ValueCard(String description, String name, Integer value) {
         super(description, name);
         _value = value;
+        _type = CardType.VALUE;
     }
 
     public final Integer getValue() {
