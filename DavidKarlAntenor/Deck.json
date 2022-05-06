@@ -8,15 +8,183 @@
     },
     {
       "type": 0,
-      "name": "Luck",
-      "description": "Você foi promovido a diretor da sua empresa.",
-      "value": 100
+      "name": "Bad Luck",
+      "description": "Seus parentes do interior vieram passar umas \"férias\" na sua casa",
+      "value": -45
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Seu clube está ampliando as piscinas. Os Sócios devem contribuir.",
+      "value": -25
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Você vai casar e está comprando um apartamento novo.",
+      "value": -25
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Renove a tempo a licença do seu automóvel.",
+      "value": -30
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Você acaba de receber a comunicação do imposto de renda.",
+      "value": -50
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Um amigo pediu-lhe um empréstimo. Você não pode recusar.",
+      "value": -15
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Seus filhos já vão para a escola. Pague a primeira mensualidade.",
+      "value": -50
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Seus parentes do interior vieram passar umas \"férias\" na sua casa",
+      "value": -45
     },
     {
       "type": 1,
       "name": "Bad Luck",
       "description": "Vá para a prisão sem receber nada. (talvez eu lhe faça uma visita...)",
       "value": 0
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Você estacionou seu carro en lugar proibido e entrou na contra mão.",
+      "value": -30
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Parabéns ! Você convidou seus amigos para festejar o aniversário.",
+      "value": -100
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "A geada prejudicou a sua safra de café.",
+      "value": -50
+    },
+    {
+      "type": 0,
+      "name": "Papai os livros do ano passado não servem mais, preciso de livros novos.",
+      "description": "",
+      "value": -40
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Você é papai outra vez ! Despesas de maternidade.",
+      "value": -100
+    },
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "Você achou interessante assistir à estréia da temporada de ballet. Compre os ingressos.",
+      "value": -30
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "O seu cachorro policial tirou o 1.º prêmio na exposição do Kennel club.",
+      "value": 100
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você tirou o primeiro lugar no Torneio de Tênis do seu clube. Parabéns!",
+      "value": 100
+    },
+    {
+      "type": 2,
+      "name": "Luck",
+      "description": "Saída livre de prisão.",
+      "value": 0
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você trocou seu carro usado com um amigo e ainda saíu lucrando.",
+      "value": 50
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você foi promovido a diretor da sua empresa.",
+      "value": 100
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "A prefeitura mandou abrir uma nova avenida, para o que desapropriou vários prédios. Em consequência seu terreno valorizou.",
+      "value": 25
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Um amigo tinha lhe pedido um empréstimo e se esqueceu de devolver. Ele acaba de se lembrar.",
+      "value": 80
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você está com sorte. Suas ações na Bolsa de Valores estão em alta.",
+      "value": 200
+    },
+    {
+      "type": 4,
+      "name": "Luck",
+      "description": "Avance até o ponto de partida.",
+      "value": 200
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você acaba de receber uma parcela do seu 13º salário.",
+      "value": 50
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Inesperedamente você recebeu uma herença que já estava esquecida.",
+      "value": 100
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você jogou na Loteria Esportiva com um grupo de amigos. Ganharam!",
+      "value": 20
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Houve um assalto à sua loga, mas você estava segurado.",
+      "value": 150
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel.",
+      "value": 45
+    },
+    {
+      "type": 3,
+      "name": "Luck",
+      "description": "Você apostou com os parceiros deste jogo e ganhou dinheiro de cada um.",
+      "value": 50
     }
   ]
 }
