@@ -1,4 +1,6 @@
-package Model.gameboard;
+package Model.Player;
+
+import Model.gameboard.Tile;
 
 public class Player {
 	int cash;
