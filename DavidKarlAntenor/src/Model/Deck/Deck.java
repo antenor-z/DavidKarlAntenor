@@ -1,9 +1,9 @@
-package Deck;
+package Model.Deck;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Deck.Card.*;
+import Model.Deck.Card.*;
 import Deck.Exception.DeckException;
 import org.json.*;
 

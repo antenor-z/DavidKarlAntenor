@@ -1,4 +1,4 @@
-package Deck.Card;
+package Model.Deck.Card;
 
 public enum CardType {
     VALUE,

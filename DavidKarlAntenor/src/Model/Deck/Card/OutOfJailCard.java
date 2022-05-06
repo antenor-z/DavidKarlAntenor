@@ -1,4 +1,4 @@
-package Deck.Card;
+package Model.Deck.Card;
 
 public class OutOfJailCard extends ACard {
     public OutOfJailCard(String description, String name) {
