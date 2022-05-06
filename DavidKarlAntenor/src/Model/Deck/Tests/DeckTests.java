@@ -2,8 +2,7 @@ package Model.Deck.Tests;
 
 import Model.Deck.Card.ICard;
 import Model.Deck.Deck;
-
-import org.junit.*;
+import Model.Deck.Exception.DeckException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -15,7 +14,7 @@ public class DeckTests {
         String jsonPath = "./Deck.json";
         try {
             deck = new Deck(jsonPath);
-        } catch (Deck.Exception.DeckException e) {
+        } catch (DeckException e) {
             fail(e.getMessage());
         }
     }

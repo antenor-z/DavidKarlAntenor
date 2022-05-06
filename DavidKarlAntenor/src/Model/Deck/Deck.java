@@ -3,7 +3,7 @@ package Model.Deck;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Deck.Card.*;
-import Deck.Exception.DeckException;
+import Model.Deck.Exception.DeckException;
 import org.json.*;
 import Utils.Files;
 import java.util.Random;

@@ -1,4 +1,4 @@
-package Deck.Exception;
+package Model.Deck.Exception;
 
 public class DeckException extends Exception {
     public DeckException() {
