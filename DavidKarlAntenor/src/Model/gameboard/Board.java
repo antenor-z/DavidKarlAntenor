@@ -1,4 +1,4 @@
-package Model;
+package Model.gameboard;
 
 public class Board {
 	Tile[] tiles;
