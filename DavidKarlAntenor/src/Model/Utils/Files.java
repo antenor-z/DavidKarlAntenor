@@ -1,4 +1,4 @@
-package Utils;
+package Model.Utils;
 
 import java.io.*;
 import java.awt.Desktop;

@@ -5,7 +5,7 @@ import java.util.List;
 import Model.Deck.Card.*;
 import Model.Deck.Exception.DeckException;
 import org.json.*;
-import Utils.Files;
+import Model.Utils.Files;
 import java.util.Random;
 
 public class Deck {
