@@ -18,4 +18,24 @@ public class GameSettings {
         }
         return instance;
     }
+
+    public Integer getMaxPlayer() {
+        return maxPlayer;
+    }
+
+    public Integer getMinPlayer() {
+        return minPlayer;
+    }
+
+    public Float getMaxDuration() {
+        return maxDuration;
+    }
+
+    public Integer getStartingBalance() {
+        return startingBalance;
+    }
+
+    public Integer getNbDices() {
+        return nbDices;
+    }
 }
