@@ -12,8 +12,8 @@ public class Deck {
     private final List<ICard> cards = new ArrayList<ICard>();
     private final Random rand = new Random();
 
-    public Deck() throws DeckException {
-        this._initialiseCardArray("./cards.json");
+    public Deck(String jsonPath) throws DeckException {
+        this._initialiseCardArray(jsonPath);
     }
 
     // PUBLIC METHODS
@@ -33,6 +33,10 @@ public class Deck {
         if (card != null) {
             cards.add(card);
         }
+    }
+
+    public Integer size() {
+        return cards.size();
     }
 
     // PRIVATE METHODS
