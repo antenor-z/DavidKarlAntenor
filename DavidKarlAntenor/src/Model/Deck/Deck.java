@@ -23,9 +23,6 @@ public class Deck {
         ICard pickedCard = cards.get(randomPick);
 
         cards.remove(pickedCard);
-        if (pickedCard == null) {
-            System.out.println("CARD IS DEFINITELY NULL ASSHOLE");
-        }
         return pickedCard;
     }
 
