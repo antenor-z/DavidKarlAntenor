@@ -7,4 +7,7 @@ public class Player {
 		this.cash = cash;
 		currentTile = initialTile;
 	}
+	public void advance(int n) {
+		
+	}
 }
