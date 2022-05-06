@@ -1,4 +1,4 @@
-package Model;
+package Model.gameboard;
 
 public class Player {
 	int cash;
@@ -6,5 +6,8 @@ public class Player {
 	public Player(int cash, Tile initialTile) {
 		this.cash = cash;
 		currentTile = initialTile;
+	}
+	public void advance(int n) {
+		
 	}
 }
