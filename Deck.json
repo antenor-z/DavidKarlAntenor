@@ -1,0 +1,22 @@
+{
+  "cards": [
+    {
+      "type": 0,
+      "name": "Bad Luck",
+      "description": "O Médico lhe recomendou repouso num bom hotel de montanha.",
+      "value": -45
+    },
+    {
+      "type": 0,
+      "name": "Luck",
+      "description": "Você foi promovido a diretor da sua empresa.",
+      "value": 100
+    },
+    {
+      "type": 1,
+      "name": "Bad Luck",
+      "description": "Vá para a prisão sem receber nada. (talvez eu lhe faça uma visita...)",
+      "value": 0
+    }
+  ]
+}
