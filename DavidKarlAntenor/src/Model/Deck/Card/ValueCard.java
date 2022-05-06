@@ -8,12 +8,7 @@ public class ValueCard extends ACard {
         _value = value;
     }
 
-    @Override
-    public String getDescription() {
-        return null;
-    }
-
-    public Integer getValue() {
+    public final Integer getValue() {
         return _value;
     }
 }

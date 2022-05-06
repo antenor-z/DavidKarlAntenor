@@ -10,17 +10,17 @@ public abstract class ACard implements Model.Deck.Card.ICard {
     }
 
     @Override
-    public String getDescription() {
+    public final String getDescription() {
         return _description;
     }
 
     @Override
-    public String getName() {
+    public final String getName() {
         return _name;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return _name;
     }
 }
