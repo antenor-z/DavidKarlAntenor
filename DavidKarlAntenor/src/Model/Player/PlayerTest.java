@@ -38,7 +38,6 @@ public class PlayerTest {
 		|			 Player's territory is numbered by a value higher than
 		|the amount of territories in he game.	
 		---------------------------------------------------------------------
-
 	*/
 	@Test
 	public void testTerritories() {
@@ -86,7 +85,6 @@ public class PlayerTest {
 		|			 Player's copmany is numbered by a value higher than
 		|the amount of companies in the game.	
 		---------------------------------------------------------------------
-
 	*/
 	@Test
 	public void testCompanies() {
@@ -98,20 +96,20 @@ public class PlayerTest {
 		companies.add(5);
 		companies.add(6);
 		companies.add(7);
-		assertFalse("Fail: 02 ->  Territores must not contain the value 0", companies.get(0) == 0);
-		assertFalse("Fail: 03 ->  Territores must not contain the value 0", companies.get(1) == 0);
-		assertFalse("Fail: 04->  Territores must not contain the value 0", companies.get(2) == 0);
-		assertFalse("Fail: 05->  Territores must not contain the value 0", companies.get(3) == 0);
-		assertFalse("Fail: 06 ->  Territores must not contain the value 0", companies.get(4) == 0);
-		assertFalse("Fail: 07 ->  Territores must not contain the value 0", companies.get(0) < 0);
-		assertFalse("Fail: 03 ->  Territores must not contain the value 0", companies.get(1) < 0);
-		assertFalse("Fail: 04->  Territores must not contain the value 0", companies.get(2) < 0);
-		assertFalse("Fail: 05->  Territores must not contain the value 0", companies.get(3) < 0);
-		assertFalse("Fail: 06 ->  Territores must not contain the value 0", companies.get(4) <0);
-		assertTrue("Fail: 02 ->  Territores must not contain the value 0", companies.get(5) > 0);
-		assertTrue("Fail: 03 ->  Territores must not contain the value 0", companies.get(6) > 0);
-		assertTrue("Fail: 04->  Territores must not contain the value 0", companies.get(7) > 0);
-		assertTrue("Fail: 05->  Territores must not contain the value 0", companies.get(8) > 0);
+		assertFalse("Fail: 02 ->  Companies  must not contain the value 0", companies.get(0) == 0);
+		assertFalse("Fail: 03 ->  Companies  must not contain the value 0", companies.get(1) == 0);
+		assertFalse("Fail: 04->  Companies must not contain the value 0", companies.get(2) == 0);
+		assertFalse("Fail: 05->  Companies must not contain the value 0", companies.get(3) == 0);
+		assertFalse("Fail: 06 ->  Companies  must not contain the value 0", companies.get(4) == 0);
+		assertFalse("Fail: 07 ->  Companies  must not contain the value 0", companies.get(0) < 0);
+		assertFalse("Fail: 03 ->  Companies  must not contain the value 0", companies.get(1) < 0);
+		assertFalse("Fail: 04->  Companies must not contain the value 0", companies.get(2) < 0);
+		assertFalse("Fail: 05->  Companies must not contain the value 0", companies.get(3) < 0);
+		assertFalse("Fail: 06 ->  Companies  must not contain the value 0", companies.get(4) <0);
+		assertTrue("Fail: 02 ->  Companies must not contain the value 0", companies.get(5) > 0);
+		assertTrue("Fail: 03 ->  Companies must not contain the value 0", companies.get(6) > 0);
+		assertTrue("Fail: 04->  Companies must not contain the value 0", companies.get(7) > 0);
+		assertTrue("Fail: 05->  Companies must not contain the value 0", companies.get(8) > 0);
 		assertFalse("Fail -> Value higher than the amount of companies", companies.get(6) > 18);
 		assertFalse("Fail -> Value higher than the amount of companies", companies.get(7) > 18);
 		assertFalse("Fail -> Value higher than the amount of companies", companies.get(8) > 18);
@@ -127,15 +125,19 @@ public class PlayerTest {
 		|			 Player's deposit contains value NULL.		
 		|			
 		---------------------------------------------------------------------
-
 	*/
 	@Test
 	public void testDeposit(){
 		int amount = 200;
-		assertEquals(0, amount, "Fail: 26 -> Deposits cannot contain the value 0");
-		assertNotNull(amount, "Fail: 27 -> Deposits cannot contain the value NULL");
-		assertFalse(amount < 0, "Fail: 28 -> Deposits cannot contain values less than 0");
-
+		assertFalse("Fail: 26 -> Deposits cannot contain the value 0", amount == 0);
+		assertFalse("Fail: 28 -> Deposits cannot contain values less than 0", amount < 0);
+        try {
+			Integer.valueOf(amount);
+			
+		}catch (NumberFormatException e) {
+			fail("Fail: 01 -> Player's deposit value should be an integer value");
+		
+		}
 	}
 	/*
 		---------------------------------------------------------------------
@@ -148,14 +150,19 @@ public class PlayerTest {
 		|			 		
 		|			
 		---------------------------------------------------------------------
-
 	*/
 	@Test
 	public void testWithdraw(){
 		int amount = 300;
-		assertNotEqual(0, amount, "Fail: 29 -> Withdrawns cannot contain the value 0");
-		assertNotNull(amount, "Fail: 30 -> Withdrawns cannot contain the value NULL");
-		assertFalse(amount < 0, "Fail: 31 -> Withdrawns cannot contain values less than 0");
+		assertFalse("Fail: 29 -> Withdrawns cannot contain the value 0", amount == 0);
+		assertFalse("Fail: 31 -> Withdrawns cannot contain values less than 0", amount < 0);
+        try {
+			Integer.valueOf(amount);
+			
+		}catch (NumberFormatException e) {
+			fail("Fail: 01 -> Withdrawn amount should be an integer value.");
+		
+		}
 	}
 
 
