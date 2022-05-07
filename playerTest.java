@@ -1,8 +1,7 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
-
+import Model.PlayerTest;
 public class playerTest {
 
 	/*
