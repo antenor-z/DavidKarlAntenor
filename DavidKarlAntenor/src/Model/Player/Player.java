@@ -17,15 +17,12 @@ public class Player {
 	public void advance(int n) {
 		currentTile = (currentTile + n) % boardSize;
 	}
-	public void deposit(int ammount)
+
+	public void changeCash(int ammount) throws PlayerException
 	{
-		cash += ammount;
-	}
-	public void withdraw(int ammount) throws PlayerException
-	{
-		if(cash - ammount > 0)
+		if(cash + ammount > 0)
 		{
-			cash -= ammount;
+			cash += ammount;
 		}
 		else
 		{
