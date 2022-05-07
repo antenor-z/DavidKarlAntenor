@@ -1,14 +1,15 @@
-[
+"board": [
   {
     "position": 0,
     "type": "Start",
-    "description": "Starting position",    
+    "description": "Starting position",
+    "ammount": 200
   },
   {
     "position": 1,
     "type": "Land",
     "description": "Leblon",
-    "price": 8888,
+    "price": 100,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
     "rentCost": [6, 30, 90, 270, 400, 500]
@@ -16,14 +17,13 @@
   {
     "position": 2,
     "type": "LuckSetback",
-    "description": "?",
-    
+    "description": "?"
   },
   {
     "position": 3,
     "type": "Land",
     "description": "Av. Presidente Vargas",
-    "price": 8888,
+    "price": 60,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
     "rentCost": [2, 10, 30, 90, 160, 250]
@@ -33,216 +33,300 @@
     "position": 4,
     "type": "Land",
     "description": "Av. Nossa S. de Copacabana",
+    "price": 60,
+    "buildHouseCost": 50,
+    "buildHotelCost": 50,
+    "rentCost": [4, 20, 60, 180, 320, 450]
     
   },
   {
     "position": 5,
     "type": "Company",
     "description": "Train",
+    "price": 200,
+    "priceRate": 50
     
   },
   {
     "position": 6,
     "type": "Land",
     "description": "Av. Brig. Faria Lima",
+    "price": 240,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [20, 100, 300, 750, 925, 1100]
     
   },
   {
     "position": 7,
     "type": "Company",
     "description": "Bus",
-    
+    "price": 200,
+    "priceRate": 50
+   
   },
   {
     "position": 8,
     "type": "Land",
     "description": "Av. Rebouças",
-    
+    "price": 220,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [18, 90, 250, 700, 875, 1050]
   },
   {
     "position": 9,
     "type": "Land",
     "description": "Av. 9 Julho",
-    
+    "price": 220,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [18, 90, 250, 700, 875, 1050]
   },
   {
     "position": 10,
     "type": "Prision",
-    "description": "Prision",
-    
+    "description": "Prision"
   },
   {
     "position": 11,
     "type": "Land",
     "description": "Av. Europa",
+    "price": 200,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [16, 80, 220, 600, 800, 1000]
     
   },
   {
     "position": 12,
     "type": "LuckSetback",
-    "description": "?",
-    
+    "description": "?"
   },
   {
     "position": 13,
     "type": "Land",
     "description": "Rua Augusta",
-    
+    "price": 180,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [14, 70, 200, 550, 750, 950]
   },
   {
     "position": 14,
     "type": "Land",
     "description": "Av. Pacaembu",
+    "price": 180,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [14, 70, 200, 550, 750, 950]
     
   },
   {
     "position": 15,
     "type": "Company",
     "description": "Taxi",
+    "price": 150,
+    "priceRate": 40
     
   },
   {
     "position": 16,
     "type": "LuckSetback",
-    "description": "?",
+    "description": "?"
     
   },
   {
     "position": 17,
     "type": "Land",
     "description": "Interlagos",
+    "price": 350,
+    "buildHouseCost": 200,
+    "buildHotelCost": 200,
+    "rentCost": [35, 175, 500, 1100, 1300, 1500]
     
   },
   {
     "position": 18,
     "type": "Money",
-    "description": "$$(win money)",
+    "description": "$$(win money)"
     
   },
   {
     "position": 19,
     "type": "Land",
     "description": "Morumbi",
+    "price": 400,
+    "buildHouseCost": 200,
+    "buildHotelCost": 200,
+    "rentCost": [50, 200, 600, 1400, 1700, 2000]
     
   },
   {
     "position": 20,
     "type": "FreeStop",
-    "description": "(P)",
+    "description": "(P)"
     
   },
   {
     "position": 21,
     "type": "Land",
     "description": "Flamengo",
+    "price": 120,
+    "buildHouseCost": 50,
+    "buildHotelCost": 50,
+    "rentCost": [6, 30, 90, 270, 400, 500]
     
   },
   {
     "position": 22,
     "type": "LuckSetback",
-    "description": "?",
+    "description": "?"
     
   },
   {
     "position": 23,
     "type": "Land",
     "description": "Botafogo",
+    "price": 100,
+    "buildHouseCost": 50,
+    "buildHotelCost": 50,
+    "rentCost": [6, 30, 90, 270, 400, 500]
     
   },
   {
     "position": 24,
     "type": "Money",
-    "description": "$$(Lose money)",
+    "description": "$$(Lose money)"
     
   },
   {
     "position": 25,
     "type": "Company",
     "description": "ship",
+    "price": 150,
+    "priceRate": 40
     
   },
   {
     "position": 26,
     "type": "Land",
     "description": "Av. Brasil",
+    "price": 160,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [12, 60, 180, 500, 700, 900]
     
   },
   {
     "position": 27,
     "type": "LuckSetback",
-    "description": "?",
+    "description": "?"
     
   },
   {
     "position": 28,
     "type": "Land",
     "description": "Av. Paulista",
+    "price": 140,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [10, 50, 150, 450, 625, 750]
     
   },
   {
     "position": 29,
     "type": "Land",
     "description": "Jardim Europa",
+    "price": 140,
+    "buildHouseCost": 100,
+    "buildHotelCost": 100,
+    "rentCost": [10, 50, 90, 270, 400, 500]
     
   },
   {
     "position": 30,
     "type": "GoToPrision",
-    "description": "Red Arrow",
+    "description": "Red Arrow"
     
   },
   {
     "position": 31,
     "type": "Land",
     "description": "Copacabana",
-    
+    "price": 260,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [22, 110, 330, 800, 975, 1500]
   },
   {
     "position": 32,
     "type": "Company",
     "description": "Airline",
+    "price": 200,
+    "priceRate": 50
     
   },
   {
     "position": 33,
     "type": "Land",
     "description": "Av. Vieira Souto",
+    "price": 320,
+    "buildHouseCost": 200,
+    "buildHotelCost": 200,
+    "rentCost": [28, 150, 450, 1000, 1200, 1400]
     
   },
   {
     "position": 34,
     "type": "Land",
     "description": "Av. Atlântica",
+    "price": 300,
+    "buildHouseCost": 200,
+    "buildHotelCost": 200,
+    "rentCost": [26, 130, 390, 900, 1100, 1275]
     
   },
   {
     "position": 35,
     "type": "Company",
     "description": "Helicopter",
+    "price": 200,
+    "priceRate": 50
     
   },
   {
     "position": 36,
     "type": "Land",
     "description": "Ipanema",
+    "price": 300,
+    "buildHouseCost": 200,
+    "buildHotelCost": 200,
+    "rentCost": [26, 130, 390, 900, 1100, 1275]
     
   },
   {
     "position": 37,
     "type": "Lucksetback",
-    "description": "?",
+    "description": "?"
     
   },
   {
     "position": 38,
     "type": "Land",
     "description": "Jardim Paulista",
-    
+    "price": 280,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [24, 120, 360, 850, 1025, 1200]
   },
   {
     "position": 39,
     "type": "Land",
     "description": "Brooklin",
-    
+    "price": 260,
+    "buildHouseCost": 150,
+    "buildHotelCost": 150,
+    "rentCost": [22, 110, 330, 800, 975, 1150]
   }
 ]
