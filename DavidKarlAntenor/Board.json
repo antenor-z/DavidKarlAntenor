@@ -1,4 +1,4 @@
-"board": [
+{"board": [
   {
     "position": 0,
     "type": "Start",
@@ -149,8 +149,8 @@
   {
     "position": 18,
     "type": "Money",
-    "description": "$$(win money)"
-    
+    "description": "$$(win money)",
+    "ammount": 200
   },
   {
     "position": 19,
@@ -197,8 +197,8 @@
   {
     "position": 24,
     "type": "Money",
-    "description": "$$(Lose money)"
-    
+    "description": "$$(Lose money)",
+    "ammount": -200,
   },
   {
     "position": 25,
@@ -330,3 +330,4 @@
     "rentCost": [22, 110, 330, 800, 975, 1150]
   }
 ]
+}
