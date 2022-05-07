@@ -4,9 +4,22 @@ import Model.Player.Player;
 import Model.Player.PlayerException;
 
 public class Company extends Tile {
-	int price;
-	Player owner;
-	int priceRate;
+	private int price;
+	private Player owner;
+	private int priceRate;
+	String description;
+	public Company(String description, int price, int priceRate)
+	{
+		this.description = description;
+		this.price = price;
+		this.priceRate = priceRate;
+		this.owner = null;
+		System.out.println("I'm a company");
+		System.out.println("Description: " + description);
+		System.out.println("price: " + price);
+		System.out.println("price rate: " + priceRate);
+		
+	}
 	public void buyCompany(Player player) throws CompanyException
 	{
 		if(this.owner == null)
@@ -24,8 +37,8 @@ public class Company extends Tile {
 		{
 			int ammountToPay = priceRate * diceNumber;
 			try {
-				player.withdraw(ammountToPay);
-				this.owner.deposit(ammountToPay);
+				player.changeCash(-ammountToPay);
+				this.owner.changeCash(ammountToPay);
 			}
 			catch (PlayerException e)
 			{
