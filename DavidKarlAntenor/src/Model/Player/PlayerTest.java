@@ -1,9 +1,9 @@
 import org.junit.*;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
+import java.util.*;
 
-public class playerTest {
+public class PlayerTest {
 
 	/*
 		---------------------------------------------------------------------
@@ -17,7 +17,7 @@ public class playerTest {
 	public void testBalance() {
 		
 		int balance = 500;
-		assertNotNull(balance, "Fail: 00 -> Player's balance cannot be null");
+		assertFalse("Player's balance can't be less than 0", balance < 0);
 		try {
 			Integer.valueOf(balance);
 			
@@ -26,6 +26,7 @@ public class playerTest {
 		
 		}		
 		
+		
 	}
 	/*
 		---------------------------------------------------------------------
@@ -33,15 +34,17 @@ public class playerTest {
 		|Testing the territories owned by player (assuming they will be 	
 		|identified by integers):											
 		|Testcases-> Player's territory is numbered by 0.								
-		|			 Player's territory is numbered by a value less than 0.		\
+		|			 Player's territory is numbered by a value less than 0.		
 		|			 Player's territory is numbered by a value higher than
-		|the amount of territories inthe game.	
+		|the amount of territories in he game.	
 		---------------------------------------------------------------------
 
 	*/
 	@Test
 	public void testTerritories() {
 		List<Integer> territories = new ArrayList<Integer>();
+		territories.add(-1);
+		territories.add(-2);
 		territories.add(0);
 		territories.add(1);
 		territories.add(2);
@@ -52,19 +55,25 @@ public class playerTest {
 		territories.add(19);
 		territories.add(20);
 		
-		assertNotSame(0, territories.get(0), "Fail: 02 -> Territores must not contain the value 0");
-		assertNotSame(0, territories.get(1), "Fail: 03 -> Territores must not contain the value 0");
-		assertNotSame(0, territories.get(2), "Fail: 04 -> Territores must not contain the value 0");
-		assertNotSame(0, territories.get(3), "Fail: 06 -> Territores must not contain the value 0");
-		assertFalse(territories.get(0) < 0, "Fail: 07 -> Territories must not contain values less than 0");
-		assertFalse(territories.get(1) < 0, "Fail: 08 -> Territories must not contain values less than 0");
-		assertFalse(territories.get(2) < 0, "Fail: 09 -> Territories must not contain values less than 0");
-		assertFalse(territories.get(3) < 0, "Fail: 10 -> Territories must not contain values less than 0");	
-		assertFalse(territories.get(4) > 18, "Fail: 11 -> There are no more than 18 territories in the game");
-		assertFalse(territories.get(5) > 18, "Fail: 12 -> There are no more than 18 territories in the game");
-		assertFalse(territories.get(7) > 18, "Fail: 13 -> There are no more than 18 territories in the game");
-		assertFalse(territories.get(8) > 18, "Fail: 14 -> There are no more than 18 territories in the game");
-		
+		assertFalse("Fail: 02 ->  Territores must not contain the value 0", territories.get(0) == 0);
+		assertFalse("Fail: 03 ->  Territores must not contain the value 0", territories.get(1) == 0);
+		assertFalse("Fail: 04->  Territores must not contain the value 0", territories.get(2) == 0);
+		assertFalse("Fail: 05->  Territores must not contain the value 0", territories.get(3) == 0);
+		assertFalse("Fail: 06 ->  Territores must not contain the value 0", territories.get(4) == 0);
+		assertFalse("Fail: 07 ->  Territores must not contain the value 0", territories.get(0) < 0);
+		assertFalse("Fail: 03 ->  Territores must not contain the value 0", territories.get(1) < 0);
+		assertFalse("Fail: 04->  Territores must not contain the value 0", territories.get(2) < 0);
+		assertFalse("Fail: 05->  Territores must not contain the value 0", territories.get(3) < 0);
+		assertFalse("Fail: 06 ->  Territores must not contain the value 0", territories.get(4) <0);
+		assertTrue("Fail: 02 ->  Territores must not contain the value 0", territories.get(5) > 0);
+		assertTrue("Fail: 03 ->  Territores must not contain the value 0", territories.get(6) > 0);
+		assertTrue("Fail: 04->  Territores must not contain the value 0", territories.get(7) > 0);
+		assertTrue("Fail: 05->  Territores must not contain the value 0", territories.get(8) > 0);
+		assertFalse("Fail -> Value higher than the amount of territories", territories.get(6) > 18);
+		assertFalse("Fail -> Value higher than the amount of territories", territories.get(7) > 18);
+		assertFalse("Fail -> Value higher than the amount of territories", territories.get(8) > 18);
+		assertFalse("Fail -> Value higher than the amount of territories", territories.get(9) > 18);
+		assertFalse("Fail -> Value higher than the amount of territories", territories.get(10) > 18);
 		
 	}
 	/*
@@ -82,22 +91,30 @@ public class playerTest {
 	@Test
 	public void testCompanies() {
 		List<Integer> companies = new ArrayList<Integer>();
-		territories.add(0);
-		territories.add(1);
-		territories.add(5);
-		territories.add(6);
-		assertNotSame(0, companies.get(0), "Fail: 15 -> Companies must not contain the value 0");
-		assertNotSame(0, companies.get(1), "Fail: 16 -> Companies must not contain the value 0");
-		assertNotSame(0, companies.get(2), "Fail: 17 -> Companies must not contain the value 0");
-		assertNotSame(0, companies.get(3), "Fail: -> Companies must not contain the value 0");
-		assertFalse(companies.get(0) < 0, "Fail: 18 -> Companies must not contain values less than 0");
-		assertFalse(companies.get(1) < 0,"Fail: 19 -> Companies must not contain values less than 0");
-		assertFalse(companies.get(2) < 0, "Fail: 20 -> Companies must not contain values less than 0");
-		assertFalse(companies.get(3) < 0, "Fail: 21 -> Companies must not contain values less than 0");
-		assertFalse(companies.get(0) > 5, "Fail: 22 -> There are no more than 5 companies in the game");
-		assertFalse(companies.get(1) > 5, "Fail: 23 -> There are no more than 5 companies in the game");
-		assertFalse(companies.get(2) > 5, "Fail: 24 -> There are no more than 5 companies in the game");
-		assertFalse(companies.get(3) > 5, "Fail: 25 -> There are no more than 5 companies in the game");
+		companies.add(-2);
+		companies.add(-1);
+		companies.add(0);
+		companies.add(1);
+		companies.add(5);
+		companies.add(6);
+		companies.add(7);
+		assertFalse("Fail: 02 ->  Territores must not contain the value 0", companies.get(0) == 0);
+		assertFalse("Fail: 03 ->  Territores must not contain the value 0", companies.get(1) == 0);
+		assertFalse("Fail: 04->  Territores must not contain the value 0", companies.get(2) == 0);
+		assertFalse("Fail: 05->  Territores must not contain the value 0", companies.get(3) == 0);
+		assertFalse("Fail: 06 ->  Territores must not contain the value 0", companies.get(4) == 0);
+		assertFalse("Fail: 07 ->  Territores must not contain the value 0", companies.get(0) < 0);
+		assertFalse("Fail: 03 ->  Territores must not contain the value 0", companies.get(1) < 0);
+		assertFalse("Fail: 04->  Territores must not contain the value 0", companies.get(2) < 0);
+		assertFalse("Fail: 05->  Territores must not contain the value 0", companies.get(3) < 0);
+		assertFalse("Fail: 06 ->  Territores must not contain the value 0", companies.get(4) <0);
+		assertTrue("Fail: 02 ->  Territores must not contain the value 0", companies.get(5) > 0);
+		assertTrue("Fail: 03 ->  Territores must not contain the value 0", companies.get(6) > 0);
+		assertTrue("Fail: 04->  Territores must not contain the value 0", companies.get(7) > 0);
+		assertTrue("Fail: 05->  Territores must not contain the value 0", companies.get(8) > 0);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(6) > 18);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(7) > 18);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(8) > 18);
 		
 	}
 	/*
@@ -115,7 +132,7 @@ public class playerTest {
 	@Test
 	public void testDeposit(){
 		int amount = 200;
-		assertNotEqual(0, amount, "Fail: 26 -> Deposits cannot contain the value 0");
+		assertEquals(0, amount, "Fail: 26 -> Deposits cannot contain the value 0");
 		assertNotNull(amount, "Fail: 27 -> Deposits cannot contain the value NULL");
 		assertFalse(amount < 0, "Fail: 28 -> Deposits cannot contain values less than 0");
 
