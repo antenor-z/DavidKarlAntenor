@@ -38,4 +38,6 @@ public class GameSettings {
     public Integer getNbDices() {
         return nbDices;
     }
+    
+    
 }
