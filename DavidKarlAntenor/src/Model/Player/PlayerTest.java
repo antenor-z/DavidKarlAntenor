@@ -24,7 +24,15 @@ public class PlayerTest {
 		assertEquals("Player's balance needs to be 3000", p.getCash(), 5000);
 		p.changeCash(-5000);
 		assertEquals("Player's balance needs to be 0", p.getCash(), 0);
-		p.changeCash(-1);	
+		try
+		{
+			p.changeCash(-1);
+			fail("Player balance cannot be less than zero");
+		}
+		catch(PlayerException e)
+		{
+			
+		}
 	}
 
 	@Test
