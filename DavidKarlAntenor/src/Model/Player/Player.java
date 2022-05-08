@@ -12,15 +12,24 @@ public class Player {
 		this.cash = cash;
 		this.board = board;
 		currentTile = 0;
-		boardSize = board.getTiles().length;
+		boardSize = board.getLenght();
 	}
-	public void advance(int n) {
+	public boolean advance(int n){
+		if(n <= 0) {
+			return false;
+		}
 		currentTile = (currentTile + n) % boardSize;
+		return true;
+	}
+	
+	public int getCash()
+	{
+		return cash;
 	}
 
 	public void changeCash(int ammount) throws PlayerException
 	{
-		if(cash + ammount > 0)
+		if(cash + ammount >= 0)
 		{
 			cash += ammount;
 		}
@@ -28,5 +37,9 @@ public class Player {
 		{
 			throw new PlayerException("Cash less than zero");
 		}
+	}
+	
+	public int getCurrentTile() {
+		return currentTile;
 	}
 }
