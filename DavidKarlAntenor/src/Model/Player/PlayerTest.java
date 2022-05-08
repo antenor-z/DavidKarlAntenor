@@ -53,4 +53,4 @@ public class PlayerTest {
 		assertTrue("You can advance positive", p.advance(31));
 		assertEquals("The position must roll back to 1", p.getCurrentTile(), 1);
 	}
-
+}
