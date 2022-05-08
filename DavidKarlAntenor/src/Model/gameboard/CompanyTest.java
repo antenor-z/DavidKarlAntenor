@@ -27,5 +27,17 @@ public class CompanyTest {
 		}
 		
 	}
+	@Test
+	public void testPayRent() throws CompanyException {
+		Board b = new Board();
+		Player p = new Player(4000, b);
+		Player q = new Player(4000, b);
+		Company c = (Company)b.getTile(5);
+		c.buyCompany(p);
+		c.payRent(q, 4);
+		assertEquals("p should have received rent", p.getCash(), 4000+200);
+		assertEquals("q should have payed rent", q.getCash(), 4000-200);
+		
+	}
 
 }
