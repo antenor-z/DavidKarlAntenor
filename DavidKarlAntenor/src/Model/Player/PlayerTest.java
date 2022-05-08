@@ -58,6 +58,9 @@ public class PlayerTest {
 	public void testBalance() {
 		
 		int balance = 500;
+		Board b = new Board();
+		Player p = new Player(4000, b);
+		balance = p.getCash();
 		assertFalse("Player's balance can't be less than 0", balance < 0);
 		try {
 			Integer.valueOf(balance);
