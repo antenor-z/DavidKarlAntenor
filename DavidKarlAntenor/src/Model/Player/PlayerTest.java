@@ -16,30 +16,15 @@ public class PlayerTest {
 		---------------------------------------------------------------------
 	*/
 	@Test
-	public void testChangeCash() {
+	public void testChangeCash() throws PlayerException{
 		Board b = new Board();
 		Player p = new Player(4000, b);
 		assertEquals("Player's balance needs to be 4000", p.getCash(), 4000);
-		try {
-		p.changeCash(1000);
-		} catch (PlayerException e)
-		{
-			fail(e.getMessage());
-		}
+		p.changeCash(1000);	
 		assertEquals("Player's balance needs to be 3000", p.getCash(), 5000);
-		try {
 		p.changeCash(-5000);
-		} catch (PlayerException e)
-		{
-			fail(e.getMessage());
-		}
 		assertEquals("Player's balance needs to be 0", p.getCash(), 0);
-		try {
-			p.changeCash(-1);
-			fail("Fail: 01 -> Player's balance should be postive");
-		}catch (PlayerException e) {
-
-		}		
+		p.changeCash(-1);	
 	}
 
 	@Test
