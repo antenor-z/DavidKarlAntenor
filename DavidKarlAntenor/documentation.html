@@ -1,0 +1,139 @@
+<h1>Model</h1>
+<h2>Class: Player</h2>
+<h3>Propeties:</h3>
+<ul>
+	<li><b>cash: Integer:</b> the ammount of money that the player has currently.</li>
+	<li><b>currentTile: Tile:</b> Reference to the tile where the player is.</li>
+</ul>
+<h3>Functions:</h3>
+<ul>
+	<li><b>advance(n)</b> Go foward n number of tiles. If the number becomes 40, it rolls back to 0 since the tiles are circular.
+If the player is on tile 38 and they get to advance 4 postions, the player will be at 2. This can be done with currentTile = (currentTile + n) % SIZE_OF_BOARD</li>
+</ul>
+<h2>Static Class: Dice</h2>
+<h3>Functions:</h3>
+<ul>
+	<li><b>roll(n)</b>: Roll the two dices. Will return a random number between 2 and 12 (inclusive).</li>
+</ul>
+<h2>Static Class: Board</h2>
+<h3>Propeties:</h3>
+<ul>
+	<li><b>tiles: Array&lt;Tile&gt;</b> An array corresponding the each tile (position on the board). This array has 40 positions, corresponding the each place the player can be at any moment</li>
+</ul>
+<h2>Class: Tile</h2>
+<p>This class represents one position on the board. <i>Tile</i> is a superclass of these classes: Start, Land, Company, LuckSetback, Money, FreeStop, GoToPrision.
+
+<h2>Class: Start extends Tile</h2>
+<p>The game starts with the players in this tile.</p>
+<h2>Class: Land extends Tile</h2>
+<p> Represents a territory that can be owned by a player. The game starts with all the lands without owner.</p>
+<h3>Propeties:</h3>
+<ul>
+	<li><b>price: Integer:</b> the cost a player needs to pay to become the owner of that land. A player can only buy a land that has no owner.</li>
+	<li><b>owner: Player</b> references to the owner of this land</li>
+	<li><b>numberOfHouses: Integer</b>: The player can only build up to 4 houses.</li>
+	<li><b>final maxNumberOfHouses</b>: = 4</li>
+	<li><b>hasHotel: Boolean:</b> The player can build only one hotel, so it is true/false.</li>
+	<li><b>buildHouseCost: Integer:</b> If this land is owned by player P, P can build up to 4 houses paying to the bank. <em>The rule in the original game is different, this rule is changed by Ivan</em>.</li>
+	<li><b>buildHotelCost: Integer:</b> If this land is owned by player P and has at least 1 house, P can 
+build a hotel paying to the bank. <em>This rule in the original game is different, this rule was changed by Ivan</em>.</li>
+	<li><b>rentCost: Array<Integer>:</b> if the land is owned by player P and if player Q ends up in this land, Q needs to pay certain ammount to P. This ammount is determined by:
+		<ul>
+			<li>If the land has NO houses the cost is the first element of the array. rentCost[0]</li>
+			<li>If the land has ONE house the cost is rentCost[1]</li>
+			<li>If the land has TWO houses the cost is rentCost[2]</li>
+			<li>If the land has THREE houses the cost is rentCost[3]</li>
+			<li>If the land has FOUR houses the cost is rentCost[4]</li>
+			<li>If the land has a HOTEL, the cost is rentCost[5]. In this case, the number of houses does not matter.</li>
+		</ul>
+</ul>
+<h3>Functions:</h3>
+<ul>
+	<li>BuyHouse(player)</li>
+	<li>BuildHouse(player)</li>
+	<li>BuildHotel(player)</li>
+	<li>PayRent</li>
+</ul>
+<h2>Class: Company</h2>
+<h3>Propeties:</h3>
+<ul>
+	<li><b>price: Integer:</b> the cost for a player to become owner of this company. A player can only buy a company that has no owner.</li>
+	<li><b>owner: Player</b> references to the owner of this company</li>
+	<li><b>priceRate: Integer:</b> if the company is owned by player P and if player Q end up in this company after jumping n tiles. Q has to pay priceRate*n to P.</li>
+</ul>
+<h3>Functions</h3>
+<ul>
+	<li>BuyCompany(player)</li>
+	<li>PayRent(player)</li>
+</ul>
+<h2>Class: LuckSetback extends Tile</h2>
+<p>If a player end up in this tile, a random card will be chosed. This can be a luck card
+so the player gets money or a setback card, the player will lose money.</p>
+
+<h2>Class: Money extends Tile</h2>
+<p>Tile 18 and tile 24 are two only ones of this class. If the player gets there, they will either lose or win money.</p>
+<h3>Propeties:</h3>
+<ul>
+<li><b>ammount: Integer:</b>Is equals to 200 on tile 18. And equals to -200 on tile 24. If player ends on tile 18, their cash is added by 200
+ or if the player ends on tile 24, their cash will be subtracted by 200. </li>
+</ul>
+<h3>Function:</h3>
+<ul>
+	<li>Execute(Player): When the player gets here. This function will add or subtract 200 from the cash of the player</ul>
+<h2>Class: Freestop extends Tile</h2>
+	<p>Nothing happens in this tile.</p>
+<h2>Class: GoToPrision extends Tile</h2>
+	<p>If the player ends up here, the player will be moved to the prision tile</p>
+<h2>Class: Prision extends Tile</h2>
+	<p>If the player ends up here, the player will remain here until they gets the same number
+in the two dices. If the player has a get-out-of-jail card, they will go to the next tile automaticaly.</p>
+<h2>Class: LuckSetbackCard</h2>
+<h3>Propeties:</h3>
+<ul>
+	<li>ammount: the ammount of money the player will get or lose after getting this card. If the amount is negative (setback), the player has to pay to the bank. Or if the ammount is positive, the player gets money from the bank (luck).</li>
+</ul>
+<h2>Appendix A</h2>
+Starting from the "Ponto de Partida" and going clockwise we have:
+<table border="1">
+	<tr> <th>Position</th><th>Class</th><th>What's writen on the board</th> </tr>
+	<tr> <td>0</td>  <td>Start</td>   <td>Posição de início (starting position)</td> 	</tr>
+	<tr> <td>1</td>  <td>Land</td>        <td>Leblon			</tr>
+	<tr> <td>2</td>  <td>LuckSetback</td> <td>?</td> 	</tr>
+	<tr> <td>3</td>  <td>Land</td>        <td>Av. Presidente Vargas</td> </tr>
+	<tr> <td>4</td>  <td>Land</td>        <td>Av. Nossa S. de Copacabana</td> </tr>
+	<tr> <td>5</td>  <td>Company</td>     <td>Train</td> </tr> 
+	<tr> <td>6</td>  <td>Land</td>        <td>Av. Brig. Faria Lima</td> </tr> 
+	<tr> <td>7</td>  <td>Company</td>     <td>Bus</td> </tr> 
+	<tr> <td>8</td>  <td>Land</td>        <td>Av. Rebouças</td> </tr> 
+	<tr> <td>9</td>  <td>Land</td>        <td>Av. 9 Julho</td> </tr> 
+	<tr> <td>10</td> <td>Prision</td>     <td></td></tr> 
+	<tr> <td>11</td> <td>Land</td>        <td>Av. Europa</td></tr> 
+	<tr> <td>12</td> <td>LuckSetback</td> <td>?</td></tr> 
+	<tr> <td>13</td> <td>Land</td>        <td>Rua Augusta</td></tr> 
+	<tr> <td>14</td> <td>Land</td>        <td>Av. Pacaembu</td></tr> 
+	<tr> <td>15</td> <td>Company</td>     <td>Taxi</td></tr> 
+	<tr> <td>16</td> <td>LuckSetback</td> <td>?</td></tr> 
+	<tr> <td>17</td> <td>Land</td>        <td>Interlagos</td></tr> 
+	<tr> <td>18</td> <td>Money</td>       <td><font color=GREEN>$$</font>(win money)</td></tr> 
+	<tr> <td>19</td> <td>Land</td>        <td>Morumbi</td></tr> 
+	<tr> <td>20</td> <td>FreeStop</td>    <td><font color=BLUE>(P)</font></td></tr> 
+	<tr> <td>21</td> <td>Land</td>        <td>Flamengo</td></tr> 
+	<tr> <td>22</td> <td>LuckSetback</td> <td></td></tr> 
+	<tr> <td>23</td> <td>Land</td>        <td>Botafogo</td></tr> 
+	<tr> <td>24</td> <td>Money</td>       <td><font color=RED>$$</font>(Lose money)</td></tr> 
+	<tr> <td>25</td> <td>Company</td>     <td>ship</td></tr> 
+	<tr> <td>26</td> <td>Land</td>        <td>Av. Brasil</td></tr> 
+	<tr> <td>27</td> <td>LuckSetback</td> <td>?</td></tr> 
+	<tr> <td>28</td> <td>Land</td>        <td>Av. Paulista</td></tr> 
+	<tr> <td>29</td> <td>Land</td>        <td>Jardim Europa</td></tr> 
+	<tr> <td>30</td> <td>GoToPrision</td> <td>Red Arrow</td></tr> 
+	<tr> <td>31</td> <td>Land</td>        <td>Copacabana</td></tr> 
+	<tr> <td>32</td> <td>Company</td>     <td>Airline</td></tr> 
+	<tr> <td>33</td> <td>Land</td>        <td>Av. Vieira Souto</td></tr> 
+	<tr> <td>34</td> <td>Land</td>        <td>Av. Atlântica</td></tr> 
+	<tr> <td>35</td> <td>Company</td>     <td>Helicopter</td></tr> 
+	<tr> <td>36</td> <td>Land</td>        <td>Ipanema</td></tr> 
+	<tr> <td>37</td> <td>Lucksetback</td> <td>?</td></tr> 
+	<tr> <td>38</td> <td>Land</td>        <td>Jardim Paulista</td></tr> 
+	<tr> <td>39</td> <td>Land</td>        <td>Brooklin</td></tr> 
+</table>
