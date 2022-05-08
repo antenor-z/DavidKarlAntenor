@@ -198,7 +198,7 @@
     "position": 24,
     "type": "Money",
     "description": "$$(Lose money)",
-    "ammount": -200,
+    "ammount": -200
   },
   {
     "position": 25,
@@ -307,7 +307,7 @@
   },
   {
     "position": 37,
-    "type": "Lucksetback",
+    "type": "LuckSetback",
     "description": "?"
     
   },
