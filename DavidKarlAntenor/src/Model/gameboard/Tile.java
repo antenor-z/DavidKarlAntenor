@@ -4,7 +4,7 @@ public class Tile {
 	public Tile(){
 		
 	}
-	public void print() {
+	void print() {
 		
 	}
 }
