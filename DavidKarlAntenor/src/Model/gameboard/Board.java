@@ -70,6 +70,7 @@ public class Board {
 		}
 		catch(Exception e)
 		{
+			System.out.println("Failed to read Board.json");
 			System.out.println(e.getMessage());
 		}	
 	}
