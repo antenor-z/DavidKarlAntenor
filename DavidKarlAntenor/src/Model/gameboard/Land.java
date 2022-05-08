@@ -13,6 +13,9 @@ public class Land extends Tile {
 		this.buildHouseCost = buildHouseCost;
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;
+		
+	}
+	void print(){
 		System.out.println("I'm a land");
 		System.out.println("Description: " + description);
 		System.out.println("price: " + price);

@@ -19,4 +19,8 @@ public class Money extends Tile {
 			System.out.println(e.getMessage());
 		}
 	}
+	void print(){
+		System.out.println("I'm a Money tile");
+		System.out.println("Ammount" + ammount);
+	}
 }
