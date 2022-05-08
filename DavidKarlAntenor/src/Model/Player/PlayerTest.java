@@ -24,7 +24,7 @@ public class PlayerTest {
 		---------------------------------------------------------------------
 	*/
 	@Test
-	public void testChangeCash() {
+	public void testChangeCash() throws PlayerException{
 		
 		Board b = new Board();
 		Player p = new Player(4000, b);
