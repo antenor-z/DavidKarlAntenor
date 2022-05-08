@@ -43,6 +43,7 @@ public class PlayerTest {
 	}
 	
 	/*
+<<<<<<< HEAD
 	---------------------------------------------------------------------
 	|Player - TestClass - Advance													
 	|Testing the advance method:										
@@ -54,6 +55,18 @@ public class PlayerTest {
 	|			 Player is in position 1					
 	---------------------------------------------------------------------
 */
+=======
+		---------------------------------------------------------------------
+		|Player - TestClass - Territories													
+		|Testing the territories owned by player (assuming they will be 	
+		|identified by integers):											
+		|Testcases-> Player's territory is numbered by 0.								
+		|			 Player's territory is numbered by a value less than 0.		
+		|			 Player's territory is numbered by a value higher than
+		|the amount of territories in he game.	
+		---------------------------------------------------------------------
+	*/
+>>>>>>> refs/remotes/origin/main
 	@Test
 	public void testAdvance() {
 		Board b = new Board();
@@ -65,6 +78,100 @@ public class PlayerTest {
 		assertTrue("You can advance positive", p.advance(31));
 		assertEquals("The position must roll back to 1", p.getCurrentTile(), 1);
 	}
+<<<<<<< HEAD
 	
+=======
+	/*
+		---------------------------------------------------------------------
+		|Player - TestClass	- Companies												
+		|Testing the territories owned by player (assuming they will be 	
+		|identified by integers):											
+		|Testcases-> Player's copmany is numbered by 0.								
+		|			 Player's company is numbered by a value less than 0.		\
+		|			 Player's copmany is numbered by a value higher than
+		|the amount of companies in the game.	
+		---------------------------------------------------------------------
+	*/
+	@Test
+	public void testCompanies() {
+		List<Integer> companies = new ArrayList<Integer>();
+		companies.add(-2);
+		companies.add(-1);
+		companies.add(0);
+		companies.add(1);
+		companies.add(5);
+		companies.add(6);
+		companies.add(7);
+		assertFalse("Fail: 02 ->  Companies  must not contain the value 0", companies.get(0) == 0);
+		assertFalse("Fail: 03 ->  Companies  must not contain the value 0", companies.get(1) == 0);
+		assertFalse("Fail: 04->  Companies must not contain the value 0", companies.get(2) == 0);
+		assertFalse("Fail: 05->  Companies must not contain the value 0", companies.get(3) == 0);
+		assertFalse("Fail: 06 ->  Companies  must not contain the value 0", companies.get(4) == 0);
+		assertFalse("Fail: 07 ->  Companies  must not contain the value 0", companies.get(0) < 0);
+		assertFalse("Fail: 03 ->  Companies  must not contain the value 0", companies.get(1) < 0);
+		assertFalse("Fail: 04->  Companies must not contain the value 0", companies.get(2) < 0);
+		assertFalse("Fail: 05->  Companies must not contain the value 0", companies.get(3) < 0);
+		assertFalse("Fail: 06 ->  Companies  must not contain the value 0", companies.get(4) <0);
+		assertTrue("Fail: 02 ->  Companies must not contain the value 0", companies.get(5) > 0);
+		assertTrue("Fail: 03 ->  Companies must not contain the value 0", companies.get(6) > 0);
+		assertTrue("Fail: 04->  Companies must not contain the value 0", companies.get(7) > 0);
+		assertTrue("Fail: 05->  Companies must not contain the value 0", companies.get(8) > 0);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(6) > 18);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(7) > 18);
+		assertFalse("Fail -> Value higher than the amount of companies", companies.get(8) > 18);
+		
+	}
+	/*
+		---------------------------------------------------------------------
+		|Player - TestClass	- Deposit												
+		|Testing the territories owned by player (assuming they will be 	
+		|identified by integers):											
+		|Testcases-> Player's deposit contains value 0.								
+		|			 Player's deposit contains value less than 0.	
+		|			 Player's deposit contains value NULL.		
+		|			
+		---------------------------------------------------------------------
+	*/
+	@Test
+	public void testDeposit(){
+		int amount = 200;
+		assertFalse("Fail: 26 -> Deposits cannot contain the value 0", amount == 0);
+		assertFalse("Fail: 28 -> Deposits cannot contain values less than 0", amount < 0);
+        try {
+			Integer.valueOf(amount);
+			
+		}catch (NumberFormatException e) {
+			fail("Fail: 01 -> Player's deposit value should be an integer value");
+		
+		}
+	}
+	/*
+		---------------------------------------------------------------------
+		|Player - TestClass	- Deposit												
+		|Testing the territories owned by player (assuming they will be 	
+		|identified by integers):											
+		|Testcases-> Player's withdrawn contains value 0.		
+		|			 Player's withdrawn contains value NULL.						
+		|			 Player's withdrawn contains value less than 0.	
+		|			 		
+		|			
+		---------------------------------------------------------------------
+	*/
+	@Test
+	public void testWithdraw(){
+		int amount = 300;
+		assertFalse("Fail: 29 -> Withdrawns cannot contain the value 0", amount == 0);
+		assertFalse("Fail: 31 -> Withdrawns cannot contain values less than 0", amount < 0);
+        try {
+			Integer.valueOf(amount);
+			
+		}catch (NumberFormatException e) {
+			fail("Fail: 01 -> Withdrawn amount should be an integer value.");
+		
+		}
+	}
+
+
+>>>>>>> refs/remotes/origin/main
 
 }
