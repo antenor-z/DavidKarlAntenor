@@ -1,14 +1,14 @@
 package Model.gameboard;
 import org.json.*;
-import java.nio.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Board {
 	private Tile[] tiles;
+	private int lenght = 40;
 	public Board()
 	{	
-		tiles = new Tile[40];
+		tiles = new Tile[lenght];
 		try
 		{
 			String content = Files.readString(Path.of("./Board.json"));
@@ -65,19 +65,18 @@ public class Board {
             	else if(type.equals("Start"))
             	{
             		tiles[position] = new Start();
-            	}
-          
-            }
-           
+            	} 
+            }    
 		}
 		catch(Exception e)
 		{
 			System.out.println(e.getMessage());
-		}
-		
-		
+		}	
 	}
-	public Tile[] getTiles(){
-		return tiles;
+	public int getLenght() {
+		return lenght;
+	}
+	public Tile getTile(int i){
+		return tiles[i];
 	}
 }
