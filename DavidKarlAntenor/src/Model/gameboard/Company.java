@@ -14,11 +14,6 @@ public class Company extends Tile {
 		this.price = price;
 		this.priceRate = priceRate;
 		this.owner = null;
-		System.out.println("I'm a company");
-		System.out.println("Description: " + description);
-		System.out.println("price: " + price);
-		System.out.println("price rate: " + priceRate);
-		
 	}
 	public void buyCompany(Player player) throws CompanyException
 	{
@@ -49,5 +44,12 @@ public class Company extends Tile {
 		{
 			throw new CompanyException("Company does not have a owner");
 		}
+	}
+	void print()
+	{
+		System.out.println("I'm a company");
+		System.out.println("Description: " + description);
+		System.out.println("price: " + price);
+		System.out.println("price rate: " + priceRate);
 	}
 }
