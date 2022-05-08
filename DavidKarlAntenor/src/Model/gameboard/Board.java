@@ -32,7 +32,7 @@ public class Board {
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
-            		//tiles[position] = new Land(description, price, buildHouseCost, buildHotelCost, rentCost);
+            		tiles[position] = new Land(description, price, buildHouseCost, buildHotelCost, rentCost);
             	}
             	else if(type.equals("Company"))
             	{
@@ -41,11 +41,11 @@ public class Board {
             		int priceRate = jsonTileObj.getInt("priceRate");
             		tiles[position] = new Company(description, price, priceRate);
             	}
-            	else if(type.equals("prision"))
+            	else if(type.equals("Prision"))
             	{
             		tiles[position] = new Prision();
             	}
-            	else if(type.equals("LuckSetBack"))
+            	else if(type.equals("LuckSetback"))
             	{
             		tiles[position] = new Lucksetback();
             	}
@@ -54,7 +54,7 @@ public class Board {
             		int ammount = jsonTileObj.getInt("ammount");
             		tiles[position] = new Money(ammount);
             	}
-            	else if(type.equals("Freestop"))
+            	else if(type.equals("FreeStop"))
             	{
             		tiles[position] = new Freestop();
             	}
@@ -78,5 +78,11 @@ public class Board {
 	}
 	public Tile getTile(int i){
 		return tiles[i];
+	}
+	void printAllTiles() {
+		for(int i = 0; i < 40; i++)
+		{
+			tiles[i].print();
+		}
 	}
 }
