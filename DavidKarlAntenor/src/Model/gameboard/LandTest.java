@@ -1,20 +1,18 @@
 package Model.gameboard;
 
-import org.junit.*;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Model.Player.Player;
+import Model.Player.PlayerColor;
 import Model.Player.PlayerException;
-
-import java.util.*;
 
 public class LandTest{
   @Test
 	public void testBuyLand() throws LandException {
 		Board b = new Board();
-		Player p = new Player(4000, b);
-		Player p1 = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.BLUE);
+		Player p1 = new Player(4000, b, PlayerColor.ORANGE);
 		assertTrue("Position 6 not buyable land", b.getTile(6) instanceof Land);
 		Land l = (Land)b.getTile(6);
 		l.buyLand(p);
@@ -30,8 +28,8 @@ public class LandTest{
   @Test 
 	public void testRent() throws LandException, PlayerException {
 		Board b = new Board();
-		Player p = new Player(4000, b);
-		Player p1 = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.BLUE);
+		Player p1 = new Player(4000, b, PlayerColor.ORANGE);
 		Land l = (Land) b.getTile(6);//Rent = 20 - 1 House = 100 - 2 House = 300 - 3 House = 750 - 4 House = 925 - Hotel = 1100
 		Land l1 = (Land) b.getTile(1);//Rent = 6 - 1 House = 30 - 2 House = 90 - 3 House = 270 - 4 House = 400 - Hotel = 500
 		try {
