@@ -23,7 +23,7 @@ public class Company extends Tile {
 		}
 		else
 		{
-			throw new CompanyException("Company already has a owner");
+			throw new CompanyException("Company already has a owner: " + player.getColor());
 		}
 	}
 	public void payRent(Player player, int diceNumber) throws CompanyException
@@ -37,18 +37,19 @@ public class Company extends Tile {
 			}
 			catch (PlayerException e)
 			{
+				System.out.println("Failed to pay rent.");
 				System.out.print(e.getMessage());
 			}
 		}
 		else
 		{
-			throw new CompanyException("Company does not have a owner");
+			throw new CompanyException("Company does not have a owner.");
 		}
 	}
 	void print()
 	{
 		System.out.println("I'm a company");
-		System.out.println("Description: " + description);
+		System.out.println("description: " + description);
 		System.out.println("price: " + price);
 		System.out.println("price rate: " + priceRate);
 	}
