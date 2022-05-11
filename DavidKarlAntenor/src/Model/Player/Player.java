@@ -5,15 +5,15 @@ import Model.gameboard.Tile;
 
 public class Player {
 	private int cash;
-	int currentTile;
-	int boardSize;
+	private int currentTile;
+	private final int boardSize;
 	Board board;
 	PlayerColor color;
 	public Player(int cash, Board board, PlayerColor color) {
 		this.cash = cash;
 		this.board = board;
-		currentTile = 0;
-		boardSize = board.getLength();
+		this.currentTile = 0;
+		this.boardSize = board.getLength();
 		this.color = color;
 	}
 	public boolean goFoward(int n){
@@ -29,8 +29,7 @@ public class Player {
 		return cash;
 	}
 
-	public void changeCash(int ammount) throws PlayerException
-	{
+	public void addOrSubCash(int ammount) throws PlayerException {
 		if(cash + ammount >= 0)
 		{
 			cash += ammount;
