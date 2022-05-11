@@ -48,4 +48,8 @@ public class Player {
 	public PlayerColor getColor() {
 		return color;
 	}
+	
+	public void goToTile(int tile) {
+		currentTile = tile;
+	}
 }
