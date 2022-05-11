@@ -175,7 +175,7 @@
     "price": 120,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [6, 30, 90, 270, 400, 500]
+    "rentCost": [8, 40, 100, 300, 450, 600]
     
   },
   {
@@ -241,7 +241,7 @@
     "price": 140,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [10, 50, 90, 270, 400, 500]
+    "rentCost": [10, 50, 150, 450, 625, 750]
     
   },
   {
@@ -290,7 +290,7 @@
   {
     "position": 35,
     "type": "Company",
-    "description": "Helicopter",
+    "description": "Air transport",
     "price": 200,
     "priceRate": 50
     
