@@ -18,8 +18,7 @@ public class Land extends Tile {
 		this.price = price;
 		this.buildHouseCost = buildHouseCost;
 		this.buildHotelCost = buildHotelCost;
-		this.rentCost = rentCost;
-		
+		this.rentCost = rentCost;	
 	}
 	public void buyLand(Player player) throws LandException
 	{
@@ -29,51 +28,48 @@ public class Land extends Tile {
 		}
 		else
 		{
-			throw new LandException("Land already has a owner");
+			throw new LandException("Land already has a owner: " + player.getColor());
 		}
 	}
 	
-	public void buildHouse(Player player) throws PlayerException, LandException
+	public void buildHouse() throws PlayerException, LandException
 	{
 		if(this.owner != null)
-		{
-			if(this.owner == player)
+		{		
+			if(numberOfHouses <= 3)
 			{
-				if(numberOfHouses <= 3)
-				{
-					player.changeCash(-buildHotelCost);
-					numberOfHouses++;
-				}
-				else
-				{
-					throw new LandException("Max 4 houses");
-				}
-			}
-		}
-	}
-	
-	public void buildHotel(Player player) throws PlayerException, LandException
-	{
-		if(this.owner == player)
-		{
-			if(numberOfHouses >= 1)
-			{
-				if(hasHotel == false)
-				{
-					player.changeCash(-buildHotelCost);
-					hasHotel = true;
-				}
-				else
-				{
-					throw new LandException("Already has a hotel");
-				}
+				owner.changeCash(-buildHotelCost);
+				numberOfHouses++;
 			}
 			else
 			{
-				throw new LandException("At least 1 house to build hotel");
+				throw new LandException("Max 4 houses");
 			}
 		}
-		
+		else
+		{
+			throw new LandException("This land has no owner.");
+		}
+	}
+	
+	public void buildHotel() throws PlayerException, LandException
+	{
+		if(numberOfHouses >= 1)
+		{
+			if(hasHotel == false)
+			{
+				owner.changeCash(-buildHotelCost);
+				hasHotel = true;
+			}
+			else
+			{
+				throw new LandException("Already has a hotel");
+			}
+		}
+		else
+		{
+			throw new LandException("At least 1 house to build hotel");
+		}
 	}
 	public void payRent(Player player) throws LandException, PlayerException
 	{
