@@ -6,7 +6,6 @@ import java.nio.file.Path;
 
 public class Board {
 	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
-	private int length;
 	public Board()
 	{	
 		try
@@ -65,7 +64,6 @@ public class Board {
             		tiles.add(new Start());
             	} 
             }
-            this.length = tiles.size();
 		}
 		catch(Exception e)
 		{
@@ -74,7 +72,7 @@ public class Board {
 		}	
 	}
 	public int getLength() {
-		return length;
+		return tiles.size();
 	}
 	Tile getTile(int i){
 		return tiles.get(i);
