@@ -6,7 +6,7 @@ public class GameSettings {
     private Integer maxPlayer = 6;
     private Integer minPlayer = 2;
     private Float maxDuration = -1.f; // set to -1 if there is no max duration
-    private Integer startingBalance = 200;
+    private Integer startingBalance = 4000;
     private Integer nbDices = 2;
 
     public GameSettings() {
