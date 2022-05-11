@@ -98,6 +98,10 @@ public class Land extends Tile {
 			throw new LandException("Land does not have a owner");
 		}
 	}
+	Player getOwner()
+	{
+		return owner;
+	}
 	void print(){
 		System.out.println("I'm a land");
 		System.out.println("Description: " + description);
