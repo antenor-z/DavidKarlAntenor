@@ -46,7 +46,7 @@ public class Board {
             	}
             	else if(type.equals("LuckSetback"))
             	{
-            		tiles[position] = new Lucksetback();
+            		tiles[position] = new LuckSetback();
             	}
             	else if(type.equals("Money"))
             	{
@@ -55,7 +55,7 @@ public class Board {
             	}
             	else if(type.equals("FreeStop"))
             	{
-            		tiles[position] = new Freestop();
+            		tiles[position] = new FreeStop();
             	}
             	else if(type.equals("GoToPrision"))
             	{
