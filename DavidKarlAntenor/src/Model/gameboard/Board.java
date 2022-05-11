@@ -16,7 +16,6 @@ public class Board {
             JSONArray jsonBoard = obj.getJSONArray("board");
             
             for (Object jsonTile: jsonBoard) {
-                
             	JSONObject jsonTileObj = (JSONObject)jsonTile;
             	String type = jsonTileObj.getString("type");
             	int position = jsonTileObj.getInt("position");
