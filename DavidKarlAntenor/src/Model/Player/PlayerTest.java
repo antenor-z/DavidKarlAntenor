@@ -1,6 +1,8 @@
 package Model.Player;
 
+import Model.GameSettings;
 import Model.gameboard.Board;
+import Model.GameSettings;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -26,7 +28,8 @@ public class PlayerTest {
 	@Test
 	public void testChangeCash() throws PlayerException{
 		Board b = new Board();
-		Player p = new Player(4000, b, PlayerColor.RED);
+		int balance = GameSettings.getInstance().getStartingBalance();
+		Player p = new Player(balance, b, PlayerColor.RED);
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -71,8 +74,4 @@ public class PlayerTest {
 		assertEquals("Position 19", p.getCurrentTile(), 19);
 	}
 
-	
-	
-	
-	
 }
