@@ -62,41 +62,40 @@ public class LandTest{
 		l.payRent(p1);
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
 		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse(p);
+		l.buildHouse();
 		pCash -= 150;
 		l.payRent(p1);
 		pCash += 100;
 		p1Cash -= 100;
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
 		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse(p);
+		l.buildHouse();
 		pCash -= 150;
 		l.payRent(p1);
 		pCash += 300;
 		p1Cash -= 300;
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
 		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse(p);
+		l.buildHouse();
 		pCash -= 150;
 		l.payRent(p1);
 		pCash += 750;
 		p1Cash -= 750;
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
 		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse(p);
+		l.buildHouse();
 		pCash -= 150;
 		l.payRent(p1);
 		pCash += 925;
 		p1Cash -= 925;
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
 		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHotel(p);
+		l.buildHotel();
 		pCash -= 150;
 		l.payRent(p1);
 		pCash += 1100;
 		p1Cash -= 1100;
 		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		
+		assertEquals("Player p should have received rent.", p.getCash(), pCash);	
 	}		
 }
