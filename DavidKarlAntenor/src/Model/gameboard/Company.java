@@ -7,7 +7,7 @@ public class Company extends Tile {
 	private int price;
 	private Player owner;
 	private int priceRate;
-	String description;
+	private String description;
 	public Company(String description, int price, int priceRate)
 	{
 		this.description = description;
