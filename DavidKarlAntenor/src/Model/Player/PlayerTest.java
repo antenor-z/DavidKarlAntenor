@@ -25,9 +25,8 @@ public class PlayerTest {
 	*/
 	@Test
 	public void testChangeCash() throws PlayerException{
-		
 		Board b = new Board();
-		Player p = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.RED);
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -55,13 +54,21 @@ public class PlayerTest {
 	@Test
 	public void testAdvance() {
 		Board b = new Board();
-		Player p = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.PURPLE);
 		assertTrue("You can advance positive", p.advance(3));
-		assertFalse("You can advance positive", p.advance(-3));
+		assertEquals("Position 3", p.getCurrentTile(), 3);
+		
+		assertFalse("You can't advance positive", p.advance(-3));
+		assertEquals("Position 3", p.getCurrentTile(), 3);
+		
 		assertTrue("You can advance positive", p.advance(7));
 		assertEquals("The game must be at position 10 now", p.getCurrentTile(), 10);
+		
 		assertTrue("You can advance positive", p.advance(31));
 		assertEquals("The position must roll back to 1", p.getCurrentTile(), 1);
+		
+		p.goToTile(19);
+		assertEquals("Position 19", p.getCurrentTile(), 19);
 	}
 
 	
