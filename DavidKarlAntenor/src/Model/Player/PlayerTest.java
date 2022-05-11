@@ -58,16 +58,16 @@ public class PlayerTest {
 	public void testAdvance() {
 		Board b = new Board();
 		Player p = new Player(4000, b, PlayerColor.PURPLE);
-		assertTrue("You can advance positive", p.advance(3));
+		assertTrue("You can advance positive", p.goFoward(3));
 		assertEquals("Position 3", p.getCurrentTile(), 3);
 		
-		assertFalse("You can't advance positive", p.advance(-3));
+		assertFalse("You can't advance positive", p.goFoward(-3));
 		assertEquals("Position 3", p.getCurrentTile(), 3);
 		
-		assertTrue("You can advance positive", p.advance(7));
+		assertTrue("You can advance positive", p.goFoward(7));
 		assertEquals("The game must be at position 10 now", p.getCurrentTile(), 10);
 		
-		assertTrue("You can advance positive", p.advance(31));
+		assertTrue("You can advance positive", p.goFoward(31));
 		assertEquals("The position must roll back to 1", p.getCurrentTile(), 1);
 		
 		p.goToTile(19);

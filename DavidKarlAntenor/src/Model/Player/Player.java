@@ -16,7 +16,7 @@ public class Player {
 		boardSize = board.getLength();
 		this.color = color;
 	}
-	public boolean advance(int n){
+	public boolean goFoward(int n){
 		if(n <= 0) {
 			return false;
 		}
