@@ -11,13 +11,14 @@ public class LandTest{
   @Test
 	public void testBuyLand() throws LandException {
 		Board b = new Board();
-		Player p = new Player(4000, b, PlayerColor.BLUE);
-		Player p1 = new Player(4000, b, PlayerColor.ORANGE);
+		Player blue = new Player(4000, b, PlayerColor.BLUE);
+		Player orange = new Player(4000, b, PlayerColor.ORANGE);
 		assertTrue("Position 6 not buyable land", b.getTile(6) instanceof Land);
-		Land l = (Land)b.getTile(6);
-		l.buyLand(p);
+		Land land = (Land)b.getTile(6);
+		land.buyLand(blue);
+		assertEquals("land should be owned by blue", land.getOwner(), blue);
 		try {
-			l.buyLand(p1);
+			land.buyLand(orange);
 			fail("Fail -> Land already owned by other player.");
 		}
 		catch(LandException e)
@@ -28,74 +29,58 @@ public class LandTest{
   @Test 
 	public void testRent() throws LandException, PlayerException {
 		Board b = new Board();
-		Player p = new Player(4000, b, PlayerColor.BLUE);
-		Player p1 = new Player(4000, b, PlayerColor.ORANGE);
-		Land l = (Land) b.getTile(6);//Rent = 20 - 1 House = 100 - 2 House = 300 - 3 House = 750 - 4 House = 925 - Hotel = 1100
-		Land l1 = (Land) b.getTile(1);//Rent = 6 - 1 House = 30 - 2 House = 90 - 3 House = 270 - 4 House = 400 - Hotel = 500
-		try {
-			
-			l.payRent(p);
+		Player blue = new Player(4000, b, PlayerColor.BLUE);
+		Player orange = new Player(4000, b, PlayerColor.ORANGE);
+		Land fariaLima = (Land) b.getTile(6);//Rent = 20 - 1 House = 100 - 2 House = 300 - 3 House = 750 - 4 House = 925 - Hotel = 1100
+		Land leblon = (Land) b.getTile(1);//Rent = 6 - 1 House = 30 - 2 House = 90 - 3 House = 270 - 4 House = 400 - Hotel = 500
+		try {	
+			leblon.payRent(orange);
 			fail("This land has no owner yet");
 		}	
 		catch(LandException e)
 		{
 			System.out.print(e.getMessage());
 		}
-		l.buyLand(p);
-		l1.buyLand(p1);
+		leblon.buyLand(blue);
+		fariaLima.buyLand(orange);
 		try {
-			l.payRent(p);
+			leblon.payRent(blue);
 			fail("This land is owned by the player trying to pay the rent");
 		}
 		catch(LandException e){
 			System.out.print(e.getMessage());
 		}
 		try {
-			l1.payRent(p1);
+			fariaLima.payRent(orange);
 			fail("This land is owned by the player trying to pay the rent");
 		}
 		catch(LandException e){
 			System.out.print(e.getMessage());
 		}
-		int p1Cash = 4000 - 20;
-		int pCash = 4000 + 20;
-		l.payRent(p1);
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse();
-		pCash -= 150;
-		l.payRent(p1);
-		pCash += 100;
-		p1Cash -= 100;
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse();
-		pCash -= 150;
-		l.payRent(p1);
-		pCash += 300;
-		p1Cash -= 300;
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse();
-		pCash -= 150;
-		l.payRent(p1);
-		pCash += 750;
-		p1Cash -= 750;
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHouse();
-		pCash -= 150;
-		l.payRent(p1);
-		pCash += 925;
-		p1Cash -= 925;
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);
-		l.buildHotel();
-		pCash -= 150;
-		l.payRent(p1);
-		pCash += 1100;
-		p1Cash -= 1100;
-		assertEquals("Player p1 should have paid rent.", p1.getCash(), p1Cash);
-		assertEquals("Player p should have received rent.", p.getCash(), pCash);	
+		int orangeCash = 4000 - 6;
+		int blueCash = 4000 + 6;	
+		leblon.payRent(orange);
+		assertEquals("Player orange should have paid rent.", orange.getCash(), orangeCash);
+		assertEquals("Player blue should have received rent.", blue.getCash(), blueCash);
+		
+		int price[] = {30, 90, 270, 400};
+		for(int i = 0; i < 3; i++)
+		{
+			leblon.buildHouse();
+			blueCash -= 50;
+			leblon.payRent(orange);
+			orangeCash -= price[i];
+			blueCash += price[i];
+			assertEquals("Player orange should have paid rent.", orange.getCash(), orangeCash);
+			assertEquals("Player blue should have received rent.", blue.getCash(), blueCash);
+		}
+		
+		leblon.buildHotel();
+		blueCash -= 50;
+		leblon.payRent(orange);
+		orangeCash -= 500;
+		blueCash += 500;
+		assertEquals("Player orange should have paid rent.", orange.getCash(), orangeCash);
+		assertEquals("Player blue should have received rent.", blue.getCash(), blueCash);
 	}		
 }
