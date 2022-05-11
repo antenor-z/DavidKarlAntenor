@@ -30,15 +30,22 @@ public class Company extends Tile {
 	{
 		if(this.owner != null)
 		{
-			int ammountToPay = priceRate * diceNumber;
-			try {
-				player.changeCash(-ammountToPay);
-				this.owner.changeCash(ammountToPay);
-			}
-			catch (PlayerException e)
+			if(this.owner != player)
 			{
-				System.out.println("Failed to pay rent.");
-				System.out.print(e.getMessage());
+				int ammountToPay = priceRate * diceNumber;
+				try {
+					player.changeCash(-ammountToPay);
+					this.owner.changeCash(ammountToPay);
+				}
+				catch (PlayerException e)
+				{
+					System.out.println("Failed to pay rent.");
+					System.out.print(e.getMessage());
+				}
+			}
+			else
+			{
+				throw new CompanyException("Cannot pay rent to themself: " + owner.getColor());
 			}
 		}
 		else
@@ -52,5 +59,9 @@ public class Company extends Tile {
 		System.out.println("description: " + description);
 		System.out.println("price: " + price);
 		System.out.println("price rate: " + priceRate);
+	}
+	public Player getOwner()
+	{
+		return owner;
 	}
 }
