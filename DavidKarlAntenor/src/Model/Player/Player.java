@@ -8,11 +8,13 @@ public class Player {
 	int currentTile;
 	int boardSize;
 	Board board;
-	public Player(int cash, Board board) {
+	PlayerColor color;
+	public Player(int cash, Board board, PlayerColor color) {
 		this.cash = cash;
 		this.board = board;
 		currentTile = 0;
 		boardSize = board.getLenght();
+		this.color = color;
 	}
 	public boolean advance(int n){
 		if(n <= 0) {
@@ -41,5 +43,9 @@ public class Player {
 	
 	public int getCurrentTile() {
 		return currentTile;
+	}
+	
+	public PlayerColor getColor() {
+		return color;
 	}
 }
