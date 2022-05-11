@@ -1,14 +1,14 @@
 package Model.gameboard;
 import org.json.*;
+import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class Board {
-	private Tile[] tiles;
-	private int lenght = 40;
+	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
+	private int length;
 	public Board()
 	{	
-		tiles = new Tile[lenght];
 		try
 		{
 			String content = Files.readString(Path.of("./Board.json"));
@@ -18,7 +18,6 @@ public class Board {
             for (Object jsonTile: jsonBoard) {
             	JSONObject jsonTileObj = (JSONObject)jsonTile;
             	String type = jsonTileObj.getString("type");
-            	int position = jsonTileObj.getInt("position");
             	if(type.equals("Land"))
             	{  		
             		String description = jsonTileObj.getString("description");
@@ -31,41 +30,42 @@ public class Board {
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
-            		tiles[position] = new Land(description, price, buildHouseCost, buildHotelCost, rentCost);
+            		tiles.add(new Land(description, price, buildHouseCost, buildHotelCost, rentCost));
             	}
             	else if(type.equals("Company"))
             	{
             		String description = jsonTileObj.getString("description");
             		int price = jsonTileObj.getInt("price");
             		int priceRate = jsonTileObj.getInt("priceRate");
-            		tiles[position] = new Company(description, price, priceRate);
+            		tiles.add(new Company(description, price, priceRate));
             	}
             	else if(type.equals("Prision"))
             	{
-            		tiles[position] = new Prision();
+            		tiles.add(new Prision());
             	}
             	else if(type.equals("LuckSetback"))
             	{
-            		tiles[position] = new LuckSetback();
+            		tiles.add(new LuckSetback());
             	}
             	else if(type.equals("Money"))
             	{
             		int ammount = jsonTileObj.getInt("ammount");
-            		tiles[position] = new Money(ammount);
+            		tiles.add(new Money(ammount));
             	}
             	else if(type.equals("FreeStop"))
             	{
-            		tiles[position] = new FreeStop();
+            		tiles.add(new FreeStop());
             	}
             	else if(type.equals("GoToPrision"))
             	{
-            		tiles[position] = new GoToPrision();
+            		tiles.add(new GoToPrision());
             	}
             	else if(type.equals("Start"))
             	{
-            		tiles[position] = new Start();
+            		tiles.add(new Start());
             	} 
-            }    
+            }
+            this.length = tiles.size();
 		}
 		catch(Exception e)
 		{
@@ -73,16 +73,16 @@ public class Board {
 			System.out.println(e.getMessage());
 		}	
 	}
-	public int getLenght() {
-		return lenght;
+	public int getLength() {
+		return length;
 	}
-	public Tile getTile(int i){
-		return tiles[i];
+	Tile getTile(int i){
+		return tiles.get(i);
 	}
 	void printAllTiles() {
 		for(int i = 0; i < 40; i++)
 		{
-			tiles[i].print();
+			tiles.get(i).print();
 		}
 	}
 }

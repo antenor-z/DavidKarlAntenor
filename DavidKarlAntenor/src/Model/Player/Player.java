@@ -13,7 +13,7 @@ public class Player {
 		this.cash = cash;
 		this.board = board;
 		currentTile = 0;
-		boardSize = board.getLenght();
+		boardSize = board.getLength();
 		this.color = color;
 	}
 	public boolean advance(int n){
