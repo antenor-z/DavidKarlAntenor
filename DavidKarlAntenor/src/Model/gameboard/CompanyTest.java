@@ -5,14 +5,15 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import Model.Player.Player;
+import Model.Player.PlayerColor;
 
 public class CompanyTest {
 
 	@Test
 	public void testBuyCompany() throws CompanyException {
 		Board b = new Board();
-		Player p = new Player(4000, b);
-		Player q = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.BLUE);
+		Player q = new Player(4000, b, PlayerColor.ORANGE);
 		assertTrue("Position 5 not company", b.getTile(5) instanceof Company);
 		Company c = (Company)b.getTile(5);
 		c.buyCompany(p);
@@ -30,8 +31,8 @@ public class CompanyTest {
 	@Test
 	public void testPayRent() throws CompanyException {
 		Board b = new Board();
-		Player p = new Player(4000, b);
-		Player q = new Player(4000, b);
+		Player p = new Player(4000, b, PlayerColor.BLUE);
+		Player q = new Player(4000, b, PlayerColor.ORANGE);
 		Company c = (Company)b.getTile(5);
 		c.buyCompany(p);
 		c.payRent(q, 4);
