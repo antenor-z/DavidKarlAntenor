@@ -49,12 +49,6 @@
       "value": -50
     },
     {
-      "type": 0,
-      "name": "Bad Luck",
-      "description": "Seus parentes do interior vieram passar umas \"férias\" na sua casa",
-      "value": -45
-    },
-    {
       "type": 1,
       "name": "Bad Luck",
       "description": "Vá para a prisão sem receber nada. (talvez eu lhe faça uma visita...)",
@@ -80,8 +74,8 @@
     },
     {
       "type": 0,
-      "name": "Papai os livros do ano passado não servem mais, preciso de livros novos.",
-      "description": "",
+      "name": "Bad Luck",
+      "description": "Papai os livros do ano passado não servem mais, preciso de livros novos.",
       "value": -40
     },
     {
@@ -171,7 +165,7 @@
     {
       "type": 0,
       "name": "Luck",
-      "description": "Houve um assalto à sua loga, mas você estava segurado.",
+      "description": "Houve um assalto à sua loja, mas você estava segurado.",
       "value": 150
     },
     {
