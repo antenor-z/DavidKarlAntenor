@@ -7,11 +7,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class DeckTests {
-    Deck deck = null;
+    private Deck deck = null;
+    private String jsonPath = "./Deck.json";
 
     @Test
-    public void testDeckInit() {
-        String jsonPath = "./Deck.json";
+    public void testDeckInit() {  
         try {
             deck = new Deck(jsonPath);
         } catch (DeckException e) {
@@ -21,13 +21,20 @@ public class DeckTests {
 
     @Test
     public void testDeckSize() {
-        int size = 30;
-        assertEquals("Size of the deck must be " + size, size, (int) deck.size());
+    	try {
+    		deck = new Deck(jsonPath);
+    		int size = 30;
+    		assertEquals("Size of the deck must be " + size, size, (int) deck.size());
+    	}
+    	catch (Exception ex) {
+            fail(ex.getMessage());
+        }
     }
 
     @Test
     public void testWithdraw() {
         try {
+        	deck = new Deck(jsonPath);
             Integer initialDeckSize = deck.size();
             ICard pickedCard = deck.withdraw();
             Integer afterDeckSize = deck.size();
@@ -46,6 +53,7 @@ public class DeckTests {
     @Test
     public void testAddCard() {
         try {
+        	deck = new Deck(jsonPath);
             ICard pickedCard = deck.withdraw();
             Integer initialDeckSize = deck.size();
 
