@@ -12,7 +12,7 @@ public class Money extends Tile {
 	public void execute(Player player) {
 		try
 		{
-			player.changeCash(ammount);
+			player.addOrSubCash(ammount);
 		}
 		catch (PlayerException e)
 		{

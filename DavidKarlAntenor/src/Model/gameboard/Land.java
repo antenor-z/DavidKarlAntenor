@@ -38,7 +38,7 @@ public class Land extends Tile {
 		{		
 			if(numberOfHouses <= 3)
 			{
-				owner.changeCash(-buildHotelCost);
+				owner.addOrSubCash(-buildHotelCost);
 				numberOfHouses++;
 			}
 			else
@@ -58,7 +58,7 @@ public class Land extends Tile {
 		{
 			if(hasHotel == false)
 			{
-				owner.changeCash(-buildHotelCost);
+				owner.addOrSubCash(-buildHotelCost);
 				hasHotel = true;
 			}
 			else
@@ -85,8 +85,8 @@ public class Land extends Tile {
 				{
 					ammountToPay = rentCost[numberOfHouses];
 				}
-				player.changeCash(-ammountToPay);
-				this.owner.changeCash(ammountToPay);
+				player.addOrSubCash(-ammountToPay);
+				this.owner.addOrSubCash(ammountToPay);
 			}
 			else
 			{

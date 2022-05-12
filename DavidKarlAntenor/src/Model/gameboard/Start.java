@@ -9,6 +9,6 @@ public class Start extends Tile {
 	}
 	void execute(Player player) throws PlayerException
 	{
-		player.changeCash(200);
+		player.addOrSubCash(200);
 	}
 }

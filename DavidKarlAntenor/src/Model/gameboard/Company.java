@@ -34,8 +34,8 @@ public class Company extends Tile {
 			{
 				int ammountToPay = priceRate * diceNumber;
 				try {
-					player.changeCash(-ammountToPay);
-					this.owner.changeCash(ammountToPay);
+					player.addOrSubCash(-ammountToPay);
+					this.owner.addOrSubCash(ammountToPay);
 				}
 				catch (PlayerException e)
 				{

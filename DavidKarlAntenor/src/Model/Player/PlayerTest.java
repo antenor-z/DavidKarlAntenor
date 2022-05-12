@@ -38,13 +38,13 @@ public class PlayerTest {
 		
 		}	
 		assertEquals("Player's balance needs to be 4000", p.getCash(), 4000);
-		p.changeCash(1000);	
+		p.addOrSubCash(1000);	
 		assertEquals("Player's balance needs to be 5000", p.getCash(), 5000);
-		p.changeCash(-5000);
+		p.addOrSubCash(-5000);
 		assertEquals("Player's balance needs to be 0", p.getCash(), 0);	
 		try
 		{
-			p.changeCash(-1);
+			p.addOrSubCash(-1);
 			fail("Player balance cannot be less than zero");
 		}
 		catch(PlayerException e)
