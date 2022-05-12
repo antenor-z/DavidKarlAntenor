@@ -1,11 +1,14 @@
 package Model.Deck;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import Model.Deck.Card.*;
 import Model.Deck.Exception.DeckException;
+import Model.Utils.ImportFile;
+
 import org.json.*;
-import Model.Utils.Files;
 import java.util.Random;
 
 public class Deck {
@@ -39,22 +42,23 @@ public class Deck {
     // PRIVATE METHODS
 
     private void _initialiseCardArray(String pathToJson) throws DeckException {
-        String jsonString = Files.getFileContent(pathToJson);
-
-        if (jsonString != null) {
-            try {
-                JSONObject obj = new JSONObject(jsonString);
-                JSONArray jsonCards = obj.getJSONArray("cards");
-
-                for (Object jsonCard: jsonCards) {
-                    if (jsonCard instanceof JSONObject) {
-                        this.addCardFromJSON((JSONObject) jsonCard);
-                    }
-                }
-            } catch (Exception e) {
-                throw new DeckException("Fail to create deck from json file: " + pathToJson);
-            }
-        }
+    	String jsonString = ImportFile.getFileContent(pathToJson);
+    	if(jsonString != null)
+    	{
+	        try {
+	        	
+	            JSONObject obj = new JSONObject(jsonString);
+	            JSONArray jsonCards = obj.getJSONArray("cards");
+	
+	            for (Object jsonCard: jsonCards) {
+	                if (jsonCard instanceof JSONObject) {
+	                    this.addCardFromJSON((JSONObject) jsonCard);
+	                }
+	            }
+	        } catch (Exception e) {
+	            throw new DeckException("Fail to create deck from json file: " + pathToJson);
+	        }
+    	}
     }
 
     private void addCardFromJSON(JSONObject jsonCard) throws DeckException {
