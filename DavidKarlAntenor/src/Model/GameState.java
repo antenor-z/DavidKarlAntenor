@@ -1,7 +1,6 @@
 package Model;
 
 import Model.Player.Player;
-import Model.Player.PlayerColor;
 import Model.gameboard.Board;
 
 import java.util.ArrayList;

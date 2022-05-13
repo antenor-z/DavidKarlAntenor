@@ -1,5 +1,6 @@
 package Model.Player;
 
+import Model.PlayerColor;
 import Model.gameboard.Board;
 import Model.gameboard.Tile;
 

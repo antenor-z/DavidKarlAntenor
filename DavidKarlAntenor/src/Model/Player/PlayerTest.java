@@ -1,6 +1,7 @@
 package Model.Player;
 
 import Model.GameSettings;
+import Model.PlayerColor;
 import Model.gameboard.Board;
 import Model.GameSettings;
 import static org.junit.Assert.*;
@@ -29,7 +30,7 @@ public class PlayerTest {
 	public void testChangeCash() throws PlayerException{
 		Board b = new Board();
 		int balance = GameSettings.getInstance().getStartingBalance();
-		Player p = new Player(balance, b, PlayerColor.RED);
+		Player p = new Player(balance, b, PlayerColor.Red);
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -57,7 +58,7 @@ public class PlayerTest {
 	@Test
 	public void testAdvance() {
 		Board b = new Board();
-		Player p = new Player(4000, b, PlayerColor.PURPLE);
+		Player p = new Player(4000, b, PlayerColor.Purple);
 		assertTrue("You can advance positive", p.goFoward(3));
 		assertEquals("Position 3", p.getCurrentTile(), 3);
 		
