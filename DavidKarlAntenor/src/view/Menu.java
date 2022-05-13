@@ -95,7 +95,7 @@ public class Menu extends JFrame {
 					while(true)
 					{
 						s = (String)JOptionPane.showInputDialog("Name for player " + chkBox.getText());
-						if ((s.length() == 0) || (s.length() > 8))
+						if (s == null || (s.length() == 0) || (s.length() > 8))
 						{
 							JOptionPane.showMessageDialog(null, "Name of player must be between 1 and 8 chars.");
 						}
