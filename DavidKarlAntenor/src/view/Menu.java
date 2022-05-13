@@ -1,4 +1,5 @@
 package view;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -23,14 +24,18 @@ public class Menu extends JFrame {
 			Model.PlayerColor.Orange.toString(),
 			Model.PlayerColor.Gray.toString(),
 			Model.PlayerColor.Purple.toString(),
-			Model.PlayerColor.Yellow.toString(),};
+			Model.PlayerColor.Yellow.toString()
+	};
 	HashMap<Model.PlayerColor, String> playersName = new HashMap<Model.PlayerColor, String>();
 	final private int windowSizeX = 450;
 	final private int windowSizeY = 320;
+
 	public Menu() {	
 		setSize(windowSizeX, windowSizeY);
 		setLayout(null);
-		
+
+		setResizable(false);
+		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 		insertCheckBoxes();
 		insertLabel();
 		insertButtons();
