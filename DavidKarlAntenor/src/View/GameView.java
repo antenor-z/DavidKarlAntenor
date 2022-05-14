@@ -10,16 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameView extends GameFrame {
-    final private int windowSizeX = 1280;
-    final private int windowSizeY = 720;
+    final private int windowSizeX = 1200;
+    final private int windowSizeY = 700;
 
     public GameView(ActionListener parent) throws HeadlessException {
         super(parent, ViewType.GAME);
 
-        JPanel gameBoardView = new GameBoardView();
-        add(gameBoardView);
-        gameBoardView.setVisible(true);
         _initFrame();
+        add(new GameBoardView());
     }
 
     private void _initFrame() {
