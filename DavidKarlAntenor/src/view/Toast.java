@@ -2,7 +2,6 @@ package view;
 
 import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
 
 public class Toast {
 
@@ -12,8 +11,7 @@ public class Toast {
     // JWindow
     JWindow w;
 
-    Toast(String s, int x, int y)
-    {
+    Toast(String s, int x, int y) {
         w = new JWindow();
 
         // make the background transparent
@@ -21,8 +19,7 @@ public class Toast {
 
         // create a panel
         JPanel p = new JPanel() {
-            public void paintComponent(Graphics g)
-            {
+            public void paintComponent(Graphics g) {
                 int wid = g.getFontMetrics().stringWidth(s);
                 int hei = g.getFontMetrics().getHeight();
 
@@ -52,27 +49,46 @@ public class Toast {
         w.setSize(300, 100);
     }
 
-    // function to pop up the toast
-    void showtoast()
-    {
-        try {
-            w.setOpacity(1);
-            w.setVisible(true);
+    void ShowToast() {
+        SwingWorker sw1 = new SwingWorker() {
 
-            // wait for some time
-            Thread.sleep(2000);
+            @Override
+            protected String doInBackground() throws Exception {
+                try {
+                    w.setOpacity(1);
+                    w.setVisible(true);
 
-            // make the message disappear  slowly
-            for (double d = 1.0; d > 0.2; d -= 0.1) {
-                Thread.sleep(100);
-                w.setOpacity((float)d);
+                    // wait for some time
+                    Thread.sleep(2000);
+
+                    // make the message disappear  slowly
+                    for (double d = 1.0; d > 0.2; d -= 0.1) {
+                        Thread.sleep(100);
+                        w.setOpacity((float) d);
+                    }
+
+                    // set the visibility to false
+                    w.setVisible(false);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
+                return null;
             }
 
-            // set the visibility to false
-            w.setVisible(false);
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
+            @Override
+            protected void process(java.util.List chunks) {
+                super.process(chunks);
+            }
+
+            // Method
+            @Override
+            protected void done() {
+                // this method is called when the background
+                // thread finishes execution
+            }
+        };
+
+        // Executes the swingworker on worker thread
+        sw1.execute();
     }
 }

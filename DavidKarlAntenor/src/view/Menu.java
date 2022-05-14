@@ -1,19 +1,16 @@
 package view;
+import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
 	JButton btnNext = new JButton("Next");
@@ -32,8 +29,8 @@ public class Menu extends MyFrame {
 	final private int windowSizeX = 450;
 	final private int windowSizeY = 320;
 
-	public Menu() {
-		super(ViewType.START_MENU);
+	public Menu(ActionListener parent) {
+		super(parent, ViewType.START_MENU);
 		setSize(windowSizeX, windowSizeY);
 		setLayout(null);
 
@@ -46,6 +43,7 @@ public class Menu extends MyFrame {
 			chkBox.addItemListener(new chkStateChanged());
 		}
 		btnNext.addActionListener(new btnClicked());
+		btnNext.addActionListener(parent);
 	}
 	private void insertLabel() {
 		label.setBounds(20, 40, 500, 30);
@@ -91,7 +89,7 @@ public class Menu extends MyFrame {
 	}
 	public class btnClicked implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			for(JCheckBox chkBox: checkBoxes) {
+			/*for(JCheckBox chkBox: checkBoxes) {
 				if(chkBox.isSelected())
 				{
 					Model.PlayerColor pc = Model.PlayerColor.valueOf(chkBox.getText());
@@ -111,9 +109,8 @@ public class Menu extends MyFrame {
 					}
 					playersName.put(pc, s);	
 				}
-			}
-			JOptionPane.showMessageDialog(null, playersName);
-			dispose();
-		} 
+			}*/
+			dispatchEvent(new ChangeViewEvent(this, 200, "", ViewType.GAME));
+		}
 	}
 }

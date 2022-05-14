@@ -1,6 +1,6 @@
 package view;
 
-import Model.Event.ChangeVewEvent;
+import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 
 import java.awt.event.ActionEvent;
@@ -12,34 +12,38 @@ public class ViewManager implements ActionListener {
     private final List<MyFrame> frames = new ArrayList<MyFrame>();
 
     public ViewManager() {
-        MyFrame menu = new Menu();
+        MyFrame menu = new Menu(this);
+        MyFrame game = new GameView(this);
 
         this.frames.add(menu);
+        this.frames.add(game);
         menu.setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e instanceof ChangeVewEvent) {
+        if (e instanceof ChangeViewEvent) {
             try {
-                changeView((ChangeVewEvent) e);
+                changeView((ChangeViewEvent) e);
             } catch (ViewException ex) {
                 showToast(ex.getMessage());
             }
+        } else {
+            showToast("Unknown Event");
         }
     }
 
     private void showToast(String msg) {
         Toast t = new Toast(msg, 150, 400);
-        t.showtoast();
+        t.ShowToast();
     }
 
-    private void changeView(ChangeVewEvent event) throws ViewException {
+    private void changeView(ChangeViewEvent event) throws ViewException {
         ViewType viewType = event.getViewType();
         MyFrame target = findViewByType(viewType);
 
         if (target != null) {
-
+            showToast("Hello world.");
         } else {
             throw new ViewException("Cannot find view of type: " + viewType);
         }
