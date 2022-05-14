@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ViewManager implements ActionListener {
     private final List<MyFrame> frames = new ArrayList<MyFrame>();
+    private final MyFrame currentFrame = null;
 
     public ViewManager() {
         MyFrame menu = new Menu(this);
@@ -17,7 +18,7 @@ public class ViewManager implements ActionListener {
 
         this.frames.add(menu);
         this.frames.add(game);
-        menu.setVisible(true);
+        this.setFrameVisible(menu);
     }
 
     @Override
@@ -28,9 +29,16 @@ public class ViewManager implements ActionListener {
             } catch (ViewException ex) {
                 showToast(ex.getMessage());
             }
-        } else {
-            showToast("Unknown Event");
         }
+    }
+
+    private void setFrameVisible(MyFrame frame) {
+        frames.forEach(i -> {
+            if (i != frame) {
+                i.setVisible(false);
+            }
+        });
+        frame.setVisible(true);
     }
 
     private void showToast(String msg) {
@@ -43,7 +51,7 @@ public class ViewManager implements ActionListener {
         MyFrame target = findViewByType(viewType);
 
         if (target != null) {
-            showToast("Hello world.");
+            this.setFrameVisible(target);
         } else {
             throw new ViewException("Cannot find view of type: " + viewType);
         }

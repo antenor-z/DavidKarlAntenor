@@ -1,6 +1,7 @@
 package Model.Event;
 import java.awt.event.ActionEvent;
 
+// todo : https://stackoverflow.com/questions/44551760/extending-actionevent-a-custom-event-without-a-custom-listener
 public class ChangeViewEvent extends ActionEvent {
     private ViewType _type;
 

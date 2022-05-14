@@ -11,7 +11,7 @@ public class GameView extends MyFrame {
     final private int windowSizeY = 720;
 
     public GameView(ActionListener parent) throws HeadlessException {
-        super(parent, ViewType.START_MENU);
+        super(parent, ViewType.GAME);
 
         setSize(windowSizeX, windowSizeY);
         setLayout(null);

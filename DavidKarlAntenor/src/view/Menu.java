@@ -7,18 +7,16 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JButton;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
+import javax.swing.*;
 
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
-	JButton btnNext = new JButton("Next");
+	JButton btnNext = new JButton("Play");
 	JButton btnOpen = new JButton("Open saved game");
 	JLabel label = new JLabel("Choose at least 3 colors to play");
 	ArrayList<JCheckBox> checkBoxes = new ArrayList<JCheckBox>();
 	String[] colorNames = {
-			Model.PlayerColor.Blue.toString(), 
+			Model.PlayerColor.Blue.toString(),
 			Model.PlayerColor.Red.toString(),
 			Model.PlayerColor.Orange.toString(),
 			Model.PlayerColor.Gray.toString(),
@@ -42,8 +40,8 @@ public class Menu extends MyFrame {
 		for(JCheckBox chkBox: checkBoxes) {
 			chkBox.addItemListener(new chkStateChanged());
 		}
-		btnNext.addActionListener(new btnClicked());
-		btnNext.addActionListener(parent);
+		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
+		btnNext.addActionListener(playBtnListener);
 	}
 	private void insertLabel() {
 		label.setBounds(20, 40, 500, 30);
@@ -66,7 +64,7 @@ public class Menu extends MyFrame {
 		for(int y = 0; y < 2; y++) {
 			positionY = startY + y * sizeY;
 			for(int x = 0; x < 3; x++) {
-				
+
 				checkBoxes.add(new JCheckBox(colorNames[color]));
 				positionX = startX + x * sizeX;
 				checkBoxes.get(color).setBounds(positionX, positionY, sizeX, sizeY);
@@ -85,9 +83,16 @@ public class Menu extends MyFrame {
 			}
 			if(count >= 3) btnNext.setEnabled(true);
 			else btnNext.setEnabled(false);
-		} 
+		}
 	}
-	public class btnClicked implements ActionListener {
+
+	public class PlayBtnListener extends JComponent implements ActionListener {
+		private ActionListener _parent;
+
+		public PlayBtnListener(ActionListener parent) {
+			_parent = parent;
+		}
+
 		public void actionPerformed(ActionEvent e) {
 			/*for(JCheckBox chkBox: checkBoxes) {
 				if(chkBox.isSelected())
@@ -107,10 +112,10 @@ public class Menu extends MyFrame {
 						}
 						else break;
 					}
-					playersName.put(pc, s);	
+					playersName.put(pc, s);
 				}
 			}*/
-			dispatchEvent(new ChangeViewEvent(this, 200, "", ViewType.GAME));
+			_parent.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 		}
 	}
 }
