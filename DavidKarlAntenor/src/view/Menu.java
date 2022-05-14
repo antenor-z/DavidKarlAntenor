@@ -1,4 +1,6 @@
 package view;
+import Model.Event.ViewType;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 @SuppressWarnings("serial")
-public class Menu extends JFrame {
+public class Menu extends MyFrame {
 	JButton btnNext = new JButton("Next");
 	JButton btnOpen = new JButton("Open saved game");
 	JLabel label = new JLabel("Choose at least 3 colors to play");
@@ -30,7 +32,8 @@ public class Menu extends JFrame {
 	final private int windowSizeX = 450;
 	final private int windowSizeY = 320;
 
-	public Menu() {	
+	public Menu() {
+		super(ViewType.START_MENU);
 		setSize(windowSizeX, windowSizeY);
 		setLayout(null);
 
@@ -74,11 +77,7 @@ public class Menu extends JFrame {
 			}
 		}
 	}
-	public static void main(String[] args) {
-		Menu f=new Menu();
-		f.setTitle("Menu");
-		f.setVisible(true);
-	}
+
 	public class chkStateChanged implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
 			int count = 0;
