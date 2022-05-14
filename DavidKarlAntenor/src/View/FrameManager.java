@@ -1,20 +1,21 @@
-package view;
+package View;
 
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
+import View.Exception.ViewException;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewManager implements ActionListener {
-    private final List<MyFrame> frames = new ArrayList<MyFrame>();
-    private final MyFrame currentFrame = null;
+public class FrameManager implements ActionListener {
+    private final List<GameFrame> frames = new ArrayList<GameFrame>();
+    private final GameFrame currentFrame = null;
 
-    public ViewManager() {
-        MyFrame menu = new Menu(this);
-        MyFrame game = new GameView(this);
+    public FrameManager() {
+        GameFrame menu = new Menu(this);
+        GameFrame game = new GameView(this);
 
         this.frames.add(menu);
         this.frames.add(game);
@@ -32,7 +33,7 @@ public class ViewManager implements ActionListener {
         }
     }
 
-    private void setFrameVisible(MyFrame frame) {
+    private void setFrameVisible(GameFrame frame) {
         frames.forEach(i -> {
             if (i != frame) {
                 i.setVisible(false);
@@ -48,7 +49,7 @@ public class ViewManager implements ActionListener {
 
     private void changeView(ChangeViewEvent event) throws ViewException {
         ViewType viewType = event.getViewType();
-        MyFrame target = findViewByType(viewType);
+        GameFrame target = findViewByType(viewType);
 
         if (target != null) {
             this.setFrameVisible(target);
@@ -57,7 +58,7 @@ public class ViewManager implements ActionListener {
         }
     }
 
-    private MyFrame findViewByType(ViewType typeToFind) {
+    private GameFrame findViewByType(ViewType typeToFind) {
         return frames.stream()
                 .filter((frame) -> typeToFind.equals(frame.getViewType()))
                 .findFirst()

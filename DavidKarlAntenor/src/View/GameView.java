@@ -1,12 +1,11 @@
-package view;
+package View;
 
 import Model.Event.ViewType;
 
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class GameView extends MyFrame {
+public class GameView extends GameFrame {
     final private int windowSizeX = 1280;
     final private int windowSizeY = 720;
 

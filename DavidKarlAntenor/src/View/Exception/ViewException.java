@@ -1,4 +1,4 @@
-package view;
+package View.Exception;
 
 public class ViewException extends Exception {
     public ViewException() {

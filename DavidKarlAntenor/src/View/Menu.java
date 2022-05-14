@@ -1,4 +1,4 @@
-package view;
+package View;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 
@@ -10,7 +10,7 @@ import java.util.HashMap;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class Menu extends MyFrame {
+public class Menu extends GameFrame {
 	JButton btnNext = new JButton("Play");
 	JButton btnOpen = new JButton("Open saved game");
 	JLabel label = new JLabel("Choose at least 3 colors to play");

@@ -1,4 +1,4 @@
-package view;
+package View;
 
 import Model.Event.ViewType;
 
@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MyFrame extends JFrame {
+public class GameFrame extends JFrame {
     private ViewType type;
     protected ActionListener parent;
 
-    public MyFrame(ActionListener parent, ViewType type) throws HeadlessException {
+    public GameFrame(ActionListener parent, ViewType type) throws HeadlessException {
         this.type = type;
         this.parent = parent;
     }
