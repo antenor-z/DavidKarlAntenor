@@ -1,9 +1,9 @@
-import View.FrameManager;
+import View.GameFrameManager;
 
 public class Main {
     public static void main(String []args) {
         try {
-            FrameManager viewManager = new FrameManager();
+            GameFrameManager viewManager = new GameFrameManager();
         } catch (Exception e) {
 
         }

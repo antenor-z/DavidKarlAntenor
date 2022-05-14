@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FrameManager implements ActionListener {
+public class GameFrameManager implements ActionListener {
     private final List<GameFrame> frames = new ArrayList<GameFrame>();
     private final GameFrame currentFrame = null;
 
-    public FrameManager() {
+    public GameFrameManager() {
         GameFrame menu = new Menu(this);
         GameFrame game = new GameView(this);
 
