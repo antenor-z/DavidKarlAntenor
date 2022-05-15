@@ -29,9 +29,10 @@ public class Menu extends GameFrame {
 
 	public Menu(ActionListener parent) {
 		super(parent, ViewType.START_MENU);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(windowSizeX, windowSizeY);
 		setLayout(null);
-
+		setTitle("Monopoly");
 		setResizable(false);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 		insertCheckBoxes();
