@@ -53,6 +53,7 @@ public class Menu extends GameFrame {
 		}
 		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
 		btnNext.addActionListener(playBtnListener);
+		
 	}
 	private void insertLabels() {
 		label.setBounds(20, 20, 500, 30);
