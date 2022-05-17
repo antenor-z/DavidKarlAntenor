@@ -65,6 +65,7 @@ public class GameBoardView extends JPanel {
 		g.drawImage(i, 0, -10, null);	
 		_drawDices(g);
 		_drawPlayers(g);
+		_drawCard(g);
 	}
     public void drawDices(int value1, int value2) throws ViewException {
     	if(value1 > 5 || value1 < 0 || value2 > 5 || value2 < 0) {
@@ -90,6 +91,18 @@ public class GameBoardView extends JPanel {
 		}
 		g.drawImage(imgDice1, windowSizeX - 200, 100, 100, 100, null);
 		g.drawImage(imgDice2, windowSizeX - 200, 250, 100, 100, null);
+    }
+    private void _drawCard(Graphics g) {
+    	String str = "./img/sorteReves/chance" + 30 + ".png";
+    	Image i = null;
+		try {
+			i=ImageIO.read(new File(str));
+		}
+		catch(IOException e2) {
+			System.out.println(e2.getMessage());
+			System.exit(1);
+		}
+		g.drawImage(i, windowSizeX - 250, 400, null);
     }
     private void _drawPlayers(Graphics g) {
     	String str;
