@@ -18,6 +18,11 @@ public class GameView extends GameFrame {
 
         _initFrame();
         add(new GameBoardView());
+        // The gameboard must not use Swing components, the exceptions
+        // are the button to throw the dice, and the button to save the game
+        JButton btnThrowDice = new JButton("Throw dice");
+        btnThrowDice.setBounds(windowSizeX - 200, 50, 150, 30);
+        add(btnThrowDice);
     }
 
     private void _initFrame() {
