@@ -28,14 +28,13 @@ public class GameBoardView extends MyImage {
 }
 */
 public class GameBoardPanel extends JPanel {
-    final private int windowSizeX = 1200;
-    final private int windowSizeY = 700;
-    private int dice1Value = 1, dice2Value = 1;
+    // private int dice1Value = 1, dice2Value = 1;
 
     public GameBoardPanel() {
-        setBounds(0, 0, windowSizeX, windowSizeY);
+		setPreferredSize(new Dimension(700, 700));
     }
-    public void paintComponent(Graphics g) {
+
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Image i = null;
 		try {
@@ -45,12 +44,12 @@ public class GameBoardPanel extends JPanel {
 			System.out.println(e2.getMessage());
 			System.exit(1);
 		}
-		g.drawImage(i, 0, -10, null);	
-		_drawDices(g);
-		_drawPlayers(g);
-		_drawCard(g);
+		g.drawImage(i, -7, -7, null);
+		// _drawDices(g);
+		//_drawPlayers(g);
+		// _drawCard(g);
 	}
-    public void drawDices(int value1, int value2) throws ViewException {
+/*    public void drawDices(int value1, int value2) throws ViewException {
     	if(value1 > 5 || value1 < 0 || value2 > 5 || value2 < 0) {
     		throw new ViewException("Dice value outside range 1: " + value1 + " 2: " + value2);
     	}
@@ -58,8 +57,8 @@ public class GameBoardPanel extends JPanel {
     	this.dice1Value = value1;
     	this.dice2Value = value2;
     	repaint();
-    }
-    private void _drawDices(Graphics g) {
+    }*/
+    /*private void _drawDices(Graphics g) {
     	String str1 = "./img/dados/die_face_" + dice1Value + ".png";
     	String str2 = "./img/dados/die_face_" + dice2Value + ".png";
     	Image imgDice1 = null;
@@ -136,5 +135,5 @@ public class GameBoardPanel extends JPanel {
     			g.drawImage(pinsImg.get(5), a[i][0]+25, a[i][1]+40, 25, 38, null);
     		}	
     	}
-    }
+    }*/
 }

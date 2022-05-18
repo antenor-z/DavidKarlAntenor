@@ -11,6 +11,7 @@ public class GamePanel extends MyPanel {
     final private int windowSizeX = 1200;
     final private int windowSizeY = 700;
 
+
     GameBoardPanel gameBoardPannel = new GameBoardPanel();
     JPanel buttons = new JPanel(new GridBagLayout());
     JButton btnThrowDice = new JButton("Throw dice");
@@ -21,18 +22,30 @@ public class GamePanel extends MyPanel {
         super(cl, panelCont, controller);
         _initFrame();
 
-        add(gameBoardPannel);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        add(gameBoardPannel, gbc);
+
+        gbc.gridx = 1;
+        buttons.setPreferredSize(new Dimension(500, 700));
         buttons.setBounds(windowSizeX - 500, 50, 450, 30);
         buttons.add(btnThrowDice);
         buttons.add(pauseButton);
         buttons.add(passButton);
-        add(buttons);
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        //gbc.fill = GridBagConstraints.BOTH;
+        add(buttons, gbc);
         _setPauseButtonEvent();
     }
 
     private void _initFrame() {
         setSize(windowSizeX, windowSizeY);
-        setLayout(new GridLayout(1, 2));
+        setLayout(new GridBagLayout());
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width) / 2 - getWidth() / 2,
                 (Toolkit.getDefaultToolkit().getScreenSize().height) / 2 - getHeight() / 2);
     }
