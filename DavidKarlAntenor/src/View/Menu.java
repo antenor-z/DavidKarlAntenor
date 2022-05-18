@@ -4,8 +4,6 @@ import Model.Event.ViewType;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -14,7 +12,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 @SuppressWarnings("serial")
-public class Menu extends GameFrame {
+public class Menu extends MyFrame {
 	JButton btnNext = new JButton("Play");
 	JButton btnOpen = new JButton("Open saved game");
 	JLabel label = new JLabel("Choose at least 3 colors to play. Add a name for each one.");
@@ -38,7 +36,7 @@ public class Menu extends GameFrame {
 		super(parent, ViewType.START_MENU);
 		setSize(windowSizeX, windowSizeY);
 		setLayout(null);
-
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
 		insertCheckBoxes();
@@ -165,10 +163,10 @@ public class Menu extends GameFrame {
 	}
 
 	public class PlayBtnListener extends JComponent implements ActionListener {
-		private ActionListener _parent;
+		private ActionListener _controller;
 
-		public PlayBtnListener(ActionListener parent) {
-			_parent = parent;
+		public PlayBtnListener(ActionListener controller) {
+			_controller = controller;
 		}
 
 		public void actionPerformed(ActionEvent e) {
@@ -180,7 +178,7 @@ public class Menu extends GameFrame {
 				}
 			}
 			System.out.print(playersName);
-			_parent.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
+			_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 		}
 	}
 }

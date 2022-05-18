@@ -6,13 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class GameFrame extends JFrame {
+public class MyFrame extends JFrame {
     private ViewType type;
-    protected ActionListener parent;
+    protected ActionListener controller;
 
-    public GameFrame(ActionListener parent, ViewType type) throws HeadlessException {
+    public MyFrame(ActionListener controller, ViewType type) throws HeadlessException {
         this.type = type;
-        this.parent = parent;
+        this.controller = controller;
     }
 
     public ViewType getViewType() {

@@ -1,39 +1,29 @@
 package View;
 
 import Model.Event.ViewType;
-import View.Gameboard.GameBoardView;
-import View.Pause.PauseBtnListener;
+import View.Gameboard.GamePanel;
+import View.Pause.PausePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
 
-public class GameView extends GameFrame {
+public class GameFrame extends MyFrame {
     final private int windowSizeX = 1200;
     final private int windowSizeY = 700;
 
-    JPanel buttons = new JPanel();
+    JPanel panelCont = new JPanel();
+    CardLayout cl = new CardLayout();
 
-    public GameView(ActionListener controller) throws HeadlessException {
+    public GameFrame(ActionListener controller) throws HeadlessException {
         super(controller, ViewType.GAME);
-
+        panelCont.setLayout(cl);
+        panelCont.add(new GamePanel(cl, panelCont, controller), "1");
+        panelCont.add(new PausePanel(cl, panelCont, controller), "2");
+        panelCont.setBounds(0, 0, windowSizeX, windowSizeY);
+        cl.show(panelCont, "1");
+        add(panelCont);
         _initFrame();
-        add(new GameBoardView());
-
-        JButton btnThrowDice = new JButton("Throw dice");
-        JButton pauseButton = new JButton("Pause");
-        JButton passButton = new JButton("Pass");
-
-        buttons.setLayout(new GridLayout(1, 3));
-        buttons.setBounds(windowSizeX - 480, 50, 450, 30);
-        add(buttons);
-
-        buttons.add(passButton);
-        buttons.add(pauseButton);
-        buttons.add(btnThrowDice);
-        pauseButton.addActionListener(new PauseBtnListener(controller));
     }
 
     private void _initFrame() {

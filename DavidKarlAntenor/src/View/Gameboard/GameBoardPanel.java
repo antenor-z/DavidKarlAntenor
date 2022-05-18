@@ -1,16 +1,8 @@
 package View.Gameboard;
 
 import View.Exception.ViewException;
-import View.Utils.MyImage;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -22,15 +14,6 @@ import javax.swing.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-import Model.gameboard.Company;
-import Model.gameboard.FreeStop;
-import Model.gameboard.GoToPrision;
-import Model.gameboard.Land;
-import Model.gameboard.LuckSetback;
-import Model.gameboard.Money;
-import Model.gameboard.Prision;
-import Model.gameboard.Start;
 
 /*
 public class GameBoardView extends MyImage {
@@ -44,12 +27,12 @@ public class GameBoardView extends MyImage {
     }
 }
 */
-public class GameBoardView extends JPanel {
+public class GameBoardPanel extends JPanel {
     final private int windowSizeX = 1200;
     final private int windowSizeY = 700;
     private int dice1Value = 1, dice2Value = 1;
 
-    public GameBoardView() {
+    public GameBoardPanel() {
         setBounds(0, 0, windowSizeX, windowSizeY);
     }
     public void paintComponent(Graphics g) {
