@@ -2,6 +2,7 @@ package View.Gameboard;
 
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
+import Model.GameSettings;
 import View.MyPanel;
 
 import javax.swing.*;
@@ -10,11 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GamePanel extends MyPanel {
-    final private int windowSizeX = 1200;
-    final private int windowSizeY = 700;
-
+    GameSettings settings = GameSettings.getInstance();
     GridBagConstraints gbc = new GridBagConstraints();
-
     GameBoardPanel gameBoardPannel = new GameBoardPanel();
     JPanel buttons = new JPanel(new GridBagLayout());
     JButton btnThrowDice = new JButton("Throw dice");
@@ -43,7 +41,7 @@ public class GamePanel extends MyPanel {
 
     private void _setRightPanel() {
         buttons.setPreferredSize(new Dimension(500, 700));
-        buttons.setBounds(windowSizeX - 500, 50, 450, 30);
+        buttons.setBounds(settings.getGetMaxWidth() - 500, 50, 450, 30);
         buttons.add(btnThrowDice);
         buttons.add(pauseButton);
         buttons.add(quiteButton);
@@ -54,7 +52,7 @@ public class GamePanel extends MyPanel {
     }
 
     private void _initFrame() {
-        setSize(windowSizeX, windowSizeY);
+        setSize(settings.getGetMaxWidth(), settings.getGetMaxHeight());
         setLayout(new GridBagLayout());
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width) / 2 - getWidth() / 2,
                 (Toolkit.getDefaultToolkit().getScreenSize().height) / 2 - getHeight() / 2);

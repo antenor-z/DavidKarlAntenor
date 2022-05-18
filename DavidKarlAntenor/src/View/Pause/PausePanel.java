@@ -1,5 +1,6 @@
 package View.Pause;
 
+import Model.GameSettings;
 import View.MyPanel;
 
 import javax.swing.*;
@@ -8,9 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PausePanel extends MyPanel {
-    final private int windowSizeX = 1200;
-    final private int windowSizeY = 700;
-
     JButton closeBtn = new JButton("close");
 
     public PausePanel(CardLayout cl, JPanel panelCont, ActionListener controller) throws HeadlessException {
