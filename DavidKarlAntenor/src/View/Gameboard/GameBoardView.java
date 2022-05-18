@@ -52,20 +52,21 @@ public class GameBoardView extends JPanel {
     final private int windowSizeX = 1200;
     final private int windowSizeY = 700;
     private int dice1Value = 1, dice2Value = 1;
-    PlayersLane playersLane = new PlayersLane();
     ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
 
     public GameBoardView() {
         setBounds(0, 0, windowSizeX, windowSizeY);
         loadPinsImages();
-        loadPinsPositionArrays();
         Board b = new Board();
         Player p1 = new Player(4000, b,PlayerColor.Blue);
         Player p2 = new Player(4000, b,PlayerColor.Red);
-        playersList.add(p1);
+        Player p3 = new Player(4000, b,PlayerColor.Orange);
         p1.goFoward(23);
+        p3.goFoward(39);
+        playersList.add(p1);
         playersList.add(p2);
+        playersList.add(p3);
     }
     public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -131,48 +132,56 @@ public class GameBoardView extends JPanel {
 			System.exit(1);
 		}
     }
+    private boolean isBetween(int n, int min, int max) {
+    	if(n >= min && n < max) return true;
+    	return false;
+    }
     public int getXposition(int tileNumber, Model.PlayerColor color) {
     	final int spacingX = 56;
     	final int startX;
-       	if(tileNumber <= 10 || (tileNumber >= 20 && tileNumber <= 30)) {
+    	
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
 	    	switch (color) {
-	    	case Blue -> startX = 610;	
-	    	case Yellow -> startX = 610;
-	    	case Purple -> startX = 610;
-	    	case Gray -> startX = 631;
-	    	case Red -> startX = 631;
-	    	case Orange -> startX = 631;
-	    	default -> startX = 0;
+		    	case Blue -> startX = 610;	
+		    	case Yellow -> startX = 610;
+		    	case Purple -> startX = 610;
+		    	case Gray -> startX = 631;
+		    	case Red -> startX = 631;
+		    	case Orange -> startX = 631;
+		    	default -> startX = 0;
 	    	}
     	} else {
     		switch (color) {
-    		case Blue -> startX = 580;	
-    		case Red -> startX = 600;
-	    	case Yellow -> startX = 620;
-	    	case Purple -> startX = 580;
-	    	case Gray -> startX = 600;
-	    	case Orange -> startX = 620;
+	    	case Blue -> startX = 15;	
+	    	case Yellow -> startX = 35;
+	    	case Purple -> startX = 55;
+	    	case Gray -> startX = 15;
+	    	case Red -> startX = 35;
+	    	case Orange -> startX = 55;
 	    	default -> startX = 0;
     		}
     	}
-    	final int startX2 = startX - 10 * spacingX;
-    	if(tileNumber <= 10) {
+    	if(isBetween(tileNumber, 0, 11)) {
     		return startX - tileNumber * spacingX;
-    	} 
-    	else if (tileNumber > 10 && tileNumber <= 20) {
-    		return startX2;
     	}
-    	else if (tileNumber > 20 && tileNumber < 30) {
-    		return startX2 + (tileNumber - 20) * spacingX;
-    	}
-    	else {
+    	else if(isBetween(tileNumber, 11, 20)) {
     		return startX;
     	}
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startX - (30 - tileNumber) * spacingX;
+    	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startX + 610;
+    	}
+    	return 0;
     }
     public int getYposition(int tileNumber, Model.PlayerColor color) {
-    	final int spacingY = 55;
+    	final int spacingY = 56;
     	final int startY;
-    	if(tileNumber <= 10 || (tileNumber >= 20 && tileNumber <= 30)) {
+    
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
 	    	switch (color) {
 		    	case Blue -> startY = 592;
 		    	case Red -> startY = 592;
@@ -180,87 +189,47 @@ public class GameBoardView extends JPanel {
 		    	case Gray -> startY = 617;
 		    	case Purple -> startY = 642;
 		    	case Orange -> startY = 642;
-		    	default -> startY = 0;
-	    	}
-    	} else {
-    		switch (color) {
-    		case Blue -> startY = 592;	
-    		case Red -> startY = 592;
-	    	case Yellow -> startY = 592;
-	    	case Gray -> startY = 617;
-	    	case Purple -> startY = 617;
-	    	case Orange -> startY = 617;
-	    	
-	    	
-	    	default -> startY = 0;
-    		}
+		    	default -> startY = 0;}
+    	} else {int a = 35;
+	    		switch (color) {
+	    		
+	    		case Blue -> startY = 535;	
+		    	case Yellow -> startY = 535;
+		    	case Purple -> startY = 535;
+		    	case Gray -> startY = 561;
+		    	case Red -> startY = 561;
+		    	case Orange -> startY = 561;
+		    	default -> startY = 0;}
     	}
-    	final int startY2 = startY - 10 * spacingY - 28;
-    	if(tileNumber <= 10) {
+
+    	if(isBetween(tileNumber, 0, 11)) {
     		return startY;
-    	} 
-    	else if (tileNumber > 10 && tileNumber < 20) {
-    		return startY - (tileNumber - 10) * spacingY;
     	}
-    	else if (tileNumber >= 20 && tileNumber < 30) {
-    		return startY2;
+    	else if(isBetween(tileNumber, 11, 20)) {
+    		return startY - (tileNumber - 11) * spacingY;
     	}
-    	else {
-    		return startY2 + (tileNumber - 30) * spacingY;
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startY - spacingY * 10 - 30;
     	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startY - (39 - tileNumber) * spacingY;
+    	}
+    	return 0;
     }
-    public void loadPinsPositionArrays() {
-    	int[][] a = new int[40][2];
-    	try
-		{
-			String content = Files.readString(Path.of("./pinsPosition.json"));
-			JSONObject obj = new JSONObject(content);
-            JSONArray pins = obj.getJSONArray("pins");
-      
-            for (int i = 0; i < pins.length(); i++) {
-                JSONArray pin = pins.getJSONArray(i);
-                a[i][0] = pin.getInt(0);
-                a[i][1] = pin.getInt(1);
-            }
-		}
-		catch(Exception e)
-		{
-			System.out.println("Failed to read pinsPosition.json");
-			System.out.println(e.getMessage());
-		}
-    	
-    	for(int i = 0; i < 40; i++) {
-    		if(i == 0 || (i >= 10 && i <= 20) || (i >= 30 && i <= 39)) {
-    			playersLane.add(Model.PlayerColor.Red, a[i][0]+0, a[i][1]);
-    			playersLane.add(Model.PlayerColor.Gray, a[i][0]+30, a[i][1]);
-    			playersLane.add(Model.PlayerColor.Purple, a[i][0]+60, a[i][1]);
-    			playersLane.add(Model.PlayerColor.Yellow, a[i][0]+0, a[i][1]+25);
-    			playersLane.add(Model.PlayerColor.Orange, a[i][0]+30, a[i][1]+25);
-    			playersLane.add(Model.PlayerColor.Blue, a[i][0]+60, a[i][1]+25);
-    		}
-    		else {
-    			playersLane.add(Model.PlayerColor.Red, a[i][0], a[i][1]);
-    			playersLane.add(Model.PlayerColor.Gray, a[i][0], a[i][1]+25);
-    			playersLane.add(Model.PlayerColor.Purple, a[i][0], a[i][1]+50);
-    			playersLane.add(Model.PlayerColor.Yellow, a[i][0]+25, a[i][1]);
-    			playersLane.add(Model.PlayerColor.Orange, a[i][0]+25, a[i][1]+25);
-    			playersLane.add(Model.PlayerColor.Blue, a[i][0]+25, a[i][1]+50);
-    		}	
-    	}
-    }
+   
     public void drawPlayers(ArrayList<Player> playersList) {
     	this.playersList = playersList;
     }
 
     private void _drawPlayers(Graphics g) {
-    	/*
     	for (Player player: playersList) {
     		int color = player.getColor().ordinal();
     		int x = getXposition(player.getCurrentTile(), player.getColor());
     		int y = getYposition(player.getCurrentTile(), player.getColor());
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
-    	*/
+    	
+    	/*//SHOW ALL
     	for (int i = 0; i < 40; i++) {
     		for(PlayerColor p: PlayerColor.values())
     		{
@@ -268,6 +237,6 @@ public class GameBoardView extends JPanel {
 	    		int y = getYposition(i, p);
 	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
     		}
-    	}
+    	}*/
     }
 }
