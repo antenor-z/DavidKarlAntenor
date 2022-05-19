@@ -1,7 +1,7 @@
 package View;
 
 import Model.Event.ViewType;
-import View.Gameboard.GameBoardView;
+import View.Gameboard.GameBoardPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ public class GameView extends GameFrame {
         super(parent, ViewType.GAME);
 
         _initFrame();
-        add(new GameBoardView());
+        add(new GameBoardPanel());
         // The gameboard must not use Swing components, the exceptions
         // are the button to throw the dice, and the button to save the game
         JButton btnThrowDice = new JButton("Throw dice");

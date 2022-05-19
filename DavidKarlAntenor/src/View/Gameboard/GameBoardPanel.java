@@ -48,14 +48,14 @@ public class GameBoardView extends MyImage {
     }
 }
 */
-public class GameBoardView extends JPanel {
+public class GameBoardPanel extends JPanel {
     final private int windowSizeX = 1200;
     final private int windowSizeY = 700;
     private int dice1Value = 1, dice2Value = 1;
     ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
 
-    public GameBoardView() {
+    public GameBoardPanel() {
         setBounds(0, 0, windowSizeX, windowSizeY);
         loadPinsImages();
         Board b = new Board();
