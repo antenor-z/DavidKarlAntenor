@@ -75,8 +75,8 @@ public class Deck {
             case VALUE -> cards.add(new ValueCard(description, name, value));
             case GO_TO_JAIL -> cards.add(new GoToJailCard(description, name));
             case OUT_OF_JAIL -> cards.add(new OutOfJailCard(description, name));
-            case VALUE_PER_PLAYER -> cards.add(new OutOfJailCard(description, name));
-            case MOVE -> cards.add(new OutOfJailCard(description, name));
+            case VALUE_PER_PLAYER -> cards.add(new ValuePerPlayer(description, name, value));
+            case MOVE -> cards.add(new MoveCard(description, name, value));
         }
     }
 }
