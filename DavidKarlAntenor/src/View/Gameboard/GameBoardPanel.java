@@ -1,22 +1,17 @@
 package View.Gameboard;
 
+import Model.GameSettings;
+import Model.PlayerColor;
+import Model.Player.Player;
+import Model.gameboard.Board;
 import View.Exception.ViewException;
-import View.Utils.MyImage;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.geom.Ellipse2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,51 +19,24 @@ import javax.swing.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import Model.PlayerColor;
-import Model.Player.Player;
-import Model.gameboard.Board;
-import Model.gameboard.Company;
-import Model.gameboard.FreeStop;
-import Model.gameboard.GoToPrision;
-import Model.gameboard.Land;
-import Model.gameboard.LuckSetback;
-import Model.gameboard.Money;
-import Model.gameboard.Prision;
-import Model.gameboard.Start;
-
-/*
-public class GameBoardView extends MyImage {
-    ImageIcon img = new ImageIcon("../img/tabuleiro.png");
-    final private int windowSizeX = 1200;
-    final private int windowSizeY = 700;
-
-    public GameBoardView() {
-        setBounds(0, 0, windowSizeX, windowSizeY);
-        setIcon(img);
-    }
-}
-*/
 public class GameBoardPanel extends JPanel {
-    final private int windowSizeX = 1200;
-    final private int windowSizeY = 700;
-    private int dice1Value = 1, dice2Value = 1;
-    ArrayList<Player> playersList = new ArrayList<Player>();
+	ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
-
     public GameBoardPanel() {
-        setBounds(0, 0, windowSizeX, windowSizeY);
-        loadPinsImages();
-        Board b = new Board();
-        Player p1 = new Player(4000, b,PlayerColor.Blue);
-        Player p2 = new Player(4000, b,PlayerColor.Red);
-        Player p3 = new Player(4000, b,PlayerColor.Orange);
-        p1.goFoward(23);
-        p3.goFoward(39);
-        playersList.add(p1);
-        playersList.add(p2);
-        playersList.add(p3);
+		setPreferredSize(new Dimension(700, 700));
+		loadPinsImages();
+		Board b = new Board();
+		Player p1 = new Player(4000, b,PlayerColor.Blue);
+		Player p2 = new Player(4000, b,PlayerColor.Red);
+		Player p3 = new Player(4000, b,PlayerColor.Orange);
+		p1.goFoward(23);
+		p3.goFoward(39);
+		playersList.add(p1);
+		playersList.add(p2);
+		playersList.add(p3);
     }
-    public void paintComponent(Graphics g) {
+
+	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Image i = null;
 		try {
@@ -78,49 +46,10 @@ public class GameBoardPanel extends JPanel {
 			System.out.println(e2.getMessage());
 			System.exit(1);
 		}
-		g.drawImage(i, 0, -10, null);	
-		_drawDices(g);
+		g.drawImage(i, 0, -10, null);
 		_drawPlayers(g);
-		_drawCard(g);
 	}
-    public void drawDices(int value1, int value2) throws ViewException {
-    	if(value1 > 5 || value1 < 0 || value2 > 5 || value2 < 0) {
-    		throw new ViewException("Dice value outside range 1: " + value1 + " 2: " + value2);
-    	}
-    	value1++; value2++;
-    	this.dice1Value = value1;
-    	this.dice2Value = value2;
-    	repaint();
-    }
-    private void _drawDices(Graphics g) {
-    	String str1 = "./img/dados/die_face_" + dice1Value + ".png";
-    	String str2 = "./img/dados/die_face_" + dice2Value + ".png";
-    	Image imgDice1 = null;
-    	Image imgDice2 = null;
-    	try {
-			imgDice1=ImageIO.read(new File(str1));
-			imgDice2=ImageIO.read(new File(str2));
-		}
-		catch(IOException e2) {
-			System.out.println(e2.getMessage());
-			System.exit(1);
-		}
-		g.drawImage(imgDice1, windowSizeX - 200, 100, 100, 100, null);
-		g.drawImage(imgDice2, windowSizeX - 200, 250, 100, 100, null);
-    }
-    private void _drawCard(Graphics g) {
-    	String str = "./img/sorteReves/chance" + 30 + ".png";
-    	Image i = null;
-		try {
-			i=ImageIO.read(new File(str));
-		}
-		catch(IOException e2) {
-			System.out.println(e2.getMessage());
-			System.exit(1);
-		}
-		g.drawImage(i, windowSizeX - 250, 400, null);
-    }
-    public void loadPinsImages() {
+	 public void loadPinsImages() {
     	String str;
     	try {
     		for(int i = 0; i < 6; i++) {
@@ -132,7 +61,7 @@ public class GameBoardPanel extends JPanel {
 			System.exit(1);
 		}
     }
-    private boolean isBetween(int n, int min, int max) {
+	    private boolean isBetween(int n, int min, int max) {
     	if(n >= min && n < max) return true;
     	return false;
     }
@@ -216,12 +145,11 @@ public class GameBoardPanel extends JPanel {
     	}
     	return 0;
     }
-   
-    public void drawPlayers(ArrayList<Player> playersList) {
-    	this.playersList = playersList;
-    }
-
-    private void _drawPlayers(Graphics g) {
+	
+	public void drawPlayers(ArrayList<Player> playersList) {
+    		this.playersList = playersList;
+    	}
+	private void _drawPlayers(Graphics g) {
     	for (Player player: playersList) {
     		int color = player.getColor().ordinal();
     		int x = getXposition(player.getCurrentTile(), player.getColor());
@@ -239,4 +167,5 @@ public class GameBoardPanel extends JPanel {
     		}
     	}*/
     }
+	
 }

@@ -8,6 +8,8 @@ public class GameSettings {
     private Float maxDuration = -1.f; // set to -1 if there is no max duration
     private Integer startingBalance = 4000;
     private Integer nbDices = 2;
+    private Integer getMaxWidth = 1200;
+    private Integer getMaxHeight = 700;
 
     public GameSettings() {
     }
@@ -39,5 +41,11 @@ public class GameSettings {
         return nbDices;
     }
     
-    
+    public Integer getGetMaxWidth() {
+        return getMaxWidth;
+    }
+
+    public Integer getGetMaxHeight() {
+        return getMaxHeight;
+    }
 }

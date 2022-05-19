@@ -3,23 +3,22 @@ package View;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 import View.Exception.ViewException;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameFrameManager implements ActionListener {
-    private final List<GameFrame> frames = new ArrayList<GameFrame>();
-    private final GameFrame currentFrame = null;
+    private final List<MyFrame> frames = new ArrayList<MyFrame>();
+    private final MyFrame currentFrame = null;
 
     public GameFrameManager() {
-        GameFrame menu = new Menu(this);
-        GameFrame game = new GameView(this);
+        MyFrame menu = new Menu(this);
+        MyFrame game = new GameFrame(this);
 
         this.frames.add(menu);
         this.frames.add(game);
-        this.setFrameVisible(menu);
+        this.setFrameVisible(menu, true);
     }
 
     @Override
@@ -33,12 +32,14 @@ public class GameFrameManager implements ActionListener {
         }
     }
 
-    private void setFrameVisible(GameFrame frame) {
-        frames.forEach(i -> {
-            if (i != frame) {
-                i.setVisible(false);
-            }
-        });
+    private void setFrameVisible(MyFrame frame, Boolean isExclusive) {
+        if (isExclusive) {
+            frames.forEach(i -> {
+                if (i != frame) {
+                    i.setVisible(false);
+                }
+            });
+        }
         frame.setVisible(true);
     }
 
@@ -49,16 +50,16 @@ public class GameFrameManager implements ActionListener {
 
     private void changeView(ChangeViewEvent event) throws ViewException {
         ViewType viewType = event.getViewType();
-        GameFrame target = findViewByType(viewType);
+        MyFrame target = findViewByType(viewType);
 
         if (target != null) {
-            this.setFrameVisible(target);
+            this.setFrameVisible(target, event.get_isExclusive());
         } else {
             throw new ViewException("Cannot find view of type: " + viewType);
         }
     }
 
-    private GameFrame findViewByType(ViewType typeToFind) {
+    private MyFrame findViewByType(ViewType typeToFind) {
         return frames.stream()
                 .filter((frame) -> typeToFind.equals(frame.getViewType()))
                 .findFirst()
