@@ -26,7 +26,8 @@ public class GameControlPanel extends MyPanel {
 
     public GameControlPanel(CardLayout cl, JPanel panelCont, ActionListener controller) {
         super(cl, panelCont, controller);
-        setPreferredSize(new Dimension(500, 700));
+        _initPanel();
+        _setEvents();
     }
 
     @Override
@@ -37,8 +38,8 @@ public class GameControlPanel extends MyPanel {
     }
 
     private void _initPanel() {
-        buttons.setPreferredSize(new Dimension(500, 700));
-        buttons.setBounds(settings.getGetMaxWidth() - 500, 50, 450, 30);
+        setPreferredSize(new Dimension(500, 700));
+        buttons.setBackground(Color.BLACK);
         buttons.add(btnThrowDice);
         buttons.add(pauseButton);
         buttons.add(quiteButton);
