@@ -12,33 +12,26 @@ public class Land extends Tile {
 	private boolean hasHotel;
 	private int[] rentCost = new int[6];
 	private Player owner;
-	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
-	{
+	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost) {
 		this.description = description;
 		this.price = price;
 		this.buildHouseCost = buildHouseCost;
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;	
 	}
-	public void buyLand(Player player) throws LandException
-	{
+	public void buyLand(Player player) throws LandException {
 		if(this.owner == null)
-		{
 			owner = player;
-		}
 		else
-		{
-			throw new LandException("Land already has a owner: " + player.getColor());
-		}
+			throw new LandException("Land already has a owner: " 
+		+ player.getColor());
 	}
 	
-	public void buildHouse() throws PlayerException, LandException
-	{
-		if(this.owner != null)
-		{		
+	public void buildHouse() throws PlayerException, LandException {
+		if(this.owner != null) {		
 			if(numberOfHouses <= 3)
 			{
-				owner.addOrSubCash(-buildHotelCost);
+				owner.addOrSubCash(-buildHouseCost);
 				numberOfHouses++;
 			}
 			else
@@ -71,26 +64,23 @@ public class Land extends Tile {
 			throw new LandException("At least 1 house to build hotel");
 		}
 	}
-	public void payRent(Player player) throws LandException, PlayerException
+	public void payRent(Player tenant) throws LandException, PlayerException
 	{
 		if(this.owner != null)
 		{
-			if(this.owner != player)
+			if(this.owner != tenant)
 			{
 				int ammountToPay;
-				if(hasHotel) {
+				if(hasHotel) 
 					ammountToPay = rentCost[5];
-				}
 				else
-				{
 					ammountToPay = rentCost[numberOfHouses];
-				}
-				player.addOrSubCash(-ammountToPay);
+				tenant.addOrSubCash(-ammountToPay);
 				this.owner.addOrSubCash(ammountToPay);
 			}
-			else
+			else 
 			{
-				throw new LandException("Player and owner are the same person");
+				throw new LandException("Player and tenant are the same person");
 			}
 		}
 		else

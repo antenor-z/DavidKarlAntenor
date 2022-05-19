@@ -18,23 +18,20 @@ public class Company extends Tile {
 	public void buyCompany(Player player) throws CompanyException
 	{
 		if(this.owner == null)
-		{
 			owner = player;
-		}
 		else
-		{
-			throw new CompanyException("Company already has a owner: " + player.getColor());
-		}
+			throw new CompanyException("Company already has a owner: " 
+		+ player.getColor());
 	}
-	public void payRent(Player player, int diceNumber) throws CompanyException
+	public void payRent(Player tenant, int diceNumber) throws CompanyException
 	{
 		if(this.owner != null)
 		{
-			if(this.owner != player)
+			if(this.owner != tenant)
 			{
 				int ammountToPay = priceRate * diceNumber;
 				try {
-					player.addOrSubCash(-ammountToPay);
+					tenant.addOrSubCash(-ammountToPay);
 					this.owner.addOrSubCash(ammountToPay);
 				}
 				catch (PlayerException e)

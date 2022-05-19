@@ -6,24 +6,23 @@ import java.nio.file.Path;
 
 public class Board {
 	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
-	public Board()
-	{	
-		try
-		{
+	public Board() {	
+		try {
 			String content = Files.readString(Path.of("./Board.json"));
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonBoard = obj.getJSONArray("board");
             
-            for (Object jsonTile: jsonBoard) {
-            	JSONObject jsonTileObj = (JSONObject)jsonTile;
-            	String type = jsonTileObj.getString("type");
+            for (Object jsonTileObj: jsonBoard) {
+            	JSONObject jsonTile = (JSONObject)jsonTileObj;
+            	String type = jsonTile.getString("type");
+            
             	if(type.equals("Land"))
             	{  		
-            		String description = jsonTileObj.getString("description");
-            		int price = jsonTileObj.getInt("price");
-            		int buildHouseCost = jsonTileObj.getInt("buildHouseCost");
-            		int buildHotelCost = jsonTileObj.getInt("buildHotelCost");
-            		JSONArray jsonRentCost = jsonTileObj.getJSONArray("rentCost");
+            		String description = jsonTile.getString("description");
+            		int price = jsonTile.getInt("price");
+            		int buildHouseCost = jsonTile.getInt("buildHouseCost");
+            		int buildHotelCost = jsonTile.getInt("buildHotelCost");
+            		JSONArray jsonRentCost = jsonTile.getJSONArray("rentCost");
             		int rentCost[] = new int[6];
             		for(int i = 0; i < 6; i++)
             		{
@@ -33,9 +32,9 @@ public class Board {
             	}
             	else if(type.equals("Company"))
             	{
-            		String description = jsonTileObj.getString("description");
-            		int price = jsonTileObj.getInt("price");
-            		int priceRate = jsonTileObj.getInt("priceRate");
+            		String description = jsonTile.getString("description");
+            		int price = jsonTile.getInt("price");
+            		int priceRate = jsonTile.getInt("priceRate");
             		tiles.add(new Company(description, price, priceRate));
             	}
             	else if(type.equals("Prision"))
@@ -48,7 +47,7 @@ public class Board {
             	}
             	else if(type.equals("Money"))
             	{
-            		int ammount = jsonTileObj.getInt("ammount");
+            		int ammount = jsonTile.getInt("ammount");
             		tiles.add(new Money(ammount));
             	}
             	else if(type.equals("FreeStop"))
@@ -65,8 +64,7 @@ public class Board {
             	} 
             }
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			System.out.println("Failed to read Board.json");
 			System.out.println(e.getMessage());
 		}	
@@ -74,13 +72,12 @@ public class Board {
 	public int getLength() {
 		return tiles.size();
 	}
-	Tile getTile(int i){
+	Tile getTile(int i) {
 		return tiles.get(i);
 	}
 	void printAllTiles() {
-		for(int i = 0; i < 40; i++)
-		{
-			tiles.get(i).print();
+		for(Tile tile: tiles) {
+			tile.print();
 		}
 	}
 }
