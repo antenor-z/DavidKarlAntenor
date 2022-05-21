@@ -11,9 +11,9 @@ public class LuckSetback extends Tile {
 	private Deck deck;
 	OutOfJailCard outOfJailCard = null;
 	ArrayList<Player> playersList;
-	public LuckSetback(ArrayList<Player> playersList) throws DeckException
+	public LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
 	{
-		deck = new Deck("./Deck.json");
+		this.deck = deck;
 		this.playersList = playersList;
 	}
 	void print(){
