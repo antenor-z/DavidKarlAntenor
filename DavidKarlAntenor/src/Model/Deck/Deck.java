@@ -81,7 +81,7 @@ public class Deck {
         }
     }
     
-    OutOfJailCard getOutOfJailCard() {
+    public OutOfJailCard getOutOfJailCard() {
     	return outOfJailCard;
     }
 }
