@@ -8,29 +8,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class PlayerTest {
-
-	/*
-		---------------------------------------------------------------------
-		|Player - TestClass - ChangeCash													
-		|Testing the player's balance:										
-		|Testcases-> Player's balance equal to 4000.									
-		|			 Player's balance equal to 3000.
-		|			 Player's balance is positive						
-		---------------------------------------------------------------------
-	*/
-		/*
-		---------------------------------------------------------------------
-		|Player - TestClass - Balance													
-		|Testing the player's balance:										
-		|								
-		|			 Player's balance is not an integer.						
-		---------------------------------------------------------------------
-	*/
 	@Test
 	public void testChangeCash() throws PlayerException{
-		Board b = new Board();
 		int balance = GameSettings.getInstance().getStartingBalance();
-		Player p = new Player(balance, b, PlayerColor.Red);
+		Player p = new Player(balance, 40, PlayerColor.Red);
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -52,27 +33,37 @@ public class PlayerTest {
 		{
 			
 		}
-		
+		p.addOrSubCash(5000);
+		assertEquals("Player's balance needs to be 5000", p.getCash(), 5000);	
+		p.addOrSubCash(-100);
+		assertEquals("Player's balance needs to be 4900", p.getCash(), 4900);
 	}	
 	
 	@Test
 	public void testAdvance() {
 		Board b = new Board();
-		Player p = new Player(4000, b, PlayerColor.Purple);
-		assertTrue("You can advance positive", p.goFoward(3));
+		Player p = new Player(4000, 40, PlayerColor.Purple);
+		try
+		{
+			p.goFoward(3);
+		} catch(PlayerException p1) {fail("You should be able to advance 3");};
 		assertEquals("Position 3", p.getCurrentTile(), 3);
-		
-		assertFalse("You can't advance positive", p.goFoward(-3));
-		assertEquals("Position 3", p.getCurrentTile(), 3);
-		
-		assertTrue("You can advance positive", p.goFoward(7));
-		assertEquals("The game must be at position 10 now", p.getCurrentTile(), 10);
-		
-		assertTrue("You can advance positive", p.goFoward(31));
-		assertEquals("The position must roll back to 1", p.getCurrentTile(), 1);
-		
-		p.goToTile(19);
-		assertEquals("Position 19", p.getCurrentTile(), 19);
+		try
+		{
+			p.goFoward(3);
+			
+		} catch(PlayerException p2) {fail("You should be able to advance 3");};
+		assertEquals("Position 6", p.getCurrentTile(), 6);
+		try
+		{
+			p.goFoward(-3);
+			fail("You cannot go back 3");
+		} catch(PlayerException p2) {};
+		assertEquals("Position 6", p.getCurrentTile(), 6);
+		try
+		{
+			p.goFoward(41);
+		} catch(PlayerException p2) {fail("We should be at position 7");};
+		assertEquals("Position 7", p.getCurrentTile(), 7);		
 	}
-
 }
