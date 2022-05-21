@@ -69,7 +69,7 @@ public class Menu extends MyFrame {
 		int color = 0, positionX, positionY;
 		final int startX = 80;
 		final int startY = 80;
-		final int sizeX = 70;
+		final int sizeX = 80;
 		final int sizeY = 20;
 		final int spacingX = 120;
 		final int spacingY = 70;
