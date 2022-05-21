@@ -26,7 +26,8 @@ public class GameBoardPanel extends JPanel {
     public GameBoardPanel() throws PlayerException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
-		Board b = new Board();
+		ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player p1 = new Player(4000, 40,PlayerColor.Blue);
 		Player p2 = new Player(4000, 40,PlayerColor.Red);
 		Player p3 = new Player(4000, 40,PlayerColor.Orange);

@@ -8,9 +8,8 @@ import java.util.List;
 
 public class GameState {
     static GameState instance;
-
-    public List<Player> players = new ArrayList<Player>();
-    public Board board = new Board();
+    public ArrayList<Player> players = new ArrayList<Player>();
+    public Board board = new Board(players);
     public Player turn = null;
     public Float duration = 0.f;
 

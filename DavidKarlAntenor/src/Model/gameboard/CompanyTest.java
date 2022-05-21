@@ -2,6 +2,9 @@ package Model.gameboard;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 import Model.PlayerColor;
@@ -11,7 +14,8 @@ public class CompanyTest {
 
 	@Test
 	public void testBuyCompany() throws CompanyException {
-		Board b = new Board();
+	    ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue);
 		Player orange = new Player(4000, 40, PlayerColor.Orange);
 		assertTrue("Position 5 not company", b.getTile(5) instanceof Company);
@@ -31,7 +35,8 @@ public class CompanyTest {
 	}
 	@Test
 	public void testPayRent() throws CompanyException {
-		Board b = new Board();
+		ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue);
 		Player orange = new Player(4000, 40, PlayerColor.Orange);
 		Company c = (Company)b.getTile(5);

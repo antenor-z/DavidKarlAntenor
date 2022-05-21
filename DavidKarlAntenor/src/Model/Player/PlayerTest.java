@@ -5,6 +5,9 @@ import Model.PlayerColor;
 import Model.gameboard.Board;
 import Model.GameSettings;
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 public class PlayerTest {
@@ -41,7 +44,8 @@ public class PlayerTest {
 	
 	@Test
 	public void testAdvance() {
-		Board b = new Board();
+		ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player p = new Player(4000, 40, PlayerColor.Purple);
 		try
 		{

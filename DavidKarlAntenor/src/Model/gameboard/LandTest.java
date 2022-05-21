@@ -1,6 +1,9 @@
 package Model.gameboard;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import Model.PlayerColor;
@@ -10,7 +13,8 @@ import Model.Player.PlayerException;
 public class LandTest{
   @Test
 	public void testBuyLand() throws LandException {
-		Board b = new Board();
+	  	ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue);
 		Player orange = new Player(4000, 40, PlayerColor.Orange);
 		assertTrue("Position 6 not buyable land", b.getTile(6) instanceof Land);
@@ -28,7 +32,8 @@ public class LandTest{
 	}
   @Test 
 	public void testRent() throws LandException, PlayerException {
-		Board b = new Board();
+	  	ArrayList<Player> players = new ArrayList<Player>();
+		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue);
 		Player orange = new Player(4000, 40, PlayerColor.Orange);
 		Land fariaLima = (Land) b.getTile(6);//Rent = 20 - 1 House = 100 - 2 House = 300 - 3 House = 750 - 4 House = 925 - Hotel = 1100

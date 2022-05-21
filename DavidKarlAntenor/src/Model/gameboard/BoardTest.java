@@ -2,13 +2,18 @@ package Model.gameboard;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
+
+import Model.Player.Player;
 
 public class BoardTest {
 
 	@Test
 	public void test() {
-		Board board = new Board();
+		ArrayList<Player> players = new ArrayList<Player>();
+		Board board = new Board(players);
 		board.printAllTiles();
 		assertTrue("0 != Start", board.getTile(0) instanceof Start);
 		assertTrue("1 != Land", board.getTile(1) instanceof Land);
