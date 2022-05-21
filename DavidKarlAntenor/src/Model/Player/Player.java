@@ -8,21 +8,24 @@ public class Player {
 	private int cash;
 	private int currentTile;
 	private final int boardSize;
-	Board board;
-	PlayerColor color;
-	public Player(int cash, Board board, PlayerColor color) {
+	private PlayerColor color;
+	public Player(int cash, int boardSize, PlayerColor color)
+	{
 		this.cash = cash;
-		this.board = board;
 		this.currentTile = 0;
-		this.boardSize = board.getLength();
+		this.boardSize = boardSize;
 		this.color = color;
 	}
-	public boolean goFoward(int n){
-		if(n <= 0) {
-			return false;
+	public void goFoward(int n) throws PlayerException 
+	{
+		if(n <= 0) 
+		{
+			throw new PlayerException("Can't go backwards");
 		}
-		currentTile = (currentTile + n) % boardSize;
-		return true;
+		else
+		{
+			currentTile = (currentTile + n) % boardSize;
+		}
 	}
 	
 	public int getCash()
@@ -30,7 +33,8 @@ public class Player {
 		return cash;
 	}
 
-	public void addOrSubCash(int ammount) throws PlayerException {
+	public void addOrSubCash(int ammount) throws PlayerException
+	{
 		if(cash + ammount >= 0)
 		{
 			cash += ammount;
@@ -41,15 +45,18 @@ public class Player {
 		}
 	}
 	
-	public int getCurrentTile() {
+	public int getCurrentTile()
+	{
 		return currentTile;
 	}
 	
-	public PlayerColor getColor() {
+	public PlayerColor getColor()
+	{
 		return color;
 	}
 	
-	public void goToTile(int tile) {
+	public void goToTile(int tile)
+	{
 		currentTile = tile;
 	}
 }
