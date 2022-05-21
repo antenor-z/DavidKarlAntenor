@@ -1,6 +1,7 @@
 package Model.gameboard;
 import org.json.*;
 
+import Model.Deck.Deck;
 import Model.Player.Player;
 
 import java.util.ArrayList;
@@ -9,7 +10,16 @@ import java.nio.file.Path;
 
 public class Board {
 	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
+	private Deck deck;
+	
 	public Board(ArrayList<Player> playerList) {	
+		try {
+			deck = new Deck("./Deck.json");
+		}
+		catch (Exception ex){
+			System.out.println(ex.getMessage());
+		}
+		
 		try {
 			String content = Files.readString(Path.of("./Board.json"));
 			JSONObject obj = new JSONObject(content);
@@ -46,7 +56,7 @@ public class Board {
             	}
             	else if(type.equals("LuckSetback"))
             	{
-            		tiles.add(new LuckSetback(playerList));
+            		tiles.add(new LuckSetback(playerList, deck));
             	}
             	else if(type.equals("Money"))
             	{
