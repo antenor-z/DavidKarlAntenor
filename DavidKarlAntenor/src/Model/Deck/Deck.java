@@ -14,6 +14,7 @@ import java.util.Random;
 public class Deck {
     private final List<ICard> cards = new ArrayList<ICard>();
     private final Random rand = new Random();
+    private OutOfJailCard outOfJailCard;
 
     public Deck(String jsonPath) throws DeckException {
         this._initialiseCardArray(jsonPath);
@@ -70,11 +71,17 @@ public class Deck {
             throw new DeckException();
         }
         switch (type) {
-            case VALUE -> cards.add(new ValueCard(description, name, value));
-            case GO_TO_JAIL -> cards.add(new GoToJailCard(description, name));
-            case OUT_OF_JAIL -> cards.add(new OutOfJailCard(description, name));
-            case VALUE_PER_PLAYER -> cards.add(new ValuePerPlayer(description, name, value));
-            case MOVE -> cards.add(new MoveCard(description, name, value));
+            case VALUE : cards.add(new ValueCard(description, name, value));
+            case GO_TO_JAIL : cards.add(new GoToJailCard(description, name));
+            case OUT_OF_JAIL :
+            	outOfJailCard = new OutOfJailCard(description, name);
+            	cards.add(outOfJailCard); 
+            case VALUE_PER_PLAYER : cards.add(new ValuePerPlayer(description, name, value));
+            case MOVE : cards.add(new MoveCard(description, name, value));
         }
+    }
+    
+    OutOfJailCard getOutOfJailCard() {
+    	return outOfJailCard;
     }
 }
