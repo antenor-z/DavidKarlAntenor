@@ -32,7 +32,8 @@ public class GameState {
     			}
     		}
     		int balance = GameSettings.getInstance().getStartingBalance();
-    		players.add(new Player(balance, board, color));
+    		int boardSize = GameSettings.getInstance().getBoardSize();
+    		players.add(new Player(balance, boardSize, color));
     	}
     	throw new GameException("Max numbers of players is 6");
     }
