@@ -12,23 +12,32 @@ public class Land extends Tile {
 	private boolean hasHotel;
 	private int[] rentCost = new int[6];
 	private Player owner;
-	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost) {
+	
+	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
+	{
 		this.description = description;
 		this.price = price;
 		this.buildHouseCost = buildHouseCost;
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;	
 	}
-	public void buyLand(Player player) throws LandException {
+	public void buyLand(Player player) throws LandException
+	{
 		if(this.owner == null)
+		{
 			owner = player;
+		}
 		else
+		{
 			throw new LandException("Land already has a owner: " 
 		+ player.getColor());
+		}
 	}
 	
-	public void buildHouse() throws PlayerException, LandException {
-		if(this.owner != null) {		
+	public void buildHouse() throws PlayerException, LandException
+	{
+		if(this.owner != null)
+		{		
 			if(numberOfHouses <= 3)
 			{
 				owner.addOrSubCash(-buildHouseCost);
