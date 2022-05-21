@@ -1,6 +1,7 @@
 package View.Gameboard;
 
 import Model.GameSettings;
+import Model.Player.PlayerException;
 import View.MyPanel;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ public class GamePanel extends MyPanel {
     GameBoardPanel gameBoardPanel = null;
     GameControlPanel gameControlPanel = null;
 
-    public GamePanel(CardLayout cl, JPanel panelCont, ActionListener controller) {
+    public GamePanel(CardLayout cl, JPanel panelCont, ActionListener controller) throws PlayerException {
         super(cl, panelCont, controller);
         gameControlPanel = new GameControlPanel(cl, panelCont, controller);
         gameBoardPanel = new GameBoardPanel();

@@ -3,6 +3,7 @@ package View.Gameboard;
 import Model.GameSettings;
 import Model.PlayerColor;
 import Model.Player.Player;
+import Model.Player.PlayerException;
 import Model.gameboard.Board;
 import View.Exception.ViewException;
 
@@ -22,13 +23,13 @@ import org.json.JSONObject;
 public class GameBoardPanel extends JPanel {
 	ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
-    public GameBoardPanel() {
+    public GameBoardPanel() throws PlayerException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
 		Board b = new Board();
-		Player p1 = new Player(4000, b,PlayerColor.Blue);
-		Player p2 = new Player(4000, b,PlayerColor.Red);
-		Player p3 = new Player(4000, b,PlayerColor.Orange);
+		Player p1 = new Player(4000, 40,PlayerColor.Blue);
+		Player p2 = new Player(4000, 40,PlayerColor.Red);
+		Player p3 = new Player(4000, 40,PlayerColor.Orange);
 		p1.goFoward(23);
 		p3.goFoward(39);
 		playersList.add(p1);

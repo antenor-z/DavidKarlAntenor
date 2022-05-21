@@ -2,7 +2,10 @@ package View;
 
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
+import Model.Player.PlayerException;
 import View.Exception.ViewException;
+
+import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,7 +15,7 @@ public class GameFrameManager implements ActionListener {
     private final List<MyFrame> frames = new ArrayList<MyFrame>();
     private final MyFrame currentFrame = null;
 
-    public GameFrameManager() {
+    public GameFrameManager() throws HeadlessException, PlayerException {
         MyFrame menu = new Menu(this);
         MyFrame game = new GameFrame(this);
 
