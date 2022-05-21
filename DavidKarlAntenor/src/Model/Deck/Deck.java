@@ -24,9 +24,7 @@ public class Deck {
     public ICard withdraw() {
         int randomPick = rand.nextInt(cards.size());
         ICard pickedCard = cards.get(randomPick);
-        if(pickedCard instanceof OutOfJailCard) {
-        	cards.remove(pickedCard);
-        }
+        
         return pickedCard;
     }
 

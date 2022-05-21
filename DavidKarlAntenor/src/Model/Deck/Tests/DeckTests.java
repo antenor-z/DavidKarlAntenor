@@ -32,25 +32,6 @@ public class DeckTests {
     }
 
     @Test
-    public void testWithdraw() {
-        try {
-        	deck = new Deck(jsonPath);
-            Integer initialDeckSize = deck.size();
-            ICard pickedCard = deck.withdraw();
-            Integer afterDeckSize = deck.size();
-
-            if (pickedCard == null) {
-                fail("Null card has been withdrawn.");
-            }
-            if (!(initialDeckSize == afterDeckSize + 1)) {
-                fail("After withdraw(), the deck size have not been decremented.");
-            }
-        } catch (Exception ex) {
-            fail(ex.getMessage());
-        }
-    }
-
-    @Test
     public void testAddCard() {
         try {
         	deck = new Deck(jsonPath);

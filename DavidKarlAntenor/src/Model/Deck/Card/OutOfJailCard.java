@@ -1,5 +1,7 @@
 package Model.Deck.Card;
 
+import Model.Deck.Exception.DeckException;
+
 public class OutOfJailCard extends ACard implements IKeptable {
 	private Model.Player.Player owner;
     public OutOfJailCard(String description, String name) {
@@ -13,7 +15,15 @@ public class OutOfJailCard extends ACard implements IKeptable {
     public Model.Player.Player getOwner() {
     	return owner;
     }
-    public void use() {
-    	owner = null;
+    public void use(Model.Player.Player p) throws DeckException {
+    	if(p == owner) 
+    	{
+    		owner = null;
+    	}
+    	else
+    	{
+    		throw new DeckException("OutofJailCard owner: " + owner.getColor() 
+    		+ " player trying to use" + p.getColor());
+    	}
     }
 }
