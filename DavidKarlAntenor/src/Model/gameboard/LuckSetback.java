@@ -15,11 +15,12 @@ public class LuckSetback extends Tile {
 	{
 		this.deck = deck;
 		this.playersList = playersList;
+		this.outOfJailCard = deck.getOutOfJailCard();
 	}
 	void print(){
 		System.out.println("I'm a Lucksetback tile");
 	}
-	void pickCard(Player p) throws PlayerException {
+	void pickCard(Player p) throws PlayerException, DeckException {
 		ICard card = deck.withdraw();
 		
 		if(card instanceof ValueCard) {
@@ -42,10 +43,23 @@ public class LuckSetback extends Tile {
 		}
 		if(card instanceof GoToJailCard) {
 			GoToJailCard c = (GoToJailCard)card;
-			// TODO
+			if(outOfJailCard.getOwner() == p)
+			{
+				outOfJailCard.use(p);
+			}
+			else
+			{
+				p.goToTile(10);
+			}
 		}
 		if(card instanceof OutOfJailCard) {
-			// TODO
+			if(outOfJailCard.getOwner() != null) {
+				outOfJailCard.pick(p);
+			}
+			else
+			{
+				pickCard(p);
+			}
 		}
 	}
 }
