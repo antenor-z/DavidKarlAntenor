@@ -9,8 +9,16 @@ public class OutOfJailCard extends ACard implements IKeptable {
         _type = CardType.OUT_OF_JAIL;
         owner = null;
     }
-    public void pick(Model.Player.Player p) {
-    	owner = p;
+    public void pick(Model.Player.Player p) throws DeckException {
+    	if(owner == null) 
+    	{
+    		owner = p;
+    	}
+    	else
+    	{
+    		throw new DeckException("OutofJailCard owner: " + owner.getColor() 
+    		+ " player trying to pick" + p.getColor());
+    	}
     }
     public Model.Player.Player getOwner() {
     	return owner;
