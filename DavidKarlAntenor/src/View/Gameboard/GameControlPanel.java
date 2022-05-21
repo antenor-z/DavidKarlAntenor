@@ -20,7 +20,11 @@ public class GameControlPanel extends MyPanel {
     JPanel buttons = new JPanel(new GridBagLayout());
     JButton btnThrowDice = new JButton("Throw dice");
     JButton pauseButton = new JButton("Pause");
-    JButton quiteButton = new JButton("Quit");
+    JButton quitButton = new JButton("Quit");
+    // These buttons change name depending of the current player
+    // Action 1 may be, for example, buy house or buy company
+    JButton action1 = new JButton("Action 1");
+    JButton action2 = new JButton("Action 2");
 
     private int dice1Value = 1, dice2Value = 1;
 
@@ -42,7 +46,9 @@ public class GameControlPanel extends MyPanel {
         buttons.setBackground(Color.BLACK);
         buttons.add(btnThrowDice);
         buttons.add(pauseButton);
-        buttons.add(quiteButton);
+        buttons.add(quitButton);
+        buttons.add(action1);
+        buttons.add(action2);
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.BOTH;
@@ -94,7 +100,7 @@ public class GameControlPanel extends MyPanel {
     }
 
     private void _setQuiteButtonEvent() {
-        quiteButton.addActionListener(new ActionListener() {
+        quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 _controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.START_MENU));
