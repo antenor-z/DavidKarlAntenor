@@ -48,6 +48,7 @@ public class GameState {
     			}
     		}
     		turnN = (turnN + 1) % players.size();
+    		turn = players.get(turnN);
     	}
     }
 }
