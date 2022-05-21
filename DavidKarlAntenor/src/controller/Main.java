@@ -1,3 +1,4 @@
+package controller;
 import View.GameFrameManager;
 import javax.swing.*;
 
