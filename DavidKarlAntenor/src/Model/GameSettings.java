@@ -10,7 +10,7 @@ public class GameSettings {
     private Integer nbDices = 2;
     private Integer getMaxWidth = 1200;
     private Integer getMaxHeight = 700;
-
+    private Integer boardSize = 40;
     public GameSettings() {
     }
 
@@ -47,5 +47,9 @@ public class GameSettings {
 
     public Integer getGetMaxHeight() {
         return getMaxHeight;
+    }
+    
+    public Integer getBoardSize() {
+        return boardSize;
     }
 }
