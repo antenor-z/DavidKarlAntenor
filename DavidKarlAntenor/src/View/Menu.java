@@ -1,11 +1,16 @@
 package View;
+import Model.GameException;
+import Model.GameSettings;
+import Model.GameState;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
+import Model.Player.Player;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -178,6 +183,15 @@ public class Menu extends MyFrame {
 				}
 			}
 			System.out.print(playersName);
+			GameState gameState = GameState.getInstance();
+			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
+			{
+				try {
+					gameState.addPlayer(player.getValue(), player.getKey());
+				} catch (GameException e1) {
+					e1.printStackTrace();
+				}
+			}
 			_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 		}
 	}

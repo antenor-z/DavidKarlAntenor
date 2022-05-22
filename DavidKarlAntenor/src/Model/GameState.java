@@ -34,7 +34,10 @@ public class GameState {
     		int boardSize = GameSettings.getInstance().getBoardSize();
     		players.add(new Player(balance, boardSize, color));
     	}
-    	throw new GameException("Max numbers of players is 6");
+    	else
+    	{
+    		throw new GameException("Max numbers of players is 6");
+    	}
     }
     
     public void nextPlayer() {
