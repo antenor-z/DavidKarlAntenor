@@ -28,6 +28,10 @@ public class Deck {
         
         return pickedCard;
     }
+    
+    public List<ICard> getCards() {
+    	return cards;
+    }
 
     public void add(ICard card) {
         if (card != null) {
@@ -71,13 +75,22 @@ public class Deck {
             throw new DeckException();
         }
         switch (type) {
-            case VALUE : cards.add(new ValueCard(description, name, value));
-            case GO_TO_JAIL : cards.add(new GoToJailCard(description, name));
+            case VALUE :
+            	cards.add(new ValueCard(description, name, value));
+            	break;
+            case GO_TO_JAIL :
+            	cards.add(new GoToJailCard(description, name));
+            	break;
             case OUT_OF_JAIL :
             	outOfJailCard = new OutOfJailCard(description, name);
             	cards.add(outOfJailCard); 
-            case VALUE_PER_PLAYER : cards.add(new ValuePerPlayer(description, name, value));
-            case MOVE : cards.add(new MoveCard(description, name, value));
+            	break;
+            case VALUE_PER_PLAYER :
+            	cards.add(new ValuePerPlayer(description, name, value));
+            	break;
+            case MOVE :
+            	cards.add(new MoveCard(description, name, value));
+            	break;
         }
     }
     

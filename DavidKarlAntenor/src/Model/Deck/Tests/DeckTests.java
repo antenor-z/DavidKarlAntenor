@@ -1,6 +1,7 @@
 package Model.Deck.Tests;
 
 import Model.Deck.Card.ICard;
+import Model.Deck.Card.ValueCard;
 import Model.Deck.Deck;
 import Model.Deck.Exception.DeckException;
 import org.junit.Test;
@@ -47,5 +48,22 @@ public class DeckTests {
         } catch (Exception ex) {
             fail(ex.getMessage());
         }
+    }
+    
+    @Test
+    public void showCards() {
+    	try {
+			deck = new Deck(jsonPath);
+			for (ICard card: deck.getCards()) {
+				System.out.print(card.getName());
+				System.out.print(card.getDescription());
+				if(card instanceof ValueCard) {
+					System.out.print(((ValueCard) card).getValue());
+				}
+				System.out.println();
+			}
+		} catch (DeckException e) {
+			fail(e.getMessage());
+		}
     }
 }
