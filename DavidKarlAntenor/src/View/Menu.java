@@ -182,7 +182,6 @@ public class Menu extends MyFrame {
 					playersName.put(pc, name);
 				}
 			}
-			System.out.print(playersName);
 			GameState gameState = GameState.getInstance();
 			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
 			{
