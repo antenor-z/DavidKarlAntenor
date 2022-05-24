@@ -21,7 +21,7 @@ public class GameState {
     }
 
     public void dump() {
-    	String s = "----- Game state debug start -----";
+    	String s = "----- Game state debug start -----\n";
     	for(Player player: players) {
     		if(turn == player) {
     			s += "CURRENT PLAYER BELLOW:\n";
