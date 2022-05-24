@@ -20,6 +20,17 @@ public class GameState {
 
     }
 
+    public void dump() {
+    	String s = "----- Game state debug start -----";
+    	for(Player player: players) {
+    		if(turn == player) {
+    			s += "CURRENT PLAYER BELLOW:\n";
+    		}
+    		s += player.dump();
+    	}
+    	s += "----- Game state debug end -----\n";
+    	System.out.println(s);
+    }
     public static GameState getInstance() {
         if (instance == null) {
             instance = new GameState();

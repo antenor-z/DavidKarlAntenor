@@ -65,4 +65,11 @@ public class Player {
 	public String getName() {
 		return name;
 	}
+	public String dump() {
+		String s = "Player: " + getName() + "\n";
+		s += "  Color: " + getColor() + "\n";
+		s += "  @Tile: " + currentTile + "\n";
+		s += "  Balance: " + cash + "\n";
+		return s;
+	}
 }

@@ -114,8 +114,6 @@ public class GameControlPanel extends MyPanel {
     	if(dice1Value == 0 || dice2Value == 0) return;
         String str1 = "./img/dados/die_face_" + dice1Value + ".png";
         String str2 = "./img/dados/die_face_" + dice2Value + ".png";
-        System.out.println(str1);
-        System.out.println(str2);
         Image imgDice1 = null;
         Image imgDice2 = null;
         try {
