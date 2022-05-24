@@ -2,11 +2,13 @@ package Model.gameboard;
 
 import Model.Player.Player;
 import Model.Player.PlayerException;
-
+import Model.TileType;
 public class Money extends Tile {
 	private int ammount;
+
 	public Money (int ammount)
 	{
+		super(TileType.Money);
 		this.ammount = ammount;
 	}
 	public void execute(Player player) {

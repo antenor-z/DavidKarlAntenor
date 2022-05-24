@@ -5,6 +5,7 @@ import Model.Event.ViewType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 import Model.GameSettings;
+import Model.PlayerColor;
 import View.MyPanel;
 
 import javax.imageio.ImageIO;
@@ -25,8 +26,8 @@ public class GameControlPanel extends MyPanel {
     JButton quitButton = new JButton("Quit");
     // These buttons change name depending of the current player
     // Action 1 may be, for example, buy house or buy company
-    JButton action1 = new JButton("Action 1");
-    JButton action2 = new JButton("Action 2");
+    public JButton action1 = new JButton("Action 1");
+    public JButton action2 = new JButton("Action 2");
     Model.GameState gameState = Model.GameState.getInstance();
 
     public int dice1Value = 0;
@@ -55,6 +56,8 @@ public class GameControlPanel extends MyPanel {
         buttons.add(quitButton);
         buttons.add(action1);
         buttons.add(action2);
+        action1.setVisible(false);
+        action2.setVisible(false);
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.fill = GridBagConstraints.BOTH;
@@ -73,9 +76,29 @@ public class GameControlPanel extends MyPanel {
         }
         g.drawImage(i, 0, 400, null);
     }
-    
+    private Color toJavaColor (PlayerColor c) {
+    	switch (c) {
+			case Blue: {return Color.blue;}
+			case Red: {return Color.red;}
+			case Orange: {return Color.orange;}
+			case Yellow: {return Color.yellow;}
+			case Gray: {return Color.gray;}
+			case Purple: {return Color.pink;}
+			default: {return Color.black;}
+    	}
+    }
     private void _drawPlayersStatus(Graphics g) {
+    	g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 20));
     	int positionY = 150;
+    	if(gameState.turn == null) {
+    		g.drawString("Turn: ---", 300, positionY);
+    	} else {
+	    	g.setColor(toJavaColor(gameState.turn.getColor()));
+	    	String t = "Turn: " + gameState.turn.getName() + " (" + gameState.turn.getColor() + ")";
+	    	g.drawString(t, 300, positionY);
+	    	g.setColor(Color.black);
+    	}
+    	positionY += 40;
     	for(Player p: gameState.players) {
     		// drawString doesn't handle \n so we have to do manually
     		g.drawString("Name: " + p.getName(), 300, positionY);

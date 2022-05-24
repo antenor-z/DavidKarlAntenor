@@ -1,5 +1,5 @@
 package Model.gameboard;
-
+import Model.TileType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 
@@ -12,9 +12,10 @@ public class Land extends Tile {
 	private boolean hasHotel;
 	private int[] rentCost = new int[6];
 	private Player owner;
-	
+
 	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
 	{
+		super(TileType.Land);
 		this.description = description;
 		this.price = price;
 		this.buildHouseCost = buildHouseCost;

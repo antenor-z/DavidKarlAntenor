@@ -41,7 +41,8 @@ public class Board {
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
-            		tiles.add(new Land(description, price, buildHouseCost, buildHotelCost, rentCost));
+            		tiles.add(new Land(description, price, buildHouseCost, 
+            				buildHotelCost, rentCost));
             	}
             	else if(type.equals("Company"))
             	{
@@ -85,7 +86,7 @@ public class Board {
 	public int getLength() {
 		return tiles.size();
 	}
-	Tile getTile(int i) {
+	public Tile getTile(int i) {
 		return tiles.get(i);
 	}
 	void printAllTiles() {

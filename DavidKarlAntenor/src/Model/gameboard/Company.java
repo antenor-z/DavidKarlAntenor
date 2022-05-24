@@ -1,5 +1,6 @@
 package Model.gameboard;
 
+import Model.TileType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 
@@ -10,6 +11,7 @@ public class Company extends Tile {
 	private String description;
 	public Company(String description, int price, int priceRate)
 	{
+		super(TileType.Company);
 		this.description = description;
 		this.price = price;
 		this.priceRate = priceRate;

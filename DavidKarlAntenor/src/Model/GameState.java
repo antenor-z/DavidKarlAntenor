@@ -2,6 +2,7 @@ package Model;
 
 import Model.Player.Player;
 import Model.gameboard.Board;
+import Model.gameboard.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,5 +61,9 @@ public class GameState {
 	public int[] throwDice() {
 		dices = Dice.roll();
 		return dices;
+	}
+	
+	public Tile getTile() {
+		return board.getTile(turn.getCurrentTile());
 	}
 }

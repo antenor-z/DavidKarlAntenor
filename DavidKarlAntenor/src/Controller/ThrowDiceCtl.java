@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import Model.GameState;
+import Model.TileType;
+import Model.gameboard.Tile;
 import View.MyPanel;
 import View.Gameboard.GameBoardPanel;
 import View.Gameboard.GameControlPanel;
@@ -25,6 +27,14 @@ public class ThrowDiceCtl implements ActionListener{
         gamePanel.gameControlPanel.dice2Value = dices[1];
         try {gameState.turn.goFoward(dices[0] + dices[1]);}
         catch (Exception e2) {System.out.println(e2.getMessage());}
+        Tile curentTile = gameState.getTile();
+        switch(curentTile.tileType) {
+        	case Land:
+        		System.out.println("Land");
+        		// TODO
+			default:
+				break;
+        }
         gamePanel.repaint();
 	}
 

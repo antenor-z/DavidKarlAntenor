@@ -2,8 +2,11 @@ package Model.gameboard;
 
 import Model.Player.Player;
 import Model.Player.PlayerException;
-
+import Model.TileType;
 public class Prision extends Tile {
+	public Prision() {
+		super(TileType.Prision);
+	}
 	void print(){
 		System.out.println("I'm a Prision tile");
 	}

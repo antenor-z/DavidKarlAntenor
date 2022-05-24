@@ -1,5 +1,6 @@
 package Model.gameboard;
 import Model.Deck.Card.*;
+import Model.TileType;
 
 import java.util.ArrayList;
 
@@ -11,8 +12,10 @@ public class LuckSetback extends Tile {
 	private Deck deck;
 	OutOfJailCard outOfJailCard = null;
 	ArrayList<Player> playersList;
+
 	public LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
 	{
+		super(TileType.LuckSetback);
 		this.deck = deck;
 		this.playersList = playersList;
 		this.outOfJailCard = deck.getOutOfJailCard();
