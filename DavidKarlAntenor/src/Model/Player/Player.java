@@ -9,12 +9,14 @@ public class Player {
 	private int currentTile;
 	private final int boardSize;
 	private PlayerColor color;
-	public Player(int cash, int boardSize, PlayerColor color)
+	private String name;
+	public Player(int cash, int boardSize, PlayerColor color, String name)
 	{
 		this.cash = cash;
 		this.currentTile = 0;
 		this.boardSize = boardSize;
 		this.color = color;
+		this.name = name;
 	}
 	public void goFoward(int n) throws PlayerException 
 	{
@@ -58,5 +60,9 @@ public class Player {
 	public void goToTile(int tile)
 	{
 		currentTile = tile;
+	}
+	
+	public String getName() {
+		return name;
 	}
 }

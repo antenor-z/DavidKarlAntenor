@@ -8,12 +8,15 @@ import java.util.List;
 
 public class GameState {
     static GameState instance;
+    GameSettings settings = GameSettings.getInstance();
     public ArrayList<Player> players = new ArrayList<Player>();
     public Board board = new Board(players);
     public Player turn = null;
     public Float duration = 0.f;
-
+    public int[] dices = new int[2];
+    
     private GameState() {
+
     }
 
     public static GameState getInstance() {
@@ -30,9 +33,8 @@ public class GameState {
     				throw new GameException("Color already used");
     			}
     		}
-    		int balance = GameSettings.getInstance().getStartingBalance();
-    		int boardSize = GameSettings.getInstance().getBoardSize();
-    		players.add(new Player(balance, boardSize, color));
+    		players.add(new Player(settings.getStartingBalance(), settings.getBoardSize(), 
+    				color, name));
     	}
     	else
     	{
@@ -54,4 +56,9 @@ public class GameState {
     		turn = players.get(turnN);
     	}
     }
+
+	public int[] throwDice() {
+		dices = Dice.roll();
+		return dices;
+	}
 }

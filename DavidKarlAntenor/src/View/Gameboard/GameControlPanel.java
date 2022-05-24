@@ -2,6 +2,8 @@ package View.Gameboard;
 
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
+import Model.Player.Player;
+import Model.Player.PlayerException;
 import Model.GameSettings;
 import View.MyPanel;
 
@@ -25,8 +27,11 @@ public class GameControlPanel extends MyPanel {
     // Action 1 may be, for example, buy house or buy company
     JButton action1 = new JButton("Action 1");
     JButton action2 = new JButton("Action 2");
+    Model.GameState gameState = Model.GameState.getInstance();
 
-    private int dice1Value = 1, dice2Value = 1;
+    public int dice1Value = 0;
+	public int dice2Value = 0;
+	String cardImgPath = "";
 
     public GameControlPanel(CardLayout cl, JPanel panelCont, ActionListener controller) {
         super(cl, panelCont, controller);
@@ -39,6 +44,7 @@ public class GameControlPanel extends MyPanel {
         super.paintComponent(g);
         _drawDices(g);
         _drawCard(g);
+        _drawPlayersStatus(g);
     }
 
     private void _initPanel() {
@@ -56,10 +62,10 @@ public class GameControlPanel extends MyPanel {
     }
 
     private void _drawCard(Graphics g) {
-        String str = "./img/sorteReves/chance" + 30 + ".png";
+        if (cardImgPath == "") return;
         Image i = null;
         try {
-            i=ImageIO.read(new File(str));
+            i=ImageIO.read(new File(cardImgPath));
         }
         catch(IOException e2) {
             System.out.println(e2.getMessage());
@@ -67,10 +73,26 @@ public class GameControlPanel extends MyPanel {
         }
         g.drawImage(i, 0, 400, null);
     }
+    
+    private void _drawPlayersStatus(Graphics g) {
+    	int positionY = 150;
+    	for(Player p: gameState.players) {
+    		// drawString doesn't handle \n so we have to do manually
+    		g.drawString("Name: " + p.getName(), 300, positionY);
+    		positionY += 20;
+    		g.drawString("Color: " + p.getColor(), 300, positionY);
+    		positionY += 20;
+    		g.drawString("Balance: " + p.getCash(), 300, positionY);
+    		positionY += 40;
+    	}
+    }
 
     private void _drawDices(Graphics g) {
+    	if(dice1Value == 0 || dice2Value == 0) return;
         String str1 = "./img/dados/die_face_" + dice1Value + ".png";
         String str2 = "./img/dados/die_face_" + dice2Value + ".png";
+        System.out.println(str1);
+        System.out.println(str2);
         Image imgDice1 = null;
         Image imgDice2 = null;
         try {
@@ -105,6 +127,5 @@ public class GameControlPanel extends MyPanel {
             public void actionPerformed(ActionEvent e) {
                 _controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.START_MENU));
             }
-        });
-    }
+        });}
 }

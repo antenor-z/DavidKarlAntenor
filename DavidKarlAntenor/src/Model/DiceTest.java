@@ -1,4 +1,4 @@
-package Model.Dice;
+package Model;
 
 import static org.junit.Assert.*;
 

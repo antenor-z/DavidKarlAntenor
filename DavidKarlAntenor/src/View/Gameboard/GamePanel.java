@@ -12,8 +12,8 @@ public class GamePanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
     GridBagConstraints gbc = new GridBagConstraints();
 
-    GameBoardPanel gameBoardPanel = null;
-    GameControlPanel gameControlPanel = null;
+    public GameBoardPanel gameBoardPanel = null;
+    public GameControlPanel gameControlPanel = null;
 
     public GamePanel(CardLayout cl, JPanel panelCont, ActionListener controller) throws PlayerException {
         super(cl, panelCont, controller);
@@ -21,7 +21,14 @@ public class GamePanel extends MyPanel {
         gameBoardPanel = new GameBoardPanel();
         _initFrame();
         _setLeftPanel();
-        _setRightPanel();
+        _setRightPanel(); 
+        _setThrowDiceEvent();
+    }
+    
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        gameBoardPanel.repaint();
+        gameControlPanel.repaint();
     }
 
     private void _setLeftPanel() {
@@ -43,5 +50,8 @@ public class GamePanel extends MyPanel {
         setLayout(new GridBagLayout());
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width) / 2 - getWidth() / 2,
                 (Toolkit.getDefaultToolkit().getScreenSize().height) / 2 - getHeight() / 2);
+    }
+    private void _setThrowDiceEvent() {
+    	gameControlPanel.btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this));
     }
 }

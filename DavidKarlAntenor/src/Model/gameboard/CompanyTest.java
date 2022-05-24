@@ -16,8 +16,8 @@ public class CompanyTest {
 	public void testBuyCompany() throws CompanyException {
 	    ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player blue = new Player(4000, 40, PlayerColor.Blue);
-		Player orange = new Player(4000, 40, PlayerColor.Orange);
+		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");
+		Player orange = new Player(4000, 40, PlayerColor.Orange, "orange");
 		assertTrue("Position 5 not company", b.getTile(5) instanceof Company);
 		Company c = (Company)b.getTile(5);
 		c.buyCompany(blue);
@@ -37,8 +37,8 @@ public class CompanyTest {
 	public void testPayRent() throws CompanyException {
 		ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player blue = new Player(4000, 40, PlayerColor.Blue);
-		Player orange = new Player(4000, 40, PlayerColor.Orange);
+		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");
+		Player orange = new Player(4000, 40, PlayerColor.Orange, "orange");
 		Company c = (Company)b.getTile(5);
 		c.buyCompany(orange);
 		c.payRent(blue, 4);
