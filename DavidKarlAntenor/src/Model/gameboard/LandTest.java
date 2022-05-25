@@ -12,7 +12,7 @@ import Model.Player.PlayerException;
 
 public class LandTest{
   @Test
-	public void testBuyLand() throws LandException {
+	public void testBuyLand() throws LandException, PlayerException {
 	  	ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");

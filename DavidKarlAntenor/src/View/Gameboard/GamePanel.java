@@ -23,6 +23,7 @@ public class GamePanel extends MyPanel {
         _setLeftPanel();
         _setRightPanel(); 
         _setThrowDiceEvent();
+        _setAction1Event();
     }
     
     protected void paintComponent(Graphics g) {
@@ -53,5 +54,8 @@ public class GamePanel extends MyPanel {
     }
     private void _setThrowDiceEvent() {
     	gameControlPanel.btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this));
+    }
+    private void _setAction1Event() {
+    	gameControlPanel.action1.addActionListener(new Controller.Action1Ctl(this));
     }
 }

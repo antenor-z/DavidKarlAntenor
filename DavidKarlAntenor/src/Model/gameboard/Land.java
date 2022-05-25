@@ -22,11 +22,13 @@ public class Land extends Tile {
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;	
 	}
-	public void buyLand(Player player) throws LandException
+
+	public void buyLand(Player player) throws LandException, PlayerException
 	{
 		if(this.owner == null)
 		{
 			owner = player;
+			owner.addOrSubCash(-price);
 		}
 		else
 		{
@@ -98,7 +100,7 @@ public class Land extends Tile {
 			throw new LandException("Land does not have a owner");
 		}
 	}
-	Player getOwner()
+	public Player getOwner()
 	{
 		return owner;
 	}

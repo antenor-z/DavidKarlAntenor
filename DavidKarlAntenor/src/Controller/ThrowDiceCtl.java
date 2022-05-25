@@ -32,7 +32,8 @@ public class ThrowDiceCtl implements ActionListener{
         switch(curentTile.tileType) {
         	case Land:
         		System.out.println("Land");
-        		// TODO
+        		gamePanel.gameControlPanel.action1.setText("Buy Land");
+        		gamePanel.gameControlPanel.action1.setVisible(true);
 			default:
 				break;
         }

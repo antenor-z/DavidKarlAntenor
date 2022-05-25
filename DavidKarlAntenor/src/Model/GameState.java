@@ -1,7 +1,10 @@
 package Model;
 
 import Model.Player.Player;
+import Model.Player.PlayerException;
 import Model.gameboard.Board;
+import Model.gameboard.Land;
+import Model.gameboard.LandException;
 import Model.gameboard.Tile;
 
 import java.util.ArrayList;
@@ -76,5 +79,23 @@ public class GameState {
 	
 	public Tile getTile() {
 		return board.getTile(turn.getCurrentTile());
+	}
+	
+	boolean canBuyLand() {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			if (land.getOwner() == null) return true;
+			return false;
+		}
+		return false;
+	}
+	
+	public void buyLand() throws LandException, PlayerException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			land.buyLand(turn);
+		}
 	}
 }
