@@ -109,6 +109,11 @@ public class GameControlPanel extends MyPanel {
     		positionY += 40;
     	}
     }
+    private void _drawTileInfo(Graphics g) {
+    	//gameState.getTileInfo();
+    	// TODO
+    	
+    }
 
     private void _drawDices(Graphics g) {
     	if(dice1Value == 0 || dice2Value == 0) return;

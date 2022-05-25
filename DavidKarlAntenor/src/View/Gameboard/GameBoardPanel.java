@@ -2,9 +2,11 @@ package View.Gameboard;
 
 import Model.GameSettings;
 import Model.PlayerColor;
+import Model.TileType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 import Model.gameboard.Board;
+import Model.gameboard.Tile;
 import View.Exception.ViewException;
 
 import java.awt.*;
@@ -23,10 +25,12 @@ import org.json.JSONObject;
 public class GameBoardPanel extends JPanel {
 	ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
+    Board board;
     public GameBoardPanel() throws PlayerException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
 		playersList = Model.GameState.getInstance().players;
+		board = Model.GameState.getInstance().board;
     }
 
 	public void paintComponent(Graphics g) {
@@ -142,6 +146,8 @@ public class GameBoardPanel extends JPanel {
 	public void drawPlayers(ArrayList<Player> playersList) {
     		this.playersList = playersList;
     	}
+	
+	
 	private void _drawPlayers(Graphics g) {
     	for (Player player: playersList) {
     		int color = player.getColor().ordinal();
@@ -150,7 +156,7 @@ public class GameBoardPanel extends JPanel {
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
     	
-    	/*//SHOW ALL
+    	//SHOW ALL
     	for (int i = 0; i < 40; i++) {
     		for(PlayerColor p: PlayerColor.values())
     		{
@@ -158,7 +164,6 @@ public class GameBoardPanel extends JPanel {
 	    		int y = getYposition(i, p);
 	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
     		}
-    	}*/
+    	}
     }
-	
 }
