@@ -156,7 +156,7 @@ public class GameBoardPanel extends JPanel {
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
     	
-    	//SHOW ALL
+    	/*//SHOW ALL
     	for (int i = 0; i < 40; i++) {
     		for(PlayerColor p: PlayerColor.values())
     		{
@@ -164,6 +164,6 @@ public class GameBoardPanel extends JPanel {
 	    		int y = getYposition(i, p);
 	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
     		}
-    	}
+    	}*/
     }
 }
