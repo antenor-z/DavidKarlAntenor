@@ -7,7 +7,7 @@ public class Tile {
 	public Tile(TileType tileType){
 		this.tileType = tileType;
 	}
-	void print() {
+	String print() {
 		
 	}
 }
