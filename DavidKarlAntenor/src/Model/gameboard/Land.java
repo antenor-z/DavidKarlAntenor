@@ -104,17 +104,18 @@ public class Land extends Tile {
 	{
 		return owner;
 	}
-	void print(){
-		System.out.println("I'm a land");
-		System.out.println("Description: " + description);
-		System.out.println("price: " + price);
-		System.out.println("Build house cost: " + buildHouseCost);
-		System.out.println("Build hotel cost: " + buildHotelCost);
-		System.out.println("Rent cost 0 houses: " + rentCost[0]);
-		System.out.println("Rent cost 1 houses: " + rentCost[1]);
-		System.out.println("Rent cost 2 houses: " + rentCost[2]);
-		System.out.println("Rent cost 3 houses: " + rentCost[3]);
-		System.out.println("Rent cost 4 houses: " + rentCost[4]);
-		System.out.println("Rent cost 5 houses: " + rentCost[5]);
+	String print(){
+		String s = "Land\n";
+		s += "Description: " + description + "\n";
+		s += "price: " + price);
+		s += "Build house cost: " + buildHouseCost + "\n";
+		s += "Build hotel cost: " + buildHotelCost + "\n";
+		s += "Rent cost 0 houses: " + rentCost[0] + "\n";
+		s += "Rent cost 1 houses: " + rentCost[1] + "\n";
+		s += "Rent cost 2 houses: " + rentCost[2] + "\n";
+		s += "Rent cost 3 houses: " + rentCost[3] + "\n";
+		s += "Rent cost 4 houses: " + rentCost[4] + "\n";
+		s += "Rent cost 5 houses: " + rentCost[5] + "\n";
+		return s;
 	}
 }
