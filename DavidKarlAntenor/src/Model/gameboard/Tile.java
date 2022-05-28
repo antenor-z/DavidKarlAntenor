@@ -1,5 +1,7 @@
 package Model.gameboard;
 
+import java.util.ArrayList;
+
 import Model.TileType;
 
 public class Tile {
@@ -7,7 +9,9 @@ public class Tile {
 	public Tile(TileType tileType){
 		this.tileType = tileType;
 	}
-	String print() {
-		
+	ArrayList<String> print() {
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("Tile");
+		return ret;
 	}
 }

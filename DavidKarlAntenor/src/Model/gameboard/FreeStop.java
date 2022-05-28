@@ -1,11 +1,16 @@
 package Model.gameboard;
+import java.util.ArrayList;
+
 import Model.TileType;
 
 public class FreeStop extends Tile {
 	public FreeStop() {
 		super(TileType.FreeStop);
 	}
-	void print(){
-		System.out.println("I'm a freestop tile");
+	ArrayList<String> print()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("I'm a freestop tile");
+		return ret;
 	}
 }

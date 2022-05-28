@@ -1,5 +1,7 @@
 package Model.gameboard;
 
+import java.util.ArrayList;
+
 import Model.TileType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
@@ -52,12 +54,14 @@ public class Company extends Tile {
 			throw new CompanyException("Company does not have a owner.");
 		}
 	}
-	void print()
+	ArrayList<String> print()
 	{
-		System.out.println("I'm a company");
-		System.out.println("description: " + description);
-		System.out.println("price: " + price);
-		System.out.println("price rate: " + priceRate);
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("company");
+		ret.add("description: " + description);
+		ret.add("price: " + price);
+		ret.add("price rate: " + priceRate);
+		return ret;
 	}
 	public Player getOwner()
 	{

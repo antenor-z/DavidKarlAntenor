@@ -20,8 +20,11 @@ public class LuckSetback extends Tile {
 		this.playersList = playersList;
 		this.outOfJailCard = deck.getOutOfJailCard();
 	}
-	void print(){
-		System.out.println("I'm a Lucksetback tile");
+	ArrayList<String> print()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("I'm a Lucksetback tile");
+		return ret;
 	}
 	void pickCard(Player p) throws PlayerException, DeckException {
 		ICard card = deck.withdraw();

@@ -1,4 +1,6 @@
 package Model.gameboard;
+import java.util.ArrayList;
+
 import Model.TileType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
@@ -104,18 +106,20 @@ public class Land extends Tile {
 	{
 		return owner;
 	}
-	String print(){
-		String s = "Land\n";
-		s += "Description: " + description + "\n";
-		s += "price: " + price);
-		s += "Build house cost: " + buildHouseCost + "\n";
-		s += "Build hotel cost: " + buildHotelCost + "\n";
-		s += "Rent cost 0 houses: " + rentCost[0] + "\n";
-		s += "Rent cost 1 houses: " + rentCost[1] + "\n";
-		s += "Rent cost 2 houses: " + rentCost[2] + "\n";
-		s += "Rent cost 3 houses: " + rentCost[3] + "\n";
-		s += "Rent cost 4 houses: " + rentCost[4] + "\n";
-		s += "Rent cost 5 houses: " + rentCost[5] + "\n";
-		return s;
+	ArrayList<String> print()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("Land");
+		ret.add("Description: " + description);
+		ret.add("price: " + price);
+		ret.add("Build house cost: " + buildHouseCost);
+		ret.add("Build hotel cost: " + buildHotelCost);
+		ret.add("Rent cost 0 houses: " + rentCost[0]);
+		ret.add("Rent cost 1 houses: " + rentCost[1]);
+		ret.add("Rent cost 2 houses: " + rentCost[2]);
+		ret.add("Rent cost 3 houses: " + rentCost[3]);
+		ret.add("Rent cost 4 houses: " + rentCost[4]);
+		ret.add("Rent cost hotel: " + rentCost[5]);
+		return ret;
 	}
 }

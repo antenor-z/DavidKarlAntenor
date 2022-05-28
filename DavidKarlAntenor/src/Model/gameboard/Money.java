@@ -2,6 +2,9 @@ package Model.gameboard;
 
 import Model.Player.Player;
 import Model.Player.PlayerException;
+
+import java.util.ArrayList;
+
 import Model.TileType;
 public class Money extends Tile {
 	private int ammount;
@@ -21,8 +24,11 @@ public class Money extends Tile {
 			System.out.println(e.getMessage());
 		}
 	}
-	void print(){
-		System.out.println("I'm a Money tile");
-		System.out.println("Ammount" + ammount);
+	ArrayList<String> print()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("Money");
+		ret.add("Ammount" + ammount);
+		return ret;
 	}
 }

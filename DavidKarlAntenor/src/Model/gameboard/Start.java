@@ -2,13 +2,19 @@ package Model.gameboard;
 
 import Model.Player.Player;
 import Model.Player.PlayerException;
+
+import java.util.ArrayList;
+
 import Model.TileType;
 public class Start extends Tile {
 	public Start() {
 		super(TileType.Start);
 	}
-	void print(){
-		System.out.println("I'm a Start tile");
+	ArrayList<String> print()
+	{
+		ArrayList<String> ret = new ArrayList<String>();
+		ret.add("I'm a Start tile");
+		return ret;
 	}
 	void execute(Player player) throws PlayerException
 	{
