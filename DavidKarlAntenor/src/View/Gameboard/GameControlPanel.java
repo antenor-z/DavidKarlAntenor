@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GameControlPanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
@@ -46,6 +47,7 @@ public class GameControlPanel extends MyPanel {
         _drawDices(g);
         _drawCard(g);
         _drawPlayersStatus(g);
+        _drawTileInfo(g);
     }
 
     private void _initPanel() {
@@ -110,8 +112,15 @@ public class GameControlPanel extends MyPanel {
     	}
     }
     private void _drawTileInfo(Graphics g) {
-    	//gameState.getTileInfo();
-    	// TODO
+    	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
+    	int positionY = 400;
+    	
+    	
+    	for(String line: tileInfo) {
+    		// drawString doesn't handle \n so we have to do manually
+    		g.drawString(line, 50, positionY);
+    		positionY += 20;
+    	}
     	
     }
 

@@ -99,7 +99,7 @@ public class GameState {
 		}
 	}
 	
-	public ArrayList<String> print()
+	public ArrayList<String> getCurrentTileInfo()
 	{
 		Tile t = board.getTile(turn.getCurrentTile());
 		ArrayList<String> ret = t.print();
