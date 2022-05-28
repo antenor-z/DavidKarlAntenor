@@ -10,7 +10,7 @@ public class Start extends Tile {
 	public Start() {
 		super(TileType.Start);
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("I'm a Start tile");

@@ -9,7 +9,7 @@ public class Tile {
 	public Tile(TileType tileType){
 		this.tileType = tileType;
 	}
-	ArrayList<String> print() {
+	public ArrayList<String> print() {
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Tile");
 		return ret;

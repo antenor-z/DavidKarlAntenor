@@ -106,7 +106,7 @@ public class Land extends Tile {
 	{
 		return owner;
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Land");

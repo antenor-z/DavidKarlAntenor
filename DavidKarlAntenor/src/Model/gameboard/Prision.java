@@ -10,7 +10,7 @@ public class Prision extends Tile {
 	public Prision() {
 		super(TileType.Prision);
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("I'm a Prision tile");

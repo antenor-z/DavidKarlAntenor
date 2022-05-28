@@ -98,4 +98,11 @@ public class GameState {
 			land.buyLand(turn);
 		}
 	}
+	
+	public ArrayList<String> print()
+	{
+		Tile t = board.getTile(turn.getCurrentTile());
+		ArrayList<String> ret = t.print();
+		return ret;
+	}
 }

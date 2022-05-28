@@ -20,7 +20,7 @@ public class LuckSetback extends Tile {
 		this.playersList = playersList;
 		this.outOfJailCard = deck.getOutOfJailCard();
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("I'm a Lucksetback tile");

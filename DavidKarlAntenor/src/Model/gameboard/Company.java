@@ -54,7 +54,7 @@ public class Company extends Tile {
 			throw new CompanyException("Company does not have a owner.");
 		}
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("company");

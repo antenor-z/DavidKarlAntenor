@@ -8,7 +8,7 @@ public class GoToPrision extends Tile{
 	public GoToPrision() {
 		super(TileType.GoToPrision);
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("GoToPrision");

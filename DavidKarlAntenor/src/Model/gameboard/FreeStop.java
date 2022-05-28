@@ -7,7 +7,7 @@ public class FreeStop extends Tile {
 	public FreeStop() {
 		super(TileType.FreeStop);
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("I'm a freestop tile");

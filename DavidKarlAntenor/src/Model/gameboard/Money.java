@@ -24,7 +24,7 @@ public class Money extends Tile {
 			System.out.println(e.getMessage());
 		}
 	}
-	ArrayList<String> print()
+	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Money");
