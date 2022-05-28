@@ -13,7 +13,7 @@ public class Prision extends Tile {
 	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
-		ret.add("I'm a Prision tile");
+		ret.add("Prision");
 		return ret;
 	}
 	void getOut(Player player, int diceNumber1, int diceNumber2) throws PlayerException {

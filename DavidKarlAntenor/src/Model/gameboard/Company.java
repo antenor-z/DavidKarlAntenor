@@ -58,9 +58,9 @@ public class Company extends Tile {
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("company");
-		ret.add("description: " + description);
-		ret.add("price: " + price);
-		ret.add("price rate: " + priceRate);
+		ret.add(description);
+		ret.add("Price: " + price);
+		ret.add("Price rate: " + priceRate);
 		return ret;
 	}
 	public Player getOwner()

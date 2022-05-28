@@ -13,7 +13,7 @@ public class Start extends Tile {
 	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
-		ret.add("I'm a Start tile");
+		ret.add("Start");
 		return ret;
 	}
 	void execute(Player player) throws PlayerException

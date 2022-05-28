@@ -110,8 +110,8 @@ public class Land extends Tile {
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Land");
-		ret.add("Description: " + description);
-		ret.add("price: " + price);
+		ret.add(description);
+		ret.add("Price: " + price);
 		ret.add("Build house cost: " + buildHouseCost);
 		ret.add("Build hotel cost: " + buildHotelCost);
 		ret.add("Rent cost 0 houses: " + rentCost[0]);
