@@ -7,6 +7,7 @@ import Model.GameState;
 import Model.TileType;
 import Model.Player.PlayerException;
 import Model.gameboard.CompanyException;
+import Model.gameboard.Land;
 import Model.gameboard.LandException;
 import Model.gameboard.Tile;
 import View.MyPanel;
@@ -23,16 +24,28 @@ public class Action1Ctl implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e){
 		Tile curentTile = gameState.getTile();
 		switch(curentTile.tileType) {
 		case Land:
-	        try {
-				gameState.buyLand();
-			} catch (LandException | PlayerException e1) {
-				e1.printStackTrace();
+			Land land = (Land)curentTile;
+			if(land.getOwner() == null)
+			{
+		        try {
+					gameState.buyLand();
+				} catch (LandException | PlayerException e1) {
+					e1.printStackTrace();
+				}  
 			}
-	        gameState.dump();
+			else
+			{
+				 try {
+					gameState.buildHouse();
+				} catch (LandException | PlayerException e1) {
+					e1.printStackTrace();
+				}  
+			}
+			gameState.dump();
 	        gamePanel.gameControlPanel.action1.setVisible(false);
 	        gamePanel.repaint();
 		case Company:

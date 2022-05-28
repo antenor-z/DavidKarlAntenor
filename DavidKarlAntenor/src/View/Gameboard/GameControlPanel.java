@@ -112,6 +112,7 @@ public class GameControlPanel extends MyPanel {
     	}
     }
     private void _drawTileInfo(Graphics g) {
+    	g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 15));
     	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
     	int positionY = 400;
     	

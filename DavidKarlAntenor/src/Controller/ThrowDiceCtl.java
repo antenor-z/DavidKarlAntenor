@@ -46,8 +46,8 @@ public class ThrowDiceCtl implements ActionListener{
         		{
         			gamePanel.gameControlPanel.action1.setText("Build House");
 	        		gamePanel.gameControlPanel.action1.setVisible(true);
-	        		gamePanel.gameControlPanel.action1.setText("Build Hotel");
-	        		gamePanel.gameControlPanel.action1.setVisible(true);
+	        		gamePanel.gameControlPanel.action2.setText("Build Hotel");
+	        		gamePanel.gameControlPanel.action2.setVisible(true);
         		}
         		else
         		{
@@ -61,6 +61,7 @@ public class ThrowDiceCtl implements ActionListener{
 						e1.printStackTrace();
 					}
         		}
+        		break;
         	case Company:
         		Company company = (Company)curentTile;
         		if (company.getOwner() == null)
@@ -77,6 +78,7 @@ public class ThrowDiceCtl implements ActionListener{
 						e1.printStackTrace();
 					}
         		}
+        		break;
 			default:
 				break;
         }

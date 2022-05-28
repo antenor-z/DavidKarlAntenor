@@ -123,4 +123,12 @@ public class GameState {
 		}
 		return ret;
 	}
+
+	public void buildHouse() throws PlayerException, LandException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			land.buildHouse();
+		}
+	}
 }

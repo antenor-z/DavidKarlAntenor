@@ -112,14 +112,24 @@ public class Land extends Tile {
 		ret.add("Land");
 		ret.add(description);
 		ret.add("Price: " + price);
-		ret.add("Build house cost: " + buildHouseCost);
-		ret.add("Build hotel cost: " + buildHotelCost);
-		ret.add("Rent cost 0 houses: " + rentCost[0]);
-		ret.add("Rent cost 1 houses: " + rentCost[1]);
-		ret.add("Rent cost 2 houses: " + rentCost[2]);
-		ret.add("Rent cost 3 houses: " + rentCost[3]);
-		ret.add("Rent cost 4 houses: " + rentCost[4]);
-		ret.add("Rent cost hotel: " + rentCost[5]);
+		ret.add("Build house: " + buildHouseCost);
+		ret.add("Build hotel: " + buildHotelCost);
+		if(hasHotel)
+		{
+			ret.add("RentCost: " + rentCost[5]);
+		}
+		else
+		{
+			ret.add("RentCost: " + rentCost[numberOfHouses]);
+		}
+	
+		ret.add("");
+		if(owner != null)
+			ret.add("owner: " + owner.getName());
+		else
+			ret.add("owner: " + "---");
+		ret.add("Number of houses: " + numberOfHouses);
+		ret.add("Has Hotel: " + hasHotel);
 		return ret;
 	}
 }
