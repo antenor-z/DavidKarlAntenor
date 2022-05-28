@@ -9,7 +9,7 @@ public abstract class Dice {
 		int[] ret = {0, 0};
 		ret[0] = r.nextInt(6) + 1;
 		ret[1] = r.nextInt(6) + 1;
-		ret[0] = 1;
+		ret[0] = 2;
 		ret[1] = 3;
 		return ret;
 	}

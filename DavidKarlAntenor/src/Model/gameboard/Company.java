@@ -19,10 +19,13 @@ public class Company extends Tile {
 		this.priceRate = priceRate;
 		this.owner = null;
 	}
-	public void buyCompany(Player player) throws CompanyException
+	public void buyCompany(Player player) throws CompanyException, PlayerException
 	{
 		if(this.owner == null)
+		{
 			owner = player;
+			owner.addOrSubCash(-price);
+		}
 		else
 			throw new CompanyException("Company already has a owner: " 
 		+ player.getColor());

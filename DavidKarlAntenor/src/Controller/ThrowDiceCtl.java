@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import Model.GameState;
 import Model.TileType;
+import Model.Player.PlayerException;
+import Model.gameboard.Company;
+import Model.gameboard.CompanyException;
+import Model.gameboard.Land;
+import Model.gameboard.LandException;
 import Model.gameboard.Tile;
 import View.MyPanel;
 import View.Gameboard.GameBoardPanel;
@@ -31,9 +36,47 @@ public class ThrowDiceCtl implements ActionListener{
         gameState.dump();
         switch(curentTile.tileType) {
         	case Land:
-        		System.out.println("Land");
-        		gamePanel.gameControlPanel.action1.setText("Buy Land");
-        		gamePanel.gameControlPanel.action1.setVisible(true);
+        		Land land = (Land)curentTile;
+        		if (land.getOwner() == null)
+        		{
+	        		gamePanel.gameControlPanel.action1.setText("Buy Land");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
+        		}
+        		else if(land.getOwner() == gameState.turn)
+        		{
+        			gamePanel.gameControlPanel.action1.setText("Build House");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
+	        		gamePanel.gameControlPanel.action1.setText("Build Hotel");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
+        		}
+        		else
+        		{
+        			try {
+						land.payRent(gameState.turn);
+					} catch (LandException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (PlayerException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+        		}
+        	case Company:
+        		Company company = (Company)curentTile;
+        		if (company.getOwner() == null)
+        		{
+	        		gamePanel.gameControlPanel.action1.setText("Buy Copany");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
+        		}
+        		else if(company.getOwner() != gameState.turn)
+        		{
+        			try {
+						company.payRent(gameState.turn, gameState.dices[0] + gameState.dices[1]);
+					} catch (CompanyException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+        		}
 			default:
 				break;
         }

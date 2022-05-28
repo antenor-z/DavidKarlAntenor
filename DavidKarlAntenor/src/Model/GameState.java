@@ -3,6 +3,8 @@ package Model;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 import Model.gameboard.Board;
+import Model.gameboard.Company;
+import Model.gameboard.CompanyException;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
 import Model.gameboard.Tile;
@@ -99,10 +101,26 @@ public class GameState {
 		}
 	}
 	
+	public void buyCompany() throws PlayerException, CompanyException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		{
+			Company land = (Company)board.getTile(turn.getCurrentTile());
+			land.buyCompany(turn);
+		}
+	}
+	
 	public ArrayList<String> getCurrentTileInfo()
 	{
-		Tile t = board.getTile(turn.getCurrentTile());
-		ArrayList<String> ret = t.print();
+		ArrayList<String> ret = new ArrayList<String>();
+		if(turn != null)
+		{
+			Tile t = board.getTile(turn.getCurrentTile());
+			ret = t.print();
+		}
+		else
+		{
+			ret.add("Start");
+		}
 		return ret;
 	}
 }

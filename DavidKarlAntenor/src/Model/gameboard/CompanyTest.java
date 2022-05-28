@@ -9,11 +9,12 @@ import org.junit.Test;
 
 import Model.PlayerColor;
 import Model.Player.Player;
+import Model.Player.PlayerException;
 
 public class CompanyTest {
 
 	@Test
-	public void testBuyCompany() throws CompanyException {
+	public void testBuyCompany() throws CompanyException, PlayerException {
 	    ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");
@@ -34,7 +35,7 @@ public class CompanyTest {
 		
 	}
 	@Test
-	public void testPayRent() throws CompanyException {
+	public void testPayRent() throws CompanyException, PlayerException {
 		ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
 		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");

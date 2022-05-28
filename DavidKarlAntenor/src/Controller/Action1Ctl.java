@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import Model.GameState;
 import Model.TileType;
 import Model.Player.PlayerException;
+import Model.gameboard.CompanyException;
 import Model.gameboard.LandException;
 import Model.gameboard.Tile;
 import View.MyPanel;
@@ -15,6 +16,7 @@ import View.Gameboard.GamePanel;
 
 public class Action1Ctl implements ActionListener{
 	GamePanel gamePanel;
+	GameState gameState = GameState.getInstance();
 	public Action1Ctl(GamePanel gamePanel)
 	{
 		this.gamePanel = gamePanel;
@@ -22,15 +24,31 @@ public class Action1Ctl implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		GameState gameState = GameState.getInstance();
-        try {
-			gameState.buyLand();
-		} catch (LandException | PlayerException e1) {
-			e1.printStackTrace();
+		Tile curentTile = gameState.getTile();
+		switch(curentTile.tileType) {
+		case Land:
+	        try {
+				gameState.buyLand();
+			} catch (LandException | PlayerException e1) {
+				e1.printStackTrace();
+			}
+	        gameState.dump();
+	        gamePanel.gameControlPanel.action1.setVisible(false);
+	        gamePanel.repaint();
+		case Company:
+			try {
+				gameState.buyCompany();
+			} catch (PlayerException | CompanyException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			gameState.dump();
+	        gamePanel.gameControlPanel.action1.setVisible(false);
+	        gamePanel.repaint();
+		
+		default:
+			break;
 		}
-        gameState.dump();
-        gamePanel.gameControlPanel.action1.setVisible(false);
-        gamePanel.repaint();
 	}
 
 }
