@@ -4,8 +4,8 @@ import Model.Deck.Exception.DeckException;
 
 public class OutOfJailCard extends ACard implements IKeptable {
 	private Model.Player.Player owner;
-    public OutOfJailCard(String description, String name) {
-        super(description, name);
+    public OutOfJailCard(String description, String name, String imagePath) {
+        super(description, name, imagePath);
         _type = CardType.OUT_OF_JAIL;
         owner = null;
     }

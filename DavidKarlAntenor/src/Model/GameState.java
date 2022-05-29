@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Deck.Exception.DeckException;
 import Model.Player.Player;
 import Model.Player.PlayerException;
 import Model.gameboard.Board;
@@ -7,6 +8,7 @@ import Model.gameboard.Company;
 import Model.gameboard.CompanyException;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
+import Model.gameboard.LuckSetback;
 import Model.gameboard.Tile;
 
 import java.util.ArrayList;
@@ -146,6 +148,14 @@ public class GameState {
 		{
 			Land land = (Land)board.getTile(turn.getCurrentTile());
 			land.buildHouse();
+		}
+	}
+	
+	public void pickCard() throws PlayerException, DeckException {
+		if (board.getTile(turn.getCurrentTile()) instanceof LuckSetback)
+		{
+			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getCurrentTile());
+			luckSetback.pickCard(turn);
 		}
 	}
 }

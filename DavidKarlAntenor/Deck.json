@@ -192,7 +192,7 @@
     {
       "type": 0,
       "name": "Luck",
-      "image": "chance2",
+      "image": "chance2.png",
       "description": "Houve um assalto à sua loja, mas você estava\nsegurado.",
       "value": 150
     },

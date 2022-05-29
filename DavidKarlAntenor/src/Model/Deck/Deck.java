@@ -70,26 +70,27 @@ public class Deck {
         String description = jsonCard.getString("description");
         String name = jsonCard.getString("name");
         Integer value = jsonCard.getInt("value");
+        String image = jsonCard.getString("image");
 
         if (type == null) {
             throw new DeckException();
         }
         switch (type) {
             case VALUE :
-            	cards.add(new ValueCard(description, name, value));
+            	cards.add(new ValueCard(description, name, value, image));
             	break;
             case GO_TO_JAIL :
-            	cards.add(new GoToJailCard(description, name));
+            	cards.add(new GoToJailCard(description, name, image));
             	break;
             case OUT_OF_JAIL :
-            	outOfJailCard = new OutOfJailCard(description, name);
+            	outOfJailCard = new OutOfJailCard(description, name, image);
             	cards.add(outOfJailCard); 
             	break;
             case VALUE_PER_PLAYER :
-            	cards.add(new ValuePerPlayer(description, name, value));
+            	cards.add(new ValuePerPlayer(description, name, value, image));
             	break;
             case MOVE :
-            	cards.add(new MoveCard(description, name, value));
+            	cards.add(new MoveCard(description, name, value, image));
             	break;
         }
     }

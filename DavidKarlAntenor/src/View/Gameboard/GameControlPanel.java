@@ -4,8 +4,10 @@ import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 import Model.Player.Player;
 import Model.Player.PlayerException;
+import Model.gameboard.LuckSetback;
 import Model.GameSettings;
 import Model.PlayerColor;
+import Model.TileType;
 import View.MyPanel;
 
 import javax.imageio.ImageIO;
@@ -112,16 +114,34 @@ public class GameControlPanel extends MyPanel {
     		positionY += 40;
     	}
     }
-    private void _drawTileInfo(Graphics g) {
+    private void _drawTileInfo(Graphics g){
     	g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 15));
+    
     	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
-    	int positionY = 400;
+    	int positionY = 350;
+    	final int positionX = 40;
     	
-    	
-    	for(String line: tileInfo) {
-    		// drawString doesn't handle \n so we have to do manually
-    		g.drawString(line, 50, positionY);
-    		positionY += 20;
+    	if(tileInfo.get(0) == "LuckSetback")
+    	{
+    		String str = "./img/sorteReves/" + tileInfo.get(1);
+    		Image imgCard;
+			try {
+				imgCard = ImageIO.read(new File(str));
+				g.drawImage(imgCard, positionX, positionY, null);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			positionY += 260;
+			g.drawString(tileInfo.get(2), positionX, positionY);
+    	}
+    	else
+    	{
+	    	for(String line: tileInfo) {
+	    		// drawString doesn't handle \n so we have to do manually
+	    		g.drawString(line, positionX, positionY);
+	    		positionY += 40;
+	    	}
     	}
     	
     }

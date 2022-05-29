@@ -3,8 +3,8 @@ package Model.Deck.Card;
 public class ValueCard extends ACard {
     private final Integer _value;
 
-    public ValueCard(String description, String name, Integer value) {
-        super(description, name);
+    public ValueCard(String description, String name, Integer value, String imagePath) {
+        super(description, name, imagePath);
         _value = value;
         _type = CardType.VALUE;
     }
