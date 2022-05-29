@@ -10,6 +10,7 @@ import Model.gameboard.Company;
 import Model.gameboard.CompanyException;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
+import Model.gameboard.Money;
 import Model.gameboard.Tile;
 import View.MyPanel;
 import View.Gameboard.GameBoardPanel;
@@ -37,15 +38,18 @@ public class ThrowDiceCtl implements ActionListener{
         switch(curentTile.tileType) {
         	case Land:
         		Land land = (Land)curentTile;
-        		if (land.getOwner() == null)
+        		if (gameState.canBuyLand())
         		{
 	        		gamePanel.gameControlPanel.action1.setText("Buy Land");
 	        		gamePanel.gameControlPanel.action1.setVisible(true);
         		}
-        		else if(land.getOwner() == gameState.turn)
+        		else if(gameState.canBuildHouse())
         		{
         			gamePanel.gameControlPanel.action1.setText("Build House");
 	        		gamePanel.gameControlPanel.action1.setVisible(true);
+        		}	
+	        	else if(gameState.canBuildHotel())
+	        	{
 	        		gamePanel.gameControlPanel.action2.setText("Build Hotel");
 	        		gamePanel.gameControlPanel.action2.setVisible(true);
         		}
@@ -79,6 +83,9 @@ public class ThrowDiceCtl implements ActionListener{
 					}
         		}
         		break;
+        	case Money:
+        		Money money = (Money)curentTile;
+        		money.execute(gameState.turn);
 			default:
 				break;
         }

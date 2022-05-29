@@ -28,8 +28,7 @@ public class Action1Ctl implements ActionListener{
 		Tile curentTile = gameState.getTile();
 		switch(curentTile.tileType) {
 		case Land:
-			Land land = (Land)curentTile;
-			if(land.getOwner() == null)
+			if(gameState.canBuyLand())
 			{
 		        try {
 					gameState.buyLand();
@@ -37,7 +36,7 @@ public class Action1Ctl implements ActionListener{
 					e1.printStackTrace();
 				}  
 			}
-			else
+			else if(gameState.canBuildHouse())
 			{
 				 try {
 					gameState.buildHouse();

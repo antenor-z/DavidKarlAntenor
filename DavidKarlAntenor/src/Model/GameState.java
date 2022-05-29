@@ -83,12 +83,20 @@ public class GameState {
 		return board.getTile(turn.getCurrentTile());
 	}
 	
-	boolean canBuyLand() {
+	public boolean canBuyLand() {
 		if (board.getTile(turn.getCurrentTile()) instanceof Land)
 		{
 			Land land = (Land)board.getTile(turn.getCurrentTile());
-			if (land.getOwner() == null) return true;
-			return false;
+			return land.canBuyLand(turn);
+		}
+		return false;
+	}
+	
+	public boolean canBuildHotel() {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			return land.canBuildHotel(turn);
 		}
 		return false;
 	}
@@ -124,6 +132,15 @@ public class GameState {
 		return ret;
 	}
 
+	public boolean canBuildHouse() {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			if (land.canBuildHouse(turn)) return true;
+			return false;
+		}
+		return false;
+	}
 	public void buildHouse() throws PlayerException, LandException {
 		if (board.getTile(turn.getCurrentTile()) instanceof Land)
 		{

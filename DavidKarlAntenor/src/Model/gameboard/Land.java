@@ -25,6 +25,25 @@ public class Land extends Tile {
 		this.rentCost = rentCost;	
 	}
 
+	public Boolean canBuyLand(Player player)
+	{
+		if(this.owner == null)
+			return true;
+		return false;
+	}
+	
+	public Boolean canBuildHouse(Player player)
+	{
+		if(this.owner == player)
+		{		
+			if(numberOfHouses <= 3)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public void buyLand(Player player) throws LandException, PlayerException
 	{
 		if(this.owner == null)
@@ -131,5 +150,16 @@ public class Land extends Tile {
 		ret.add("Number of houses: " + numberOfHouses);
 		ret.add("Has Hotel: " + hasHotel);
 		return ret;
+	}
+
+	public boolean canBuildHotel(Player turn) {
+		if(numberOfHouses >= 1)
+		{
+			if(hasHotel == false)
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }
