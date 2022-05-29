@@ -5,11 +5,13 @@ import java.awt.event.ActionListener;
 
 import Model.GameState;
 import Model.TileType;
+import Model.Deck.Exception.DeckException;
 import Model.Player.PlayerException;
 import Model.gameboard.Company;
 import Model.gameboard.CompanyException;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
+import Model.gameboard.LuckSetback;
 import Model.gameboard.Money;
 import Model.gameboard.Tile;
 import View.MyPanel;
@@ -86,6 +88,17 @@ public class ThrowDiceCtl implements ActionListener{
         	case Money:
         		Money money = (Money)curentTile;
         		money.execute(gameState.turn);
+        	case LuckSetback:
+        		LuckSetback luckSetback = (LuckSetback)curentTile;
+			try {
+				luckSetback.pickCard(gameState.turn);
+			} catch (PlayerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (DeckException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			default:
 				gamePanel.gameControlPanel.action1.setVisible(false);
 				gamePanel.gameControlPanel.action2.setVisible(false);

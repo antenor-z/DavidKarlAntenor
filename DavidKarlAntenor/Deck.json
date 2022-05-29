@@ -3,25 +3,25 @@
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "O Médico lhe recomendou repouso num bom hotel de montanha.",
+      "description": "O Médico lhe recomendou repouso num bom hotel\nde montanha.",
       "value": -45
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Seus parentes do interior vieram passar umas \"férias\" na sua casa",
+      "description": "Seus parentes do interior vieram passar umas \n\"férias\" na sua casa",
       "value": -45
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Seu clube está ampliando as piscinas. Os Sócios devem contribuir.",
+      "description": "Seu clube está ampliando as piscinas. Os Sócios\ndevem contribuir.",
       "value": -25
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Você vai casar e está comprando um apartamento novo.",
+      "description": "Você vai casar e está comprando um apartamento\nnovo.",
       "value": -25
     },
     {
@@ -33,37 +33,37 @@
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Você acaba de receber a comunicação do imposto de renda.",
+      "description": "Você acaba de receber a comunicação do imposto\nde renda.",
       "value": -50
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Um amigo pediu-lhe um empréstimo. Você não pode recusar.",
+      "description": "Um amigo pediu-lhe um empréstimo. Você não\npode recusar.",
       "value": -15
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Seus filhos já vão para a escola. Pague a primeira mensualidade.",
+      "description": "Seus filhos já vão para a escola. Pague a primeira\nmensualidade.",
       "value": -50
     },
     {
       "type": 1,
       "name": "Bad Luck",
-      "description": "Vá para a prisão sem receber nada. (talvez eu lhe faça uma visita...)",
+      "description": "Vá para a prisão sem receber nada. (talvez eu\nlhe faça uma visita...)",
       "value": 0
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Você estacionou seu carro en lugar proibido e entrou na contra mão.",
+      "description": "Você estacionou seu carro en lugar proibido e\nentrou na contra mão.",
       "value": -30
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Parabéns ! Você convidou seus amigos para festejar o aniversário.",
+      "description": "Parabéns ! Você convidou seus amigos para\nfestejar o aniversário.",
       "value": -100
     },
     {
@@ -81,25 +81,25 @@
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Você é papai outra vez ! Despesas de maternidade.",
+      "description": "Você é papai outra vez! Despesas de maternidade.",
       "value": -100
     },
     {
       "type": 0,
       "name": "Bad Luck",
-      "description": "Você achou interessante assistir à estréia da temporada de ballet. Compre os ingressos.",
+      "description": "Você achou interessante assistir à estréia\nda temporada de ballet. Compre os ingressos.",
       "value": -30
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "O seu cachorro policial tirou o 1.º prêmio na exposição do Kennel club.",
+      "description": "O seu cachorro policial tirou o 1.º prêmio\nna exposição do Kennel club.",
       "value": 100
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você tirou o primeiro lugar no Torneio de Tênis do seu clube. Parabéns!",
+      "description": "Você tirou o primeiro lugar no Torneio de\nTênis do seu clube. Parabéns!",
       "value": 100
     },
     {
@@ -111,7 +111,7 @@
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você trocou seu carro usado com um amigo e ainda saíu lucrando.",
+      "description": "Você trocou seu carro usado com um amigo e\nainda saíu lucrando.",
       "value": 50
     },
     {
@@ -123,19 +123,19 @@
     {
       "type": 0,
       "name": "Luck",
-      "description": "A prefeitura mandou abrir uma nova avenida, para o que desapropriou vários prédios. Em consequência seu terreno valorizou.",
+      "description": "A prefeitura mandou abrir uma nova avenida, \npara o que desapropriou vários prédios.\nEm consequência seu terreno valorizou.",
       "value": 25
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Um amigo tinha lhe pedido um empréstimo e se esqueceu de devolver. Ele acaba de se lembrar.",
+      "description": "Um amigo tinha lhe pedido um empréstimo e se\nesqueceu de devolver. Ele acaba de se lembrar.",
       "value": 80
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você está com sorte. Suas ações na Bolsa de Valores estão em alta.",
+      "description": "Você está com sorte. Suas ações na Bolsa de\nValores estão em alta.",
       "value": 200
     },
     {
@@ -147,37 +147,37 @@
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você acaba de receber uma parcela do seu 13º salário.",
+      "description": "Você acaba de receber uma parcela do seu 13º\nsalário.",
       "value": 50
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Inesperedamente você recebeu uma herença que já estava esquecida.",
+      "description": "Inesperedamente você recebeu uma herença que\njá estava esquecida.",
       "value": 100
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você jogou na Loteria Esportiva com um grupo de amigos. Ganharam!",
+      "description": "Você jogou na Loteria Esportiva com um grupo\bde amigos. Ganharam!",
       "value": 20
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Houve um assalto à sua loja, mas você estava segurado.",
+      "description": "Houve um assalto à sua loja, mas você estava\nsegurado.",
       "value": 150
     },
     {
       "type": 0,
       "name": "Luck",
-      "description": "Você saiu de férias e se hospedou na casa de um amigo. Você economizou o hotel.",
+      "description": "Você saiu de férias e se hospedou na casa de\num amigo. Você economizou o hotel.",
       "value": 45
     },
     {
       "type": 3,
       "name": "Luck",
-      "description": "Você apostou com os parceiros deste jogo e ganhou dinheiro de cada um.",
+      "description": "Você apostou com os parceiros deste jogo e\nganhou dinheiro de cada um.",
       "value": 50
     }
   ]

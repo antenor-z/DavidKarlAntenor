@@ -5,4 +5,9 @@ public class GoToJailCard extends ACard {
         super(description, name);
         _type = CardType.GO_TO_JAIL;
     }
+
+	@Override
+	public int getValue() {
+		return 0;
+	}
 }

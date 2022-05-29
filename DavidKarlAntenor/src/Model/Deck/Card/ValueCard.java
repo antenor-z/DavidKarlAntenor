@@ -9,7 +9,7 @@ public class ValueCard extends ACard {
         _type = CardType.VALUE;
     }
 
-    public final Integer getValue() {
+    public final int getValue() {
         return _value;
     }
 }

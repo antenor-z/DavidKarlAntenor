@@ -10,7 +10,7 @@ public abstract class Dice {
 		ret[0] = r.nextInt(6) + 1;
 		ret[1] = r.nextInt(6) + 1;
 		ret[0] = 1;
-		ret[1] = 3;
+		ret[1] = 1;
 		return ret;
 	}
 }

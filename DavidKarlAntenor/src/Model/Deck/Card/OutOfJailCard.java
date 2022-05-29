@@ -34,4 +34,8 @@ public class OutOfJailCard extends ACard implements IKeptable {
     		+ " player trying to use" + p.getColor());
     	}
     }
+	@Override
+	public int getValue() {
+		return 0;
+	}
 }

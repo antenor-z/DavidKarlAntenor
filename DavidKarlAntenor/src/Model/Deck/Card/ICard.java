@@ -4,4 +4,5 @@ public interface ICard {
     String getDescription();
     String getName();
     CardType getType();
+	int getValue();
 }

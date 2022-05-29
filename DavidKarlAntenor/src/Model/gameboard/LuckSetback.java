@@ -12,6 +12,7 @@ public class LuckSetback extends Tile {
 	private Deck deck;
 	OutOfJailCard outOfJailCard = null;
 	ArrayList<Player> playersList;
+	ICard currentCard = null;
 
 	public LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
 	{
@@ -23,11 +24,21 @@ public class LuckSetback extends Tile {
 	public ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
-		ret.add("I'm a Lucksetback tile");
+		ret.add("Lucksetback");
+		if(currentCard != null)
+		{
+			for (String line : currentCard.getDescription().split("\n"))
+				ret.add(line);
+			if(currentCard.getValue() < 0)
+				ret.add("Lose: " + -currentCard.getValue());
+			else
+				ret.add("Win: " + currentCard.getValue());
+		}
 		return ret;
 	}
-	void pickCard(Player p) throws PlayerException, DeckException {
+	public void pickCard(Player p) throws PlayerException, DeckException {
 		ICard card = deck.withdraw();
+		currentCard = card;
 		
 		if(card instanceof ValueCard) {
 			ValueCard c = (ValueCard)card;
