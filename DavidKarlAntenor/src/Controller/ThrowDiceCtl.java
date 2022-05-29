@@ -87,7 +87,8 @@ public class ThrowDiceCtl implements ActionListener{
         		Money money = (Money)curentTile;
         		money.execute(gameState.turn);
 			default:
-				break;
+				gamePanel.gameControlPanel.action1.setVisible(false);
+				gamePanel.gameControlPanel.action2.setVisible(false);
         }
         gamePanel.repaint();
 	}

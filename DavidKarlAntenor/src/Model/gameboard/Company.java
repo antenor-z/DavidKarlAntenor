@@ -61,6 +61,10 @@ public class Company extends Tile {
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("company");
+		if(owner != null)
+			ret.add("Owner: " + owner.getName());
+		else
+			ret.add("Owner: ---");
 		ret.add(description);
 		ret.add("Price: " + price);
 		ret.add("Price rate: " + priceRate);
