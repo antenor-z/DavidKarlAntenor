@@ -90,24 +90,25 @@ public class GameControlPanel extends MyPanel {
     	}
     }
     private void _drawPlayersStatus(Graphics g) {
-    	g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 20));
-    	int positionY = 150;
+    	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
+    	int positionY = 60;
+    	int positionX = 250;
     	if(gameState.turn == null) {
-    		g.drawString("Turn: ---", 300, positionY);
+    		g.drawString("Turn: ---", positionX, positionY);
     	} else {
 	    	g.setColor(toJavaColor(gameState.turn.getColor()));
 	    	String t = "Turn: " + gameState.turn.getName() + " (" + gameState.turn.getColor() + ")";
-	    	g.drawString(t, 300, positionY);
+	    	g.drawString(t, positionX, positionY);
 	    	g.setColor(Color.black);
     	}
     	positionY += 40;
     	for(Player p: gameState.players) {
     		// drawString doesn't handle \n so we have to do manually
-    		g.drawString("Name: " + p.getName(), 300, positionY);
+    		g.drawString("Name: " + p.getName(), positionX, positionY);
     		positionY += 20;
-    		g.drawString("Color: " + p.getColor(), 300, positionY);
+    		g.drawString("Color: " + p.getColor(), positionX, positionY);
     		positionY += 20;
-    		g.drawString("Balance: " + p.getCash(), 300, positionY);
+    		g.drawString("Balance: " + p.getCash(), positionX, positionY);
     		positionY += 40;
     	}
     }
