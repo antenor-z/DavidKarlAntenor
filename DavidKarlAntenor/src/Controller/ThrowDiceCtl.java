@@ -13,6 +13,7 @@ import Model.gameboard.Land;
 import Model.gameboard.LandException;
 import Model.gameboard.LuckSetback;
 import Model.gameboard.Money;
+import Model.gameboard.Prision;
 import Model.gameboard.Tile;
 import View.MyPanel;
 import View.Gameboard.GameBoardPanel;
@@ -96,6 +97,14 @@ public class ThrowDiceCtl implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			} catch (DeckException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        	case Prision:
+        		Prision prision = (Prision)curentTile;
+			try {
+				prision.getOut(gameState.turn, gameState.dices[0], gameState.dices[0]);
+			} catch (PlayerException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}

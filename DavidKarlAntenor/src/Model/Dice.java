@@ -9,8 +9,8 @@ public abstract class Dice {
 		int[] ret = {0, 0};
 		ret[0] = r.nextInt(6) + 1;
 		ret[1] = r.nextInt(6) + 1;
-		ret[0] = 1;
-		ret[1] = 1;
+		ret[0] = 5;
+		ret[1] = 5;
 		return ret;
 	}
 }
