@@ -14,7 +14,7 @@ public class GoToPrision extends Tile{
 		ret.add("GoToPrision");
 		return ret;
 	}
-	void gotoPrision(Player player) {
+	public void gotoPrision(Player player) {
 		player.goToTile(10);
 	}
 }

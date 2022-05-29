@@ -9,6 +9,7 @@ import Model.Deck.Exception.DeckException;
 import Model.Player.PlayerException;
 import Model.gameboard.Company;
 import Model.gameboard.CompanyException;
+import Model.gameboard.GoToPrision;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
 import Model.gameboard.LuckSetback;
@@ -100,6 +101,7 @@ public class ThrowDiceCtl implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			break;
         	case Prision:
         		Prision prision = (Prision)curentTile;
 			try {
@@ -108,6 +110,12 @@ public class ThrowDiceCtl implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			break;
+        	case GoToPrision:
+        		GoToPrision goToPrison = (GoToPrision)curentTile;
+        		goToPrison.gotoPrision(gameState.turn);
+        	break;
+
 			default:
 				gamePanel.gameControlPanel.action1.setVisible(false);
 				gamePanel.gameControlPanel.action2.setVisible(false);
