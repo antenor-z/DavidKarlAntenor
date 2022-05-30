@@ -168,7 +168,7 @@ public class GameControlPanel extends MyPanel {
 	    	for(String line: tileInfo) {
 	    		// drawString doesn't handle \n so we have to do manually
 	    		g.drawString(line, positionX, positionY);
-	    		positionY += 40;
+	    		positionY += 20;
 	    	}
     	}
     	
