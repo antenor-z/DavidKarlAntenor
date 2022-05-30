@@ -22,9 +22,20 @@ public class GameState {
     public Player turn = null;
     public Float duration = 0.f;
     public int[] dices = new int[2];
+    int[] dicesPreset = new int[2];
     
     private GameState() {
-
+    	dicesPreset[0] = dicesPreset[1] = -1;
+    }
+    
+    public void setDice1Preset(int value) 
+    {
+    	this.dicesPreset[0] = value;
+    }
+    
+    public void setDice2Preset(int value) 
+    {
+    	this.dicesPreset[1] = value;
     }
 
     public void dump() {
@@ -77,7 +88,7 @@ public class GameState {
     }
 
 	public int[] throwDice() {
-		dices = Dice.roll();
+		dices = Dice.roll(dicesPreset);
 		return dices;
 	}
 	

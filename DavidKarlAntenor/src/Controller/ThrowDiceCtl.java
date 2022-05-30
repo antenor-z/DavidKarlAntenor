@@ -90,6 +90,7 @@ public class ThrowDiceCtl implements ActionListener{
         	case Money:
         		Money money = (Money)curentTile;
         		money.execute(gameState.turn);
+        		break;
         	case LuckSetback:
         		LuckSetback luckSetback = (LuckSetback)curentTile;
 			try {

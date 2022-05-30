@@ -15,15 +15,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
+import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GameControlPanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
-    GridBagConstraints gbc = new GridBagConstraints();
 
-    JPanel buttons = new JPanel(new GridBagLayout());
     JButton btnThrowDice = new JButton("Throw dice");
     JButton pauseButton = new JButton("Pause");
     JButton quitButton = new JButton("Quit");
@@ -31,6 +33,9 @@ public class GameControlPanel extends MyPanel {
     // Action 1 may be, for example, buy house or buy company
     public JButton action1 = new JButton("Action 1");
     public JButton action2 = new JButton("Action 2");
+
+    public JComboBox<String> dice1Selection = new JComboBox<String>();
+    public JComboBox<String> dice2Selection = new JComboBox<String>();
     Model.GameState gameState = Model.GameState.getInstance();
 
     public int dice1Value = 0;
@@ -41,6 +46,13 @@ public class GameControlPanel extends MyPanel {
         super(cl, panelCont, controller);
         _initPanel();
         _setEvents();
+        dice1Selection.addItem("Random");
+        dice2Selection.addItem("Random");
+        for(int i = 1; i <= 6; i++)
+        {
+        	dice1Selection.addItem(String.valueOf(i));
+        	dice2Selection.addItem(String.valueOf(i));
+        }
     }
 
     @Override
@@ -53,19 +65,35 @@ public class GameControlPanel extends MyPanel {
     }
 
     private void _initPanel() {
+    	setLayout(null);
         setPreferredSize(new Dimension(500, 700));
-        buttons.setBackground(Color.BLACK);
-        buttons.add(btnThrowDice);
-        buttons.add(pauseButton);
-        buttons.add(quitButton);
-        buttons.add(action1);
-        buttons.add(action2);
+
+        final int btnWidth = 100, btnHeight = 30;
+        btnThrowDice.setBounds( 20, 10, 110, 30);  add(btnThrowDice);
+        pauseButton.setBounds (150, 10, 110, 30); add(pauseButton);
+        quitButton.setBounds  (280, 10, 110, 30); add(quitButton);
+        action1.setBounds     ( 20, 50, 110, 30); add(action1);
+        action2.setBounds     (150, 50, 110, 30); add(action2);
+  
+        dice1Selection.setBounds( 20, 220, 80, 30); add(dice1Selection);
+        dice2Selection.setBounds(150, 220, 80, 30); add(dice2Selection);
+        dice1Selection.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int sel = dice1Selection.getSelectedIndex();
+				if(sel == 0) gameState.dices[0] = -1;
+				else gameState.setDice1Preset(sel);
+			}
+        });
+        dice2Selection.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				int sel = dice2Selection.getSelectedIndex();
+				if(sel == 0) gameState.dices[1] = -1;
+				else gameState.setDice2Preset(sel);
+			}
+        });
+
         action1.setVisible(false);
         action2.setVisible(false);
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.fill = GridBagConstraints.BOTH;
-        add(buttons, gbc);
     }
 
     private void _drawCard(Graphics g) {
@@ -93,8 +121,8 @@ public class GameControlPanel extends MyPanel {
     }
     private void _drawPlayersStatus(Graphics g) {
     	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
-    	int positionY = 60;
-    	int positionX = 250;
+    	int positionY = 120;
+    	int positionX = 280;
     	if(gameState.turn == null) {
     		g.drawString("Turn: ---", positionX, positionY);
     	} else {
@@ -119,7 +147,7 @@ public class GameControlPanel extends MyPanel {
     
     	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
     	int positionY = 350;
-    	final int positionX = 40;
+    	final int positionX = 20;
     	
     	if(tileInfo.get(0) == "LuckSetback")
     	{
@@ -160,8 +188,8 @@ public class GameControlPanel extends MyPanel {
             System.out.println(e2.getMessage());
             System.exit(1);
         }
-        g.drawImage(imgDice1, 0, 100, 100, 100, null);
-        g.drawImage(imgDice2, 110, 100, 100, 100, null);
+        g.drawImage(imgDice1, 20, 100, 100, 100, null); 
+        g.drawImage(imgDice2, 130, 100, 100, 100, null);
     }
 
     private void _setEvents() {
