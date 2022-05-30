@@ -31,16 +31,31 @@ public class ThrowDiceCtl implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		GameState gameState = GameState.getInstance();
-        int[] dices = gameState.throwDice();
-        gameState.nextPlayer();
-        gamePanel.gameControlPanel.dice1Value = dices[0];
-        gamePanel.gameControlPanel.dice2Value = dices[1];
-        try {gameState.turn.goFoward(dices[0] + dices[1]);}
-        catch (Exception e2) {System.out.println(e2.getMessage());}
-        Tile curentTile = gameState.getTile();
-        gameState.dump();
-        switch(curentTile.tileType) {
-        	case Land:
+		gameState.nextPlayer();
+		Tile curentTile = gameState.getTile();
+		int[] dices = gameState.throwDice();
+	    gamePanel.gameControlPanel.dice1Value = dices[0];
+	    gamePanel.gameControlPanel.dice2Value = dices[1];
+		if(curentTile.tileType == TileType.Prision)
+		{
+			Prision prision = (Prision)curentTile;
+			try {
+				prision.getOut(gameState.turn, gameState.dices[0], gameState.dices[1]);
+			
+			} catch (PlayerException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		else
+		{
+	    	try {gameState.turn.goFoward(dices[0] + dices[1]);}
+	    	catch (Exception e2) {System.out.println(e2.getMessage());}
+	    	curentTile = gameState.getTile();
+		}
+		
+        if(curentTile.tileType == TileType.Land)
+        {
         		Land land = (Land)curentTile;
         		if (gameState.canBuyLand())
         		{
@@ -61,16 +76,12 @@ public class ThrowDiceCtl implements ActionListener{
         		{
         			try {
 						land.payRent(gameState.turn);
-					} catch (LandException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					} catch (PlayerException e1) {
-						// TODO Auto-generated catch block
+					} catch (LandException | PlayerException e1) {
 						e1.printStackTrace();
 					}
         		}
-        		break;
-        	case Company:
+        }
+        else if(curentTile.tileType == TileType.Company) {
         		Company company = (Company)curentTile;
         		if (company.getOwner() == null)
         		{
@@ -86,12 +97,12 @@ public class ThrowDiceCtl implements ActionListener{
 						e1.printStackTrace();
 					}
         		}
-        		break;
-        	case Money:
+        }
+        else if(curentTile.tileType == TileType.Money) {
         		Money money = (Money)curentTile;
         		money.execute(gameState.turn);
-        		break;
-        	case LuckSetback:
+        }
+        else if(curentTile.tileType == TileType.LuckSetback) {
         		LuckSetback luckSetback = (LuckSetback)curentTile;
 			try {
 				luckSetback.pickCard(gameState.turn);
@@ -102,26 +113,16 @@ public class ThrowDiceCtl implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-			break;
-        	case Prision:
-        		Prision prision = (Prision)curentTile;
-			try {
-				prision.getOut(gameState.turn, gameState.dices[0], gameState.dices[0]);
-			} catch (PlayerException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			break;
-        	case GoToPrision:
+        }
+        else if(curentTile.tileType == TileType.GoToPrision) {
         		GoToPrision goToPrison = (GoToPrision)curentTile;
         		goToPrison.gotoPrision(gameState.turn);
-        	break;
-
-			default:
-				gamePanel.gameControlPanel.action1.setVisible(false);
-				gamePanel.gameControlPanel.action2.setVisible(false);
         }
+		else {
+			gamePanel.gameControlPanel.action1.setVisible(false);
+			gamePanel.gameControlPanel.action2.setVisible(false);
+		}
         gamePanel.repaint();
+        gameState.dump();
 	}
-
 }

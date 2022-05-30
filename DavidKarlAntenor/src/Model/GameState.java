@@ -100,7 +100,7 @@ public class GameState {
 		if (board.getTile(turn.getCurrentTile()) instanceof Land)
 		{
 			Land land = (Land)board.getTile(turn.getCurrentTile());
-			return land.canBuyLand(turn);
+			return land.canBuyLand();
 		}
 		return false;
 	}

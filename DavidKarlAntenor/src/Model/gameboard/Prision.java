@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 import Model.TileType;
 public class Prision extends Tile {
-	Player playerJustArrived = null;;
 	public Prision() {
 		super(TileType.Prision);
 	}
@@ -18,14 +17,10 @@ public class Prision extends Tile {
 		return ret;
 	}
 	public void getOut(Player player, int diceNumber1, int diceNumber2) throws PlayerException {
-		if(player == playerJustArrived)
-		{
-			if(diceNumber1 == diceNumber2) {
-				player.goFoward(diceNumber1 + diceNumber2);
-			}
-			playerJustArrived = null;
+		
+		if(diceNumber1 == diceNumber2) {
+			player.goFoward(diceNumber1 + diceNumber2);
 		}
-		else
-			playerJustArrived = player;
+		
 	}
 }

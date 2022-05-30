@@ -25,7 +25,7 @@ public class Land extends Tile {
 		this.rentCost = rentCost;	
 	}
 
-	public Boolean canBuyLand(Player player)
+	public Boolean canBuyLand()
 	{
 		if(this.owner == null)
 			return true;

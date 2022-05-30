@@ -157,7 +157,6 @@ public class GameControlPanel extends MyPanel {
 				imgCard = ImageIO.read(new File(str));
 				g.drawImage(imgCard, positionX, positionY, null);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			positionY += 260;
