@@ -240,4 +240,29 @@ public class GameState {
 			goToPrision.gotoPrision(turn);
 		}
 	}
+	public void saveGame()
+	{
+		// TODO: Save the information of players and tiles on file
+		for(Player player: players)
+		{
+			// TODO: These informations to be saved
+			player.getCash();
+			player.getCurrentTile();
+			player.getColor();
+			player.getName();
+		}
+		for(int i = 0; i < board.getLength(); i++)
+		{
+			if (board.getTile(i) instanceof Land)
+			{
+				Land land = (Land)board.getTile(i);
+				// TODO: These informations to be saved
+				land.getOwner().getName();
+				land.getNumberOfHouses();
+				land.hasHotel();
+			}
+			// TODO: The same for instanceof Company
+			// Save owner name
+		}
+	}
 }

@@ -162,4 +162,12 @@ public class Land extends Tile {
 		}
 		return false;
 	}
+
+	public int getNumberOfHouses() {
+		return numberOfHouses;
+	}
+
+	public boolean hasHotel() {
+		return hasHotel;
+	}
 }
