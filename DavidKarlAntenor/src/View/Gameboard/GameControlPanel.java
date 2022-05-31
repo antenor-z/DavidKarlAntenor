@@ -57,6 +57,10 @@ public class GameControlPanel extends MyPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+    	Graphics2D g2 = (Graphics2D) g;
+    	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+    	    RenderingHints.VALUE_ANTIALIAS_ON);
+
         super.paintComponent(g);
         _drawDices(g);
         _drawCard(g);
@@ -112,7 +116,7 @@ public class GameControlPanel extends MyPanel {
     	switch (c) {
 			case Blue: {return Color.blue;}
 			case Red: {return Color.red;}
-			case Orange: {return Color.orange;}
+			case Orange: {return new Color(0xEB, 0x9A, 0x21);}
 			case Yellow: {return Color.yellow;}
 			case Gray: {return Color.gray;}
 			case Purple: {return Color.pink;}
@@ -123,18 +127,21 @@ public class GameControlPanel extends MyPanel {
     	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
     	int positionY = 120;
     	int positionX = 280;
-    	if(gameState.turn == null) {
-    		g.drawString("Turn: ---", positionX, positionY);
-    	} else {
-	    	g.setColor(toJavaColor(gameState.turn.getColor()));
-	    	String t = "Turn: " + gameState.turn.getName() + " (" + gameState.turn.getColor() + ")";
-	    	g.drawString(t, positionX, positionY);
-	    	g.setColor(Color.black);
-    	}
-    	positionY += 40;
+
     	for(Player p: gameState.players) {
     		// drawString doesn't handle \n so we have to do manually
-    		g.drawString("Name: " + p.getName(), positionX, positionY);
+    		if(p == gameState.turn)
+    		{
+    			g.setColor(toJavaColor(gameState.turn.getColor()));
+    			g.setFont(new Font(g.getFont().getFamily(), Font.ITALIC, 15));
+    			g.drawString("Name: " + p.getName() + " [Turn]" , positionX, positionY);
+    			g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
+    			g.setColor(Color.black);
+    		}
+    		else
+    		{
+    			g.drawString("Name: " + p.getName(), positionX, positionY);
+    		}
     		positionY += 20;
     		g.drawString("Color: " + p.getColor(), positionX, positionY);
     		positionY += 20;
@@ -143,7 +150,7 @@ public class GameControlPanel extends MyPanel {
     	}
     }
     private void _drawTileInfo(Graphics g){
-    	g.setFont(new Font(g.getFont().getFamily(), Font.BOLD, 15));
+    	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
     
     	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
     	int positionY = 350;
