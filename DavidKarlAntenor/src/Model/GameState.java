@@ -6,9 +6,12 @@ import Model.Player.PlayerException;
 import Model.gameboard.Board;
 import Model.gameboard.Company;
 import Model.gameboard.CompanyException;
+import Model.gameboard.GoToPrision;
 import Model.gameboard.Land;
 import Model.gameboard.LandException;
 import Model.gameboard.LuckSetback;
+import Model.gameboard.Money;
+import Model.gameboard.Prision;
 import Model.gameboard.Tile;
 
 import java.util.ArrayList;
@@ -167,6 +170,74 @@ public class GameState {
 		{
 			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getCurrentTile());
 			luckSetback.pickCard(turn);
+		}
+	}
+	
+	public String getCurrentTileType()
+	{
+		Tile t = board.getTile(turn.getCurrentTile());
+		return t.tileType.toString();
+	}
+
+	public void goFoward(int dice1, int dice2) throws PlayerException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Prision)
+		{
+			Prision prision = (Prision)board.getTile(turn.getCurrentTile());
+			prision.getOut(turn, dice1, dice2);
+		}
+		else
+		{
+			turn.goFoward(dice1 + dice2);
+		}
+	}
+
+	public void landPayRent() throws LandException, PlayerException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getCurrentTile());
+			land.payRent(turn);
+		}
+	}
+
+	public Player companyGetOwner() {
+		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		{
+			Company company = (Company)board.getTile(turn.getCurrentTile());
+			return company.getOwner();
+		}
+		return null;
+	}
+
+	public void companyPayRent(int dice1, int dice2) throws CompanyException {
+		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		{
+			Company company = (Company)board.getTile(turn.getCurrentTile());
+			company.payRent(turn, dice1 + dice2);
+		}
+		
+	}
+
+	public void moneyExecute() {
+		if (board.getTile(turn.getCurrentTile()) instanceof Money)
+		{
+			Money money = (Money)board.getTile(turn.getCurrentTile());
+			money.execute(turn);	
+		}
+	}
+
+	public void luckSetbackPickCard() throws PlayerException, DeckException {
+		if (board.getTile(turn.getCurrentTile()) instanceof LuckSetback)
+		{
+			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getCurrentTile());
+			luckSetback.pickCard(turn);
+		}	
+	}
+
+	public void gotoPrision() {
+		if (board.getTile(turn.getCurrentTile()) instanceof GoToPrision)
+		{
+			GoToPrision goToPrision = (GoToPrision)board.getTile(turn.getCurrentTile());
+			goToPrision.gotoPrision(turn);
 		}
 	}
 }
