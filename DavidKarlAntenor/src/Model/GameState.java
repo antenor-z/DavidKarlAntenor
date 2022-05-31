@@ -251,6 +251,8 @@ public class GameState {
 			player.getColor();
 			player.getName();
 		}
+		// TODO: save the current player
+		turn.getName();
 		for(int i = 0; i < board.getLength(); i++)
 		{
 			if (board.getTile(i) instanceof Land)
