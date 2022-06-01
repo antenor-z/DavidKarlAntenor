@@ -6,8 +6,7 @@ public class GoToJailCard extends ACard {
         _type = CardType.GO_TO_JAIL;
     }
 
-	@Override
-	public int getValue() {
+	int getValue() {
 		return 0;
 	}
 }

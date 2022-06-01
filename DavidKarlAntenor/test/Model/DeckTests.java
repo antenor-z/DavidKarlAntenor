@@ -32,7 +32,7 @@ public class DeckTests {
     public void testAddCard() {
         try {
         	deck = new Deck(jsonPath);
-            ICard pickedCard = deck.withdraw();
+            ACard pickedCard = deck.withdraw();
             Integer initialDeckSize = deck.size();
 
             deck.add(pickedCard);
@@ -50,7 +50,7 @@ public class DeckTests {
     public void showCards() {
     	try {
 			deck = new Deck(jsonPath);
-			for (ICard card: deck.getCards()) {
+			for (ACard card: deck.getCards()) {
 				System.out.print(card.getName());
 				System.out.print(card.getDescription());
 				if(card instanceof ValueCard) {

@@ -11,28 +11,26 @@ import org.json.*;
 import java.util.Random;
 
 public class Deck {
-    private final List<ICard> cards = new ArrayList<ICard>();
+    private final List<ACard> cards = new ArrayList<ACard>();
     private final Random rand = new Random();
     private OutOfJailCard outOfJailCard;
 
-    public Deck(String jsonPath) throws DeckException {
+    Deck(String jsonPath) throws DeckException {
         this._initialiseCardArray(jsonPath);
     }
 
-    // PUBLIC METHODS
-
-    public ICard withdraw() {
+    ACard withdraw() {
         int randomPick = rand.nextInt(cards.size());
-        ICard pickedCard = cards.get(randomPick);
+        ACard pickedCard = cards.get(randomPick);
         
         return pickedCard;
     }
     
-    public List<ICard> getCards() {
+    List<ACard> getCards() {
     	return cards;
     }
 
-    public void add(ICard card) {
+    void add(ACard card) {
         if (card != null) {
             cards.add(card);
         }

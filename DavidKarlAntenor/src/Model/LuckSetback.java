@@ -2,10 +2,10 @@ package Model;
 import java.util.ArrayList;
 public class LuckSetback extends Tile {
 	private Deck deck;
-	OutOfJailCard outOfJailCard = null;
-	ArrayList<Player> playersList;
-	ICard currentCard = null;
-	String imagePath;
+	private OutOfJailCard outOfJailCard = null;
+	private ArrayList<Player> playersList;
+	private ACard currentCard = null;
+	private String imagePath;
 
 	LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
 	{
@@ -30,7 +30,7 @@ public class LuckSetback extends Tile {
 	}
 	
 	void pickCard(Player p) throws PlayerException, DeckException {
-		ICard card = deck.withdraw();
+		ACard card = deck.withdraw();
 		currentCard = card;
 		imagePath = card.getImage();
 		
