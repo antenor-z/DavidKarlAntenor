@@ -1,9 +1,5 @@
-package Model.gameboard;
+package Model;
 import java.util.ArrayList;
-
-import Model.TileType;
-import Model.Player.Player;
-import Model.Player.PlayerException;
 
 public class Land extends Tile {
 	private String description;
@@ -15,7 +11,7 @@ public class Land extends Tile {
 	private int[] rentCost = new int[6];
 	private Player owner;
 
-	public Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
+	Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
 	{
 		super(TileType.Land);
 		this.description = description;
@@ -25,14 +21,14 @@ public class Land extends Tile {
 		this.rentCost = rentCost;	
 	}
 
-	public Boolean canBuyLand()
+	Boolean canBuyLand()
 	{
 		if(this.owner == null)
 			return true;
 		return false;
 	}
 	
-	public Boolean canBuildHouse(Player player)
+	Boolean canBuildHouse(Player player)
 	{
 		if(this.owner == player)
 		{		
@@ -44,7 +40,7 @@ public class Land extends Tile {
 		return false;
 	}
 	
-	public void buyLand(Player player) throws LandException, PlayerException
+	void buyLand(Player player) throws LandException, PlayerException
 	{
 		if(this.owner == null)
 		{
@@ -58,7 +54,7 @@ public class Land extends Tile {
 		}
 	}
 	
-	public void buildHouse() throws PlayerException, LandException
+	void buildHouse() throws PlayerException, LandException
 	{
 		if(this.owner != null)
 		{		
@@ -78,7 +74,7 @@ public class Land extends Tile {
 		}
 	}
 	
-	public void buildHotel() throws PlayerException, LandException
+	void buildHotel() throws PlayerException, LandException
 	{
 		if(numberOfHouses >= 1)
 		{
@@ -97,7 +93,7 @@ public class Land extends Tile {
 			throw new LandException("At least 1 house to build hotel");
 		}
 	}
-	public void payRent(Player tenant) throws LandException, PlayerException
+	void payRent(Player tenant) throws LandException, PlayerException
 	{
 		if(this.owner != null)
 		{
@@ -121,11 +117,11 @@ public class Land extends Tile {
 			throw new LandException("Land does not have a owner");
 		}
 	}
-	public Player getOwner()
+	Player getOwner()
 	{
 		return owner;
 	}
-	public ArrayList<String> print()
+	ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Land");
@@ -152,7 +148,7 @@ public class Land extends Tile {
 		return ret;
 	}
 
-	public boolean canBuildHotel(Player turn) {
+	boolean canBuildHotel(Player turn) {
 		if(numberOfHouses >= 1)
 		{
 			if(hasHotel == false)
@@ -163,11 +159,11 @@ public class Land extends Tile {
 		return false;
 	}
 
-	public int getNumberOfHouses() {
+	int getNumberOfHouses() {
 		return numberOfHouses;
 	}
 
-	public boolean hasHotel() {
+	boolean hasHotel() {
 		return hasHotel;
 	}
 }

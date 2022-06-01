@@ -1,11 +1,10 @@
-package Model.Deck;
+package Model;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import Model.Deck.Card.*;
-import Model.Deck.Exception.DeckException;
+
 import Model.Utils.ImportFile;
 
 import org.json.*;

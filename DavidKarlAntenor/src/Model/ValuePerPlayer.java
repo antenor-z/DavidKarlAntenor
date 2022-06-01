@@ -1,4 +1,4 @@
-package Model.Deck.Card;
+package Model;
 
 public class ValuePerPlayer extends ValueCard {
     public ValuePerPlayer(String description, String name, Integer value, String imagePath) {

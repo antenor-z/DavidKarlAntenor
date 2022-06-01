@@ -2,9 +2,9 @@ package View;
 import Model.GameException;
 import Model.GameSettings;
 import Model.GameState;
+import Model.Player;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
-import Model.Player.Player;
 
 import java.awt.*;
 import java.awt.event.*;

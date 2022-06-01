@@ -6,12 +6,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import Model.Player.Player;
-import Model.Player.PlayerException;
-import Model.gameboard.Board;
-import Model.gameboard.Company;
-import Model.gameboard.CompanyException;
-
 public class CompanyTest {
 
 	@Test

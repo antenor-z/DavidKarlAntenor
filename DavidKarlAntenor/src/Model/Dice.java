@@ -3,7 +3,7 @@ package Model;
 import java.util.Random;
 
 public abstract class Dice {
-	static int[] roll(int[] dicesPreset)
+	public static int[] roll(int[] dicesPreset)
 	{
 		Random r = new Random();
 		int[] ret = {0, 0};

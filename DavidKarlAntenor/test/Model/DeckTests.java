@@ -1,9 +1,5 @@
 package Model;
 
-import Model.Deck.Card.ICard;
-import Model.Deck.Card.ValueCard;
-import Model.Deck.Deck;
-import Model.Deck.Exception.DeckException;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

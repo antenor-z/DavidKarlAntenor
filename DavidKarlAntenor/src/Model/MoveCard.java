@@ -1,4 +1,4 @@
-package Model.Deck.Card;
+package Model;
 
 public class MoveCard extends ValueCard {
     public MoveCard(String description, String name, Integer value, String imagePath) {

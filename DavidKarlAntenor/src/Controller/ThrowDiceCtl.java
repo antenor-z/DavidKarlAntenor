@@ -3,22 +3,11 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.CompanyException;
+import Model.DeckException;
+import Model.GameException;
 import Model.GameState;
-import Model.TileType;
-import Model.Deck.Exception.DeckException;
-import Model.Player.PlayerException;
-import Model.gameboard.Company;
-import Model.gameboard.CompanyException;
-import Model.gameboard.GoToPrision;
-import Model.gameboard.Land;
-import Model.gameboard.LandException;
-import Model.gameboard.LuckSetback;
-import Model.gameboard.Money;
-import Model.gameboard.Prision;
-import Model.gameboard.Tile;
-import View.MyPanel;
-import View.Gameboard.GameBoardPanel;
-import View.Gameboard.GameControlPanel;
+import Model.Tile;
 import View.Gameboard.GamePanel;
 
 public class ThrowDiceCtl implements ActionListener{
@@ -61,9 +50,9 @@ public class ThrowDiceCtl implements ActionListener{
         		{
         			try {
 						gameState.landPayRent();
-					} catch (LandException | PlayerException e1) {
+					} catch (GameException e1) {
 						e1.printStackTrace();
-					}
+        		}
         		}
         }
 		else if(gameState.getCurrentTileType().equals("Company"))
@@ -95,7 +84,7 @@ public class ThrowDiceCtl implements ActionListener{
 			{
 				gameState.luckSetbackPickCard();
 			}
-			catch (PlayerException | DeckException e1)
+			catch (GameException e1)
 			{
 				e1.printStackTrace();
 			}

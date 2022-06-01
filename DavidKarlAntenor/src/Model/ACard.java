@@ -1,6 +1,6 @@
-package Model.Deck.Card;
+package Model;
 
-public abstract class ACard implements Model.Deck.Card.ICard {
+public abstract class ACard implements ICard {
     private final String _description;
     private final String _name;
     private final String _image;

@@ -1,8 +1,8 @@
 package View;
 
+import Model.PlayerException;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
-import Model.Player.PlayerException;
 import View.Exception.ViewException;
 
 import java.awt.HeadlessException;

@@ -1,7 +1,7 @@
-package Model.Player;
+package Model;
 
 @SuppressWarnings("serial")
-public class PlayerException extends Exception{
+public class PlayerException extends GameException{
 	public PlayerException(String m)
 	{
 		super(m);

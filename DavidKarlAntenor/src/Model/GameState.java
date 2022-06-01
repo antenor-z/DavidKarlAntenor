@@ -1,19 +1,5 @@
 package Model;
 
-import Model.Deck.Exception.DeckException;
-import Model.Player.Player;
-import Model.Player.PlayerException;
-import Model.gameboard.Board;
-import Model.gameboard.Company;
-import Model.gameboard.CompanyException;
-import Model.gameboard.GoToPrision;
-import Model.gameboard.Land;
-import Model.gameboard.LandException;
-import Model.gameboard.LuckSetback;
-import Model.gameboard.Money;
-import Model.gameboard.Prision;
-import Model.gameboard.Tile;
-
 import java.util.ArrayList;
 import java.util.List;
 

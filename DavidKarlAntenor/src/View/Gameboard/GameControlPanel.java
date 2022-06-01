@@ -2,11 +2,11 @@ package View.Gameboard;
 
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
-import Model.Player.Player;
-import Model.Player.PlayerException;
-import Model.gameboard.LuckSetback;
 import Model.GameSettings;
+import Model.LuckSetback;
+import Model.Player;
 import Model.PlayerColor;
+import Model.PlayerException;
 import Model.TileType;
 import View.MyPanel;
 

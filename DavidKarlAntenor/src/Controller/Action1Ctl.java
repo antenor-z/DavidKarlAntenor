@@ -3,10 +3,9 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Model.CompanyException;
+import Model.GameException;
 import Model.GameState;
-import Model.Player.PlayerException;
-import Model.gameboard.CompanyException;
-import Model.gameboard.LandException;
 import View.Gameboard.GamePanel;
 
 public class Action1Ctl implements ActionListener{
@@ -28,7 +27,7 @@ public class Action1Ctl implements ActionListener{
 		        {
 					gameState.buyLand();
 				}
-		        catch (LandException | PlayerException e1)
+		        catch (GameException e1)
 		        {
 					e1.printStackTrace();
 				}  
@@ -39,7 +38,7 @@ public class Action1Ctl implements ActionListener{
 				{
 					gameState.buildHouse();
 				}
-				catch (LandException | PlayerException e1)
+				catch (GameException e1)
 				{
 					e1.printStackTrace();
 				}  
@@ -54,7 +53,7 @@ public class Action1Ctl implements ActionListener{
 			{
 				gameState.buyCompany();
 			}
-			catch (PlayerException | CompanyException e1)
+			catch (GameException e1)
 			{
 				e1.printStackTrace();
 			}

@@ -1,11 +1,6 @@
-package Model.gameboard;
-
-import Model.Player.Player;
-import Model.Player.PlayerException;
+package Model;
 
 import java.util.ArrayList;
-
-import Model.TileType;
 public class Prision extends Tile {
 	public Prision() {
 		super(TileType.Prision);

@@ -1,4 +1,4 @@
-package Model.Deck.Card;
+package Model;
 
 public class GoToJailCard extends ACard {
     public GoToJailCard(String description, String name, String imagePath) {

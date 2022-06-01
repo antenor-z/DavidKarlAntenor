@@ -1,8 +1,8 @@
 package View;
 
 import Model.Event.ViewType;
-import Model.Player.PlayerException;
 import Model.GameSettings;
+import Model.PlayerException;
 import View.Gameboard.GamePanel;
 import View.Pause.PausePanel;
 

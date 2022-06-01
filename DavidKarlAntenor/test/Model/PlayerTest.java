@@ -2,9 +2,6 @@ package Model;
 
 import Model.GameSettings;
 import Model.PlayerColor;
-import Model.Player.Player;
-import Model.Player.PlayerException;
-import Model.gameboard.Board;
 import Model.GameSettings;
 import static org.junit.Assert.*;
 

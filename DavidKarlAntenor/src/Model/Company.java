@@ -1,17 +1,13 @@
-package Model.gameboard;
+package Model;
 
 import java.util.ArrayList;
-
-import Model.TileType;
-import Model.Player.Player;
-import Model.Player.PlayerException;
 
 public class Company extends Tile {
 	private int price;
 	private Player owner;
 	private int priceRate;
 	private String description;
-	public Company(String description, int price, int priceRate)
+	Company(String description, int price, int priceRate)
 	{
 		super(TileType.Company);
 		this.description = description;
@@ -19,7 +15,7 @@ public class Company extends Tile {
 		this.priceRate = priceRate;
 		this.owner = null;
 	}
-	public void buyCompany(Player player) throws CompanyException, PlayerException
+	void buyCompany(Player player) throws CompanyException, PlayerException
 	{
 		if(this.owner == null)
 		{
@@ -30,7 +26,7 @@ public class Company extends Tile {
 			throw new CompanyException("Company already has a owner: " 
 		+ player.getColor());
 	}
-	public void payRent(Player tenant, int diceNumber) throws CompanyException
+	void payRent(Player tenant, int diceNumber) throws CompanyException
 	{
 		if(this.owner != null)
 		{
@@ -57,7 +53,7 @@ public class Company extends Tile {
 			throw new CompanyException("Company does not have a owner.");
 		}
 	}
-	public ArrayList<String> print()
+	ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("company");
@@ -70,7 +66,7 @@ public class Company extends Tile {
 		ret.add("Price rate: " + priceRate);
 		return ret;
 	}
-	public Player getOwner()
+	Player getOwner()
 	{
 		return owner;
 	}

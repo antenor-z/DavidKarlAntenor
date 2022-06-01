@@ -1,15 +1,13 @@
-package Model.Deck.Card;
-
-import Model.Deck.Exception.DeckException;
+package Model;
 
 public class OutOfJailCard extends ACard implements IKeptable {
-	private Model.Player.Player owner;
+	private Model.Player owner;
     public OutOfJailCard(String description, String name, String imagePath) {
         super(description, name, imagePath);
         _type = CardType.OUT_OF_JAIL;
         owner = null;
     }
-    public void pick(Model.Player.Player p) throws DeckException {
+    public void pick(Model.Player p) throws DeckException {
     	if(owner == null) 
     	{
     		owner = p;
@@ -20,10 +18,10 @@ public class OutOfJailCard extends ACard implements IKeptable {
     		+ " player trying to pick" + p.getColor());
     	}
     }
-    public Model.Player.Player getOwner() {
+    public Model.Player getOwner() {
     	return owner;
     }
-    public void use(Model.Player.Player p) throws DeckException {
+    public void use(Model.Player p) throws DeckException {
     	if(p == owner) 
     	{
     		owner = null;

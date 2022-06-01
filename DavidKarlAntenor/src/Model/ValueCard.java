@@ -1,4 +1,4 @@
-package Model.Deck.Card;
+package Model;
 
 public class ValueCard extends ACard {
     private final Integer _value;

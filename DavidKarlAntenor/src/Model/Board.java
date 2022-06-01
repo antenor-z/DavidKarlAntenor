@@ -1,8 +1,5 @@
-package Model.gameboard;
+package Model;
 import org.json.*;
-
-import Model.Deck.Deck;
-import Model.Player.Player;
 
 import java.util.ArrayList;
 import java.nio.file.Files;
@@ -12,7 +9,7 @@ public class Board {
 	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private Deck deck;
 	
-	public Board(ArrayList<Player> playerList) {	
+	Board(ArrayList<Player> playerList) {	
 		try {
 			deck = new Deck("./Deck.json");
 		}
@@ -83,13 +80,13 @@ public class Board {
 			System.out.println(e.getMessage());
 		}	
 	}
-	public int getLength() {
+	int getLength() {
 		return tiles.size();
 	}
-	public Tile getTile(int i) {
+	Tile getTile(int i) {
 		return tiles.get(i);
 	}
-	public void printAllTiles() {
+	void printAllTiles() {
 		for(Tile tile: tiles) {
 			tile.print();
 		}

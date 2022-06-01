@@ -1,13 +1,5 @@
-package Model.gameboard;
-import Model.Deck.Card.*;
-import Model.TileType;
-
+package Model;
 import java.util.ArrayList;
-
-import Model.Deck.Deck;
-import Model.Deck.Exception.DeckException;
-import Model.Player.Player;
-import Model.Player.PlayerException;
 public class LuckSetback extends Tile {
 	private Deck deck;
 	OutOfJailCard outOfJailCard = null;
@@ -15,14 +7,14 @@ public class LuckSetback extends Tile {
 	ICard currentCard = null;
 	String imagePath;
 
-	public LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
+	LuckSetback(ArrayList<Player> playersList, Deck deck) throws DeckException
 	{
 		super(TileType.LuckSetback);
 		this.deck = deck;
 		this.playersList = playersList;
 		this.outOfJailCard = deck.getOutOfJailCard();
 	}
-	public ArrayList<String> print()
+	ArrayList<String> print()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("LuckSetback");
@@ -37,7 +29,7 @@ public class LuckSetback extends Tile {
 		return ret;
 	}
 	
-	public void pickCard(Player p) throws PlayerException, DeckException {
+	void pickCard(Player p) throws PlayerException, DeckException {
 		ICard card = deck.withdraw();
 		currentCard = card;
 		imagePath = card.getImage();

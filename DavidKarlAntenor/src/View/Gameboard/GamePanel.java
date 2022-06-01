@@ -1,7 +1,7 @@
 package View.Gameboard;
 
 import Model.GameSettings;
-import Model.Player.PlayerException;
+import Model.PlayerException;
 import View.MyPanel;
 
 import javax.swing.*;

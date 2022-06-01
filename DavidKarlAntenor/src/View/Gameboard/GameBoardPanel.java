@@ -1,12 +1,12 @@
 package View.Gameboard;
 
+import Model.Board;
 import Model.GameSettings;
+import Model.Player;
 import Model.PlayerColor;
+import Model.PlayerException;
+import Model.Tile;
 import Model.TileType;
-import Model.Player.Player;
-import Model.Player.PlayerException;
-import Model.gameboard.Board;
-import Model.gameboard.Tile;
 import View.Exception.ViewException;
 
 import java.awt.*;
