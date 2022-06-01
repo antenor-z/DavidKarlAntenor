@@ -3,7 +3,6 @@ package Controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Model.CompanyException;
 import Model.GameException;
 import Model.GameState;
 import View.Gameboard.GamePanel;

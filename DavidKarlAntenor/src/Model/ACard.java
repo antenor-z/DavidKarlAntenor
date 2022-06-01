@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class ACard{
+abstract class ACard{
     private final String _description;
     private final String _name;
     private final String _image;

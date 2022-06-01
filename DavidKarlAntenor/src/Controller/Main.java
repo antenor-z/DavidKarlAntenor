@@ -5,7 +5,7 @@ import java.awt.HeadlessException;
 
 import javax.swing.*;
 
-import Model.PlayerException;
+import Model.GameException;
 
 public class Main {
     public static void main(String []args) {
@@ -14,7 +14,7 @@ public class Main {
                 public void run(){  
 						try {
 							GameFrameManager viewManager = new GameFrameManager();
-						} catch (PlayerException e) {
+						} catch (GameException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}

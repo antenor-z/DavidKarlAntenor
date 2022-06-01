@@ -1,6 +1,6 @@
 package Model;
 import java.util.ArrayList;
-public class LuckSetback extends Tile {
+class LuckSetback extends Tile {
 	private Deck deck;
 	private OutOfJailCard outOfJailCard = null;
 	private ArrayList<Player> playersList;

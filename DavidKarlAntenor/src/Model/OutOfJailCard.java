@@ -1,6 +1,6 @@
 package Model;
 
-public class OutOfJailCard extends ACard{
+class OutOfJailCard extends ACard{
 	private Model.Player owner;
     public OutOfJailCard(String description, String name, String imagePath) {
         super(description, name, imagePath);

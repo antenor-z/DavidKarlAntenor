@@ -1,7 +1,7 @@
 package Model;
 import java.util.ArrayList;
 
-public class Land extends Tile {
+class Land extends Tile {
 	private String description;
 	private int price;
 	private int buildHouseCost;

@@ -1,5 +1,5 @@
 package Model;
 
-public enum TileType {
+enum TileType {
 	Company, FreeStop, GoToPrision, Land, Money, Start, Prision, LuckSetback;
 }

@@ -1,36 +1,25 @@
 package View.Gameboard;
 
-import Model.Board;
-import Model.GameSettings;
+import Model.GameException;
+import Model.GameState;
 import Model.Player;
 import Model.PlayerColor;
-import Model.PlayerException;
-import Model.Tile;
-import Model.TileType;
-import View.Exception.ViewException;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+@SuppressWarnings("serial")
 public class GameBoardPanel extends JPanel {
-	ArrayList<Player> playersList = new ArrayList<Player>();
     ArrayList<Image> pinsImg = new ArrayList<Image>();
-    Board board;
-    public GameBoardPanel() throws PlayerException {
+    //Board board;
+    public GameBoardPanel() throws GameException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
-		playersList = Model.GameState.getInstance().players;
-		board = Model.GameState.getInstance().board;
     }
 
 	public void paintComponent(Graphics g) {
@@ -116,7 +105,7 @@ public class GameBoardPanel extends JPanel {
 		    	case Purple -> startY = 642;
 		    	case Orange -> startY = 642;
 		    	default -> startY = 0;}
-    	} else {int a = 35;
+    	} else {
 	    		switch (color) {
 	    		
 	    		case Blue -> startY = 535;	
@@ -142,14 +131,9 @@ public class GameBoardPanel extends JPanel {
     	}
     	return 0;
     }
-	
-	public void drawPlayers(ArrayList<Player> playersList) {
-    		this.playersList = playersList;
-    	}
-	
-	
+
 	private void _drawPlayers(Graphics g) {
-    	for (Player player: playersList) {
+    	for (Player player: GameState.getInstance().players) {
     		int color = player.getColor().ordinal();
     		int x = getXposition(player.getCurrentTile(), player.getColor());
     		int y = getYposition(player.getCurrentTile(), player.getColor());

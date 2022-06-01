@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-public class Start extends Tile {
+class Start extends Tile {
 	public Start() {
 		super(TileType.Start);
 	}

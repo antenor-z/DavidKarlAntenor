@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Tile {
+class Tile {
 	public TileType tileType;
 	public Tile(TileType tileType){
 		this.tileType = tileType;

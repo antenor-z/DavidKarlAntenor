@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-public class Money extends Tile {
+class Money extends Tile {
 	private int ammount;
 
 	public Money (int ammount)

@@ -4,8 +4,7 @@ import org.json.*;
 import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Path;
-
-public class Board {
+class Board {
 	private final ArrayList<Tile> tiles = new ArrayList<Tile>();
 	private Deck deck;
 	

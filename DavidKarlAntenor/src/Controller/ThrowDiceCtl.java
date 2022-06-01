@@ -2,12 +2,8 @@ package Controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import Model.CompanyException;
-import Model.DeckException;
 import Model.GameException;
 import Model.GameState;
-import Model.Tile;
 import View.Gameboard.GamePanel;
 
 public class ThrowDiceCtl implements ActionListener{
@@ -26,10 +22,7 @@ public class ThrowDiceCtl implements ActionListener{
 
     	try {gameState.goFoward(dices[0], dices[1]);}
     	catch (Exception e2) {System.out.println(e2.getMessage());}
-    	Tile curentTile = gameState.getTile();
-		
-		
-		if(gameState.getCurrentTileType().equals("Land"))
+    	if(gameState.getCurrentTileType().equals("Land"))
         {
         		if (gameState.canBuyLand())
         		{
@@ -68,7 +61,7 @@ public class ThrowDiceCtl implements ActionListener{
         			{
 						gameState.companyPayRent(gameState.dices[0], gameState.dices[1]);
 					}
-        			catch (CompanyException e1)
+        			catch (GameException e1)
         			{
 						e1.printStackTrace();
 					}

@@ -1,6 +1,6 @@
 package View;
 
-import Model.PlayerException;
+import Model.GameException;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 import View.Exception.ViewException;
@@ -15,7 +15,7 @@ public class GameFrameManager implements ActionListener {
     private final List<MyFrame> frames = new ArrayList<MyFrame>();
     private final MyFrame currentFrame = null;
 
-    public GameFrameManager() throws HeadlessException, PlayerException {
+    public GameFrameManager() throws HeadlessException, GameException {
         MyFrame menu = new Menu(this);
         MyFrame game = new GameFrame(this);
 

@@ -1,7 +1,7 @@
 package Model;
 import java.util.ArrayList;
 
-public class FreeStop extends Tile {
+class FreeStop extends Tile {
 	FreeStop() {
 		super(TileType.FreeStop);
 	}

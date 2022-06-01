@@ -1,13 +1,14 @@
 package View.Gameboard;
 
+import Model.GameException;
 import Model.GameSettings;
-import Model.PlayerException;
 import View.MyPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class GamePanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
     GridBagConstraints gbc = new GridBagConstraints();
@@ -15,7 +16,7 @@ public class GamePanel extends MyPanel {
     public GameBoardPanel gameBoardPanel = null;
     public GameControlPanel gameControlPanel = null;
 
-    public GamePanel(CardLayout cl, JPanel panelCont, ActionListener controller) throws PlayerException {
+    public GamePanel(CardLayout cl, JPanel panelCont, ActionListener controller) throws GameException {
         super(cl, panelCont, controller);
         gameControlPanel = new GameControlPanel(cl, panelCont, controller);
         gameBoardPanel = new GameBoardPanel();

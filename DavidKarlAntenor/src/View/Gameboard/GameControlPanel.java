@@ -3,11 +3,8 @@ package View.Gameboard;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 import Model.GameSettings;
-import Model.LuckSetback;
 import Model.Player;
 import Model.PlayerColor;
-import Model.PlayerException;
-import Model.TileType;
 import View.MyPanel;
 
 import javax.imageio.ImageIO;
@@ -19,10 +16,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
-import java.lang.ModuleLayer.Controller;
 import java.util.ArrayList;
-import java.util.Arrays;
 
+@SuppressWarnings("serial")
 public class GameControlPanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
 
@@ -72,7 +68,6 @@ public class GameControlPanel extends MyPanel {
     	setLayout(null);
         setPreferredSize(new Dimension(500, 700));
 
-        final int btnWidth = 100, btnHeight = 30;
         btnThrowDice.setBounds( 20, 10, 110, 30);  add(btnThrowDice);
         pauseButton.setBounds (150, 10, 110, 30); add(pauseButton);
         quitButton.setBounds  (280, 10, 110, 30); add(quitButton);

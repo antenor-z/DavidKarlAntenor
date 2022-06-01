@@ -1,7 +1,7 @@
 package Model;
 
 @SuppressWarnings("serial")
-public class DeckException extends GameException {
+class DeckException extends GameException {
     public DeckException(String message) {
         super(message);
     }

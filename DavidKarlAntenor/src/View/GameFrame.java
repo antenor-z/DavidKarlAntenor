@@ -1,8 +1,8 @@
 package View;
 
 import Model.Event.ViewType;
+import Model.GameException;
 import Model.GameSettings;
-import Model.PlayerException;
 import View.Gameboard.GamePanel;
 import View.Pause.PausePanel;
 
@@ -15,7 +15,7 @@ public class GameFrame extends MyFrame {
     CardLayout cl = new CardLayout();
     GameSettings settings = GameSettings.getInstance();
 
-    public GameFrame(ActionListener controller) throws HeadlessException, PlayerException {
+    public GameFrame(ActionListener controller) throws HeadlessException, GameException {
         super(controller, ViewType.GAME);
         panelCont.setLayout(cl);
         panelCont.add(new GamePanel(cl, panelCont, controller), "1");

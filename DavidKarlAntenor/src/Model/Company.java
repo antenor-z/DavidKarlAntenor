@@ -2,7 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 
-public class Company extends Tile {
+class Company extends Tile {
 	private int price;
 	private Player owner;
 	private int priceRate;

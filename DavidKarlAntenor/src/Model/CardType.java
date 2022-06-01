@@ -1,6 +1,6 @@
 package Model;
 
-public enum CardType {
+enum CardType {
     VALUE,
     GO_TO_JAIL,
     OUT_OF_JAIL,

@@ -1,6 +1,6 @@
 package Model;
 
-public class ValueCard extends ACard {
+class ValueCard extends ACard {
     private final Integer _value;
 
     ValueCard(String description, String name, Integer value, String imagePath) {

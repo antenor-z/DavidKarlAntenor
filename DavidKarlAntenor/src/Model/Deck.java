@@ -10,7 +10,7 @@ import Model.Utils.ImportFile;
 import org.json.*;
 import java.util.Random;
 
-public class Deck {
+class Deck {
     private final List<ACard> cards = new ArrayList<ACard>();
     private final Random rand = new Random();
     private OutOfJailCard outOfJailCard;

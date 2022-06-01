@@ -1,7 +1,7 @@
 package Model;
 import java.util.ArrayList;
 
-public class GoToPrision extends Tile{
+class GoToPrision extends Tile{
 	GoToPrision() {
 		super(TileType.GoToPrision);
 	}
