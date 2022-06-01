@@ -1,14 +1,15 @@
-package Model.gameboard;
-
+package Model;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import Model.PlayerColor;
 import Model.Player.Player;
 import Model.Player.PlayerException;
+import Model.gameboard.Board;
+import Model.gameboard.Land;
+import Model.gameboard.LandException;
 
 public class LandTest{
   @Test

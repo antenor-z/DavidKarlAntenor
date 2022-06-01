@@ -1,4 +1,4 @@
-package Model.Deck.Tests;
+package Model;
 
 import Model.Deck.Card.ICard;
 import Model.Deck.Card.ValueCard;

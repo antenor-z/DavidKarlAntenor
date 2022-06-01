@@ -89,7 +89,7 @@ public class Board {
 	public Tile getTile(int i) {
 		return tiles.get(i);
 	}
-	void printAllTiles() {
+	public void printAllTiles() {
 		for(Tile tile: tiles) {
 			tile.print();
 		}

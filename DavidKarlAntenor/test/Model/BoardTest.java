@@ -1,4 +1,4 @@
-package Model.gameboard;
+package Model;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,15 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import Model.Player.Player;
+import Model.gameboard.Board;
+import Model.gameboard.Company;
+import Model.gameboard.FreeStop;
+import Model.gameboard.GoToPrision;
+import Model.gameboard.Land;
+import Model.gameboard.LuckSetback;
+import Model.gameboard.Money;
+import Model.gameboard.Prision;
+import Model.gameboard.Start;
 
 public class BoardTest {
 
