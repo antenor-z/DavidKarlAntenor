@@ -249,6 +249,7 @@ public class GameState {
 				land.getOwner().getName();
 				land.getNumberOfHouses();
 				land.hasHotel();
+				// The "i" needs to be saved too
 			}
 			// TODO: The same for instanceof Company
 			// Save owner name
