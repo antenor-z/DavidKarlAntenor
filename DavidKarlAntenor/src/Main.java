@@ -1,4 +1,4 @@
-import View.GameFrameManager;
+import View.GameController;
 
 import javax.swing.*;
 
@@ -7,7 +7,7 @@ public class Main {
         try {
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    GameFrameManager viewManager = new GameFrameManager();
+                    GameController viewManager = new GameController();
                 }
             });
         } catch (Exception e) {
