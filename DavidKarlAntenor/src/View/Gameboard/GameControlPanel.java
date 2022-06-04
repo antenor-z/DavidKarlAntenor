@@ -9,6 +9,8 @@ import View.MyPanel;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EventListener;
 
 @SuppressWarnings("serial")
 public class GameControlPanel extends MyPanel {
@@ -29,6 +32,8 @@ public class GameControlPanel extends MyPanel {
     // Action 1 may be, for example, buy house or buy company
     public JButton action1 = new JButton("Action 1");
     public JButton action2 = new JButton("Action 2");
+    
+    public JButton saveBtn = new JButton("Save");
 
     public JComboBox<String> dice1Selection = new JComboBox<String>();
     public JComboBox<String> dice2Selection = new JComboBox<String>();
@@ -73,6 +78,7 @@ public class GameControlPanel extends MyPanel {
         quitButton.setBounds  (280, 10, 110, 30); add(quitButton);
         action1.setBounds     ( 20, 50, 110, 30); add(action1);
         action2.setBounds     (150, 50, 110, 30); add(action2);
+        saveBtn.setBounds     (280, 50, 110, 30); add(saveBtn);
   
         dice1Selection.setBounds( 20, 220, 80, 30); add(dice1Selection);
         dice2Selection.setBounds(150, 220, 80, 30); add(dice2Selection);
@@ -88,6 +94,23 @@ public class GameControlPanel extends MyPanel {
 				int sel = dice2Selection.getSelectedIndex();
 				if(sel == 0) gameState.dices[1] = -1;
 				else gameState.setDice2Preset(sel);
+			}
+        });
+        
+        saveBtn.addActionListener(new ActionListener()
+        {
+			public void actionPerformed(ActionEvent e)
+			{
+				JFileChooser jFileChooser = new JFileChooser();
+				FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON file", "json");
+				jFileChooser.setAcceptAllFileFilterUsed(false);
+				jFileChooser.addChoosableFileFilter(filter);
+				int option = jFileChooser.showSaveDialog(null);
+				if(option == JFileChooser.APPROVE_OPTION)
+				{
+					String selectedFile = jFileChooser.getSelectedFile().getAbsolutePath();
+					gameState.saveGame(selectedFile);
+				}
 			}
         });
 

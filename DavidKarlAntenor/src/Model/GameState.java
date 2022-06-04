@@ -234,7 +234,7 @@ public class GameState {
 			goToPrision.gotoPrision(turn);
 		}
 	}
-	public void saveGame()
+	public void saveGame(String path)
 	{
 		JSONObject playerJSON;
 		JSONArray playersArrayJSON = new JSONArray();
@@ -250,7 +250,10 @@ public class GameState {
 		}
 
 		JSONObject currentPlayerJSON = new JSONObject();
-		currentPlayerJSON.put("CurrentPlayer", turn.getName());
+		if(turn != null)
+			currentPlayerJSON.put("CurrentPlayer", turn.getName());
+		else
+			currentPlayerJSON.put("CurrentPlayer", JSONObject.NULL);
 		
 		JSONObject tileJSON;
 		JSONArray landsArrayJSON = new JSONArray();
@@ -288,11 +291,11 @@ public class GameState {
 		JSONFile.put("Lands", landsArrayJSON);
 		JSONFile.put("Companies", companiesArrayJSON);
 		try {
-			FileWriter f = new FileWriter("./save.json");
+			FileWriter f = new FileWriter(path);
 			f.write(JSONFile.toString(2));
 			f.close();
 		} catch (IOException e) {
-			System.out.println("Could not init file.");
+			System.out.println("Could not save file.");
 			e.printStackTrace();
 		}
 	}
