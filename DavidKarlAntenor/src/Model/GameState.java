@@ -1,8 +1,15 @@
 // Part of API
 package Model;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class GameState {
     static GameState instance;
@@ -229,30 +236,64 @@ public class GameState {
 	}
 	public void saveGame()
 	{
-		// TODO: Save the information of players and tiles on file
+		JSONObject playerJSON;
+		JSONArray playersArrayJSON = new JSONArray();
+		
 		for(Player player: players)
 		{
-			// TODO: These informations to be saved
-			player.getCash();
-			player.getCurrentTile();
-			player.getColor();
-			player.getName();
+			playerJSON = new JSONObject();
+			playerJSON.put("Name", player.getName());
+			playerJSON.put("Color", player.getColor());
+			playerJSON.put("Cash", player.getCash());
+			playerJSON.put("@Tile", player.getCurrentTile());
+			playersArrayJSON.put(playerJSON);
 		}
-		// TODO: save the current player
-		turn.getName();
+
+		JSONObject currentPlayerJSON = new JSONObject();
+		currentPlayerJSON.put("CurrentPlayer", turn.getName());
+		
+		JSONObject tileJSON;
+		JSONArray landsArrayJSON = new JSONArray();
+		JSONArray companiesArrayJSON = new JSONArray();
 		for(int i = 0; i < board.getLength(); i++)
 		{
 			if (board.getTile(i) instanceof Land)
 			{
+				tileJSON = new JSONObject();
 				Land land = (Land)board.getTile(i);
-				// TODO: These informations to be saved
-				land.getOwner().getName();
-				land.getNumberOfHouses();
-				land.hasHotel();
-				// The "i" needs to be saved too
+				tileJSON.put("TileNumber", i);
+				if(land.getOwner() != null)
+					tileJSON.put("Owner", land.getOwner().getName());
+				else
+					tileJSON.put("Owner", JSONObject.NULL);
+				tileJSON.put("NumberOfHouses", land.getNumberOfHouses());
+				tileJSON.put("HasHotel", land.hasHotel());
+				landsArrayJSON.put(tileJSON);
 			}
-			// TODO: The same for instanceof Company
-			// Save owner name
+			else if (board.getTile(i) instanceof Company)
+			{
+				tileJSON = new JSONObject();
+				Company company = (Company)board.getTile(i);
+				tileJSON.put("TileNumber", i);
+				if(company.getOwner() != null)
+					tileJSON.put("Owner", company.getOwner().getName());
+				else
+					tileJSON.put("Owner", JSONObject.NULL);
+				companiesArrayJSON.put(tileJSON);
+			}
+		}
+		JSONObject JSONFile = new JSONObject();
+		JSONFile.put("Players", playersArrayJSON);
+		JSONFile.put("CurrentPlayer", currentPlayerJSON);
+		JSONFile.put("Lands", landsArrayJSON);
+		JSONFile.put("Companies", companiesArrayJSON);
+		try {
+			FileWriter f = new FileWriter("./save.json");
+			f.write(JSONFile.toString(2));
+			f.close();
+		} catch (IOException e) {
+			System.out.println("Could not init file.");
+			e.printStackTrace();
 		}
 	}
 }

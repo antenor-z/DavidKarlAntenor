@@ -92,5 +92,6 @@ public class ThrowDiceCtl implements ActionListener{
 		}
         gamePanel.repaint();
         gameState.dump();
+        gameState.saveGame();
 	}
 }
