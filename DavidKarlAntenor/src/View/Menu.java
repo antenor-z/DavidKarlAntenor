@@ -57,8 +57,8 @@ public class Menu extends MyFrame {
 		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
 		btnNext.addActionListener(playBtnListener);
 		
-		OpenBtnListener openBtnListener = new OpenBtnListener(parent);
-		btnOpen.addActionListener(openBtnListener);
+		//OpenBtnListener openBtnListener = new OpenBtnListener(parent);
+		//btnOpen.addActionListener(openBtnListener);
 		
 	}
 	private void insertLabels() {
