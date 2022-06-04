@@ -18,7 +18,22 @@ class Land extends Tile {
 		this.price = price;
 		this.buildHouseCost = buildHouseCost;
 		this.buildHotelCost = buildHotelCost;
-		this.rentCost = rentCost;	
+		this.rentCost = rentCost;
+		this.owner = null;
+	}
+	
+	Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost,
+			Player owner, int numberOfHouses, boolean hasHotel)
+	{
+		super(TileType.Land);
+		this.description = description;
+		this.price = price;
+		this.buildHouseCost = buildHouseCost;
+		this.buildHotelCost = buildHotelCost;
+		this.rentCost = rentCost;
+		this.owner = owner;
+		this.numberOfHouses = numberOfHouses;
+		this.hasHotel = hasHotel;
 	}
 
 	Boolean canBuyLand()

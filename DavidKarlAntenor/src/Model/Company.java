@@ -15,6 +15,14 @@ class Company extends Tile {
 		this.priceRate = priceRate;
 		this.owner = null;
 	}
+	Company(String description, int price, int priceRate, Player owner)
+	{
+		super(TileType.Company);
+		this.description = description;
+		this.price = price;
+		this.priceRate = priceRate;
+		this.owner = owner;
+	}
 	void buyCompany(Player player) throws CompanyException, PlayerException
 	{
 		if(this.owner == null)
