@@ -57,6 +57,9 @@ public class Menu extends MyFrame {
 		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
 		btnNext.addActionListener(playBtnListener);
 		
+		OpenBtnListener openBtnListener = new OpenBtnListener(parent);
+		btnOpen.addActionListener(openBtnListener);
+		
 	}
 	private void insertLabels() {
 		label.setBounds(20, 20, 500, 30);
@@ -166,7 +169,16 @@ public class Menu extends MyFrame {
 			validateTextCombo();
 		}
 	}
+	
+	public class OpenBtnListener extends JComponent implements ActionListener {
 
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+	}
 	public class PlayBtnListener extends JComponent implements ActionListener {
 		private ActionListener _controller;
 

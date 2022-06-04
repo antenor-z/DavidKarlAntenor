@@ -79,7 +79,8 @@ class Board {
 			System.out.println(e.getMessage());
 		}	
 	}
-	Board(String saveGameJSON) {	
+	Board(String saveGameJSON) {
+		ArrayList<Player> playerList = GameState.getInstance().players;
 		try {
 			deck = new Deck("./Deck.json");
 		}
