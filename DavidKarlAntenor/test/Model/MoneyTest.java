@@ -10,7 +10,7 @@ public class MoneyTest {
         Money money = new Money(200);
         assertEquals("init money to 200", 200, money.getAmmount());
         Money money2 = new Money(-200);
-        assertEquals("init money to -200", -200, money.getAmmount(money2));
+        assertEquals("init money to -200", -200, money.getAmmount());
     }
 
     @Test

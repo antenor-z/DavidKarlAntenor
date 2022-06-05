@@ -11,8 +11,8 @@ import org.json.*;
 import java.util.Random;
 
 public class Deck {
-    protected final List<ACard> cards = new ArrayList<ACard>();
-    protected final Random rand = new Random();
+    protected List<ACard> cards = new ArrayList<ACard>();
+    protected Random rand = new Random();
     protected OutOfJailCard outOfJailCard;
 
     Deck(String jsonPath) throws DeckException {

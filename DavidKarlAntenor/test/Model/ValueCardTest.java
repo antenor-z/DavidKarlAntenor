@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class ValueCardTest {7
+public class ValueCardTest {
 
     @Test
     public void getValueTest() {
