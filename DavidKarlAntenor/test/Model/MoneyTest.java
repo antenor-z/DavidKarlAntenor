@@ -1,10 +1,10 @@
 package Model;
 import Model.Money;
 import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 public class MoneyTest {
+
     @Test
     public void initMoneyTest() {
         Money money = new Money(200);
@@ -13,6 +13,7 @@ public class MoneyTest {
         assertEquals("init money to -200", -200, money.getAmmount(money2));
     }
 
+    @Test
     public void executeMoneyOnPlayerTest() {
         Player player = new Player(1000, 0, PlayerColor.Blue, "test");
         Money moneyAdd = new Money(500);
