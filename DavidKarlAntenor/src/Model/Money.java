@@ -26,4 +26,8 @@ class Money extends Tile {
 		ret.add("Ammount" + ammount);
 		return ret;
 	}
+
+	public int getAmmount() {
+		return ammount;
+	}
 }
