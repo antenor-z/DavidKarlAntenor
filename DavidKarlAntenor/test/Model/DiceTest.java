@@ -3,10 +3,7 @@ import Model.Dice;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-
-
 public class DiceTest {
-
 	@Test
 	public void testRoll() {
 		 int[] dicesPreset = new int[2];
@@ -18,5 +15,4 @@ public class DiceTest {
 		assertTrue("Must be less than 6", Dice.roll(dicesPreset)[1] < 6); 
 		assertTrue("Must be less than 6", Dice.roll(dicesPreset)[1] < 6); 
 	}
-
 }
