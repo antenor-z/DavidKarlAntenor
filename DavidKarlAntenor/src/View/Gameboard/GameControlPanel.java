@@ -170,7 +170,7 @@ public class GameControlPanel extends MyPanel {
     private void _drawTileInfo(Graphics g){
     	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
     
-    	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
+    	ArrayList<String> tileInfo = gameState.getTileNumberInfo();
     	int positionY = 350;
     	final int positionX = 20;
     	

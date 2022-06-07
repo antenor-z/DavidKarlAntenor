@@ -50,23 +50,23 @@ public class PlayerTest {
 		{
 			p.goFoward(3);
 		} catch(PlayerException p1) {fail("You should be able to advance 3");};
-		assertEquals("Position 3", p.getCurrentTile(), 3);
+		assertEquals("Position 3", p.getTileNumber(), 3);
 		try
 		{
 			p.goFoward(3);
 			
 		} catch(PlayerException p2) {fail("You should be able to advance 3");};
-		assertEquals("Position 6", p.getCurrentTile(), 6);
+		assertEquals("Position 6", p.getTileNumber(), 6);
 		try
 		{
 			p.goFoward(-3);
 			fail("You cannot go back 3");
 		} catch(PlayerException p2) {};
-		assertEquals("Position 6", p.getCurrentTile(), 6);
+		assertEquals("Position 6", p.getTileNumber(), 6);
 		try
 		{
 			p.goFoward(41);
 		} catch(PlayerException p2) {fail("We should be at position 7");};
-		assertEquals("Position 7", p.getCurrentTile(), 7);		
+		assertEquals("Position 7", p.getTileNumber(), 7);		
 	}
 }

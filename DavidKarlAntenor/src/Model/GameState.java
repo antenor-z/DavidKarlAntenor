@@ -90,49 +90,49 @@ public class GameState {
 	}
 	
 	public Tile getTile() {
-		return board.getTile(turn.getCurrentTile());
+		return board.getTile(turn.getTileNumber());
 	}
 	
 	public boolean canBuyLand() {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			return land.canBuyLand();
 		}
 		return false;
 	}
 	
 	public boolean canBuildHotel() {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			return land.canBuildHotel(turn);
 		}
 		return false;
 	}
 	
 	public void buyLand() throws LandException, PlayerException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.buyLand(turn);
 		}
 	}
 	
 	public void buyCompany() throws PlayerException, CompanyException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		if (board.getTile(turn.getTileNumber()) instanceof Company)
 		{
-			Company land = (Company)board.getTile(turn.getCurrentTile());
+			Company land = (Company)board.getTile(turn.getTileNumber());
 			land.buyCompany(turn);
 		}
 	}
 	
-	public ArrayList<String> getCurrentTileInfo()
+	public ArrayList<String> getTileNumberInfo()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		if(turn != null)
 		{
-			Tile t = board.getTile(turn.getCurrentTile());
+			Tile t = board.getTile(turn.getTileNumber());
 			ret = t.print();
 		}
 		else
@@ -143,40 +143,40 @@ public class GameState {
 	}
 
 	public boolean canBuildHouse() {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			if (land.canBuildHouse(turn)) return true;
 			return false;
 		}
 		return false;
 	}
 	public void buildHouse() throws PlayerException, LandException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.buildHouse();
 		}
 	}
 	
 	public void pickCard() throws PlayerException, DeckException {
-		if (board.getTile(turn.getCurrentTile()) instanceof LuckSetback)
+		if (board.getTile(turn.getTileNumber()) instanceof LuckSetback)
 		{
-			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getCurrentTile());
+			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getTileNumber());
 			luckSetback.pickCard(turn);
 		}
 	}
 	
-	public String getCurrentTileType()
+	public String getTileType()
 	{
-		Tile t = board.getTile(turn.getCurrentTile());
+		Tile t = board.getTile(turn.getTileNumber());
 		return t.tileType.toString();
 	}
 
 	public void goFoward(int dice1, int dice2) throws PlayerException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Prision)
+		if (board.getTile(turn.getTileNumber()) instanceof Prision)
 		{
-			Prision prision = (Prision)board.getTile(turn.getCurrentTile());
+			Prision prision = (Prision)board.getTile(turn.getTileNumber());
 			prision.getOut(turn, dice1, dice2);
 		}
 		else
@@ -186,51 +186,51 @@ public class GameState {
 	}
 
 	public void landPayRent() throws LandException, PlayerException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Land)
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
 		{
-			Land land = (Land)board.getTile(turn.getCurrentTile());
+			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.payRent(turn);
 		}
 	}
 
 	public Player companyGetOwner() {
-		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		if (board.getTile(turn.getTileNumber()) instanceof Company)
 		{
-			Company company = (Company)board.getTile(turn.getCurrentTile());
+			Company company = (Company)board.getTile(turn.getTileNumber());
 			return company.getOwner();
 		}
 		return null;
 	}
 
 	public void companyPayRent(int dice1, int dice2) throws CompanyException {
-		if (board.getTile(turn.getCurrentTile()) instanceof Company)
+		if (board.getTile(turn.getTileNumber()) instanceof Company)
 		{
-			Company company = (Company)board.getTile(turn.getCurrentTile());
+			Company company = (Company)board.getTile(turn.getTileNumber());
 			company.payRent(turn, dice1 + dice2);
 		}
 		
 	}
 
 	public void moneyExecute() {
-		if (board.getTile(turn.getCurrentTile()) instanceof Money)
+		if (board.getTile(turn.getTileNumber()) instanceof Money)
 		{
-			Money money = (Money)board.getTile(turn.getCurrentTile());
+			Money money = (Money)board.getTile(turn.getTileNumber());
 			money.execute(turn);	
 		}
 	}
 
 	public void luckSetbackPickCard() throws PlayerException, DeckException {
-		if (board.getTile(turn.getCurrentTile()) instanceof LuckSetback)
+		if (board.getTile(turn.getTileNumber()) instanceof LuckSetback)
 		{
-			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getCurrentTile());
+			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getTileNumber());
 			luckSetback.pickCard(turn);
 		}	
 	}
 
 	public void gotoPrision() {
-		if (board.getTile(turn.getCurrentTile()) instanceof GoToPrision)
+		if (board.getTile(turn.getTileNumber()) instanceof GoToPrision)
 		{
-			GoToPrision goToPrision = (GoToPrision)board.getTile(turn.getCurrentTile());
+			GoToPrision goToPrision = (GoToPrision)board.getTile(turn.getTileNumber());
 			goToPrision.gotoPrision(turn);
 		}
 	}
@@ -245,7 +245,7 @@ public class GameState {
 			playerJSON.put("Name", player.getName());
 			playerJSON.put("Color", player.getColor());
 			playerJSON.put("Cash", player.getCash());
-			playerJSON.put("@Tile", player.getCurrentTile());
+			playerJSON.put("@Tile", player.getTileNumber());
 			playersArrayJSON.put(playerJSON);
 		}
 
