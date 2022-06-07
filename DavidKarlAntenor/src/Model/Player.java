@@ -1,6 +1,8 @@
 // Part of API
 package Model;
 
+import java.awt.Color;
+
 public class Player {
 	private int cash;
 	private int currentTileN;
@@ -62,7 +64,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
-	public String dump() {
+	public String toString() {
 		String s = "Player: " + getName() + "\n";
 		s += "  Color: " + getColor() + "\n";
 		s += "  @Tile: " + currentTileN + "\n";

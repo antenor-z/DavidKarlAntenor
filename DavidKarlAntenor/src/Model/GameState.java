@@ -41,7 +41,7 @@ public class GameState {
     		if(turn == player) {
     			s += "CURRENT PLAYER BELLOW:\n";
     		}
-    		s += player.dump();
+    		s += player.toString();
     	}
     	s += "----- Game state debug end -----\n";
     	System.out.println(s);
