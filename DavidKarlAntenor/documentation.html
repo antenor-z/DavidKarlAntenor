@@ -1,14 +1,30 @@
+<h1>Monopoly in Java Documentation</h1>
 <h1>Model</h1>
 <h2>Class: Player</h2>
+Represents one player.
 <h3>Propeties:</h3>
 <ul>
 	<li><b>cash: Integer:</b> the ammount of money that the player has currently.</li>
-	<li><b>currentTile: Tile:</b> Reference to the tile where the player is.</li>
+	<li><b>currentTileN: int:</b> Reference to the tile number where the player is.</li>
+	<li><b>boardSize: int:</b> Needed because the goFoward() needs to rollback to zero when player passes the last tile.</li>
+	<li><b>name: String:</b> Name of player.</li>
+	<li><b>name: String:</b> Name of player.</li>
+
 </ul>
-<h3>Functions:</h3>
+<h3>Methods:</h3>
 <ul>
-	<li><b>advance(n)</b> Go foward n number of tiles. If the number becomes 40, it rolls back to 0 since the tiles are circular.
-If the player is on tile 38 and they get to advance 4 postions, the player will be at 2. This can be done with currentTile = (currentTile + n) % SIZE_OF_BOARD</li>
+	<li><b>getCash(): Integer</b></li>Cash getter.
+	<li><b>addOrSubCash(ammount: Integer): </b></li>Adds ammount to player's current cash. If negative, subtracts. If player's cash would become less than zero, throws exception and returns without changing the balance.
+
+	<li><b>goFoward(n: Integer)</b> Go foward n number of tiles. If the number becomes 40, it rolls back to 0 since the board is circular. If the player is on tile 38 and they get to advance 4 postions, the player will be at 2. This can be done with currentTile = (currentTile + n) % boardSize</li>
+	
+	<li><b>getTileNumber(): Integer</b></li>Return the tile number where the player is.
+	<li><b>getColor(): PlayerColor</b></li>Return the enum PlayerColor of the player's color.
+	<li><b>getTileNumber(): Integer</b></li>Return the tile number where the player is.
+	<li><b>goToTile(tile: Integer)</b></li>Move the player to tile number 'tile'.
+	<li><b>getName(): String</b></li>Player's name getter.
+	<li><b>toString(): String</b></li>Get player's information in string form.
+
 </ul>
 <h2>Static Class: Dice</h2>
 <h3>Functions:</h3>
