@@ -290,7 +290,6 @@ public class GameState {
 			{
 				tileJSON = new JSONObject();
 				Land land = (Land)board.getTile(i);
-				tileJSON.put("TileNumber", i);
 				if(land.getOwner() != null)
 					tileJSON.put("Owner", land.getOwner().getName());
 				else
