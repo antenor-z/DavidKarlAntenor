@@ -198,9 +198,8 @@ public class Menu extends MyFrame {
 			{
 				String selectedFile = jFileChooser.getSelectedFile().getAbsolutePath();
 				gameState.openGame(selectedFile);
+				_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 			}
-			
-			_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 		}
 	}
 	public class PlayBtnListener extends JComponent implements ActionListener {

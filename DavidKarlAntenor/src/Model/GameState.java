@@ -72,10 +72,14 @@ public class GameState {
     public void openGame(String path) {
     	try {
 			String content = Files.readString(Path.of(path));
-			System.out.println(content);
 			
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonPlayers = obj.getJSONArray("Players");
+            String currentPlayerName;
+            if(!obj.isNull("CurrentPlayer"))
+            	currentPlayerName = obj.getString("CurrentPlayer");
+            else
+            	currentPlayerName = null;
             
             for (Object playerO: jsonPlayers) {
             	JSONObject player = (JSONObject)playerO;
@@ -86,12 +90,19 @@ public class GameState {
             	int tile = player.getInt("@Tile");
             	Player newPlayer = new Player(cash, color, name);
             	newPlayer.goToTile(tile);
-            	players.add(newPlayer);	
+            	players.add(newPlayer);
+            	if(currentPlayerName != null)
+            	{
+	            	if(currentPlayerName.equals(name))
+	            	{
+	            		turn = newPlayer;
+	            	}
+            	}
             }
             board = new Board(obj);
     	} catch(Exception e) {
 			System.out.println("Failed to read Board.json");
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
     }
     
@@ -274,12 +285,6 @@ public class GameState {
 			playerJSON.put("@Tile", player.getTileNumber());
 			playersArrayJSON.put(playerJSON);
 		}
-
-		JSONObject currentPlayerJSON = new JSONObject();
-		if(turn != null)
-			currentPlayerJSON.put("CurrentPlayer", turn.getName());
-		else
-			currentPlayerJSON.put("CurrentPlayer", JSONObject.NULL);
 		
 		JSONObject tileJSON;
 		JSONObject landsObjectJSON = new JSONObject();
@@ -311,7 +316,10 @@ public class GameState {
 		}
 		JSONObject JSONFile = new JSONObject();
 		JSONFile.put("Players", playersArrayJSON);
-		JSONFile.put("CurrentPlayer", currentPlayerJSON);
+		if(turn != null)
+			JSONFile.put("CurrentPlayer", turn.getName());
+		else
+			JSONFile.put("CurrentPlayer", JSONObject.NULL);
 		JSONFile.put("Lands", landsObjectJSON);
 		JSONFile.put("Companies", companiesObjectJSON);
 		try {

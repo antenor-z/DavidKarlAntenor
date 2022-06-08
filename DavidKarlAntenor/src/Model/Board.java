@@ -92,11 +92,8 @@ class Board {
 			String content = Files.readString(Path.of("./Board.json"));
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonBoard = obj.getJSONArray("board");
-            JSONArray savedCompanies = saveGameJSON.getJSONArray("Companies");
-            JSONArray savedLands = saveGameJSON.getJSONArray("Lands");
-            
-            int numberOfLands = 0;
-            int numberOfCompanies = 0;
+            JSONObject savedCompanies = saveGameJSON.getJSONObject("Companies");
+            JSONObject savedLands = saveGameJSON.getJSONObject("Lands");
             
             for (Object jsonTileObj: jsonBoard) {
             	JSONObject jsonTile = (JSONObject)jsonTileObj;
@@ -114,12 +111,14 @@ class Board {
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
-            		int numberOfHouses = ((JSONObject) savedLands.get(numberOfLands)).getInt("NumberOfHouses");
-            		boolean hasHotel = ((JSONObject) savedLands.get(numberOfLands)).getBoolean("HasHotel");
+            		String tileIndex = String.valueOf(tiles.size());
+            		JSONObject landObj = (JSONObject) savedLands.get(tileIndex);
+            		int numberOfHouses = landObj.getInt("NumberOfHouses");
+            		boolean hasHotel = landObj.getBoolean("HasHotel");
             		Player owner = null;
-            		if(((JSONObject) savedLands.get(numberOfLands)).isNull("Owner") == false)
+            		if(landObj.isNull("Owner") == false)
             		{
-            			String ownerName = ((JSONObject) savedLands.get(numberOfLands)).getString("Owner");
+            			String ownerName = landObj.getString("Owner");
                 		
                 		for(Player p: GameState.getInstance().players)
                 		{
@@ -139,10 +138,12 @@ class Board {
             		int price = jsonTile.getInt("price");
             		int priceRate = jsonTile.getInt("priceRate");
             		
+            		String tileIndex = String.valueOf(tiles.size());
+            		JSONObject CompanyObj = (JSONObject) savedCompanies.get(tileIndex);
             		Player owner = null;
-            		if(((JSONObject) savedLands.get(numberOfLands)).isNull("Owner") == false)
+            		if(CompanyObj.isNull("Owner") == false)
             		{
-            			String ownerName = ((JSONObject) savedLands.get(numberOfLands)).getString("Owner");
+            			String ownerName = CompanyObj.getString("Owner");
                 		
                 		for(Player p: GameState.getInstance().players)
                 		{
