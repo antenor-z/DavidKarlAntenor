@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class GameState {
     
     private GameState() {
     	dicesPreset[0] = dicesPreset[1] = -1;
+    	openGame("a.json");
     }
     
     public void setDice1Preset(int value) 
@@ -67,6 +69,29 @@ public class GameState {
     	{
     		throw new GameException("Max numbers of players is 6");
     	}
+    }
+    
+    public void openGame(String path) {
+    	try {
+			String content = Files.readString(Path.of(path));
+			System.out.println(content);
+			
+			JSONObject obj = new JSONObject(content);
+            JSONArray jsonPlayers = obj.getJSONArray("Players");
+            
+            for (Object playerO: jsonPlayers) {
+            	JSONObject player = (JSONObject)playerO;
+            	String name = player.getString("Name");
+            	String colorS = player.getString("Color");
+            	PlayerColor p = PlayerColor.valueOf(colorS);
+            	int cash = player.getInt("Cash");
+            	int tile = player.getInt("@Tile");
+            	System.out.println(name + p + cash + tile);
+            }
+    	} catch(Exception e) {
+			System.out.println("Failed to read Board.json");
+			System.out.println(e.getMessage());
+		}	
     }
     
     public void nextPlayer() {
