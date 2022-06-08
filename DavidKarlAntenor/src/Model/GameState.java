@@ -24,7 +24,6 @@ public class GameState {
     
     private GameState() {
     	dicesPreset[0] = dicesPreset[1] = -1;
-    	openGame("a.json");
     }
     
     public void setDice1Preset(int value) 
@@ -87,8 +86,9 @@ public class GameState {
             	int tile = player.getInt("@Tile");
             	Player newPlayer = new Player(cash, color, name);
             	newPlayer.goToTile(tile);
-            	players.add(newPlayer);
+            	players.add(newPlayer);	
             }
+            board = new Board(obj);
     	} catch(Exception e) {
 			System.out.println("Failed to read Board.json");
 			System.out.println(e.getMessage());

@@ -79,7 +79,7 @@ class Board {
 			System.out.println(e.getMessage());
 		}	
 	}
-	Board(String saveGameJSON) {
+	Board(JSONObject saveGameJSON) {
 		ArrayList<Player> playerList = GameState.getInstance().players;
 		try {
 			deck = new Deck("./Deck.json");
@@ -92,6 +92,11 @@ class Board {
 			String content = Files.readString(Path.of("./Board.json"));
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonBoard = obj.getJSONArray("board");
+            JSONArray savedCompanies = saveGameJSON.getJSONArray("Companies");
+            JSONArray savedLands = saveGameJSON.getJSONArray("Lands");
+            
+            int numberOfLands = 0;
+            int numberOfCompanies = 0;
             
             for (Object jsonTileObj: jsonBoard) {
             	JSONObject jsonTile = (JSONObject)jsonTileObj;
@@ -109,15 +114,46 @@ class Board {
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
+            		int numberOfHouses = ((JSONObject) savedLands.get(numberOfLands)).getInt("NumberOfHouses");
+            		boolean hasHotel = ((JSONObject) savedLands.get(numberOfLands)).getBoolean("HasHotel");
+            		Player owner = null;
+            		if(((JSONObject) savedLands.get(numberOfLands)).isNull("Owner") == false)
+            		{
+            			String ownerName = ((JSONObject) savedLands.get(numberOfLands)).getString("Owner");
+                		
+                		for(Player p: GameState.getInstance().players)
+                		{
+                			if (ownerName.equals(p.getName()))
+                			{
+                				owner = p;
+                			}
+                		}
+            		}
+            		
             		tiles.add(new Land(description, price, buildHouseCost, 
-            				buildHotelCost, rentCost));
+            				buildHotelCost, rentCost, owner, numberOfHouses, hasHotel));
             	}
             	else if(type.equals("Company"))
             	{
             		String description = jsonTile.getString("description");
             		int price = jsonTile.getInt("price");
             		int priceRate = jsonTile.getInt("priceRate");
-            		tiles.add(new Company(description, price, priceRate));
+            		
+            		Player owner = null;
+            		if(((JSONObject) savedLands.get(numberOfLands)).isNull("Owner") == false)
+            		{
+            			String ownerName = ((JSONObject) savedLands.get(numberOfLands)).getString("Owner");
+                		
+                		for(Player p: GameState.getInstance().players)
+                		{
+                			if (ownerName.equals(p.getName()))
+                			{
+                				owner = p;
+                			}
+                		}
+            		}
+            		
+            		tiles.add(new Company(description, price, priceRate, owner));
             	}
             	else if(type.equals("Prision"))
             	{
@@ -148,7 +184,7 @@ class Board {
 		}
 		catch(Exception e) {
 			System.out.println("Failed to read Board.json");
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
 	}
 	int getLength() {
