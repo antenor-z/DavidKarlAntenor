@@ -282,8 +282,8 @@ public class GameState {
 			currentPlayerJSON.put("CurrentPlayer", JSONObject.NULL);
 		
 		JSONObject tileJSON;
-		JSONArray landsArrayJSON = new JSONArray();
-		JSONArray companiesArrayJSON = new JSONArray();
+		JSONObject landsObjectJSON = new JSONObject();
+		JSONObject companiesObjectJSON = new JSONObject();
 		for(int i = 0; i < board.getLength(); i++)
 		{
 			if (board.getTile(i) instanceof Land)
@@ -297,25 +297,24 @@ public class GameState {
 					tileJSON.put("Owner", JSONObject.NULL);
 				tileJSON.put("NumberOfHouses", land.getNumberOfHouses());
 				tileJSON.put("HasHotel", land.hasHotel());
-				landsArrayJSON.put(tileJSON);
+				landsObjectJSON.put(String.valueOf(i), tileJSON);
 			}
 			else if (board.getTile(i) instanceof Company)
 			{
 				tileJSON = new JSONObject();
 				Company company = (Company)board.getTile(i);
-				tileJSON.put("TileNumber", i);
 				if(company.getOwner() != null)
 					tileJSON.put("Owner", company.getOwner().getName());
 				else
 					tileJSON.put("Owner", JSONObject.NULL);
-				companiesArrayJSON.put(tileJSON);
+				companiesObjectJSON.put(String.valueOf(i), tileJSON);
 			}
 		}
 		JSONObject JSONFile = new JSONObject();
 		JSONFile.put("Players", playersArrayJSON);
 		JSONFile.put("CurrentPlayer", currentPlayerJSON);
-		JSONFile.put("Lands", landsArrayJSON);
-		JSONFile.put("Companies", companiesArrayJSON);
+		JSONFile.put("Lands", landsObjectJSON);
+		JSONFile.put("Companies", companiesObjectJSON);
 		try {
 			FileWriter f = new FileWriter(path);
 			f.write(JSONFile.toString(2));
