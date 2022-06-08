@@ -62,8 +62,7 @@ public class GameState {
     				throw new GameException("Color already used");
     			}
     		}
-    		players.add(new Player(settings.getStartingBalance(), settings.getBoardSize(), 
-    				color, name));
+    		players.add(new Player(settings.getStartingBalance(), color, name));
     	}
     	else
     	{
@@ -83,10 +82,12 @@ public class GameState {
             	JSONObject player = (JSONObject)playerO;
             	String name = player.getString("Name");
             	String colorS = player.getString("Color");
-            	PlayerColor p = PlayerColor.valueOf(colorS);
+            	PlayerColor color = PlayerColor.valueOf(colorS);
             	int cash = player.getInt("Cash");
             	int tile = player.getInt("@Tile");
-            	System.out.println(name + p + cash + tile);
+            	Player newPlayer = new Player(cash, color, name);
+            	newPlayer.goToTile(tile);
+            	players.add(newPlayer);
             }
     	} catch(Exception e) {
 			System.out.println("Failed to read Board.json");

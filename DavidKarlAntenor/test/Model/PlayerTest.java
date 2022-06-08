@@ -13,7 +13,7 @@ public class PlayerTest {
 	@Test
 	public void testChangeCash() throws PlayerException{
 		int balance = GameSettings.getInstance().getStartingBalance();
-		Player p = new Player(balance, 40, PlayerColor.Red, "red");
+		Player p = new Player(balance, PlayerColor.Red, "red");
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -45,7 +45,7 @@ public class PlayerTest {
 	public void testAdvance() {
 		ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player p = new Player(4000, 40, PlayerColor.Purple, "purple");
+		Player p = new Player(4000, PlayerColor.Purple, "purple");
 		try
 		{
 			p.goFoward(3);

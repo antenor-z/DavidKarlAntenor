@@ -6,14 +6,13 @@ import java.awt.Color;
 public class Player {
 	private int cash;
 	private int currentTileN;
-	private final int boardSize;
+	private final int boardSize = GameSettings.getInstance().getBoardSize();
 	private PlayerColor color;
 	private String name;
-	public Player(int cash, int boardSize, PlayerColor color, String name)
+	public Player(int cash, PlayerColor color, String name)
 	{
 		this.cash = cash;
 		this.currentTileN = 0;
-		this.boardSize = boardSize;
 		this.color = color;
 		this.name = name;
 	}
