@@ -52,7 +52,7 @@ public class ThrowDiceCtl implements ActionListener{
 		{
         		if (gameState.companyGetOwner() == null)
         		{
-	        		gamePanel.gameControlPanel.action1.setText("Buy Copany");
+	        		gamePanel.gameControlPanel.action1.setText("Buy Company");
 	        		gamePanel.gameControlPanel.action1.setVisible(true);
         		}
         		else if(gameState.companyGetOwner() != gameState.turn)
