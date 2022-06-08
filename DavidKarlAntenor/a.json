@@ -1,0 +1,183 @@
+{
+  "CurrentPlayer": {"CurrentPlayer": "k"},
+  "Lands": [
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 1
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 3
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 4
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 6
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 8
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 9
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 11
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 13
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 14
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 17
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 19
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 21
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 23
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 26
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 28
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 29
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 31
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 33
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 34
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 36
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 38
+    },
+    {
+      "Owner": null,
+      "NumberOfHouses": 0,
+      "HasHotel": false,
+      "TileNumber": 39
+    }
+  ],
+  "Companies": [
+    {
+      "Owner": null,
+      "TileNumber": 5
+    },
+    {
+      "Owner": "h",
+      "TileNumber": 7
+    },
+    {
+      "Owner": null,
+      "TileNumber": 15
+    },
+    {
+      "Owner": null,
+      "TileNumber": 25
+    },
+    {
+      "Owner": null,
+      "TileNumber": 32
+    },
+    {
+      "Owner": null,
+      "TileNumber": 35
+    }
+  ],
+  "Players": [
+    {
+      "@Tile": 8,
+      "Color": "Blue",
+      "Cash": 4000,
+      "Name": "s"
+    },
+    {
+      "@Tile": 7,
+      "Color": "Red",
+      "Cash": 3800,
+      "Name": "h"
+    },
+    {
+      "@Tile": 12,
+      "Color": "Orange",
+      "Cash": 3955,
+      "Name": "k"
+    }
+  ]
+}
