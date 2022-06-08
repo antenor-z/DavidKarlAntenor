@@ -66,7 +66,7 @@ class Company extends Tile {
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("company");
 		if(owner != null)
-			ret.add("Owner: " + owner.getName());
+			ret.add("Owner: " + owner.getColor().toString());
 		else
 			ret.add("Owner: ---");
 		ret.add(description);

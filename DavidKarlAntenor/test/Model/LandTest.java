@@ -14,8 +14,8 @@ public class LandTest{
 	public void testBuyLand() throws LandException, PlayerException {
 	  	ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");
-		Player orange = new Player(4000, 40, PlayerColor.Orange, "orange");
+		Player blue = new Player(4000, PlayerColor.Blue, "blue");
+		Player orange = new Player(4000, PlayerColor.Orange, "orange");
 		assertTrue("Position 6 not buyable land", b.getTile(6) instanceof Land);
 		Land land = (Land)b.getTile(6);
 		land.buyLand(blue);
@@ -33,8 +33,8 @@ public class LandTest{
 	public void testRent() throws LandException, PlayerException {
 	  	ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player blue = new Player(4000, 40, PlayerColor.Blue, "blue");
-		Player orange = new Player(4000, 40, PlayerColor.Orange, "orange");
+		Player blue = new Player(4000, PlayerColor.Blue, "blue");
+		Player orange = new Player(4000, PlayerColor.Orange, "orange");
 		Land fariaLima = (Land) b.getTile(6);//Rent = 20 - 1 House = 100 - 2 House = 300 - 3 House = 750 - 4 House = 925 - Hotel = 1100
 		Land leblon = (Land) b.getTile(1);//Rent = 6 - 1 House = 30 - 2 House = 90 - 3 House = 270 - 4 House = 400 - Hotel = 500
 		try {	

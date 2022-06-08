@@ -13,7 +13,7 @@ public class PlayerTest {
 	@Test
 	public void testChangeCash() throws PlayerException{
 		int balance = GameSettings.getInstance().getStartingBalance();
-		Player p = new Player(balance, 40, PlayerColor.Red, "red");
+		Player p = new Player(balance, PlayerColor.Red, "red");
 		try {
 			Integer.valueOf(p.getCash());
 			
@@ -45,28 +45,28 @@ public class PlayerTest {
 	public void testAdvance() {
 		ArrayList<Player> players = new ArrayList<Player>();
 		Board b = new Board(players);
-		Player p = new Player(4000, 40, PlayerColor.Purple, "purple");
+		Player p = new Player(4000, PlayerColor.Purple, "purple");
 		try
 		{
 			p.goFoward(3);
 		} catch(PlayerException p1) {fail("You should be able to advance 3");};
-		assertEquals("Position 3", p.getCurrentTile(), 3);
+		assertEquals("Position 3", p.getTileNumber(), 3);
 		try
 		{
 			p.goFoward(3);
 			
 		} catch(PlayerException p2) {fail("You should be able to advance 3");};
-		assertEquals("Position 6", p.getCurrentTile(), 6);
+		assertEquals("Position 6", p.getTileNumber(), 6);
 		try
 		{
 			p.goFoward(-3);
 			fail("You cannot go back 3");
 		} catch(PlayerException p2) {};
-		assertEquals("Position 6", p.getCurrentTile(), 6);
+		assertEquals("Position 6", p.getTileNumber(), 6);
 		try
 		{
 			p.goFoward(41);
 		} catch(PlayerException p2) {fail("We should be at position 7");};
-		assertEquals("Position 7", p.getCurrentTile(), 7);		
+		assertEquals("Position 7", p.getTileNumber(), 7);		
 	}
 }
