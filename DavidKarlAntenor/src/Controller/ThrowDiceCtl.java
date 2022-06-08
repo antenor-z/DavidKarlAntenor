@@ -36,6 +36,8 @@ public class ThrowDiceCtl implements ActionListener{
         		}	
 	        	else if(gameState.canBuildHotel())
 	        	{
+	        		gamePanel.gameControlPanel.action1.setText("Build House");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
 	        		gamePanel.gameControlPanel.action2.setText("Build Hotel");
 	        		gamePanel.gameControlPanel.action2.setVisible(true);
         		}
