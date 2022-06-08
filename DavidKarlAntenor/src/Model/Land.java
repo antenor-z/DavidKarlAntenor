@@ -155,7 +155,7 @@ class Land extends Tile {
 	
 		ret.add("");
 		if(owner != null)
-			ret.add("owner: " + owner.getName());
+			ret.add("owner: " + owner.getColor().toString());
 		else
 			ret.add("owner: " + "---");
 		ret.add("Number of houses: " + numberOfHouses);
