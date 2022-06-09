@@ -31,6 +31,7 @@ class Board {
             		int price = jsonTile.getInt("price");
             		int buildHouseCost = jsonTile.getInt("buildHouseCost");
             		int buildHotelCost = jsonTile.getInt("buildHotelCost");
+            		String imgPath = jsonTile.getString("img");
             		JSONArray jsonRentCost = jsonTile.getJSONArray("rentCost");
             		int rentCost[] = new int[6];
             		for(int i = 0; i < 6; i++)
@@ -38,7 +39,7 @@ class Board {
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
             		tiles.add(new Land(description, price, buildHouseCost, 
-            				buildHotelCost, rentCost));
+            				buildHotelCost, rentCost, imgPath));
             	}
             	else if(type.equals("Company"))
             	{
@@ -106,6 +107,7 @@ class Board {
             		int buildHouseCost = jsonTile.getInt("buildHouseCost");
             		int buildHotelCost = jsonTile.getInt("buildHotelCost");
             		JSONArray jsonRentCost = jsonTile.getJSONArray("rentCost");
+            		String imgPath = jsonTile.getString("img");
             		int rentCost[] = new int[6];
             		for(int i = 0; i < 6; i++)
             		{
@@ -115,6 +117,7 @@ class Board {
             		JSONObject landObj = (JSONObject) savedLands.get(tileIndex);
             		int numberOfHouses = landObj.getInt("NumberOfHouses");
             		boolean hasHotel = landObj.getBoolean("HasHotel");
+            		
             		Player owner = null;
             		if(landObj.isNull("Owner") == false)
             		{
@@ -130,7 +133,7 @@ class Board {
             		}
             		
             		tiles.add(new Land(description, price, buildHouseCost, 
-            				buildHotelCost, rentCost, owner, numberOfHouses, hasHotel));
+            				buildHotelCost, rentCost, imgPath, owner, numberOfHouses, hasHotel));
             	}
             	else if(type.equals("Company"))
             	{

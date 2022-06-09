@@ -164,7 +164,7 @@ public class GameState {
 		}
 	}
 	
-	public ArrayList<String> getTileNumberInfo()
+	public ArrayList<String> getTileInfo()
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		if(turn != null)
