@@ -236,7 +236,7 @@
     "price": 140,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [10, 50, 150, 450, 625, 750]
+    "rentCost": [10, 50, 150, 450, 625, 750],
     "img": "Av. Paulista.png"
   },
   {
@@ -246,7 +246,7 @@
     "price": 140,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [10, 50, 150, 450, 625, 750]
+    "rentCost": [10, 50, 150, 450, 625, 750],
     "img": "Jardim Europa.png"
   },
   {
@@ -280,7 +280,7 @@
     "price": 320,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [28, 150, 450, 1000, 1200, 1400]
+    "rentCost": [28, 150, 450, 1000, 1200, 1400],
     "img": "Av. Vieira Souto.png"
   },
   {
@@ -308,7 +308,7 @@
     "price": 300,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [26, 130, 390, 900, 1100, 1275]
+    "rentCost": [26, 130, 390, 900, 1100, 1275],
     "img": "Ipanema.png"
   },
   {
