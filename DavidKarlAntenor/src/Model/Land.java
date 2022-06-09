@@ -187,7 +187,8 @@ class Land extends Tile {
 		return hasHotel;
 	}
 	
-	String getImgPath() {
-		return imgPath;
+	String getOwnerColor()
+	{
+		return owner.getColor().toString();
 	}
 }
