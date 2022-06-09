@@ -23,6 +23,10 @@ public class GameBoardPanel extends JPanel {
     }
 
 	public void paintComponent(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+    	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+    	    RenderingHints.VALUE_ANTIALIAS_ON);
+
 		super.paintComponent(g);
 		Image i = null;
 		try {
@@ -51,6 +55,60 @@ public class GameBoardPanel extends JPanel {
     	if(n >= min && n < max) return true;
     	return false;
     }
+    public int getXposition2(int tileNumber) {
+    	final int spacingX = 55;
+    	final int startX;
+    	
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
+	    	startX = 610;		
+    	}
+    	else
+    	{
+    		startX = 15;
+    	}
+    	if(isBetween(tileNumber, 0, 11)) {
+    		return startX - tileNumber * spacingX;
+    	}
+    	else if(isBetween(tileNumber, 11, 20)) {
+    		return startX + 105;
+    	}
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startX - (30 - tileNumber) * spacingX;
+    	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startX + 535;
+    	}
+    	return 0;
+    }
+    public int getYposition2(int tileNumber) {
+    	final int spacingY = 52;
+    	final int startY;
+    
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
+		    startY = 570;
+    	}
+    	else 
+    	{
+	    	startY = 535;
+    	}
+
+    	if(isBetween(tileNumber, 0, 11)) {
+    		return startY;
+    	}
+    	else if(isBetween(tileNumber, 11, 20)) {
+    		return startY - (tileNumber - 11) * spacingY;
+    	}
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startY - spacingY * 10 + 42;
+    	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startY - (39 - tileNumber) * spacingY;
+    	}
+    	return 0;
+    }
+    
     public int getXposition(int tileNumber, Model.PlayerColor color) {
     	final int spacingX = 56;
     	final int startX;
@@ -140,7 +198,8 @@ public class GameBoardPanel extends JPanel {
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
     	
-    	/*//SHOW ALL
+    	//SHOW ALL
+    	/*
     	for (int i = 0; i < 40; i++) {
     		for(PlayerColor p: PlayerColor.values())
     		{
@@ -148,6 +207,124 @@ public class GameBoardPanel extends JPanel {
 	    		int y = getYposition(i, p);
 	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
     		}
-    	}*/
+    	}
+    	*/
+   
+    	for (int i = 0; i < 40; i++) {
+    		//for(PlayerColor p: PlayerColor.values())
+    		//{
+    			if(i == 3 || i == 4 || i == 6 || i == 8
+    					|| i == 13 || i == 14 || i == 17 || i == 23
+    					|| i == 26 || i == 28 || i == 33 || i == 34 || i == 36
+    					|| i == 38)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 1)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("↓", x - 12, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 9)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("↓", x - 12, y + 14);
+		    		g.drawString("1", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 21)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("↑", x - 12, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("1", x + 22, y + 14);
+    			}
+    			if(i == 29)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("↑", x - 12, y + 14);
+		    		g.drawString("0", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 31)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("→", x + 28, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 19)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("←", x - 10, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 11)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("←", x - 10, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			if(i == 39)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		g.setColor(Color.red);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+		    		g.drawRect(x + 16, y, 16, 16);
+		    		g.drawString("→", x + 28, y + 14);
+		    		g.drawString("3", x + 4, y + 14);
+		    		g.drawString("0", x + 22, y + 14);
+    			}
+    			
+    		//}
+    	}
     }
 }
