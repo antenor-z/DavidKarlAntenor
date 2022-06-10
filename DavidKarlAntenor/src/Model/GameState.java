@@ -12,10 +12,11 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class GameState {
+public class GameState implements Model.Observed{
     static GameState instance;
     GameSettings settings = GameSettings.getInstance();
     public ArrayList<Player> players = new ArrayList<Player>();
+    ArrayList<Observer> observers = new ArrayList<Observer>();
     public Board board = new Board(players);
     public Player turn = null;
     public Float duration = 0.f;
@@ -123,6 +124,7 @@ public class GameState {
 
 	public int[] throwDice() {
 		dices = Dice.roll(dicesPreset);
+		update();
 		return dices;
 	}
 	
@@ -331,4 +333,29 @@ public class GameState {
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public void addObserver(Observer o) {
+		observers.add(o);
+	}
+
+	@Override
+	public void remObserver(Observer o) {
+		observers.remove(o);
+		
+	}
+
+	@Override
+	public Observer getObserver(int i) {
+		return observers.get(i);
+	}
+	
+	void update()
+	{
+		for(Observer o: observers)
+		{
+			o.note(this);
+		}
+	}
+
 }

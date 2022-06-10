@@ -2,6 +2,7 @@ package View.Gameboard;
 
 import Model.GameException;
 import Model.GameState;
+import Model.Observed;
 import Model.Player;
 import Model.PlayerColor;
 
@@ -14,12 +15,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class GameBoardPanel extends JPanel {
+public class GameBoardPanel extends JPanel  implements Model.Observer{
     ArrayList<Image> pinsImg = new ArrayList<Image>();
     //Board board;
     public GameBoardPanel() throws GameException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
+		GameState.getInstance().addObserver(this);
     }
 
 	public void paintComponent(Graphics g) {
@@ -327,4 +329,15 @@ public class GameBoardPanel extends JPanel {
     		//}
     	}
     }
+
+	@Override
+	public void note(Observed o) {
+		GameState gameState = GameState.getInstance();
+		
+		for(int i = 0; i < 40; i++)
+		{
+			
+		}
+		System.out.println();
+	}
 }

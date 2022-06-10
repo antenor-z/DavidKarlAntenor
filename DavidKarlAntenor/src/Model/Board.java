@@ -202,4 +202,28 @@ class Board {
 			tile.print();
 		}
 	}
+	ArrayList<ArrayList<Object>> getFormatedLandsCompany()
+	{
+		ArrayList<ArrayList<Object>> ret = new ArrayList<ArrayList<Object>>();
+		
+		for(int i = 0; i < 40; i++)
+		{
+			ArrayList<Object> l = new ArrayList<Object>();
+			if(tiles.get(i) instanceof Land)
+			{
+				Land land = (Land)tiles.get(i);
+				l.add(land.getOwner().getColor());
+				l.add(land.getNumberOfHouses());
+				if(land.hasHotel())
+					l.add(1);
+				else
+					l.add(0);
+			}
+			else if(tiles.get(i) instanceof Company)
+			{
+				Company company = (Company)tiles.get(i);
+				l.add(company.getOwner().getColor());
+			}
+		}
+	}
 }
