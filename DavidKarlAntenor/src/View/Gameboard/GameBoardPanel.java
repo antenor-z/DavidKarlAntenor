@@ -58,12 +58,12 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     	return false;
     }
     public int getXposition2(int tileNumber) {
-    	final int spacingX = 55;
+    	final int spacingX = 56;
     	final int startX;
     	
     	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
     	{
-	    	startX = 610;		
+	    	startX = 616;		
     	}
     	else
     	{
@@ -73,18 +73,18 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     		return startX - tileNumber * spacingX;
     	}
     	else if(isBetween(tileNumber, 11, 20)) {
-    		return startX + 105;
+    		return startX + 93;
     	}
     	else if(isBetween(tileNumber, 20, 31)) {
     		return startX - (30 - tileNumber) * spacingX;
     	}
     	else if(isBetween(tileNumber, 31, 40)) {
-    		return startX + 535;
+    		return startX + 545;
     	}
     	return 0;
     }
     public int getYposition2(int tileNumber) {
-    	final int spacingY = 52;
+    	final int spacingY = 55;
     	final int startY;
     
     	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
@@ -93,7 +93,7 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     	}
     	else 
     	{
-	    	startY = 535;
+	    	startY = 550;
     	}
 
     	if(isBetween(tileNumber, 0, 11)) {
@@ -103,7 +103,7 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     		return startY - (tileNumber - 11) * spacingY;
     	}
     	else if(isBetween(tileNumber, 20, 31)) {
-    		return startY - spacingY * 10 + 42;
+    		return startY - spacingY * 10 + 71;
     	}
     	else if(isBetween(tileNumber, 31, 40)) {
     		return startY - (39 - tileNumber) * spacingY;
@@ -241,23 +241,23 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
 		    		int y = getYposition2(i);
 		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
 		    		g.setColor(toJavaColor(c));
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 14);
-		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 22, y + 14);
-    			
+		    		g.fillRect(x, y, 32, 18);
+		    		g.setColor(Color.white);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.BOLD, 16)));	
+		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 16);
+		    		g.drawString(fLandsCompany.get(i).get(2).toString(), x + 20, y + 16);
+		    		g.setColor(Color.black);
 	    			if(i == 1)
 	    			{
 			    		g.drawString("↓", x - 12, y + 14);	
 	    			}
-	    			if(i == 9)
+	    			if( i == 9)
 	    			{
-			    		g.drawString("↓", x - 12, y + 14);
+			    		g.drawString("↓", x + 30, y + 14);	
 	    			}
 	    			if(i == 21)
 	    			{
-			    		g.drawString("↑", x - 12, y + 14);
+			    		g.drawString("↑", x + 30, y + 14);
 	    			}
 	    			if(i == 29)
 	    			{
@@ -265,19 +265,19 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
 	    			}
 	    			if(i == 31)
 	    			{
-			    		g.drawString("→", x + 28, y + 14);
-	    			}
-	    			if(i == 19)
-	    			{
-			    		g.drawString("←", x - 10, y + 14);
-	    			}
-	    			if(i == 11)
-	    			{
-			    		g.drawString("←", x - 10, y + 14);
+			    		g.drawString("→", x + 20, y + 28);
 	    			}
 	    			if(i == 39)
 	    			{
-			    		g.drawString("→", x + 28, y + 14);
+			    		g.drawString("→", x + 20, y);
+	    			}
+	    			if(i == 11)
+	    			{
+			    		g.drawString("←", x, y);
+	    			}
+	    			if(i == 19)
+	    			{
+			    		g.drawString("←", x, y + 28);
 	    			}
 	    		}
     			if(fLandsCompany.get(i).size() == 1)
@@ -288,7 +288,7 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
 		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
 		    		g.setColor(toJavaColor(c));
 		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
+		    		g.fillRect(x, y, 16, 16);
     			}
     		}
     		//}
