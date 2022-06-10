@@ -37,7 +37,13 @@ public class GameState implements Model.Observed{
     	this.dicesPreset[1] = value;
     }
 
+    ArrayList<ArrayList<Object>> getFormatedLandsCompany()
+    {
+    	return board.getFormatedLandsCompany();
+    }
+    
     public void dump() {
+    	System.out.println(board.getFormatedLandsCompany());
     	String s = "----- Game state debug start -----\n";
     	for(Player player: players) {
     		if(turn == player) {
