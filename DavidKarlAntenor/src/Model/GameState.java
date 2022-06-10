@@ -37,7 +37,7 @@ public class GameState implements Model.Observed{
     	this.dicesPreset[1] = value;
     }
 
-    ArrayList<ArrayList<Object>> getFormatedLandsCompany()
+    public ArrayList<ArrayList<Object>> getFormatedLandsCompany()
     {
     	return board.getFormatedLandsCompany();
     }

@@ -213,11 +213,7 @@ class Board {
 			if(tiles.get(i) instanceof Land)
 			{
 				Land land = (Land)tiles.get(i);
-				if(land.getOwner() == null)
-				{
-					l.add(null);
-				}
-				else
+				if(land.getOwner() != null)
 				{
 					l.add(land.getOwner().getColor());
 					l.add(land.getNumberOfHouses());
@@ -230,18 +226,10 @@ class Board {
 			else if(tiles.get(i) instanceof Company)
 			{
 				Company company = (Company)tiles.get(i);
-				if(company.getOwner() == null)
-				{
-					l.add(null);
-				}
-				else
+				if(company.getOwner() != null)
 				{
 					l.add(company.getOwner().getColor());
 				}
-			}
-			else
-			{
-				l.add(null);
 			}
 			ret.add(l);
 		}

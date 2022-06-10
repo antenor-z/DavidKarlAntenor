@@ -192,6 +192,22 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     	return 0;
     }
 
+    Color toJavaColor(PlayerColor c)
+    {
+    	Color ret;
+    	switch (c)
+    	{
+    		case Red -> ret = Color.red;
+    		case Blue -> ret =  Color.blue;
+    		case Gray -> ret =  Color.gray;
+    		case Yellow -> ret =  Color.yellow;
+    		case Purple -> ret =  Color.pink;
+    		case Orange -> ret =  Color.orange;
+    		//case PlayerColor.
+    		default -> ret = Color.black;
+    	}
+    	return ret;
+    }
 	private void _drawPlayers(Graphics g) {
     	for (Player player: GameState.getInstance().players) {
     		int color = player.getColor().ordinal();
@@ -211,121 +227,70 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     		}
     	}
     	*/
-   
+    	ArrayList<ArrayList<Object>> fLandsCompany = GameState.getInstance().getFormatedLandsCompany();
     	for (int i = 0; i < 40; i++) {
     		//for(PlayerColor p: PlayerColor.values())
-    		//{
-    			if(i == 3 || i == 4 || i == 6 || i == 8
-    					|| i == 13 || i == 14 || i == 17 || i == 23
-    					|| i == 26 || i == 28 || i == 33 || i == 34 || i == 36
-    					|| i == 38)
+    		//
+    		if(!fLandsCompany.get(i).isEmpty())
+    		{
+    			fLandsCompany.get(i).get(0);
+    			System.out.println(fLandsCompany);	
+    			if(fLandsCompany.get(i).size() == 3)
     			{
 		    		int x = getXposition2(i);
 		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
+		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
+		    		g.setColor(toJavaColor(c));
 		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
 		    		g.drawRect(x, y, 16, 16);
 		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 1)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("↓", x - 12, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 9)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("↓", x - 12, y + 14);
-		    		g.drawString("1", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 21)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("↑", x - 12, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("1", x + 22, y + 14);
-    			}
-    			if(i == 29)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("↑", x - 12, y + 14);
-		    		g.drawString("0", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 31)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("→", x + 28, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 19)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("←", x - 10, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 11)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("←", x - 10, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
-    			if(i == 39)
-    			{
-		    		int x = getXposition2(i);
-		    		int y = getYposition2(i);
-		    		g.setColor(Color.red);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.drawRect(x, y, 16, 16);
-		    		g.drawRect(x + 16, y, 16, 16);
-		    		g.drawString("→", x + 28, y + 14);
-		    		g.drawString("3", x + 4, y + 14);
-		    		g.drawString("0", x + 22, y + 14);
-    			}
+		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 14);
+		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 22, y + 14);
     			
+	    			if(i == 1)
+	    			{
+			    		g.drawString("↓", x - 12, y + 14);	
+	    			}
+	    			if(i == 9)
+	    			{
+			    		g.drawString("↓", x - 12, y + 14);
+	    			}
+	    			if(i == 21)
+	    			{
+			    		g.drawString("↑", x - 12, y + 14);
+	    			}
+	    			if(i == 29)
+	    			{
+			    		g.drawString("↑", x - 12, y + 14);
+	    			}
+	    			if(i == 31)
+	    			{
+			    		g.drawString("→", x + 28, y + 14);
+	    			}
+	    			if(i == 19)
+	    			{
+			    		g.drawString("←", x - 10, y + 14);
+	    			}
+	    			if(i == 11)
+	    			{
+			    		g.drawString("←", x - 10, y + 14);
+	    			}
+	    			if(i == 39)
+	    			{
+			    		g.drawString("→", x + 28, y + 14);
+	    			}
+	    		}
+    			if(fLandsCompany.get(i).size() == 1)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		
+		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
+		    		g.setColor(toJavaColor(c));
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.drawRect(x, y, 16, 16);
+    			}
+    		}
     		//}
     	}
     }
