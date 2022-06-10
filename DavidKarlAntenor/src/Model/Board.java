@@ -202,6 +202,7 @@ class Board {
 			tile.print();
 		}
 	}
+	/*
 	ArrayList<ArrayList<Object>> getFormatedLandsCompany()
 	{
 		ArrayList<ArrayList<Object>> ret = new ArrayList<ArrayList<Object>>();
@@ -225,5 +226,5 @@ class Board {
 				l.add(company.getOwner().getColor());
 			}
 		}
-	}
+	}*/
 }
