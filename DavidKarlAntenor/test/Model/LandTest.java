@@ -1,8 +1,4 @@
 package Model;
-
-import Model.Player;
-import Model.PlayerColor;
-import Model.PlayerException;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;

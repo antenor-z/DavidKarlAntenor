@@ -19,7 +19,7 @@ public class Deck {
         this._initialiseCardArray(jsonPath);
     }
 
-    ACard withdraw() {
+    protected ACard withdraw() {
         int randomPick = rand.nextInt(cards.size());
         ACard pickedCard = cards.get(randomPick);
         
