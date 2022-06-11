@@ -31,6 +31,7 @@ class Board {
             		int price = jsonTile.getInt("price");
             		int buildHouseCost = jsonTile.getInt("buildHouseCost");
             		int buildHotelCost = jsonTile.getInt("buildHotelCost");
+            		String imgPath = jsonTile.getString("img");
             		JSONArray jsonRentCost = jsonTile.getJSONArray("rentCost");
             		int rentCost[] = new int[6];
             		for(int i = 0; i < 6; i++)
@@ -38,7 +39,7 @@ class Board {
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
             		tiles.add(new Land(description, price, buildHouseCost, 
-            				buildHotelCost, rentCost));
+            				buildHotelCost, rentCost, imgPath));
             	}
             	else if(type.equals("Company"))
             	{
@@ -79,7 +80,7 @@ class Board {
 			System.out.println(e.getMessage());
 		}	
 	}
-	Board(String saveGameJSON) {
+	Board(JSONObject saveGameJSON) {
 		ArrayList<Player> playerList = GameState.getInstance().players;
 		try {
 			deck = new Deck("./Deck.json");
@@ -92,6 +93,8 @@ class Board {
 			String content = Files.readString(Path.of("./Board.json"));
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonBoard = obj.getJSONArray("board");
+            JSONObject savedCompanies = saveGameJSON.getJSONObject("Companies");
+            JSONObject savedLands = saveGameJSON.getJSONObject("Lands");
             
             for (Object jsonTileObj: jsonBoard) {
             	JSONObject jsonTile = (JSONObject)jsonTileObj;
@@ -104,20 +107,57 @@ class Board {
             		int buildHouseCost = jsonTile.getInt("buildHouseCost");
             		int buildHotelCost = jsonTile.getInt("buildHotelCost");
             		JSONArray jsonRentCost = jsonTile.getJSONArray("rentCost");
+            		String imgPath = jsonTile.getString("img");
             		int rentCost[] = new int[6];
             		for(int i = 0; i < 6; i++)
             		{
             			rentCost[i] = jsonRentCost.getInt(i);
             		}
+            		String tileIndex = String.valueOf(tiles.size());
+            		JSONObject landObj = (JSONObject) savedLands.get(tileIndex);
+            		int numberOfHouses = landObj.getInt("NumberOfHouses");
+            		boolean hasHotel = landObj.getBoolean("HasHotel");
+            		
+            		Player owner = null;
+            		if(landObj.isNull("Owner") == false)
+            		{
+            			String ownerName = landObj.getString("Owner");
+                		
+                		for(Player p: GameState.getInstance().players)
+                		{
+                			if (ownerName.equals(p.getName()))
+                			{
+                				owner = p;
+                			}
+                		}
+            		}
+            		
             		tiles.add(new Land(description, price, buildHouseCost, 
-            				buildHotelCost, rentCost));
+            				buildHotelCost, rentCost, imgPath, owner, numberOfHouses, hasHotel));
             	}
             	else if(type.equals("Company"))
             	{
             		String description = jsonTile.getString("description");
             		int price = jsonTile.getInt("price");
             		int priceRate = jsonTile.getInt("priceRate");
-            		tiles.add(new Company(description, price, priceRate));
+            		
+            		String tileIndex = String.valueOf(tiles.size());
+            		JSONObject CompanyObj = (JSONObject) savedCompanies.get(tileIndex);
+            		Player owner = null;
+            		if(CompanyObj.isNull("Owner") == false)
+            		{
+            			String ownerName = CompanyObj.getString("Owner");
+                		
+                		for(Player p: GameState.getInstance().players)
+                		{
+                			if (ownerName.equals(p.getName()))
+                			{
+                				owner = p;
+                			}
+                		}
+            		}
+            		
+            		tiles.add(new Company(description, price, priceRate, owner));
             	}
             	else if(type.equals("Prision"))
             	{
@@ -148,7 +188,7 @@ class Board {
 		}
 		catch(Exception e) {
 			System.out.println("Failed to read Board.json");
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
 	}
 	int getLength() {
@@ -161,5 +201,38 @@ class Board {
 		for(Tile tile: tiles) {
 			tile.print();
 		}
+	}
+	
+	ArrayList<ArrayList<Object>> getFormatedLandsCompany()
+	{
+		ArrayList<ArrayList<Object>> ret = new ArrayList<ArrayList<Object>>();
+		
+		for(int i = 0; i < 40; i++)
+		{
+			ArrayList<Object> l = new ArrayList<Object>();
+			if(tiles.get(i) instanceof Land)
+			{
+				Land land = (Land)tiles.get(i);
+				if(land.getOwner() != null)
+				{
+					l.add(land.getOwner().getColor());
+					l.add(land.getNumberOfHouses());
+					if(land.hasHotel())
+						l.add(1);
+					else
+						l.add(0);
+				}
+			}
+			else if(tiles.get(i) instanceof Company)
+			{
+				Company company = (Company)tiles.get(i);
+				if(company.getOwner() != null)
+				{
+					l.add(company.getOwner().getColor());
+				}
+			}
+			ret.add(l);
+		}
+		return ret;
 	}
 }

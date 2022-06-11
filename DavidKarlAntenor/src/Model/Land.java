@@ -10,8 +10,10 @@ class Land extends Tile {
 	private boolean hasHotel;
 	private int[] rentCost = new int[6];
 	private Player owner;
+	private String imgPath;
 
-	Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost)
+	Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost,
+			String imgPath)
 	{
 		super(TileType.Land);
 		this.description = description;
@@ -20,10 +22,11 @@ class Land extends Tile {
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;
 		this.owner = null;
+		this.imgPath = imgPath;
 	}
 	
 	Land(String description, int price, int buildHouseCost, int buildHotelCost, int[] rentCost,
-			Player owner, int numberOfHouses, boolean hasHotel)
+			String imgPath, Player owner, int numberOfHouses, boolean hasHotel)
 	{
 		super(TileType.Land);
 		this.description = description;
@@ -32,6 +35,7 @@ class Land extends Tile {
 		this.buildHotelCost = buildHotelCost;
 		this.rentCost = rentCost;
 		this.owner = owner;
+		this.imgPath = imgPath;
 		this.numberOfHouses = numberOfHouses;
 		this.hasHotel = hasHotel;
 	}
@@ -140,8 +144,9 @@ class Land extends Tile {
 	{
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Land");
-		ret.add(description);
+		ret.add(imgPath);
 		ret.add("Price: " + price);
+		ret.add(description);	
 		ret.add("Build house: " + buildHouseCost);
 		ret.add("Build hotel: " + buildHotelCost);
 		if(hasHotel)
@@ -155,7 +160,7 @@ class Land extends Tile {
 	
 		ret.add("");
 		if(owner != null)
-			ret.add("owner: " + owner.getName());
+			ret.add("owner: " + owner.getColor().toString());
 		else
 			ret.add("owner: " + "---");
 		ret.add("Number of houses: " + numberOfHouses);
@@ -180,5 +185,10 @@ class Land extends Tile {
 
 	boolean hasHotel() {
 		return hasHotel;
+	}
+	
+	String getOwnerColor()
+	{
+		return owner.getColor().toString();
 	}
 }

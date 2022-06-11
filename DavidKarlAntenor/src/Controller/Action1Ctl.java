@@ -17,7 +17,7 @@ public class Action1Ctl implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent e){
-		String currentTileType = gameState.getCurrentTileType();
+		String currentTileType = gameState.getTileType();
 		if(currentTileType.equals("Land"))
 		{
 			if(gameState.canBuyLand())

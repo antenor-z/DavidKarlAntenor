@@ -12,7 +12,8 @@
     "price": 100,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [6, 30, 90, 270, 400, 500]
+    "rentCost": [6, 30, 90, 270, 400, 500],
+    "img": "Leblon.png"
   },
   {
     "position": 2,
@@ -26,8 +27,8 @@
     "price": 60,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [2, 10, 30, 90, 160, 250]
-    
+    "rentCost": [2, 10, 30, 90, 160, 250],
+    "img": "Av. Presidente Vargas.png"
   },
   {
     "position": 4,
@@ -36,8 +37,8 @@
     "price": 60,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [4, 20, 60, 180, 320, 450]
-    
+    "rentCost": [4, 20, 60, 180, 320, 450],
+    "img": "Av. Nossa S. de Copacabana.png"
   },
   {
     "position": 5,
@@ -54,8 +55,8 @@
     "price": 240,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [20, 100, 300, 750, 925, 1100]
-    
+    "rentCost": [20, 100, 300, 750, 925, 1100],
+    "img": "Av. Brigadero Faria Lima.png"
   },
   {
     "position": 7,
@@ -72,7 +73,8 @@
     "price": 220,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [18, 90, 250, 700, 875, 1050]
+    "rentCost": [18, 90, 250, 700, 875, 1050],
+    "img": "Av. Rebouças.png"
   },
   {
     "position": 9,
@@ -81,7 +83,8 @@
     "price": 220,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [18, 90, 250, 700, 875, 1050]
+    "rentCost": [18, 90, 250, 700, 875, 1050],
+    "img": "Av. 9 de Julho.png"
   },
   {
     "position": 10,
@@ -95,8 +98,8 @@
     "price": 200,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [16, 80, 220, 600, 800, 1000]
-    
+    "rentCost": [16, 80, 220, 600, 800, 1000],
+    "img": "Av. Europa.png"
   },
   {
     "position": 12,
@@ -110,17 +113,18 @@
     "price": 180,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [14, 70, 200, 550, 750, 950]
+    "rentCost": [14, 70, 200, 550, 750, 950],
+    "img": "Rua Augusta.png"
   },
   {
     "position": 14,
     "type": "Land",
-    "description": "Av. Pacaembu",
+    "description": "Av. Pacaembú",
     "price": 180,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [14, 70, 200, 550, 750, 950]
-    
+    "rentCost": [14, 70, 200, 550, 750, 950],
+    "img": "Av. Pacaembú.png"
   },
   {
     "position": 15,
@@ -143,8 +147,8 @@
     "price": 350,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [35, 175, 500, 1100, 1300, 1500]
-    
+    "rentCost": [35, 175, 500, 1100, 1300, 1500],
+    "img": "Interlagos.png"
   },
   {
     "position": 18,
@@ -159,7 +163,8 @@
     "price": 400,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [50, 200, 600, 1400, 1700, 2000]
+    "rentCost": [50, 200, 600, 1400, 1700, 2000],
+    "img": "Morumbi.png"
     
   },
   {
@@ -175,8 +180,8 @@
     "price": 120,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [8, 40, 100, 300, 450, 600]
-    
+    "rentCost": [8, 40, 100, 300, 450, 600],
+    "img": "Flamengo.png"
   },
   {
     "position": 22,
@@ -191,8 +196,8 @@
     "price": 100,
     "buildHouseCost": 50,
     "buildHotelCost": 50,
-    "rentCost": [6, 30, 90, 270, 400, 500]
-    
+    "rentCost": [6, 30, 90, 270, 400, 500],
+    "img": "Botafogo.png"
   },
   {
     "position": 24,
@@ -215,8 +220,8 @@
     "price": 160,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [12, 60, 180, 500, 700, 900]
-    
+    "rentCost": [12, 60, 180, 500, 700, 900],
+    "img": "Av. Brasil.png"
   },
   {
     "position": 27,
@@ -231,8 +236,8 @@
     "price": 140,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [10, 50, 150, 450, 625, 750]
-    
+    "rentCost": [10, 50, 150, 450, 625, 750],
+    "img": "Av. Paulista.png"
   },
   {
     "position": 29,
@@ -241,8 +246,8 @@
     "price": 140,
     "buildHouseCost": 100,
     "buildHotelCost": 100,
-    "rentCost": [10, 50, 150, 450, 625, 750]
-    
+    "rentCost": [10, 50, 150, 450, 625, 750],
+    "img": "Jardim Europa.png"
   },
   {
     "position": 30,
@@ -257,7 +262,8 @@
     "price": 260,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [22, 110, 330, 800, 975, 1500]
+    "rentCost": [22, 110, 330, 800, 975, 1500],
+    "img": "Copacabana.png"
   },
   {
     "position": 32,
@@ -274,8 +280,8 @@
     "price": 320,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [28, 150, 450, 1000, 1200, 1400]
-    
+    "rentCost": [28, 150, 450, 1000, 1200, 1400],
+    "img": "Av. Vieira Souto.png"
   },
   {
     "position": 34,
@@ -284,8 +290,8 @@
     "price": 300,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [26, 130, 390, 900, 1100, 1275]
-    
+    "rentCost": [26, 130, 390, 900, 1100, 1275],
+    "img": "Av. Atlântica.png"
   },
   {
     "position": 35,
@@ -302,8 +308,8 @@
     "price": 300,
     "buildHouseCost": 200,
     "buildHotelCost": 200,
-    "rentCost": [26, 130, 390, 900, 1100, 1275]
-    
+    "rentCost": [26, 130, 390, 900, 1100, 1275],
+    "img": "Ipanema.png"
   },
   {
     "position": 37,
@@ -318,7 +324,8 @@
     "price": 280,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [24, 120, 360, 850, 1025, 1200]
+    "rentCost": [24, 120, 360, 850, 1025, 1200],
+    "img": "Jardim Paulista.png"
   },
   {
     "position": 39,
@@ -327,7 +334,8 @@
     "price": 260,
     "buildHouseCost": 150,
     "buildHotelCost": 150,
-    "rentCost": [22, 110, 330, 800, 975, 1150]
+    "rentCost": [22, 110, 330, 800, 975, 1150],
+    "img": "Brooklin.png"
   }
 ]
 }

@@ -170,7 +170,7 @@ public class GameControlPanel extends MyPanel {
     private void _drawTileInfo(Graphics g){
     	g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
     
-    	ArrayList<String> tileInfo = gameState.getCurrentTileInfo();
+    	ArrayList<String> tileInfo = gameState.getTileInfo();
     	int positionY = 350;
     	final int positionX = 20;
     	
@@ -185,6 +185,19 @@ public class GameControlPanel extends MyPanel {
 				e.printStackTrace();
 			}
 			positionY += 260;
+			g.drawString(tileInfo.get(2), positionX, positionY);
+    	}
+    	else if(tileInfo.get(0) == "Land")
+    	{
+    		String str = "./img/territorios/" + tileInfo.get(1);
+    		Image imgCard;
+			try {
+				imgCard = ImageIO.read(new File(str));
+				g.drawImage(imgCard, positionX, positionY, null);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			positionY += 300;
 			g.drawString(tileInfo.get(2), positionX, positionY);
     	}
     	else

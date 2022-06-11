@@ -22,7 +22,7 @@ public class ThrowDiceCtl implements ActionListener{
 
     	try {gameState.goFoward(dices[0], dices[1]);}
     	catch (Exception e2) {System.out.println(e2.getMessage());}
-    	if(gameState.getCurrentTileType().equals("Land"))
+    	if(gameState.getTileType().equals("Land"))
         {
         		if (gameState.canBuyLand())
         		{
@@ -36,6 +36,8 @@ public class ThrowDiceCtl implements ActionListener{
         		}	
 	        	else if(gameState.canBuildHotel())
 	        	{
+	        		gamePanel.gameControlPanel.action1.setText("Build House");
+	        		gamePanel.gameControlPanel.action1.setVisible(true);
 	        		gamePanel.gameControlPanel.action2.setText("Build Hotel");
 	        		gamePanel.gameControlPanel.action2.setVisible(true);
         		}
@@ -48,11 +50,11 @@ public class ThrowDiceCtl implements ActionListener{
         		}
         		}
         }
-		else if(gameState.getCurrentTileType().equals("Company"))
+		else if(gameState.getTileType().equals("Company"))
 		{
         		if (gameState.companyGetOwner() == null)
         		{
-	        		gamePanel.gameControlPanel.action1.setText("Buy Copany");
+	        		gamePanel.gameControlPanel.action1.setText("Buy Company");
 	        		gamePanel.gameControlPanel.action1.setVisible(true);
         		}
         		else if(gameState.companyGetOwner() != gameState.turn)
@@ -67,11 +69,11 @@ public class ThrowDiceCtl implements ActionListener{
 					}
         		}
         }
-		else if(gameState.getCurrentTileType().equals("Money")) 
+		else if(gameState.getTileType().equals("Money")) 
 		{
         	gameState.moneyExecute();
         }
-		else if(gameState.getCurrentTileType().equals("LuckSetback"))
+		else if(gameState.getTileType().equals("LuckSetback"))
 		{
 			try
 			{
@@ -82,7 +84,7 @@ public class ThrowDiceCtl implements ActionListener{
 				e1.printStackTrace();
 			}
         }
-		else if(gameState.getCurrentTileType().equals("GoToPrision"))
+		else if(gameState.getTileType().equals("GoToPrision"))
 		{
         		gameState.gotoPrision();
         }

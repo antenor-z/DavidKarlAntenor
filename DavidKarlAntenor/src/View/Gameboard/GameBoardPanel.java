@@ -2,6 +2,7 @@ package View.Gameboard;
 
 import Model.GameException;
 import Model.GameState;
+import Model.Observed;
 import Model.Player;
 import Model.PlayerColor;
 
@@ -14,15 +15,20 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class GameBoardPanel extends JPanel {
+public class GameBoardPanel extends JPanel  implements Model.Observer{
     ArrayList<Image> pinsImg = new ArrayList<Image>();
     //Board board;
     public GameBoardPanel() throws GameException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
+		GameState.getInstance().addObserver(this);
     }
 
 	public void paintComponent(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+    	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+    	    RenderingHints.VALUE_ANTIALIAS_ON);
+
 		super.paintComponent(g);
 		Image i = null;
 		try {
@@ -51,6 +57,60 @@ public class GameBoardPanel extends JPanel {
     	if(n >= min && n < max) return true;
     	return false;
     }
+    public int getXposition2(int tileNumber) {
+    	final int spacingX = 56;
+    	final int startX;
+    	
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
+	    	startX = 616;		
+    	}
+    	else
+    	{
+    		startX = 15;
+    	}
+    	if(isBetween(tileNumber, 0, 11)) {
+    		return startX - tileNumber * spacingX;
+    	}
+    	else if(isBetween(tileNumber, 11, 20)) {
+    		return startX + 93;
+    	}
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startX - (30 - tileNumber) * spacingX;
+    	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startX + 545;
+    	}
+    	return 0;
+    }
+    public int getYposition2(int tileNumber) {
+    	final int spacingY = 55;
+    	final int startY;
+    
+    	if(isBetween(tileNumber, 0, 11) || isBetween(tileNumber, 20, 31))
+    	{
+		    startY = 570;
+    	}
+    	else 
+    	{
+	    	startY = 550;
+    	}
+
+    	if(isBetween(tileNumber, 0, 11)) {
+    		return startY;
+    	}
+    	else if(isBetween(tileNumber, 11, 20)) {
+    		return startY - (tileNumber - 11) * spacingY;
+    	}
+    	else if(isBetween(tileNumber, 20, 31)) {
+    		return startY - spacingY * 10 + 71;
+    	}
+    	else if(isBetween(tileNumber, 31, 40)) {
+    		return startY - (39 - tileNumber) * spacingY;
+    	}
+    	return 0;
+    }
+    
     public int getXposition(int tileNumber, Model.PlayerColor color) {
     	final int spacingX = 56;
     	final int startX;
@@ -132,15 +192,32 @@ public class GameBoardPanel extends JPanel {
     	return 0;
     }
 
+    Color toJavaColor(PlayerColor c)
+    {
+    	Color ret;
+    	switch (c)
+    	{
+    		case Red -> ret = Color.red;
+    		case Blue -> ret =  Color.blue;
+    		case Gray -> ret =  Color.gray;
+    		case Yellow -> ret =  Color.yellow;
+    		case Purple -> ret =  Color.pink;
+    		case Orange -> ret =  Color.orange;
+    		//case PlayerColor.
+    		default -> ret = Color.black;
+    	}
+    	return ret;
+    }
 	private void _drawPlayers(Graphics g) {
     	for (Player player: GameState.getInstance().players) {
     		int color = player.getColor().ordinal();
-    		int x = getXposition(player.getCurrentTile(), player.getColor());
-    		int y = getYposition(player.getCurrentTile(), player.getColor());
+    		int x = getXposition(player.getTileNumber(), player.getColor());
+    		int y = getYposition(player.getTileNumber(), player.getColor());
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
     	
-    	/*//SHOW ALL
+    	//SHOW ALL
+    	/*
     	for (int i = 0; i < 40; i++) {
     		for(PlayerColor p: PlayerColor.values())
     		{
@@ -148,6 +225,84 @@ public class GameBoardPanel extends JPanel {
 	    		int y = getYposition(i, p);
 	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
     		}
-    	}*/
+    	}
+    	*/
+    	ArrayList<ArrayList<Object>> fLandsCompany = GameState.getInstance().getFormatedLandsCompany();
+    	for (int i = 0; i < 40; i++) {
+    		//for(PlayerColor p: PlayerColor.values())
+    		//
+    		if(!fLandsCompany.get(i).isEmpty())
+    		{
+    			fLandsCompany.get(i).get(0);
+    			System.out.println(fLandsCompany);	
+    			if(fLandsCompany.get(i).size() == 3)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
+		    		g.setColor(toJavaColor(c));
+		    		g.fillRect(x, y, 32, 18);
+		    		g.setColor(Color.white);
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.BOLD, 16)));	
+		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 16);
+		    		g.drawString(fLandsCompany.get(i).get(2).toString(), x + 20, y + 16);
+		    		g.setColor(Color.black);
+	    			if(i == 1)
+	    			{
+			    		g.drawString("↓", x - 12, y + 14);	
+	    			}
+	    			if( i == 9)
+	    			{
+			    		g.drawString("↓", x + 30, y + 14);	
+	    			}
+	    			if(i == 21)
+	    			{
+			    		g.drawString("↑", x + 30, y + 14);
+	    			}
+	    			if(i == 29)
+	    			{
+			    		g.drawString("↑", x - 12, y + 14);
+	    			}
+	    			if(i == 31)
+	    			{
+			    		g.drawString("→", x + 20, y + 28);
+	    			}
+	    			if(i == 39)
+	    			{
+			    		g.drawString("→", x + 20, y);
+	    			}
+	    			if(i == 11)
+	    			{
+			    		g.drawString("←", x, y);
+	    			}
+	    			if(i == 19)
+	    			{
+			    		g.drawString("←", x, y + 28);
+	    			}
+	    		}
+    			if(fLandsCompany.get(i).size() == 1)
+    			{
+		    		int x = getXposition2(i);
+		    		int y = getYposition2(i);
+		    		
+		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
+		    		g.setColor(toJavaColor(c));
+		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g.fillRect(x, y, 16, 16);
+    			}
+    		}
+    		//}
+    	}
     }
+
+	@Override
+	public void note(Observed o) {
+		GameState gameState = GameState.getInstance();
+		
+		for(int i = 0; i < 40; i++)
+		{
+			
+		}
+		System.out.println();
+	}
 }

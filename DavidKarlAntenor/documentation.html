@@ -1,21 +1,39 @@
+<h1>Monopoly in Java Documentation</h1>
 <h1>Model</h1>
+The facade is formed by classes: Player, GameState, GameSettings and PlayerColor. The rest is internal.
 <h2>Class: Player</h2>
+Represents one player. It's part of API.
 <h3>Propeties:</h3>
 <ul>
 	<li><b>cash: Integer:</b> the ammount of money that the player has currently.</li>
-	<li><b>currentTile: Tile:</b> Reference to the tile where the player is.</li>
+	<li><b>currentTileN: int:</b> Reference to the tile number where the player is.</li>
+	<li><b>boardSize: int:</b> Needed because the goFoward() needs to rollback to zero when player passes the last tile.</li>
+	<li><b>name: String:</b> Name of player.</li>
+	<li><b>name: String:</b> Name of player.</li>
+
 </ul>
-<h3>Functions:</h3>
+<h3>Methods:</h3>
 <ul>
-	<li><b>advance(n)</b> Go foward n number of tiles. If the number becomes 40, it rolls back to 0 since the tiles are circular.
-If the player is on tile 38 and they get to advance 4 postions, the player will be at 2. This can be done with currentTile = (currentTile + n) % SIZE_OF_BOARD</li>
+	<li><b>getCash(): Integer</b></li>Cash getter.
+	<li><b>addOrSubCash(ammount: Integer): </b></li>Adds ammount to player's current cash. If negative, subtracts. If player's cash would become less than zero, throws exception and returns without changing the balance.
+
+	<li><b>goFoward(n: Integer)</b> Go foward n number of tiles. If the number becomes 40, it rolls back to 0 since the board is circular. If the player is on tile 38 and they get to advance 4 postions, the player will be at 2. This can be done with currentTile = (currentTile + n) % boardSize</li>
+	
+	<li><b>getTileNumber(): Integer</b></li>Return the tile number where the player is.
+	<li><b>getColor(): PlayerColor</b></li>Return the enum PlayerColor of the player's color.
+	<li><b>getTileNumber(): Integer</b></li>Return the tile number where the player is.
+	<li><b>goToTile(tile: Integer)</b></li>Move the player to tile number 'tile'.
+	<li><b>getName(): String</b></li>Player's name getter.
+	<li><b>toString(): String</b></li>Get player's information in string form.
+
 </ul>
 <h2>Static Class: Dice</h2>
 <h3>Functions:</h3>
 <ul>
-	<li><b>roll(n)</b>: Roll the two dices. Will return a random number between 2 and 12 (inclusive).</li>
+	<li><b>roll(dicesPreset: [Integer, Integer]): [Integer, Integer]</b>: If dicesPreset[0] is zero  will return a random number between 1 and 6 (inclusive) to element zero of returned array. The same for dicesPreset[1].</li>
 </ul>
-<h2>Static Class: Board</h2>
+<h2>Static Class: Board</h2>\\\\\\\\\\\\\\\\\\\\\\\\\\
+Has an array that corresponds to the board.
 <h3>Propeties:</h3>
 <ul>
 	<li><b>tiles: Array&lt;Tile&gt;</b> An array corresponding the each tile (position on the board). This array has 40 positions, corresponding the each place the player can be at any moment</li>
