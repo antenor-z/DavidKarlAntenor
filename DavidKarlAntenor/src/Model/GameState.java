@@ -134,6 +134,11 @@ public class GameState implements Model.Observed {
 		return dices;
 	}
 	
+	public int[] getDicesNumbers()
+	{
+		return dices;
+	}
+	
 	public Tile getTile() {
 		return board.getTile(turn.getTileNumber());
 	}
