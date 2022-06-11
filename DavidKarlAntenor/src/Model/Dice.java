@@ -18,6 +18,7 @@ abstract class Dice {
 				ret[i] = r.nextInt(6) + 1;
 			}
 		}
+		GameState.getInstance().update();
 		return ret;
 	}
 }
