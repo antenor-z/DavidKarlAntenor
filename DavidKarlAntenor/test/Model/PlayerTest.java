@@ -1,8 +1,5 @@
 package Model;
 
-import Model.GameSettings;
-import Model.PlayerColor;
-import Model.GameSettings;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;

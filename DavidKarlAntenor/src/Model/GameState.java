@@ -12,7 +12,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class GameState implements Model.Observed{
+public class GameState implements Model.Observed {
     static GameState instance;
     GameSettings settings = GameSettings.getInstance();
     public ArrayList<Player> players = new ArrayList<Player>();

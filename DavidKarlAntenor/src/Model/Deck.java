@@ -10,16 +10,16 @@ import Model.Utils.ImportFile;
 import org.json.*;
 import java.util.Random;
 
-class Deck {
-    private final List<ACard> cards = new ArrayList<ACard>();
-    private final Random rand = new Random();
-    private OutOfJailCard outOfJailCard;
+public class Deck {
+    protected List<ACard> cards = new ArrayList<ACard>();
+    protected Random rand = new Random();
+    protected OutOfJailCard outOfJailCard;
 
     Deck(String jsonPath) throws DeckException {
         this._initialiseCardArray(jsonPath);
     }
 
-    ACard withdraw() {
+    protected ACard withdraw() {
         int randomPick = rand.nextInt(cards.size());
         ACard pickedCard = cards.get(randomPick);
         
