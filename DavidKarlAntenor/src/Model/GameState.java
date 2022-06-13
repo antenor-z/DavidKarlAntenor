@@ -124,8 +124,12 @@ public class GameState implements Model.Observed {
     				break;
     			}
     		}
-    		turnN = (turnN + 1) % players.size();
-    		turn = players.get(turnN);
+    		do
+    		{
+    			turnN = (turnN + 1) % players.size();
+    			turn = players.get(turnN);
+    		}
+    		while(turn.isBankrupt() == true);
     	}
     }
 
