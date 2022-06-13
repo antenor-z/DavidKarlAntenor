@@ -340,6 +340,7 @@ public class GameState implements Model.Observed {
 					tileJSON.put("Owner", land.getOwner().getName());
 				else
 					tileJSON.put("Owner", JSONObject.NULL);
+				tileJSON.put("Name", land.getName());
 				tileJSON.put("NumberOfHouses", land.getNumberOfHouses());
 				tileJSON.put("HasHotel", land.hasHotel());
 				landsObjectJSON.put(String.valueOf(i), tileJSON);
@@ -348,6 +349,7 @@ public class GameState implements Model.Observed {
 			{
 				tileJSON = new JSONObject();
 				Company company = (Company)board.getTile(i);
+				tileJSON.put("Name", company.getName());
 				if(company.getOwner() != null)
 					tileJSON.put("Owner", company.getOwner().getName());
 				else
