@@ -29,3 +29,11 @@ Event Button ---> CONTROLLER ---> MODEL ---> update ---> note ---> VIEW ---> get
 - gameState's update() notify every view.
 - View gets updated info from gameState.
 - view calls repaint()
+
+TODOs
+-----
+1) When a player needs to pay rent (company or land) and doesn't have money, the game must ask the player which lands/companies to sell. Repeat until the player has enought money. If this is not sufficient set player.bankrupt to true.
+2) There are some events that the callback class is declared in-place. It's better to move these classes to Controller.
+3) Use the observer.
+4) Record the video.
+5) Write fourth report.
