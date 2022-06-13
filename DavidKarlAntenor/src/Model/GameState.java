@@ -95,7 +95,8 @@ public class GameState implements Model.Observed {
             	PlayerColor color = PlayerColor.valueOf(colorS);
             	int cash = player.getInt("Cash");
             	int tile = player.getInt("@Tile");
-            	Player newPlayer = new Player(cash, color, name);
+            	boolean isBankrupt = player.getBoolean("isBankrupt");
+            	Player newPlayer = new Player(cash, color, name, isBankrupt);
             	newPlayer.goToTile(tile);
             	players.add(newPlayer);
             	if(currentPlayerName != null)
@@ -296,6 +297,7 @@ public class GameState implements Model.Observed {
 			playerJSON.put("Color", player.getColor());
 			playerJSON.put("Cash", player.getCash());
 			playerJSON.put("@Tile", player.getTileNumber());
+			playerJSON.put("Bankrupt", player.isBankrupt());
 			playersArrayJSON.put(playerJSON);
 		}
 		
