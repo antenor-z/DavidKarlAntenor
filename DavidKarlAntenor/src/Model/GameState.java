@@ -297,7 +297,7 @@ public class GameState implements Model.Observed {
 			playerJSON.put("Color", player.getColor());
 			playerJSON.put("Cash", player.getCash());
 			playerJSON.put("@Tile", player.getTileNumber());
-			playerJSON.put("Bankrupt", player.isBankrupt());
+			playerJSON.put("isBankrupt", player.isBankrupt());
 			playersArrayJSON.put(playerJSON);
 		}
 		
