@@ -18,6 +18,7 @@ PRESENTATION VIDEO REQUIREMENTS
 OBSERVER
 --------
 
+Putting information on two parts of the code is prone to bugs.
 
 Event Button ---> CONTROLLER ---> MODEL ---> update ---> note ---> VIEW ---> gets MODEL ---> repaint()
 
