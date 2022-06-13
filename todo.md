@@ -12,8 +12,8 @@ FINAL ITERATION
 PRESENTATION VIDEO REQUIREMENTS
 -------------------------------
 
-* A recorded video call with all members of the team. Can be several videos recorded in different days.
-* The video needs to cover specifics parts of the gameplay that the professor will put on Moodle.
+* A recorded video call with all members of the team. Everyone with cam. Can be several videos recorded in different days.
+* The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
 OBSERVER
 --------
