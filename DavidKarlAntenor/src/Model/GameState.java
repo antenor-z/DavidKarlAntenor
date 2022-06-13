@@ -76,6 +76,28 @@ public class GameState implements Model.Observed {
     	}
     }
     
+    public ArrayList<String> turnGetPropeties()
+    {
+    	ArrayList<String> ret = new ArrayList<String>();
+    	for(int i = 0; i < board.getLength(); i++)
+    	{
+    		if(board.getTile(i) instanceof Land)
+    		{
+    			Land l = (Land)board.getTile(i);
+    			if(l.getOwner() == turn)
+    			{
+    				ret.add(l.getName());
+    			}
+    		}
+    		else if(board.getTile(i) instanceof Company)
+    		{
+    			Company c = (Company)board.getTile(i);
+    			ret.add(c.getName());
+    		}
+    	}
+    	return ret;
+    }
+    
     public void openGame(String path) {
     	try {
 			String content = Files.readString(Path.of(path));
