@@ -76,6 +76,28 @@ public class GameState implements Model.Observed {
     	}
     }
     
+    public ArrayList<String> turnGetPropeties()
+    {
+    	ArrayList<String> ret = new ArrayList<String>();
+    	for(int i = 0; i < board.getLength(); i++)
+    	{
+    		if(board.getTile(i) instanceof Land)
+    		{
+    			Land l = (Land)board.getTile(i);
+    			if(l.getOwner() == turn)
+    			{
+    				ret.add(l.getName());
+    			}
+    		}
+    		else if(board.getTile(i) instanceof Company)
+    		{
+    			Company c = (Company)board.getTile(i);
+    			ret.add(c.getName());
+    		}
+    	}
+    	return ret;
+    }
+    
     public void openGame(String path) {
     	try {
 			String content = Files.readString(Path.of(path));
@@ -95,7 +117,8 @@ public class GameState implements Model.Observed {
             	PlayerColor color = PlayerColor.valueOf(colorS);
             	int cash = player.getInt("Cash");
             	int tile = player.getInt("@Tile");
-            	Player newPlayer = new Player(cash, color, name);
+            	boolean isBankrupt = player.getBoolean("isBankrupt");
+            	Player newPlayer = new Player(cash, color, name, isBankrupt);
             	newPlayer.goToTile(tile);
             	players.add(newPlayer);
             	if(currentPlayerName != null)
@@ -123,14 +146,23 @@ public class GameState implements Model.Observed {
     				break;
     			}
     		}
-    		turnN = (turnN + 1) % players.size();
-    		turn = players.get(turnN);
+    		do
+    		{
+    			turnN = (turnN + 1) % players.size();
+    			turn = players.get(turnN);
+    		}
+    		while(turn.isBankrupt() == true);
     	}
     }
 
 	public int[] throwDice() {
 		dices = Dice.roll(dicesPreset);
 		update();
+		return dices;
+	}
+	
+	public int[] getDicesNumbers()
+	{
 		return dices;
 	}
 	
@@ -291,6 +323,7 @@ public class GameState implements Model.Observed {
 			playerJSON.put("Color", player.getColor());
 			playerJSON.put("Cash", player.getCash());
 			playerJSON.put("@Tile", player.getTileNumber());
+			playerJSON.put("isBankrupt", player.isBankrupt());
 			playersArrayJSON.put(playerJSON);
 		}
 		
@@ -307,6 +340,7 @@ public class GameState implements Model.Observed {
 					tileJSON.put("Owner", land.getOwner().getName());
 				else
 					tileJSON.put("Owner", JSONObject.NULL);
+				tileJSON.put("Name", land.getName());
 				tileJSON.put("NumberOfHouses", land.getNumberOfHouses());
 				tileJSON.put("HasHotel", land.hasHotel());
 				landsObjectJSON.put(String.valueOf(i), tileJSON);
@@ -315,6 +349,7 @@ public class GameState implements Model.Observed {
 			{
 				tileJSON = new JSONObject();
 				Company company = (Company)board.getTile(i);
+				tileJSON.put("Name", company.getName());
 				if(company.getOwner() != null)
 					tileJSON.put("Owner", company.getOwner().getName());
 				else

@@ -149,6 +149,10 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
 
     	for(Player p: gameState.players) {
     		// drawString doesn't handle \n so we have to do manually
+    		if(p.isBankrupt())
+    		{
+    			g.drawLine(positionX, positionY - 20, positionX+80, positionY+60);
+    		}
     		if(p == gameState.turn)
     		{
     			g.setColor(toJavaColor(gameState.turn.getColor()));

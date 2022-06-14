@@ -210,10 +210,13 @@ public class GameBoardPanel extends JPanel implements Model.Observer {
     }
 	private void _drawPlayers(Graphics g) {
     	for (Player player: GameState.getInstance().players) {
-    		int color = player.getColor().ordinal();
-    		int x = getXposition(player.getTileNumber(), player.getColor());
-    		int y = getYposition(player.getTileNumber(), player.getColor());
-    		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
+    		if(player.isBankrupt() == false)
+    		{
+	    		int color = player.getColor().ordinal();
+	    		int x = getXposition(player.getTileNumber(), player.getColor());
+	    		int y = getYposition(player.getTileNumber(), player.getColor());
+	    		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
+    		}
     	}
     	
     	ArrayList<ArrayList<Object>> fLandsCompany = GameState.getInstance().getFormatedLandsCompany();

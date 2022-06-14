@@ -191,4 +191,8 @@ class Land extends Tile {
 	{
 		return owner.getColor().toString();
 	}
+
+	public String getName() {
+		return description;
+	}
 }

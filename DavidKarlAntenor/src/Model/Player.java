@@ -2,6 +2,7 @@
 package Model;
 
 import java.awt.Color;
+import java.util.Collection;
 
 public class Player {
 	private int cash;
@@ -9,12 +10,21 @@ public class Player {
 	private final int boardSize = GameSettings.getInstance().getBoardSize();
 	private PlayerColor color;
 	private String name;
+	private boolean isBankrupt = false;
 	public Player(int cash, PlayerColor color, String name)
 	{
 		this.cash = cash;
 		this.currentTileN = 0;
 		this.color = color;
 		this.name = name;
+	}
+	public Player(int cash, PlayerColor color, String name, boolean isBankrupt)
+	{
+		this.cash = cash;
+		this.currentTileN = 0;
+		this.color = color;
+		this.name = name;
+		this.isBankrupt = isBankrupt;
 	}
 	public void goFoward(int n) throws PlayerException 
 	{
@@ -69,5 +79,8 @@ public class Player {
 		s += "  @Tile: " + currentTileN + "\n";
 		s += "  Balance: " + cash + "\n";
 		return s;
+	}
+	public boolean isBankrupt() {
+		return isBankrupt;
 	}
 }

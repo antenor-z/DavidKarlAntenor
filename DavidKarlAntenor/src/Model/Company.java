@@ -78,4 +78,7 @@ class Company extends Tile {
 	{
 		return owner;
 	}
+	public String getName() {
+		return description;
+	}
 }
