@@ -17,6 +17,11 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import Controller.OpenBtnCtl;
+import Controller.PlayBtnCtl;
+import Controller.TextChangedCtl;
+import Controller.chkBoxChangedCtl;
+
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
 	JButton btnNext = new JButton("Play");
@@ -50,15 +55,15 @@ public class Menu extends MyFrame {
 		insertButtons();
 		insertTextFields();
 		for(JCheckBox chkBox: checkBoxes) {
-			chkBox.addItemListener(new chkStateChanged());
+			chkBox.addItemListener(new chkBoxChangedCtl(checkBoxes, textFields, btnNext));
 		}
 		for(JTextField txt: textFields) {
-			txt.getDocument().addDocumentListener(new textChanged());
+			txt.getDocument().addDocumentListener(new TextChangedCtl(checkBoxes, textFields, btnNext));
 		}
-		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
+		PlayBtnCtl playBtnListener = new PlayBtnCtl(parent, checkBoxes, textFields);
 		btnNext.addActionListener(playBtnListener);
 		
-		OpenBtnListener openBtnListener = new OpenBtnListener(parent);
+		OpenBtnCtl openBtnListener = new OpenBtnCtl(parent);
 		btnOpen.addActionListener(openBtnListener);
 		
 	}
@@ -116,117 +121,5 @@ public class Menu extends MyFrame {
 		}
 	}
 	
-	void validateTextCombo() {
-		int count = 0;
-		boolean textFieldsSizeOK = true;
-		boolean textFieldsAllUnique = true;
-		
-		for(int i = 0; i < 6; i++) {
-			if(checkBoxes.get(i).isSelected()){
-				count++;
-				textFields.get(i).setEnabled(true);
-				String text = textFields.get(i).getText();
-				
-				if(text.length() == 0 || text.length() > 8) {
-					textFieldsSizeOK = false;
-				}
-				else {
-					for(int j = 0; j < 6; j++) {
-						String text2 = textFields.get(j).getText();
-						if(text2.equals(text) && i != j) {
-							textFieldsAllUnique = false;	
-							break;
-						}
-					}
-				}
-			}
-			else {
-				textFields.get(i).setEnabled(false);
-			}
-		}
 	
-		if(count >= 3 && textFieldsSizeOK && textFieldsAllUnique)
-			btnNext.setEnabled(true);
-		else
-			btnNext.setEnabled(false);
-	}
-	public class textChanged implements DocumentListener {
-
-		public void insertUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-
-		public void removeUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-
-		public void changedUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-		
-	}
-	public class chkStateChanged implements ItemListener {
-		public void itemStateChanged(ItemEvent e) {
-			validateTextCombo();
-		}
-	}
-	
-	public class OpenBtnListener extends JComponent implements ActionListener {
-
-		private ActionListener _controller;
-
-		public OpenBtnListener(ActionListener controller) {
-			_controller = controller;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			GameState gameState = GameState.getInstance();
-			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
-			{
-				try {
-					gameState.addPlayer(player.getValue(), player.getKey());
-				} catch (GameException e1) {
-					e1.printStackTrace();
-				}
-			}
-			JFileChooser jFileChooser = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON file", "json");
-			jFileChooser.setAcceptAllFileFilterUsed(false);
-			jFileChooser.addChoosableFileFilter(filter);
-			int option = jFileChooser.showSaveDialog(null);
-			if(option == JFileChooser.APPROVE_OPTION)
-			{
-				String selectedFile = jFileChooser.getSelectedFile().getAbsolutePath();
-				gameState.openGame(selectedFile);
-				_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
-			}
-		}
-	}
-	public class PlayBtnListener extends JComponent implements ActionListener {
-		private ActionListener _controller;
-
-		public PlayBtnListener(ActionListener controller) {
-			_controller = controller;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			for(int i = 0; i < 6; i++) {
-				if(checkBoxes.get(i).isSelected()){
-					Model.PlayerColor pc = Model.PlayerColor.valueOf(checkBoxes.get(i).getText());
-					String name = textFields.get(i).getText();
-					playersName.put(pc, name);
-				}
-			}
-			GameState gameState = GameState.getInstance();
-			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
-			{
-				try {
-					gameState.addPlayer(player.getValue(), player.getKey());
-				} catch (GameException e1) {
-					e1.printStackTrace();
-				}
-			}
-			_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
-		}
-	}
 }
