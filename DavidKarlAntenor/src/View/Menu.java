@@ -19,6 +19,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Controller.OpenBtnCtl;
 import Controller.PlayBtnCtl;
+import Controller.TextChangedCtl;
+import Controller.chkBoxChangedCtl;
 
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
@@ -53,10 +55,10 @@ public class Menu extends MyFrame {
 		insertButtons();
 		insertTextFields();
 		for(JCheckBox chkBox: checkBoxes) {
-			chkBox.addItemListener(new chkStateChanged());
+			chkBox.addItemListener(new chkBoxChangedCtl(checkBoxes, textFields, btnNext));
 		}
 		for(JTextField txt: textFields) {
-			txt.getDocument().addDocumentListener(new textChanged());
+			txt.getDocument().addDocumentListener(new TextChangedCtl(checkBoxes, textFields, btnNext));
 		}
 		PlayBtnCtl playBtnListener = new PlayBtnCtl(parent, checkBoxes, textFields);
 		btnNext.addActionListener(playBtnListener);
@@ -119,58 +121,5 @@ public class Menu extends MyFrame {
 		}
 	}
 	
-	void validateTextCombo() {
-		int count = 0;
-		boolean textFieldsSizeOK = true;
-		boolean textFieldsAllUnique = true;
-		
-		for(int i = 0; i < 6; i++) {
-			if(checkBoxes.get(i).isSelected()){
-				count++;
-				textFields.get(i).setEnabled(true);
-				String text = textFields.get(i).getText();
-				
-				if(text.length() == 0 || text.length() > 8) {
-					textFieldsSizeOK = false;
-				}
-				else {
-					for(int j = 0; j < 6; j++) {
-						String text2 = textFields.get(j).getText();
-						if(text2.equals(text) && i != j) {
-							textFieldsAllUnique = false;	
-							break;
-						}
-					}
-				}
-			}
-			else {
-				textFields.get(i).setEnabled(false);
-			}
-		}
 	
-		if(count >= 3 && textFieldsSizeOK && textFieldsAllUnique)
-			btnNext.setEnabled(true);
-		else
-			btnNext.setEnabled(false);
-	}
-	public class textChanged implements DocumentListener {
-
-		public void insertUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-
-		public void removeUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-
-		public void changedUpdate(DocumentEvent e) {
-			validateTextCombo();
-		}
-		
-	}
-	public class chkStateChanged implements ItemListener {
-		public void itemStateChanged(ItemEvent e) {
-			validateTextCombo();
-		}
-	}
 }
