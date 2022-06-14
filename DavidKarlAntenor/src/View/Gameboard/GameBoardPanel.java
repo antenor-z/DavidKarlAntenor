@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class GameBoardPanel extends JPanel  implements Model.Observer{
+public class GameBoardPanel extends JPanel implements Model.Observer {
     ArrayList<Image> pinsImg = new ArrayList<Image>();
     //Board board;
     public GameBoardPanel() throws GameException {
@@ -216,17 +216,6 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
     		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     	}
     	
-    	//SHOW ALL
-    	/*
-    	for (int i = 0; i < 40; i++) {
-    		for(PlayerColor p: PlayerColor.values())
-    		{
-	    		int x = getXposition(i, p);
-	    		int y = getYposition(i, p);
-	    		g.drawImage(pinsImg.get(p.ordinal()), x, y, 18, 27, null);
-    		}
-    	}
-    	*/
     	ArrayList<ArrayList<Object>> fLandsCompany = GameState.getInstance().getFormatedLandsCompany();
     	for (int i = 0; i < 40; i++) {
     		//for(PlayerColor p: PlayerColor.values())
@@ -298,11 +287,6 @@ public class GameBoardPanel extends JPanel  implements Model.Observer{
 	@Override
 	public void note(Observed o) {
 		GameState gameState = GameState.getInstance();
-		
-		for(int i = 0; i < 40; i++)
-		{
-			
-		}
-		System.out.println();
+		repaint();
 	}
 }

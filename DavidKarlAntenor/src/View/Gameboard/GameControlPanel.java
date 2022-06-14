@@ -3,6 +3,7 @@ package View.Gameboard;
 import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
 import Model.GameSettings;
+import Model.Observed;
 import Model.Player;
 import Model.PlayerColor;
 import View.MyPanel;
@@ -19,10 +20,9 @@ import java.awt.event.ItemListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.EventListener;
 
 @SuppressWarnings("serial")
-public class GameControlPanel extends MyPanel {
+public class GameControlPanel extends MyPanel implements Model.Observer {
     GameSettings settings = GameSettings.getInstance();
 
     JButton btnThrowDice = new JButton("Throw dice");
@@ -82,6 +82,7 @@ public class GameControlPanel extends MyPanel {
   
         dice1Selection.setBounds( 20, 220, 80, 30); add(dice1Selection);
         dice2Selection.setBounds(150, 220, 80, 30); add(dice2Selection);
+
         dice1Selection.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				int sel = dice1Selection.getSelectedIndex();
@@ -250,4 +251,9 @@ public class GameControlPanel extends MyPanel {
                 _controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.START_MENU));
             }
         });}
+
+    @Override
+    public void note(Observed o) {
+
+    }
 }

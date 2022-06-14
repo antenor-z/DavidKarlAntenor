@@ -348,7 +348,6 @@ public class GameState implements Model.Observed {
 	@Override
 	public void remObserver(Observer o) {
 		observers.remove(o);
-		
 	}
 
 	@Override
