@@ -12,14 +12,20 @@ abstract public class MenuValidateTextCombo {
 		int count = 0;
 		boolean textFieldsSizeOK = true;
 		boolean textFieldsAllUnique = true;
+		boolean onlyAlphaNumeric = true;
+	
 		
 		for(int i = 0; i < 6; i++) {
 			if(checkBoxes.get(i).isSelected()){
 				count++;
 				textFields.get(i).setEnabled(true);
 				String text = textFields.get(i).getText();
-				
-				if(text.length() == 0 || text.length() > 8) {
+				if (!textFields.get(i).getText().matches("^[A-Za-z0-9]*$"))
+				{
+					onlyAlphaNumeric = false;
+				}
+				if(text.length() == 0 || text.length() > 8)
+				{
 					textFieldsSizeOK = false;
 				}
 				else {
@@ -35,7 +41,7 @@ abstract public class MenuValidateTextCombo {
 			else {
 				textFields.get(i).setEnabled(false);
 			}
-			if(count >= 3 && textFieldsSizeOK && textFieldsAllUnique)
+			if(count >= 3 && textFieldsSizeOK && textFieldsAllUnique && onlyAlphaNumeric)
 				btnNext.setEnabled(true);
 			else
 				btnNext.setEnabled(false);
