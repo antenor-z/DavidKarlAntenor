@@ -17,6 +17,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import Controller.OpenBtnCtl;
+
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
 	JButton btnNext = new JButton("Play");
@@ -58,7 +60,7 @@ public class Menu extends MyFrame {
 		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
 		btnNext.addActionListener(playBtnListener);
 		
-		OpenBtnListener openBtnListener = new OpenBtnListener(parent);
+		OpenBtnCtl openBtnListener = new OpenBtnCtl(parent);
 		btnOpen.addActionListener(openBtnListener);
 		
 	}
@@ -171,37 +173,6 @@ public class Menu extends MyFrame {
 		}
 	}
 	
-	public class OpenBtnListener extends JComponent implements ActionListener {
-
-		private ActionListener _controller;
-
-		public OpenBtnListener(ActionListener controller) {
-			_controller = controller;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			GameState gameState = GameState.getInstance();
-			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
-			{
-				try {
-					gameState.addPlayer(player.getValue(), player.getKey());
-				} catch (GameException e1) {
-					e1.printStackTrace();
-				}
-			}
-			JFileChooser jFileChooser = new JFileChooser();
-			FileNameExtensionFilter filter = new FileNameExtensionFilter("JSON file", "json");
-			jFileChooser.setAcceptAllFileFilterUsed(false);
-			jFileChooser.addChoosableFileFilter(filter);
-			int option = jFileChooser.showSaveDialog(null);
-			if(option == JFileChooser.APPROVE_OPTION)
-			{
-				String selectedFile = jFileChooser.getSelectedFile().getAbsolutePath();
-				gameState.openGame(selectedFile);
-				_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
-			}
-		}
-	}
 	public class PlayBtnListener extends JComponent implements ActionListener {
 		private ActionListener _controller;
 
