@@ -94,8 +94,11 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
         dice1Selection.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 int sel = dice1Selection.getSelectedIndex();
-                if (sel == 0) gameState.dices[0] = -1;
-                else gameState.setDice1Preset(sel);
+                if (sel == 0) {
+                    gameState.dices[0] = -1;
+                } else {
+                    gameState.setDice1Preset(sel);
+                }
             }
         });
         dice2Selection.addItemListener(new ItemListener() {
@@ -276,7 +279,8 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
 
     @Override
     public void note(Observed o) {
-        if (gameState.getTileType().equals("Land")) {
+        String currentTile = gameState.getTileType();
+        if (currentTile != null && currentTile.equals("Land")) {
             if (gameState.canBuyLand()) {
                 this.action1.setText("Buy Land");
                 this.action1.setVisible(true);
@@ -288,14 +292,8 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
                 this.action1.setVisible(true);
                 this.action2.setText("Build Hotel");
                 this.action2.setVisible(true);
-            } else {
-                try {
-                    gameState.landPayRent();
-                } catch (GameException e1) {
-                    e1.printStackTrace();
-                }
             }
-        } else if (gameState.getTileType().equals("Company")) {
+        } else if (currentTile != null && currentTile.equals("Company")) {
             if (gameState.companyGetOwner() == null) {
                 this.action1.setText("Buy Company");
                 this.action1.setVisible(true);

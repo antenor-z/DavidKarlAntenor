@@ -22,7 +22,7 @@ public class Action1Ctl implements ActionListener {
         String currentTileType = gameState.getTileType();
 
         try {
-            if (currentTileType.equals("Land")) {
+            if (currentTileType != null && currentTileType.equals("Land")) {
                 if (gameState.canBuyLand()) {
                     try {
                         gameState.buyLand();

@@ -138,9 +138,10 @@ public class GameState implements Model.Observed {
     }
     
     public void nextPlayer() {
+		System.out.println("nextPlayer");
     	if(turn == null) {
     		turn = players.get(0);
-    	} else {
+		} else {
     		int turnN;
     		for(turnN = 0; turnN < players.size(); turnN++) {
     			if(players.get(turnN) == turn) {
@@ -252,8 +253,11 @@ public class GameState implements Model.Observed {
 	
 	public String getTileType()
 	{
-		Tile t = board.getTile(turn.getTileNumber());
-		return t.tileType.toString();
+		if (turn != null) {
+			Tile t = board.getTile(turn.getTileNumber());
+			return t.tileType.toString();
+		}
+		return null;
 	}
 
 	public void goFoward(int dice1, int dice2) throws PlayerException {
