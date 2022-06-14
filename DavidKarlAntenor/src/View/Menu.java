@@ -18,6 +18,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Controller.OpenBtnCtl;
+import Controller.PlayBtnCtl;
 
 @SuppressWarnings("serial")
 public class Menu extends MyFrame {
@@ -57,7 +58,7 @@ public class Menu extends MyFrame {
 		for(JTextField txt: textFields) {
 			txt.getDocument().addDocumentListener(new textChanged());
 		}
-		PlayBtnListener playBtnListener = new PlayBtnListener(parent);
+		PlayBtnCtl playBtnListener = new PlayBtnCtl(parent, checkBoxes, textFields);
 		btnNext.addActionListener(playBtnListener);
 		
 		OpenBtnCtl openBtnListener = new OpenBtnCtl(parent);
@@ -170,34 +171,6 @@ public class Menu extends MyFrame {
 	public class chkStateChanged implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
 			validateTextCombo();
-		}
-	}
-	
-	public class PlayBtnListener extends JComponent implements ActionListener {
-		private ActionListener _controller;
-
-		public PlayBtnListener(ActionListener controller) {
-			_controller = controller;
-		}
-
-		public void actionPerformed(ActionEvent e) {
-			for(int i = 0; i < 6; i++) {
-				if(checkBoxes.get(i).isSelected()){
-					Model.PlayerColor pc = Model.PlayerColor.valueOf(checkBoxes.get(i).getText());
-					String name = textFields.get(i).getText();
-					playersName.put(pc, name);
-				}
-			}
-			GameState gameState = GameState.getInstance();
-			for(Map.Entry<Model.PlayerColor, String> player : playersName.entrySet())
-			{
-				try {
-					gameState.addPlayer(player.getValue(), player.getKey());
-				} catch (GameException e1) {
-					e1.printStackTrace();
-				}
-			}
-			_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.GAME));
 		}
 	}
 }
