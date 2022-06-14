@@ -30,12 +30,14 @@ public class GameState implements Model.Observed {
     public void setDice1Preset(int value) 
     {
     	this.dicesPreset[0] = value;
+		update();
     }
     
     public void setDice2Preset(int value) 
     {
     	this.dicesPreset[1] = value;
-    }
+		update();
+	}
 
     public ArrayList<ArrayList<Object>> getFormatedLandsCompany()
     {
@@ -43,7 +45,6 @@ public class GameState implements Model.Observed {
     }
     
     public void dump() {
-    	System.out.println(board.getFormatedLandsCompany());
     	String s = "----- Game state debug start -----\n";
     	for(Player player: players) {
     		if(turn == player) {
@@ -151,9 +152,10 @@ public class GameState implements Model.Observed {
     			turnN = (turnN + 1) % players.size();
     			turn = players.get(turnN);
     		}
-    		while(turn.isBankrupt() == true);
+    		while(turn.isBankrupt());
     	}
-    }
+		update();
+	}
 
 	public int[] throwDice() {
 		dices = Dice.roll(dicesPreset);
@@ -193,6 +195,7 @@ public class GameState implements Model.Observed {
 		{
 			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.buyLand(turn);
+			update();
 		}
 	}
 	
@@ -201,6 +204,7 @@ public class GameState implements Model.Observed {
 		{
 			Company land = (Company)board.getTile(turn.getTileNumber());
 			land.buyCompany(turn);
+			update();
 		}
 	}
 	
@@ -233,6 +237,7 @@ public class GameState implements Model.Observed {
 		{
 			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.buildHouse();
+			update();
 		}
 	}
 	
@@ -241,6 +246,7 @@ public class GameState implements Model.Observed {
 		{
 			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getTileNumber());
 			luckSetback.pickCard(turn);
+			update();
 		}
 	}
 	
@@ -260,6 +266,7 @@ public class GameState implements Model.Observed {
 		{
 			turn.goFoward(dice1 + dice2);
 		}
+		update();
 	}
 
 	public void landPayRent() throws LandException, PlayerException {
@@ -267,6 +274,7 @@ public class GameState implements Model.Observed {
 		{
 			Land land = (Land)board.getTile(turn.getTileNumber());
 			land.payRent(turn);
+			update();
 		}
 	}
 
@@ -284,6 +292,7 @@ public class GameState implements Model.Observed {
 		{
 			Company company = (Company)board.getTile(turn.getTileNumber());
 			company.payRent(turn, dice1 + dice2);
+			update();
 		}
 		
 	}
@@ -292,7 +301,8 @@ public class GameState implements Model.Observed {
 		if (board.getTile(turn.getTileNumber()) instanceof Money)
 		{
 			Money money = (Money)board.getTile(turn.getTileNumber());
-			money.execute(turn);	
+			money.execute(turn);
+			update();
 		}
 	}
 
@@ -301,7 +311,8 @@ public class GameState implements Model.Observed {
 		{
 			LuckSetback luckSetback = (LuckSetback)board.getTile(turn.getTileNumber());
 			luckSetback.pickCard(turn);
-		}	
+			update();
+		}
 	}
 
 	public void gotoPrision() {
@@ -309,6 +320,7 @@ public class GameState implements Model.Observed {
 		{
 			GoToPrision goToPrision = (GoToPrision)board.getTile(turn.getTileNumber());
 			goToPrision.gotoPrision(turn);
+			update();
 		}
 	}
 	public void saveGame(String path)

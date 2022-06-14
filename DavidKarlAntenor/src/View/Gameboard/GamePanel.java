@@ -3,16 +3,19 @@ package View.Gameboard;
 import Model.GameException;
 import Model.GameSettings;
 import Model.Observed;
+import Model.Observer;
 import View.MyPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 @SuppressWarnings("serial")
 public class GamePanel extends MyPanel {
     GameSettings settings = GameSettings.getInstance();
     GridBagConstraints gbc = new GridBagConstraints();
+    ArrayList<Observer> observers = new ArrayList<Observer>();
 
     public GameBoardPanel gameBoardPanel = null;
     public GameControlPanel gameControlPanel = null;
@@ -24,8 +27,6 @@ public class GamePanel extends MyPanel {
         _initFrame();
         _setLeftPanel();
         _setRightPanel(); 
-        _setThrowDiceEvent();
-        _setAction1Event();
     }
     
     protected void paintComponent(Graphics g) {
@@ -53,11 +54,5 @@ public class GamePanel extends MyPanel {
         setLayout(new GridBagLayout());
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width) / 2 - getWidth() / 2,
                 (Toolkit.getDefaultToolkit().getScreenSize().height) / 2 - getHeight() / 2);
-    }
-    private void _setThrowDiceEvent() {
-    	gameControlPanel.btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this));
-    }
-    private void _setAction1Event() {
-    	gameControlPanel.action1.addActionListener(new Controller.Action1Ctl(this));
     }
 }

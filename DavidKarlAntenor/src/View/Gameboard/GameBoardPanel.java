@@ -15,31 +15,32 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 @SuppressWarnings("serial")
-public class GameBoardPanel extends JPanel implements Model.Observer {
+	public class GameBoardPanel extends JPanel implements Model.Observer {
     ArrayList<Image> pinsImg = new ArrayList<Image>();
-    //Board board;
+	GameState gameState = GameState.getInstance();
+
     public GameBoardPanel() throws GameException {
 		setPreferredSize(new Dimension(700, 700));
 		loadPinsImages();
-		GameState.getInstance().addObserver(this);
+		gameState.addObserver(this);
     }
 
 	public void paintComponent(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-    	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-    	    RenderingHints.VALUE_ANTIALIAS_ON);
-
 		super.paintComponent(g);
+
+		Graphics2D g2 = (Graphics2D) g;
 		Image i = null;
+
 		try {
-			i=ImageIO.read(new File("./img/tabuleiro.png"));
+			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			i = ImageIO.read(new File("./img/tabuleiro.png"));
+			g.drawImage(i, 0, -10, null);
+			_drawPlayers(g);
 		}
 		catch(IOException e2) {
-			System.out.println(e2.getMessage());
+			System.out.println("paintComponent: " + e2.getMessage());
 			System.exit(1);
 		}
-		g.drawImage(i, 0, -10, null);
-		_drawPlayers(g);
 	}
 	 public void loadPinsImages() {
     	String str;
@@ -49,7 +50,7 @@ public class GameBoardPanel extends JPanel implements Model.Observer {
     			pinsImg.add(ImageIO.read(new File(str)));
     		}
 		} catch(IOException e) {
-			System.out.println(e.getMessage());
+			System.out.println("loadPinsImages: " + e.getMessage());
 			System.exit(1);
 		}
     }
@@ -209,7 +210,7 @@ public class GameBoardPanel extends JPanel implements Model.Observer {
     	return ret;
     }
 	private void _drawPlayers(Graphics g) {
-    	for (Player player: GameState.getInstance().players) {
+    	for (Player player: gameState.players) {
     		if(player.isBankrupt() == false)
     		{
 	    		int color = player.getColor().ordinal();
@@ -219,14 +220,13 @@ public class GameBoardPanel extends JPanel implements Model.Observer {
     		}
     	}
     	
-    	ArrayList<ArrayList<Object>> fLandsCompany = GameState.getInstance().getFormatedLandsCompany();
+    	ArrayList<ArrayList<Object>> fLandsCompany = gameState.getFormatedLandsCompany();
     	for (int i = 0; i < 40; i++) {
     		//for(PlayerColor p: PlayerColor.values())
     		//
     		if(!fLandsCompany.get(i).isEmpty())
     		{
     			fLandsCompany.get(i).get(0);
-    			System.out.println(fLandsCompany);	
     			if(fLandsCompany.get(i).size() == 3)
     			{
 		    		int x = getXposition2(i);
@@ -289,7 +289,6 @@ public class GameBoardPanel extends JPanel implements Model.Observer {
 
 	@Override
 	public void note(Observed o) {
-		GameState gameState = GameState.getInstance();
 		repaint();
 	}
 }
