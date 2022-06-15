@@ -15,7 +15,7 @@ PRESENTATION VIDEO REQUIREMENTS
 * A recorded video call with all members of the team. Everyone with cam. Can be several videos recorded in different days.
 * The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
-OBSERVER
+[DONE] OBSERVER
 --------
 
 Putting information on two parts of the code is prone to bugs.
@@ -34,7 +34,7 @@ TODOs
 -----
 1) When a player needs to pay rent (company or land) and doesn't have money, the game must ask the player which lands/companies to sell. Repeat until the player has enought money. If this is not sufficient set player.bankrupt to true. Antenor/Wolff
 2) There are some events that the callback class is declared in-place. It's better to move these classes to Controller. Antenor
-3) Use the observer. Karl. 
+3) [DONE] Use the observer. Karl. 
 4) Record the video. Everyone.
 5) Finish tests cases of model. Wolff
 6) Write fourth report. Wolff.
