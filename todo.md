@@ -16,25 +16,26 @@ PRESENTATION VIDEO REQUIREMENTS
 * The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
 ## Video Script
-1) Start a game with 4 players, show how the pins are selected, how the names are defined and what's the order of the players.
+% = Implement in our project
+1) % Start a game with 4 players, show how the pins are selected, how the names are defined and what's the order of the players.
 2) Show these actions:
-a) Buy a Land<br>
-b) Buy a company<br>
-c) Build a house on a Land<br>
-d) Build a second house on that Land<br>
-e) Build a hotel on the previous Land<br>
-f) Rent payment on a Land that has at least one house<br>
-g) LuckSetback execution (luck)<br>
-h) LuckSetback execution (bad luck)<br>
-i) Save game<br>
-j) Close program<br>
-k) Open again<br>
-l) Open saved game<br>
-m) Jail entry<br>
+a) % Buy a Land <br>
+b) % Buy a company<br>
+c) % Build a house on a Land<br>
+d) % Build a second house on that Land<br>
+e) % Build a hotel on the previous Land<br>
+f) % Rent payment on a Land that has at least one house<br>
+g) % LuckSetback execution (luck)<br>
+h) % LuckSetback execution (bad luck)<br>
+i) % Save game<br>
+j) % Close program<br>
+k) % Open again<br>
+l) % Open saved game<br>
+m) % Jail entry<br>
 p) Exit of jail by having OutOfJail card<br>
 q) Ending of game by pressing quit button<br>
 r) Ending of game by all except one player becoming bankrupt<br>
-3) Show how the sigleton, facade and observer were implemented.
+3) % Show how the sigleton, facade and observer were implemented.
 
 
 [DONE] OBSERVER
