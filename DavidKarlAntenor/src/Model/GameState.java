@@ -241,7 +241,14 @@ public class GameState implements Model.Observed {
 			update();
 		}
 	}
-	
+	public void buildHotel() throws PlayerException, LandException {
+		if (board.getTile(turn.getTileNumber()) instanceof Land)
+		{
+			Land land = (Land)board.getTile(turn.getTileNumber());
+			land.buildHotel();
+			update();
+		}
+	}
 	public void pickCard() throws PlayerException, DeckException {
 		if (board.getTile(turn.getTileNumber()) instanceof LuckSetback)
 		{

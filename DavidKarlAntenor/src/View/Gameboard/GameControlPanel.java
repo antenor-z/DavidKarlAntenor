@@ -47,6 +47,11 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
         btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this));
         action1.addActionListener(new Controller.Action1Ctl(() -> {
             action1.setVisible(false);
+            action2.setVisible(false);
+        }));
+        action2.addActionListener(new Controller.Action2Ctl(() -> {
+	    	action1.setVisible(false);
+	        action2.setVisible(false);
         }));
         dice1Selection.addItem("Random");
         dice2Selection.addItem("Random");
@@ -282,11 +287,10 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
             } else if (gameState.canBuildHouse()) {
                 this.action1.setText("Build House");
                 this.action1.setVisible(true);
-            } else if (gameState.canBuildHotel()) {
-                this.action1.setText("Build House");
-                this.action1.setVisible(true);
-                this.action2.setText("Build Hotel");
-                this.action2.setVisible(true);
+                if (gameState.canBuildHotel()) {
+                    this.action2.setText("Build Hotel");
+                    this.action2.setVisible(true);
+                } 
             }
         } else if (currentTile != null && currentTile.equals("Company")) {
             if (gameState.companyGetOwner() == null) {

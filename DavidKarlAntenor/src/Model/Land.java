@@ -95,21 +95,24 @@ class Land extends Tile {
 	
 	void buildHotel() throws PlayerException, LandException
 	{
-		if(numberOfHouses >= 1)
-		{
-			if(hasHotel == false)
+		if(this.owner != null)
+		{	
+			if(numberOfHouses >= 1)
 			{
-				owner.addOrSubCash(-buildHotelCost);
-				hasHotel = true;
+				if(hasHotel == false)
+				{
+					owner.addOrSubCash(-buildHotelCost);
+					hasHotel = true;
+				}
+				else
+				{
+					throw new LandException("Already has a hotel");
+				}
 			}
 			else
 			{
-				throw new LandException("Already has a hotel");
+				throw new LandException("At least 1 house to build hotel");
 			}
-		}
-		else
-		{
-			throw new LandException("At least 1 house to build hotel");
 		}
 	}
 	void payRent(Player tenant) throws LandException, PlayerException
