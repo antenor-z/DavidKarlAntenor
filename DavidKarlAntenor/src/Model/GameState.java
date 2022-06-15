@@ -260,7 +260,7 @@ public class GameState implements Model.Observed {
 	{
 		if (turn != null) {
 			Tile t = board.getTile(turn.getTileNumber());
-			return t.tileType.toString();
+			return t.getTileType();
 		}
 		return null;
 	}
