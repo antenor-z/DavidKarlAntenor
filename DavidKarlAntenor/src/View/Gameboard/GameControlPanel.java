@@ -272,7 +272,7 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
         quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                _controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.START_MENU));
+                _controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.END));
             }
         });
     }

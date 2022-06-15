@@ -18,9 +18,11 @@ public class GameFrameManager implements ActionListener {
     public GameFrameManager() throws HeadlessException, GameException {
         MyFrame menu = new Menu(this);
         MyFrame game = new GameFrame(this);
+        MyFrame end = new EndFrame(this);
 
         this.frames.add(menu);
         this.frames.add(game);
+        this.frames.add(end);
         this.setFrameVisible(menu, true);
     }
 
