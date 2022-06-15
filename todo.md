@@ -15,6 +15,28 @@ PRESENTATION VIDEO REQUIREMENTS
 * A recorded video call with all members of the team. Everyone with cam. Can be several videos recorded in different days.
 * The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
+## Video Script
+1) Start a game with 4 players, show how the pins are selected, how the names are defined and what's the order of the players.
+2) Show these actions:
+a) Buy a Land
+b) Buy a company
+c) Build a house on a Land
+d) Build a second house on that Land
+e) Build a hotel on the previous Land
+f) Rent payment on a Land that has at least one house
+g) LuckSetback execution (luck)
+h) LuckSetback execution (bad luck)
+i) Save game
+j) Close program
+k) Open again
+l) Open saved game
+m) Jail entry
+p) Exit of jail by having OutOfJail card
+q) Ending of game by pressing quit button
+r) Ending of game by all except one player becoming bankrupt
+3) Show how the sigleton, facade and observer were implemented.
+
+
 [DONE] OBSERVER
 --------
 
@@ -33,7 +55,7 @@ Event Button ---> CONTROLLER ---> MODEL ---> update ---> note ---> VIEW ---> get
 TODOs
 -----
 1) When a player needs to pay rent (company or land) and doesn't have money, the game must ask the player which lands/companies to sell. Repeat until the player has enought money. If this is not sufficient set player.bankrupt to true. Antenor/Wolff
-2) There are some events that the callback class is declared in-place. It's better to move these classes to Controller. Antenor
+2) [DONE] There are some events that the callback class is declared in-place. It's better to move these classes to Controller. Antenor
 3) [DONE] Use the observer. Karl. 
 4) Record the video. Everyone.
 5) Finish tests cases of model. Wolff
