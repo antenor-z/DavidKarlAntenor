@@ -10,6 +10,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class GameFrame extends MyFrame {
     JPanel panelCont = new JPanel();
     CardLayout cl = new CardLayout();

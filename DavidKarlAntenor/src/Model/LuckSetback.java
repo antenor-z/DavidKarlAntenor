@@ -53,7 +53,7 @@ class LuckSetback extends Tile {
 			p.addOrSubCash(50 * (playersList.size() - 1));
 		}
 		if(card instanceof GoToJailCard) {
-			GoToJailCard c = (GoToJailCard)card;
+			//GoToJailCard c = (GoToJailCard)card;
 			if(outOfJailCard.getOwner() == p)
 			{
 				outOfJailCard.use(p);

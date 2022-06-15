@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class MyPanel extends JPanel {
     protected ActionListener _controller;
     protected CardLayout _cl;

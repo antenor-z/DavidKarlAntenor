@@ -13,7 +13,7 @@ import java.util.List;
 
 public class GameFrameManager implements ActionListener {
     private final List<MyFrame> frames = new ArrayList<MyFrame>();
-    private final MyFrame currentFrame = null;
+    //private final MyFrame currentFrame = null;
 
     public GameFrameManager() throws HeadlessException, GameException {
         MyFrame menu = new Menu(this);

@@ -1,9 +1,6 @@
 // Part of API
 package Model;
 
-import java.awt.Color;
-import java.util.Collection;
-
 public class Player {
 	private int cash;
 	private int currentTileN;

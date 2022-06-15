@@ -1,6 +1,7 @@
 package Model.Event;
 import java.awt.event.ActionEvent;
 
+@SuppressWarnings("serial")
 public class ChangeViewEvent extends ActionEvent {
     private ViewType _type;
     private Boolean _isExclusive;

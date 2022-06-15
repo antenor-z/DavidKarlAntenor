@@ -1,26 +1,11 @@
 package View;
-import Model.GameException;
-import Model.GameSettings;
-import Model.GameState;
-import Model.Player;
-import Model.Event.ChangeViewEvent;
 import Model.Event.ViewType;
-
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
-import Controller.OpenBtnCtl;
-import Controller.PlayBtnCtl;
-import Controller.TextChangedCtl;
-import Controller.chkBoxChangedCtl;
 
 @SuppressWarnings("serial")
 public class EndFrame extends MyFrame {
