@@ -50,6 +50,7 @@ public class Menu extends MyFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);
+		setTitle("Monopoly - Menu");
 		insertCheckBoxes();
 		insertLabels();
 		insertButtons();

@@ -46,7 +46,7 @@ public class EndFrame extends MyFrame {
 	public EndFrame(ActionListener parent) {
 		super(parent, ViewType.END);
 		setSize(windowSizeX, windowSizeY);
-		//setLayout(null);
+		setTitle("Monopoly - End of Game");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocation((Toolkit.getDefaultToolkit().getScreenSize().width)/2 - getWidth()/2, (Toolkit.getDefaultToolkit().getScreenSize().height)/2 - getHeight()/2);

@@ -18,6 +18,7 @@ public class GameFrame extends MyFrame {
     public GameFrame(ActionListener controller) throws HeadlessException, GameException {
         super(controller, ViewType.GAME);
         panelCont.setLayout(cl);
+        setTitle("Monopoly");
         panelCont.add(new GamePanel(cl, panelCont, controller), "1");
         panelCont.add(new PausePanel(cl, panelCont, controller), "2");
         panelCont.setBounds(0, 0, settings.getGetMaxWidth(), settings.getGetMaxHeight());
