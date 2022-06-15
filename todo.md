@@ -16,7 +16,7 @@ PRESENTATION VIDEO REQUIREMENTS
 * The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
 ## Video Script
-% = Implement in our project
+% = Implemented in our project
 1) % Start a game with 4 players, show how the pins are selected, how the names are defined and what's the order of the players.
 2) Show these actions:
 - % Buy a Land 
