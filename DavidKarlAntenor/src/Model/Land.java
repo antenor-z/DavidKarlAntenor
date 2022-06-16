@@ -64,7 +64,10 @@ class Land extends Tile {
 		if(this.owner == null)
 		{
 			owner = player;
+			System.out.println(owner.getName() + " had " + owner.getCash());
 			owner.addOrSubCash(-price);
+			System.out.println(owner.getName() + " bought " + description);
+			System.out.println(owner.getName() + " now has " + owner.getCash());
 		}
 		else
 		{
@@ -81,6 +84,7 @@ class Land extends Tile {
 			{
 				owner.addOrSubCash(-buildHouseCost);
 				numberOfHouses++;
+				System.out.println(owner.getName() + " built one house");
 			}
 			else
 			{
@@ -103,6 +107,7 @@ class Land extends Tile {
 				{
 					owner.addOrSubCash(-buildHotelCost);
 					hasHotel = true;
+					System.out.println(owner.getName() + " built a hotel");
 				}
 				else
 				{
@@ -121,6 +126,8 @@ class Land extends Tile {
 		{
 			if(this.owner != tenant)
 			{
+				System.out.println("Tenant (" + tenant.getName() + ") had " + tenant.getCash());
+				System.out.println("Owner (" + owner.getName()+ ") had " + owner.getCash());
 				int ammountToPay;
 				if(hasHotel) 
 					ammountToPay = rentCost[5];
@@ -128,6 +135,9 @@ class Land extends Tile {
 					ammountToPay = rentCost[numberOfHouses];
 				tenant.addOrSubCash(-ammountToPay);
 				this.owner.addOrSubCash(ammountToPay);
+				System.out.println(tenant.getName() + " payed " + ammountToPay + " to " + owner.getName());
+				System.out.println("Tenant now has " + tenant.getCash());
+				System.out.println("Owner now has " + owner.getCash());
 			}
 			else 
 			{

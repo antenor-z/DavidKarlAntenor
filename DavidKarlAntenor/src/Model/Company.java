@@ -28,7 +28,10 @@ class Company extends Tile {
 		if(this.owner == null)
 		{
 			owner = player;
+			System.out.println(owner.getName() + " had " + owner.getCash());
 			owner.addOrSubCash(-price);
+			System.out.println(description + " bought by " + owner.getName());
+			System.out.println(owner.getName() + " now has " + owner.getCash());
 		}
 		else
 			throw new CompanyException("Company already has a owner: " 
@@ -40,10 +43,15 @@ class Company extends Tile {
 		{
 			if(this.owner != tenant)
 			{
+				System.out.println("Tenant (" + tenant.getName() + ") had " + tenant.getCash());
+				System.out.println("Owner (" + owner.getName()+ ") had " + owner.getCash());
 				int ammountToPay = priceRate * diceNumber;
 				try {
 					tenant.addOrSubCash(-ammountToPay);
 					this.owner.addOrSubCash(ammountToPay);
+					System.out.println(tenant.getName() + " payed " + ammountToPay + " to " + owner.getName());
+					System.out.println("Tenant now has " + tenant.getCash());
+					System.out.println("Owner now has " + owner.getCash());
 				}
 				catch (PlayerException e)
 				{
