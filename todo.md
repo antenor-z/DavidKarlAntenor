@@ -15,7 +15,30 @@ PRESENTATION VIDEO REQUIREMENTS
 * A recorded video call with all members of the team. Everyone with cam. Can be several videos recorded in different days.
 * The video needs to cover specifics of the gameplay that the professor will put on Moodle.
 
-OBSERVER
+## Video Script
+% = Implemented in our project
+1) % Start a game with 4 players, show how the pins are selected, how the names are defined and what's the order of the players.
+2) Show these actions:
+- % Buy a Land 
+- % Buy a company
+- % Build a house on a Land
+- % Build a second house on that Land
+- % Build a hotel on the previous Land
+- % Rent payment on a Land that has at least one house
+- % LuckSetback execution (luck)
+- % LuckSetback execution (bad luck)
+- % Save game
+- % Close program
+- % Open again
+- % Open saved game
+- % Jail entry
+- Exit of jail by having OutOfJail card
+- Ending of game by pressing quit button
+- Ending of game by all except one player becoming bankrupt
+3) % Show how the sigleton, facade and observer were implemented.
+
+
+[DONE] OBSERVER
 --------
 
 Putting information on two parts of the code is prone to bugs.
@@ -33,8 +56,8 @@ Event Button ---> CONTROLLER ---> MODEL ---> update ---> note ---> VIEW ---> get
 TODOs
 -----
 1) When a player needs to pay rent (company or land) and doesn't have money, the game must ask the player which lands/companies to sell. Repeat until the player has enought money. If this is not sufficient set player.bankrupt to true. Antenor/Wolff
-2) There are some events that the callback class is declared in-place. It's better to move these classes to Controller. Antenor
-3) Use the observer. Karl. 
+2) [DONE] There are some events that the callback class is declared in-place. It's better to move these classes to Controller. Antenor
+3) [DONE] Use the observer. Karl. 
 4) Record the video. Everyone.
 5) Finish tests cases of model. Wolff
 6) Write fourth report. Wolff.
