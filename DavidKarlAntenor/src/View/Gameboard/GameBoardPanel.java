@@ -28,14 +28,14 @@ import javax.swing.*;
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		Graphics2D g2 = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) g;
 		Image i = null;
 
 		try {
-			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			i = ImageIO.read(new File("./img/tabuleiro.png"));
 			g.drawImage(i, 0, -10, null);
-			_drawPlayers(g);
+			_drawPlayers(g2d);
 		}
 		catch(IOException e2) {
 			System.out.println("paintComponent: " + e2.getMessage());
@@ -209,14 +209,14 @@ import javax.swing.*;
     	}
     	return ret;
     }
-	private void _drawPlayers(Graphics g) {
+	private void _drawPlayers(Graphics2D g2d) {
     	for (Player player: gameState.players) {
     		if(player.isBankrupt() == false)
     		{
 	    		int color = player.getColor().ordinal();
 	    		int x = getXposition(player.getTileNumber(), player.getColor());
 	    		int y = getYposition(player.getTileNumber(), player.getColor());
-	    		g.drawImage(pinsImg.get(color), x, y, 18, 27, null);
+	    		g2d.drawImage(pinsImg.get(color), x, y, 18, 27, null);
     		}
     	}
     	
@@ -232,44 +232,44 @@ import javax.swing.*;
 		    		int x = getXposition2(i);
 		    		int y = getYposition2(i);
 		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
-		    		g.setColor(toJavaColor(c));
-		    		g.fillRect(x, y, 32, 18);
-		    		g.setColor(Color.white);
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.BOLD, 16)));	
-		    		g.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 16);
-		    		g.drawString(fLandsCompany.get(i).get(2).toString(), x + 20, y + 16);
-		    		g.setColor(Color.black);
+		    		g2d.setColor(toJavaColor(c));
+		    		g2d.fillRect(x, y, 32, 18);
+		    		g2d.setColor(Color.white);
+		    		g2d.setFont((new Font(g2d.getFont().getFamily(), Font.BOLD, 16)));	
+		    		g2d.drawString(fLandsCompany.get(i).get(1).toString(), x + 4, y + 16);
+		    		g2d.drawString(fLandsCompany.get(i).get(2).toString(), x + 20, y + 16);
+		    		g2d.setColor(Color.black);
 	    			if(i == 1)
 	    			{
-			    		g.drawString("↓", x - 12, y + 14);	
+			    		g2d.drawString("↓", x - 12, y + 14);	
 	    			}
 	    			if( i == 9)
 	    			{
-			    		g.drawString("↓", x + 30, y + 14);	
+			    		g2d.drawString("↓", x + 30, y + 14);	
 	    			}
 	    			if(i == 21)
 	    			{
-			    		g.drawString("↑", x + 30, y + 14);
+			    		g2d.drawString("↑", x + 30, y + 14);
 	    			}
 	    			if(i == 29)
 	    			{
-			    		g.drawString("↑", x - 12, y + 14);
+			    		g2d.drawString("↑", x - 12, y + 14);
 	    			}
 	    			if(i == 31)
 	    			{
-			    		g.drawString("→", x + 20, y + 28);
+			    		g2d.drawString("→", x + 20, y + 28);
 	    			}
 	    			if(i == 39)
 	    			{
-			    		g.drawString("→", x + 20, y);
+			    		g2d.drawString("→", x + 20, y);
 	    			}
 	    			if(i == 11)
 	    			{
-			    		g.drawString("←", x, y);
+			    		g2d.drawString("←", x, y);
 	    			}
 	    			if(i == 19)
 	    			{
-			    		g.drawString("←", x, y + 28);
+			    		g2d.drawString("←", x, y + 28);
 	    			}
 	    		}
     			if(fLandsCompany.get(i).size() == 1)
@@ -278,9 +278,9 @@ import javax.swing.*;
 		    		int y = getYposition2(i);
 		    		
 		    		PlayerColor c = (PlayerColor)fLandsCompany.get(i).get(0);
-		    		g.setColor(toJavaColor(c));
-		    		g.setFont((new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
-		    		g.fillRect(x, y, 16, 16);
+		    		g2d.setColor(toJavaColor(c));
+		    		g2d.setFont((new Font(g2d.getFont().getFamily(), Font.TRUETYPE_FONT, 16)));
+		    		g2d.fillRect(x, y, 16, 16);
     			}
     		}
     		//}

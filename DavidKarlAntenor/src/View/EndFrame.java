@@ -40,8 +40,9 @@ public class EndFrame extends MyFrame {
 	}
 	public class p extends JPanel {
 		public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-			g.drawString("End of game", 120, 10);
+			super.paintComponent(g);
+			Graphics2D g2d = (Graphics2D)g;
+			g2d.drawString("End of game", 120, 10);
 		}
 	}
 }
