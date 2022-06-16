@@ -33,7 +33,7 @@ PRESENTATION VIDEO REQUIREMENTS
 - % Open saved game
 - % Jail entry
 - % Exit of jail by having OutOfJail card
-- Ending of game by pressing quit button
+- % Ending of game by pressing quit button
 - Ending of game by all except one player becoming bankrupt
 3) % Show how the sigleton, facade and observer were implemented.
 
