@@ -247,7 +247,6 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
     private void _drawDices(Graphics g) {
         int[] diceValues = GameState.getInstance().getDicesNumbers();
 
-        System.out.println("dices values are " + diceValues[0] + " and " + diceValues[1]);
         if (diceValues[0] <= 0 || diceValues[1] <= 0) {
             return;
         }
