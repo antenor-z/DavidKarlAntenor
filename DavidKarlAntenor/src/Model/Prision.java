@@ -20,7 +20,7 @@ class Prision extends Tile {
 	}
 	public void processCard(Player p)
 	{
-		if(this.getCardOwner() == p)
+		if(Tile.getCardOwner() == p)
 		{
 			setCardOwner(null);
 			try {

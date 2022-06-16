@@ -18,7 +18,8 @@ public class Toast {
         w.setBackground(new Color(0, 0, 0, 0));
 
         // create a panel
-        JPanel p = new JPanel() {
+        @SuppressWarnings("serial")
+		JPanel p = new JPanel() {
             public void paintComponent(Graphics g) {
                 int wid = g.getFontMetrics().stringWidth(s);
                 int hei = g.getFontMetrics().getHeight();

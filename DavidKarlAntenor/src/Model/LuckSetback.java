@@ -2,7 +2,6 @@ package Model;
 import java.util.ArrayList;
 class LuckSetback extends Tile {
 	private Deck deck;
-	private OutOfJailCard outOfJailCard = null;
 	private ArrayList<Player> playersList;
 	private ACard currentCard = null;
 	private String imagePath;
@@ -12,7 +11,6 @@ class LuckSetback extends Tile {
 		super(TileType.LuckSetback);
 		this.deck = deck;
 		this.playersList = playersList;
-		this.outOfJailCard = deck.getOutOfJailCard();
 	}
 	ArrayList<String> print()
 	{

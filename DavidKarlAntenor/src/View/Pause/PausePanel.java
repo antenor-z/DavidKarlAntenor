@@ -1,6 +1,5 @@
 package View.Pause;
 
-import Model.GameSettings;
 import View.MyPanel;
 
 import javax.swing.*;
@@ -8,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+@SuppressWarnings("serial")
 public class PausePanel extends MyPanel {
     JButton closeBtn = new JButton("close");
 
