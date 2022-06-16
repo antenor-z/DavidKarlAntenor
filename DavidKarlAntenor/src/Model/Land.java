@@ -172,11 +172,14 @@ class Land extends Tile {
 	}
 
 	boolean canBuildHotel(Player turn) {
-		if(numberOfHouses >= 1)
-		{
-			if(hasHotel == false)
+		if(this.owner == turn)
+		{	
+			if(numberOfHouses >= 1)
 			{
-				return true;
+				if(hasHotel == false)
+				{
+					return true;
+				}
 			}
 		}
 		return false;

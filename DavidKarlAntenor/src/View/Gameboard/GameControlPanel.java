@@ -296,13 +296,15 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
             if (gameState.canBuyLand()) {
                 this.action1.setText("Buy Land");
                 this.action1.setVisible(true);
-            } else if (gameState.canBuildHouse()) {
-                this.action1.setText("Build House");
-                this.action1.setVisible(true);
+            } else {
+            	if (gameState.canBuildHouse()) {
+	                this.action1.setText("Build House");
+	                this.action1.setVisible(true);
+            	}
                 if (gameState.canBuildHotel()) {
                     this.action2.setText("Build Hotel");
-                    this.action2.setVisible(true);
-                } 
+                    this.action2.setVisible(true); 
+            	}
             }
         } else if (currentTile != null && currentTile.equals("Company")) {
             if (gameState.companyGetOwner() == null) {
