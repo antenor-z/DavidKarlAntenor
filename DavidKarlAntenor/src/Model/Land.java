@@ -211,4 +211,16 @@ class Land extends Tile {
 	public String getName() {
 		return description;
 	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public int getPriceBuildHouse() {
+		return buildHouseCost;
+	}
+	
+	public int getPriceBuildHotel() {
+		return buildHouseCost;
+	}
 }

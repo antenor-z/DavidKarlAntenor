@@ -57,4 +57,64 @@ class Players {
     	}
     	return turn;
 	}
+    ArrayList<String> getEndText()
+    {
+    	ArrayList<Integer> worth = new ArrayList<Integer>();
+    	int biggest = 0;
+    	for(Player p: players)
+    	{
+    		worth.add(getWorth(p));
+    		if(getWorth(p) > biggest)
+    		{
+    			biggest = getWorth(p);
+    		}
+    	}
+    	ArrayList<String> s = new ArrayList<String>();
+    	int i = 0;
+    	for(Player p: players)
+    	{
+    		if(worth.get(i) == biggest)
+    		{
+    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i) + " (winner)");
+    		}
+    		else
+    		{
+    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i));
+    		}
+    		i++;
+    	}
+    	
+    	return s;
+    }
+    int getWorth(Player p)
+    {
+    	Board b = GameState.getInstance().board;
+    	int worth = p.getCash();
+		for(int i = 0; i < 40; i++)
+		{
+			Tile t = b.getTile(i);
+			if(t instanceof Land)
+			{
+				Land l = (Land)t;
+				if(l.getOwner() == p)
+				{
+					worth += l.getPrice();
+					worth += l.getNumberOfHouses() * l.getPriceBuildHouse();
+					if(l.hasHotel())
+					{
+						worth += l.getPriceBuildHotel();
+					}
+				}
+			}
+			if(t instanceof Company)
+			{
+				Company c = (Company)t;
+				if(c.getOwner() == p)
+				{
+					worth += c.getPrice();
+				}
+			}
+		}
+		return worth;
+    }
 }

@@ -95,4 +95,7 @@ class Company extends Tile {
 			return true;
 		return false;
 	}
+	public int getPrice() {
+		return price;
+	}
 }

@@ -1,4 +1,5 @@
 package View;
+import Model.GameState;
 import Model.Event.ViewType;
 import java.awt.*;
 import java.awt.event.*;
@@ -42,7 +43,16 @@ public class EndFrame extends MyFrame {
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			Graphics2D g2d = (Graphics2D)g;
-			g2d.drawString("End of game", 120, 10);
+			g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 25));
+			ArrayList<String> s = GameState.getInstance().getEndText();
+			int posY = 40;
+			int posX = windowSizeX / 4;
+			for(String line: s)
+			{
+				g2d.drawString(line, posX, posY);
+				posY += 40;
+			}
 		}
 	}
 }

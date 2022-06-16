@@ -304,4 +304,8 @@ public class GameState implements Model.Observed {
 		}
 		return false;
 	}
+	public ArrayList<String> getEndText()
+	{
+		return Players.getInstance().getEndText();
+	}
 }
