@@ -12,7 +12,6 @@ public class Deck {
     protected List<ACard> cards = new ArrayList<ACard>();
     protected Random rand = new Random();
     protected OutOfJailCard outOfJailCard;
-    int i = 0;
 
     Deck(String jsonPath) throws DeckException {
         this._initialiseCardArray(jsonPath);
@@ -20,9 +19,7 @@ public class Deck {
 
     protected ACard withdraw() {
         int randomPick = rand.nextInt(cards.size());
-        ACard pickedCard = cards.get(17 + i);
-        i++;
-        
+        ACard pickedCard = cards.get(randomPick);      
         return pickedCard;
     }
     
