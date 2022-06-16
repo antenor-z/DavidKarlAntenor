@@ -25,17 +25,11 @@ public class GameState implements Model.Observed {
     	dicesPreset[0] = dicesPreset[1] = -1;
     }
     
-    public void setDice1Preset(int value) 
+    public void setDicePreset(int n, int value) 
     {
-    	this.dicesPreset[0] = value;
+    	this.dicesPreset[n] = value;
 		update();
     }
-    
-    public void setDice2Preset(int value) 
-    {
-    	this.dicesPreset[1] = value;
-		update();
-	}
 
     public ArrayList<ArrayList<Object>> getFormatedLandsCompany()
     {
