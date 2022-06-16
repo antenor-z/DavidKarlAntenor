@@ -54,9 +54,9 @@ class LuckSetback extends Tile {
 		}
 		if(card instanceof GoToJailCard) {
 			//GoToJailCard c = (GoToJailCard)card;
-			if(outOfJailCard.getOwner() == p)
+			if(getCardOwner() == p)
 			{
-				outOfJailCard.use(p);
+				setCardOwner(null);
 			}
 			else
 			{
@@ -64,8 +64,10 @@ class LuckSetback extends Tile {
 			}
 		}
 		if(card instanceof OutOfJailCard) {
-			if(outOfJailCard.getOwner() != null) {
-				outOfJailCard.pick(p);
+			//System.out.println("Card owner: " + getCardOwner().getName());
+			if(getCardOwner() == null) {
+				setCardOwner(p);
+				System.out.println("Card owner: " + getCardOwner().getName());
 			}
 			else
 			{

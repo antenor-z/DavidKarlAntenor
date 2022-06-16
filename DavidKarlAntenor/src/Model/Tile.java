@@ -11,17 +11,17 @@ class Tile {
 	{
 		return tileType.toString();
 	}
-	private Player cardOwner;
+	static private Player cardOwner;
 	ArrayList<String> print() {
 		ArrayList<String> ret = new ArrayList<String>();
 		ret.add("Tile");
 		return ret;
 	}
-	Player getCardOwner()
+	static Player getCardOwner()
 	{
 		return cardOwner;
 	}
-	void setCardOwner(Player p)
+	static void setCardOwner(Player p)
 	{
 		cardOwner = p;
 	}

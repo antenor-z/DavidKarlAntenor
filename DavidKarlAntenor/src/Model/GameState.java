@@ -75,6 +75,12 @@ public class GameState implements Model.Observed {
     	}
     }
     
+    public boolean isCardOwner(Player p)
+    {
+		if(Tile.getCardOwner() == p)
+    		return true;
+    	return false;
+    }
     public ArrayList<String> turnGetPropeties()
     {
     	ArrayList<String> ret = new ArrayList<String>();
@@ -329,6 +335,15 @@ public class GameState implements Model.Observed {
 		{
 			GoToPrision goToPrision = (GoToPrision)board.getTile(turn.getTileNumber());
 			goToPrision.gotoPrision(turn);
+			update();
+		}
+	}
+	public void processCard()
+	{
+		if (board.getTile(turn.getTileNumber()) instanceof Prision)
+		{
+			Prision prision = (Prision)board.getTile(turn.getTileNumber());
+			prision.processCard(turn);
 			update();
 		}
 	}

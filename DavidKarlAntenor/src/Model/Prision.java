@@ -18,4 +18,17 @@ class Prision extends Tile {
 		}
 		
 	}
+	public void processCard(Player p)
+	{
+		if(this.getCardOwner() == p)
+		{
+			setCardOwner(null);
+			try {
+				p.goFoward(1);
+			} catch (PlayerException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

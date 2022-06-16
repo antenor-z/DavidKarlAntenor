@@ -178,11 +178,25 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
             if (p == gameState.turn) {
                 g.setColor(toJavaColor(gameState.turn.getColor()));
                 g.setFont(new Font(g.getFont().getFamily(), Font.ITALIC, 15));
-                g.drawString("Name: " + p.getName() + " [Turn]", positionX, positionY);
+                if(gameState.isCardOwner(p))
+            	{
+                	g.drawString("Name: " + p.getName() + " (has card)", positionX, positionY);
+            	}
+                else
+                {
+                	g.drawString("Name: " + p.getName(), positionX, positionY);
+                }   
                 g.setFont(new Font(g.getFont().getFamily(), Font.TRUETYPE_FONT, 15));
                 g.setColor(Color.black);
             } else {
-                g.drawString("Name: " + p.getName(), positionX, positionY);
+                if(gameState.isCardOwner(p))
+            	{
+                	g.drawString("Name: " + p.getName() + " (has card)", positionX, positionY);
+            	}
+                else
+                {
+                	g.drawString("Name: " + p.getName(), positionX, positionY);
+                }
             }
             positionY += 20;
             g.drawString("Color: " + p.getColor(), positionX, positionY);

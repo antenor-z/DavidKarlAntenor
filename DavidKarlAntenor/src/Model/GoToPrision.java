@@ -12,6 +12,13 @@ class GoToPrision extends Tile{
 		return ret;
 	}
 	void gotoPrision(Player player) {
-		player.goToTile(10);
+		if (getCardOwner() == player)
+		{
+			setCardOwner(null);
+		}
+		else
+		{
+			player.goToTile(10);
+		}
 	}
 }

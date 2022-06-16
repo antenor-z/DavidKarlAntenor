@@ -49,6 +49,9 @@ public class ThrowDiceCtl implements ActionListener {
                             gameState.companyPayRent(gameState.dices[0], gameState.dices[1]);
                         }
                     }
+                    case "Prision" -> {
+                    	gameState.processCard();
+                    }
                     default -> {
                     }
                 }
