@@ -285,17 +285,23 @@ public class GameState implements Model.Observed {
 	public void remObserver(Observer o) {
 		observers.remove(o);
 	}
-
 	@Override
 	public Observer getObserver(int i) {
 		return observers.get(i);
 	}
-	
 	void update()
 	{
 		for(Observer o: observers)
 		{
 			o.note(this);
 		}
+	}
+	public boolean canBuyCompany() {
+		if (board.getTile(turn.getTileNumber()) instanceof Company)
+		{
+			Company company = (Company)board.getTile(turn.getTileNumber());
+			return company.canBuyCompany();
+		}
+		return false;
 	}
 }

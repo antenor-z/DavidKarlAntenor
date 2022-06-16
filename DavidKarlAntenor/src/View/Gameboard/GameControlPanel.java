@@ -307,7 +307,7 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
             	}
             }
         } else if (currentTile != null && currentTile.equals("Company")) {
-            if (gameState.companyGetOwner() == null) {
+            if (gameState.canBuyCompany()) {
                 this.action1.setText("Buy Company");
                 this.action1.setVisible(true);
             }

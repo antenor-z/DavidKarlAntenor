@@ -78,7 +78,13 @@ class Company extends Tile {
 	{
 		return owner;
 	}
-	public String getName() {
+	String getName() {
 		return description;
+	}
+	Boolean canBuyCompany()
+	{
+		if(this.owner == null)
+			return true;
+		return false;
 	}
 }
