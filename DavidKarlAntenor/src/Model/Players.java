@@ -73,13 +73,16 @@ class Players {
     	int i = 0;
     	for(Player p: players)
     	{
-    		if(worth.get(i) == biggest)
+    		if(!p.isBankrupt())
     		{
-    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i) + " (winner)");
-    		}
-    		else
-    		{
-    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i));
+	    		if(worth.get(i) == biggest)
+	    		{
+	    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i) + " (winner)");
+	    		}
+	    		else
+	    		{
+	    			s.add(p.getName() + "(" + p.getColor() + "): " + worth.get(i));
+	    		}
     		}
     		i++;
     	}
@@ -116,5 +119,15 @@ class Players {
 			}
 		}
 		return worth;
+    }
+    
+    int numberOfNotBankrupt()
+    {
+    	int i = 0;
+    	for(Player p: players)
+    	{
+    		if(!p.isBankrupt()) i++;
+    	}
+    	return i;
     }
 }

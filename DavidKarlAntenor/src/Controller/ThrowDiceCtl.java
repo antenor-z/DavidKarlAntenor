@@ -5,11 +5,15 @@ import java.awt.event.ActionListener;
 
 import Model.GameException;
 import Model.GameState;
+import Model.Event.ChangeViewEvent;
+import Model.Event.ViewType;
 import View.Gameboard.GameControlPanel;
 
 public class ThrowDiceCtl implements ActionListener {
 
-    public ThrowDiceCtl(GameControlPanel gamePanel) {
+	ActionListener _controller;
+    public ThrowDiceCtl(GameControlPanel gamePanel, ActionListener controller) {
+    	_controller = controller;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -58,6 +62,10 @@ public class ThrowDiceCtl implements ActionListener {
             }
         } catch (Exception e2) {
             System.out.println(e2.getMessage());
+        }
+        if(gameState.numberOfNotBankrupt() < 2)
+        {
+        	_controller.actionPerformed(new ChangeViewEvent(this, 200, "", ViewType.END));
         }
     }
 }

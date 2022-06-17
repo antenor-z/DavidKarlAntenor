@@ -48,7 +48,7 @@ public class Player {
 		}
 		else
 		{
-			throw new PlayerException("Cash less than zero");
+			isBankrupt = true;
 		}
 	}
 	

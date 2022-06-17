@@ -43,7 +43,7 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
         gameState.addObserver(this);
         _initPanel();
         _setEvents();
-        btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this));
+        btnThrowDice.addActionListener(new Controller.ThrowDiceCtl(this, controller));
         action1.addActionListener(new Controller.Action1Ctl(() -> {
             action1.setVisible(false);
             action2.setVisible(false);

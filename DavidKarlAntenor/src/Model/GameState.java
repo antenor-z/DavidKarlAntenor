@@ -308,4 +308,8 @@ public class GameState implements Model.Observed {
 	{
 		return Players.getInstance().getEndText();
 	}
+	public int numberOfNotBankrupt()
+	{
+		return Players.getInstance().numberOfNotBankrupt();
+	}
 }
