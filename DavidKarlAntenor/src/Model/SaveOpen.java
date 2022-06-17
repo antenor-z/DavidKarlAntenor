@@ -17,10 +17,16 @@ public class SaveOpen {
 			JSONObject obj = new JSONObject(content);
             JSONArray jsonPlayers = obj.getJSONArray("Players");
             String currentPlayerName;
+            String cardOwnerName;
             if(!obj.isNull("CurrentPlayer"))
             	currentPlayerName = obj.getString("CurrentPlayer");
             else
             	currentPlayerName = null;
+            
+            if(!obj.isNull("CardOwner"))
+            	cardOwnerName = obj.getString("CardOwner");
+            else
+            	cardOwnerName = null;
             
             for (Object playerO: jsonPlayers) {
             	JSONObject player = (JSONObject)playerO;
@@ -32,16 +38,25 @@ public class SaveOpen {
             	boolean isBankrupt = player.getBoolean("isBankrupt");
             	Player newPlayer = new Player(cash, color, name, isBankrupt);
             	newPlayer.goToTile(tile);
-            	players.add(newPlayer);
+            	players.add(newPlayer);	
             	if(currentPlayerName != null)
             	{
 	            	if(currentPlayerName.equals(name))
 	            	{
 	            		turn = newPlayer;
 	            	}
+	            	
+            	}
+            	if(cardOwnerName != null)
+            	{
+	            	if(cardOwnerName.equals(name))
+	            	{
+	            		Tile.setCardOwner(newPlayer);
+	            	}
+	            	
             	}
             }
-            board = new Board(obj);
+            GameState.getInstance().board = new Board(obj);
     	} catch(Exception e) {
 			System.out.println("Failed to read Board.json");
 			e.printStackTrace();
@@ -99,6 +114,14 @@ public class SaveOpen {
 			JSONFile.put("CurrentPlayer", turn.getName());
 		else
 			JSONFile.put("CurrentPlayer", JSONObject.NULL);
+		if(Tile.getCardOwner() != null)
+		{
+			JSONFile.put("CardOwner", Tile.getCardOwner().getName());
+		}
+		else
+		{
+			JSONFile.put("CardOwner", JSONObject.NULL);
+		}
 		JSONFile.put("Lands", landsObjectJSON);
 		JSONFile.put("Companies", companiesObjectJSON);
 		try {

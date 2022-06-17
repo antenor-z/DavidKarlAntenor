@@ -12,7 +12,9 @@ class Money extends Tile {
 	public void execute(Player player) {
 		try
 		{
+			System.out.println("Player " + player.getName() + " had " + player.getCash());
 			player.addOrSubCash(ammount);
+			System.out.println("Player " + player.getName() + " now has " + player.getCash());
 		}
 		catch (PlayerException e)
 		{
