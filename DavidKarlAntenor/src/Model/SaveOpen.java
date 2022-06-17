@@ -43,7 +43,7 @@ public class SaveOpen {
             	{
 	            	if(currentPlayerName.equals(name))
 	            	{
-	            		turn = newPlayer;
+	            		GameState.getInstance().turn = newPlayer;
 	            	}
 	            	
             	}
