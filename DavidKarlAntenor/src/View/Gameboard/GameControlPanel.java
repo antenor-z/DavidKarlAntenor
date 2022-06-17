@@ -99,12 +99,16 @@ public class GameControlPanel extends MyPanel implements Model.Observer {
             public void itemStateChanged(ItemEvent e) {
                 int sel = dice1Selection.getSelectedIndex();
                 gameState.setDicePreset(0, sel);
+                action1.setVisible(false);
+                action2.setVisible(false);
             }
         });
         dice2Selection.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             	int sel = dice2Selection.getSelectedIndex();
             	gameState.setDicePreset(1, sel);
+            	action1.setVisible(false);
+            	action2.setVisible(false);
             }
         });
 
