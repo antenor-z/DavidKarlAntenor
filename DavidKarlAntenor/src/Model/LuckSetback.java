@@ -36,16 +36,19 @@ class LuckSetback extends Tile {
 			System.out.println(p.getName() + " had " + p.getCash());
 			ValueCard c = (ValueCard)card;
 			p.addOrSubCash(c.getValue());
-			System.out.println(p.getName() + " now has " + p.getCash() + " because of card");
+			System.out.println("Card: " + c.getValue());
+			System.out.println(p.getName() + " now has " + p.getCash());
 		}
 		if(card instanceof MoveCard) {
 			System.out.println(p.getName() + " had " + p.getCash());
 			p.addOrSubCash(200);
 			p.goToTile(0);
+			System.out.println("Card: " + "200" + " and go to 0");
 			System.out.println(p.getName() + " now has " + p.getCash() + " because of card");
 			System.out.println("And was moved to begining");
 		}
 		if(card instanceof ValuePerPlayer) {
+			System.out.println(p.getName() + " had " + p.getCash());
 			for(Player player: playersList)
 			{
 				if(player != p)
@@ -55,6 +58,7 @@ class LuckSetback extends Tile {
 			}
 			System.out.println("Each player had to give 50 to " + p.getName());
 			p.addOrSubCash(50 * (playersList.size() - 1));
+			System.out.println(p.getName() + " now has " + p.getCash());
 		}
 		if(card instanceof GoToJailCard) {
 			//GoToJailCard c = (GoToJailCard)card;

@@ -15,7 +15,11 @@ class Prision extends Tile {
 		
 		if(diceNumber1 == diceNumber2) {
 			player.goFoward(diceNumber1 + diceNumber2);
-			System.out.println(player.getName() + " got out because same dice number");
+			System.out.println(player.getName() + " got out because same dice number: " + diceNumber1 + " " + diceNumber2);
+		}
+		else
+		{
+			System.out.println(player.getName() + " didn't get out because different dice number: " + diceNumber1 + " " + diceNumber2);
 		}
 		
 	}
