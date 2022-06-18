@@ -49,6 +49,7 @@ public class Player {
 		else
 		{
 			isBankrupt = true;
+			System.out.println(this.name + " became bankrupt");
 		}
 	}
 	
